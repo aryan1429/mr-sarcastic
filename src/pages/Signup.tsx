@@ -92,7 +92,7 @@ const Signup = () => {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-full mb-4">
             <Bot className="w-8 h-8 text-primary" />
           </div>
-          <h1 className="text-3xl font-bold text-primary mb-2">Join SassBot!</h1>
+          <h1 className="text-3xl font-bold text-primary mb-2">Join Mr Sarcastic!</h1>
           <p className="text-muted-foreground">Create your account to start chatting</p>
         </div>
 

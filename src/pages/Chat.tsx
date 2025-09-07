@@ -18,7 +18,7 @@ const Chat = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "Hey there! I'm SassBot, your friendly neighborhood AI with a sense of humor. What's on your mind today?",
+      text: "Hey there! I'm Mr Sarcastic, your friendly neighborhood AI with a sense of humor. What's on your mind today?",
       isUser: false,
       timestamp: new Date(),
     },
@@ -60,7 +60,7 @@ const Chat = () => {
           <div className="lg:col-span-2">
             <Card className="h-[600px] flex flex-col border-primary/20">
               <div className="p-4 border-b border-primary/20">
-                <h2 className="text-xl font-bold text-primary">Chat with SassBot</h2>
+                <h2 className="text-xl font-bold text-primary">Chat with Mr Sarcastic</h2>
                 <div className="flex items-center gap-2 mt-2">
                   <span className="text-sm text-muted-foreground">Detected Mood:</span>
                   <Badge variant="secondary" className="bg-accent/20 text-accent-foreground">

@@ -13,7 +13,7 @@ const Footer = () => {
               <div className="p-2 rounded-xl bg-gradient-to-br from-primary to-accent shadow-lg glow-primary">
                 <Bot className="h-6 w-6 text-white" />
               </div>
-              <span className="text-xl font-bold gradient-text">SassBot</span>
+              <span className="text-xl font-bold gradient-text">Mr Sarcastic</span>
             </div>
             <p className="text-muted-foreground text-sm leading-relaxed">
               Your sarcastic AI companion that doesn't hold back. 
@@ -94,7 +94,7 @@ const Footer = () => {
         <div className="mt-12 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="text-sm text-muted-foreground">
-              © 2024 SassBot. Made with <Heart className="inline h-4 w-4 text-red-500" /> for music lovers and sass enthusiasts.
+              © 2024 Mr Sarcastic. Made with <Heart className="inline h-4 w-4 text-red-500" /> for music lovers and sass enthusiasts.
             </div>
             <div className="flex space-x-6 text-sm text-muted-foreground">
               <a href="/privacy" className="hover:text-foreground transition-colors">Privacy Policy</a>

@@ -95,7 +95,7 @@ const Songs = () => {
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold text-primary mb-4">Mood-Based Music</h1>
             <p className="text-lg text-muted-foreground">
-              Let SassBot suggest the perfect soundtrack for your current vibe
+              Let Mr Sarcastic suggest the perfect soundtrack for your current vibe
             </p>
           </div>
 

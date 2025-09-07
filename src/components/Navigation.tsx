@@ -34,7 +34,7 @@ const Navigation = () => {
             <div className="p-2 rounded-xl bg-gradient-to-br from-primary to-accent shadow-lg group-hover:shadow-xl transition-all duration-300 glow-primary">
               <Bot className="h-6 w-6 text-white" />
             </div>
-            <span className="text-xl font-bold gradient-text">SassBot</span>
+            <span className="text-xl font-bold gradient-text">Mr Sarcastic</span>
           </Link>
 
           {/* Desktop Navigation */}

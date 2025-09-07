@@ -29,7 +29,7 @@ const Hero = () => {
               
               <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
                 Meet{" "}
-                <span className="gradient-text">SassBot</span>
+                <span className="gradient-text">Mr Sarcastic</span>
                 <br />
                 Your Sarcastic AI Companion
               </h1>
@@ -81,7 +81,7 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-2xl opacity-30 animate-pulse-glow"></div>
               <img
                 src={chatbotMascot}
-                alt="SassBot Mascot"
+                alt="Mr Sarcastic Mascot"
                 className="relative z-10 w-80 h-80 lg:w-96 lg:h-96 object-contain animate-float"
               />
             </div>

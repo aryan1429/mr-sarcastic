@@ -46,7 +46,7 @@ const Login = () => {
             <Bot className="w-8 h-8 text-primary" />
           </div>
           <h1 className="text-3xl font-bold text-primary mb-2">Welcome Back!</h1>
-          <p className="text-muted-foreground">Sign in to continue chatting with SassBot</p>
+          <p className="text-muted-foreground">Sign in to continue chatting with Mr Sarcastic</p>
         </div>
 
         <Card className="p-6 border-primary/20">
