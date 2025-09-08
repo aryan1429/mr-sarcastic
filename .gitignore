@@ -24,9 +24,15 @@ node_modules/
 *.swp
 *.swo
 
+# Frontend specific
+frontend/.vscode/
+
 # OS
 .DS_Store
 Thumbs.db
+
+# Helper scripts
+open-workspace.bat
 
 # Logs
 npm-debug.log*
