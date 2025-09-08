@@ -1,7 +1,7 @@
+import chatbotMascot from "@/assets/chatbot-mascot.png";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
-import chatbotMascot from "@/assets/chatbot-mascot.png";
 
 const Hero = () => {
   return (
@@ -35,9 +35,7 @@ const Hero = () => {
               </h1>
               
               <p className="text-xl text-muted-foreground max-w-2xl">
-                Get ready for brutally honest conversations, mood-based music recommendations, 
-                and an AI that's not afraid to call you out. Because sometimes you need a 
-                chatbot with <em>personality</em>.
+                Get ready for brutally honest conversations and mood-based music recommendations from an AI with real f'ing personality unlike your ex
               </p>
             </div>
 
