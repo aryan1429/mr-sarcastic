@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Bot, Check, Eye, EyeOff, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -27,10 +27,61 @@ const signupSchema = z.object({
 
 type SignupForm = z.infer<typeof signupSchema>;
 
+// Google Sign-In button component
+const GoogleSignInButton = ({ onGoogleSignIn, isLoading }: { onGoogleSignIn: (credential: string) => void, isLoading: boolean }) => {
+  useEffect(() => {
+    // Load Google Sign-In script
+    const script = document.createElement('script');
+    script.src = 'https://accounts.google.com/gsi/client';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+
+    script.onload = () => {
+      if (window.google) {
+        window.google.accounts.id.initialize({
+          client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID || 'demo-client-id',
+          callback: (response: any) => {
+            onGoogleSignIn(response.credential);
+          },
+        });
+
+        window.google.accounts.id.renderButton(
+          document.getElementById("google-signup-button"),
+          {
+            theme: "outline",
+            size: "large",
+            width: 400,
+            text: "signup_with",
+          }
+        );
+      }
+    };
+
+    return () => {
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, [onGoogleSignIn]);
+
+  return (
+    <div className="w-full">
+      <div id="google-signup-button" className="w-full flex justify-center"></div>
+      {isLoading && (
+        <div className="mt-2 text-center text-sm text-muted-foreground">
+          Creating account with Google...
+        </div>
+      )}
+    </div>
+  );
+};
+
 const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [googleLoading, setGoogleLoading] = useState(false);
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
@@ -95,6 +146,21 @@ const Signup = () => {
     }
   };
 
+  const handleGoogleSignIn = async (credential: string) => {
+    setGoogleLoading(true);
+    try {
+      // Simulate Google authentication
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      toast.success("Successfully signed up with Google!");
+      navigate('/chat');
+    } catch (error: any) {
+      toast.error(error.message || "Google sign-up failed");
+    } finally {
+      setGoogleLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-card to-background flex items-center justify-center p-4">
       <div className="w-full max-w-md">
@@ -107,7 +173,26 @@ const Signup = () => {
         </div>
 
         <Card className="p-6 border-primary/20">
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+          {/* Google Sign-Up Button */}
+          <div className="mb-6">
+            <GoogleSignInButton 
+              onGoogleSignIn={handleGoogleSignIn} 
+              isLoading={googleLoading}
+            />
+          </div>
+
+          <div className="relative">
+            <div className="absolute inset-0 flex items-center">
+              <span className="w-full border-t" />
+            </div>
+            <div className="relative flex justify-center text-xs uppercase">
+              <span className="bg-card px-2 text-muted-foreground">
+                Or continue with email
+              </span>
+            </div>
+          </div>
+
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mt-6">
             <div className="space-y-2">
               <Label htmlFor="username">Username</Label>
               <Input
