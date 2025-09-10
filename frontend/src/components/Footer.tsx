@@ -1,6 +1,5 @@
+import { Bot, Github, Heart, Music, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Github, Twitter, Music, Bot, Heart } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -20,21 +19,18 @@ const Footer = () => {
               Get real talk and great music recommendations.
             </p>
             <div className="flex space-x-2">
-              <Button variant="ghost" size="icon" asChild>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-                  <Github className="h-4 w-4" />
-                </a>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-                  <Twitter className="h-4 w-4" />
-                </a>
-              </Button>
-              <Button variant="ghost" size="icon" asChild>
-                <a href="https://spotify.com" target="_blank" rel="noopener noreferrer">
-                  <Music className="h-4 w-4" />
-                </a>
-              </Button>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" 
+                 className="p-2 rounded-md hover:bg-muted transition-colors">
+                <Github className="h-4 w-4" />
+              </a>
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
+                 className="p-2 rounded-md hover:bg-muted transition-colors">
+                <Twitter className="h-4 w-4" />
+              </a>
+              <a href="https://spotify.com" target="_blank" rel="noopener noreferrer"
+                 className="p-2 rounded-md hover:bg-muted transition-colors">
+                <Music className="h-4 w-4" />
+              </a>
             </div>
           </div>
 
@@ -71,18 +67,12 @@ const Footer = () => {
 
           {/* Contact */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-foreground">Get Started</h3>
-            <div className="space-y-3">
-              <Link to="/auth/signup">
-                <Button variant="outline" className="w-full">
-                  Sign Up Free
-                </Button>
-              </Link>
-              <Link to="/auth/login">
-                <Button variant="ghost" className="w-full">
-                  Login
-                </Button>
-              </Link>
+            <h3 className="text-lg font-semibold text-foreground">Support</h3>
+            <div className="space-y-2">
+              <div className="text-muted-foreground text-sm">Help Center</div>
+              <div className="text-muted-foreground text-sm">Documentation</div>
+              <div className="text-muted-foreground text-sm">Community</div>
+              <div className="text-muted-foreground text-sm">Bug Reports</div>
             </div>
             <p className="text-xs text-muted-foreground">
               Join thousands of users who love our sassy AI companion!

@@ -1,13 +1,14 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Link } from "react-router-dom";
-import { Eye, EyeOff, Bot } from "lucide-react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Bot, Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
+import * as z from "zod";
 
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -19,6 +20,7 @@ type LoginForm = z.infer<typeof loginSchema>;
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -30,12 +32,17 @@ const Login = () => {
 
   const onSubmit = async (data: LoginForm) => {
     setIsLoading(true);
-    // Simulate login process
-    setTimeout(() => {
-      console.log("Login data:", data);
+    try {
+      // Simulate login (replace with actual API call)
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      toast.success("Welcome back! Logged in successfully!");
+      navigate('/chat');
+    } catch (error) {
+      toast.error("Login failed. Please try again.");
+    } finally {
       setIsLoading(false);
-      // Redirect to chat or dashboard
-    }, 2000);
+    }
   };
 
   return (
@@ -107,8 +114,9 @@ const Login = () => {
               type="submit" 
               className="w-full" 
               disabled={isLoading}
+              variant="outline"
             >
-              {isLoading ? "Signing in..." : "Sign In"}
+              {isLoading ? "Signing in..." : "Sign In with Email"}
             </Button>
           </form>
 

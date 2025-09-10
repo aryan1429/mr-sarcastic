@@ -29,7 +29,7 @@
 4. Configure:
    - **Name**: `Mr Sarcastic Web Client`
    - **Authorized JavaScript origins**:
-     - `http://localhost:8081` (development)
+     - `http://localhost:8080` (development)
      - Add your production domain later
    - **Authorized redirect URIs**:
      - Leave empty (not needed for Google Sign-In button)

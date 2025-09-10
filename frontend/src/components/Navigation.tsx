@@ -1,22 +1,34 @@
+import { Button } from "@/components/ui/button";
+import { useAuth } from "@/context/AuthContext";
+import {
+  Bot,
+  Home,
+  LogIn,
+  LogOut,
+  Menu,
+  MessageCircle,
+  Music,
+  User,
+  UserPlus,
+  X
+} from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { 
-  MessageCircle, 
-  Music, 
-  User, 
-  Home, 
-  LogOut, 
-  Menu, 
-  X,
-  Bot
-} from "lucide-react";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { isAuthenticated, logout } = useAuth();
 
   const isActive = (path: string) => location.pathname === path;
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
 
   const navItems = [
     { name: "Home", path: "/", icon: Home },
@@ -56,10 +68,31 @@ const Navigation = () => {
                 </Link>
               );
             })}
-            <Button variant="outline" size="sm" className="ml-4">
-              <LogOut className="h-4 w-4 mr-2" />
-              Logout
-            </Button>
+            
+            {/* Authentication Buttons */}
+            <div className="ml-4 flex items-center space-x-2">
+              {isAuthenticated ? (
+                <Button variant="outline" size="sm" onClick={handleLogout}>
+                  <LogOut className="h-4 w-4 mr-2" />
+                  Logout
+                </Button>
+              ) : (
+                <>
+                  <Link to="/login">
+                    <Button variant="ghost" size="sm">
+                      <LogIn className="h-4 w-4 mr-2" />
+                      Login
+                    </Button>
+                  </Link>
+                  <Link to="/signup">
+                    <Button variant="default" size="sm">
+                      <UserPlus className="h-4 w-4 mr-2" />
+                      Sign Up
+                    </Button>
+                  </Link>
+                </>
+              )}
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -100,11 +133,30 @@ const Navigation = () => {
                   </Link>
                 );
               })}
-              <div className="pt-2 mt-2 border-t border-border">
-                <Button variant="outline" size="sm" className="w-full">
-                  <LogOut className="h-4 w-4 mr-2" />
-                  Logout
-                </Button>
+              
+              {/* Mobile Authentication Buttons */}
+              <div className="pt-2 mt-2 border-t border-border space-y-2">
+                {isAuthenticated ? (
+                  <Button variant="outline" size="sm" className="w-full" onClick={handleLogout}>
+                    <LogOut className="h-4 w-4 mr-2" />
+                    Logout
+                  </Button>
+                ) : (
+                  <>
+                    <Link to="/login" className="block" onClick={() => setIsMenuOpen(false)}>
+                      <Button variant="ghost" size="sm" className="w-full">
+                        <LogIn className="h-4 w-4 mr-2" />
+                        Login
+                      </Button>
+                    </Link>
+                    <Link to="/signup" className="block" onClick={() => setIsMenuOpen(false)}>
+                      <Button variant="default" size="sm" className="w-full">
+                        <UserPlus className="h-4 w-4 mr-2" />
+                        Sign Up
+                      </Button>
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </div>

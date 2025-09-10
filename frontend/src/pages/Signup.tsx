@@ -1,14 +1,15 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
-import { Link } from "react-router-dom";
-import { Eye, EyeOff, Bot, Check, X } from "lucide-react";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Bot, Check, Eye, EyeOff, X } from "lucide-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
+import * as z from "zod";
 
 const signupSchema = z.object({
   username: z.string().min(3, "Username must be at least 3 characters"),
@@ -31,6 +32,7 @@ const Signup = () => {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const {
     register,
@@ -77,12 +79,20 @@ const Signup = () => {
 
   const onSubmit = async (data: SignupForm) => {
     setIsLoading(true);
-    // Simulate signup process
-    setTimeout(() => {
-      console.log("Signup data:", data);
+    try {
+      // Simulate account creation (replace with actual API call)
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      toast.success("Account created successfully! Welcome to Mr Sarcastic!");
+      
+      // Auto-login after successful signup
+      // For now, just navigate to chat page
+      navigate('/chat');
+    } catch (error) {
+      toast.error("Signup failed. Please try again.");
+    } finally {
       setIsLoading(false);
-      // Redirect to login or dashboard
-    }, 2000);
+    }
   };
 
   return (
