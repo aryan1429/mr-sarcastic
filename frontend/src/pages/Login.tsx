@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import * as z from "zod";
+import { useAuth } from "@/context/AuthContext";
 
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -72,6 +73,7 @@ const Login = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const {
     register,
@@ -84,8 +86,11 @@ const Login = () => {
   const onSubmit = async (data: LoginForm) => {
     setIsLoading(true);
     try {
-      // Simulate login (replace with actual API call)
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Use AuthContext login method
+      await login({
+        email: data.email,
+        password: data.password
+      });
       
       toast.success("Welcome back! Logged in successfully!");
       navigate('/chat');
@@ -99,8 +104,8 @@ const Login = () => {
   const handleGoogleSignIn = async (credential: string) => {
     setGoogleLoading(true);
     try {
-      // Simulate Google authentication
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Use AuthContext login method for Google sign-in
+      await login({ googleCredential: credential });
       
       toast.success("Successfully signed in with Google!");
       navigate('/chat');

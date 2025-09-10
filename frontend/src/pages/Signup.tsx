@@ -10,6 +10,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import * as z from "zod";
+import { useAuth } from "@/context/AuthContext";
 
 const signupSchema = z.object({
   username: z.string().min(3, "Username must be at least 3 characters"),
@@ -84,6 +85,7 @@ const Signup = () => {
   const [googleLoading, setGoogleLoading] = useState(false);
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const { signup } = useAuth();
 
   const {
     register,
@@ -131,13 +133,16 @@ const Signup = () => {
   const onSubmit = async (data: SignupForm) => {
     setIsLoading(true);
     try {
-      // Simulate account creation (replace with actual API call)
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Use AuthContext signup method
+      await signup({
+        username: data.username,
+        email: data.email,
+        password: data.password
+      });
       
       toast.success("Account created successfully! Welcome to Mr Sarcastic!");
       
-      // Auto-login after successful signup
-      // For now, just navigate to chat page
+      // Navigate to chat page after successful signup
       navigate('/chat');
     } catch (error) {
       toast.error("Signup failed. Please try again.");
@@ -149,8 +154,8 @@ const Signup = () => {
   const handleGoogleSignIn = async (credential: string) => {
     setGoogleLoading(true);
     try {
-      // Simulate Google authentication
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Use AuthContext login method for Google sign-in
+      await signup({ googleCredential: credential });
       
       toast.success("Successfully signed up with Google!");
       navigate('/chat');
