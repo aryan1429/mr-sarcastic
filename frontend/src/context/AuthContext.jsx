@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react';
-import authService from '../services/api.js';
+import { authService } from '../services/api.js';
 
 const AuthContext = createContext(null);
 
@@ -14,36 +14,45 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false); // Start with false instead of true
+
+  console.log("AuthProvider rendering, loading:", loading, "isAuthenticated:", isAuthenticated);
 
   // Check for existing auth on app start
   useEffect(() => {
+    console.log("AuthContext useEffect running");
     const checkAuth = async () => {
       try {
         const token = localStorage.getItem('authToken');
         const userData = localStorage.getItem('userData');
         
+        console.log("Checking auth - token:", !!token, "userData:", !!userData);
+        
         if (token && userData) {
           const parsedUser = JSON.parse(userData);
           setUser(parsedUser);
           setIsAuthenticated(true);
+          console.log("User authenticated from localStorage:", parsedUser.username);
           
-          // Optionally verify token with server
-          try {
-            await authService.refreshToken();
-          } catch (error) {
-            console.error('Token verification failed:', error);
-            // Clear invalid auth data
-            localStorage.removeItem('authToken');
-            localStorage.removeItem('userData');
-            setUser(null);
-            setIsAuthenticated(false);
-          }
+          // Temporarily disable token verification to test
+          // try {
+          //   await authService.refreshToken();
+          // } catch (error) {
+          //   console.error('Token verification failed:', error);
+          //   // Clear invalid auth data
+          //   localStorage.removeItem('authToken');
+          //   localStorage.removeItem('userData');
+          //   setUser(null);
+          //   setIsAuthenticated(false);
+          // }
+        } else {
+          console.log("No existing auth found");
         }
       } catch (error) {
         console.error('Auth check failed:', error);
       } finally {
         setLoading(false);
+        console.log("Auth check completed");
       }
     };
 
