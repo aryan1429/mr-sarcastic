@@ -59,14 +59,23 @@ app.use('*', (req, res) => {
 
 app.listen(PORT, async () => {
   try {
-    // Connect to MongoDB
+    // Try to connect to MongoDB first
     await databaseService.connect();
     console.log('Connected to MongoDB successfully');
   } catch (error) {
-    console.error('Failed to connect to MongoDB:', error);
-    process.exit(1);
+    console.log('MongoDB connection failed, falling back to mock database...');
+    try {
+      // Import and use mock database
+      const { default: mockDatabaseService } = await import('./services/mockDatabase.js');
+      await mockDatabaseService.connect();
+      console.log('Using mock database for development');
+    } catch (mockError) {
+      console.error('Both MongoDB and mock database failed:', mockError);
+      process.exit(1);
+    }
   }
 
   console.log(`Server is running on port ${PORT}`);
   console.log(`Environment: ${process.env.NODE_ENV}`);
+  console.log(`Frontend URL: ${process.env.FRONTEND_URL}`);
 });

@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from 'react';
+import authService from '../services/api.js';
 
 const AuthContext = createContext(null);
 
@@ -17,14 +18,31 @@ export const AuthProvider = ({ children }) => {
 
   // Check for existing auth on app start
   useEffect(() => {
-    // Simulate checking for stored auth token
     const checkAuth = async () => {
       try {
-        // In a real app, you'd check localStorage/sessionStorage for auth tokens
-        // For now, just complete the loading state
-        await new Promise(resolve => setTimeout(resolve, 500));
-        setLoading(false);
+        const token = localStorage.getItem('authToken');
+        const userData = localStorage.getItem('userData');
+        
+        if (token && userData) {
+          const parsedUser = JSON.parse(userData);
+          setUser(parsedUser);
+          setIsAuthenticated(true);
+          
+          // Optionally verify token with server
+          try {
+            await authService.refreshToken();
+          } catch (error) {
+            console.error('Token verification failed:', error);
+            // Clear invalid auth data
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('userData');
+            setUser(null);
+            setIsAuthenticated(false);
+          }
+        }
       } catch (error) {
+        console.error('Auth check failed:', error);
+      } finally {
         setLoading(false);
       }
     };
@@ -33,62 +51,60 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = async (credentials) => {
-    // Handle both email/password and Google login
-    let mockUser;
-    
-    if (credentials.googleCredential) {
-      // Google login
-      mockUser = {
-        id: '1',
-        name: 'Google User',
-        email: 'google@example.com',
-        provider: 'google'
-      };
-    } else {
-      // Email/password login
-      mockUser = {
-        id: '1',
-        name: 'Test User',
-        email: credentials.email,
-        provider: 'email'
-      };
+    try {
+      let result;
+      
+      if (credentials.googleCredential) {
+        // Google login
+        result = await authService.loginWithGoogle(credentials.googleCredential);
+      } else {
+        // Email/password login
+        result = await authService.loginWithEmail(credentials.email, credentials.password);
+      }
+      
+      setUser(result.user);
+      setIsAuthenticated(true);
+      return result.user;
+    } catch (error) {
+      console.error('Login failed:', error);
+      throw error; // Re-throw to let UI handle the error
     }
-    
-    setUser(mockUser);
-    setIsAuthenticated(true);
-    return mockUser;
   };
 
-  const logout = () => {
-    setUser(null);
-    setIsAuthenticated(false);
+  const logout = async () => {
+    try {
+      await authService.logout();
+    } catch (error) {
+      console.error('Logout error:', error);
+    } finally {
+      setUser(null);
+      setIsAuthenticated(false);
+    }
   };
 
   const signup = async (userData) => {
-    // Handle both email/password and Google signup
-    let mockUser;
-    
-    if (userData.googleCredential) {
-      // Google signup
-      mockUser = {
-        id: '1',
-        name: 'Google User',
-        email: 'google@example.com',
-        provider: 'google'
-      };
-    } else {
-      // Email/password signup
-      mockUser = {
-        id: '1',
-        name: userData.username || 'New User',
-        email: userData.email,
-        provider: 'email'
-      };
+    try {
+      let result;
+      
+      if (userData.googleCredential) {
+        // Google signup
+        result = await authService.loginWithGoogle(userData.googleCredential);
+      } else {
+        // Email/password signup
+        result = await authService.registerWithEmail(
+          userData.username,
+          userData.email,
+          userData.password
+        );
+      }
+      
+      setUser(result.user);
+      setIsAuthenticated(true);
+      return result.user;
+    } catch (error) {
+      console.error('Signup failed:', error);
+      throw error; // Re-throw to let UI handle the error
     }
-    
-    setUser(mockUser);
-    setIsAuthenticated(true);
-    return mockUser;
   };
 
   const value = {

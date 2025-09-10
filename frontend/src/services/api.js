@@ -34,14 +34,44 @@ api.interceptors.response.use(
     if (error.response?.status === 401) {
       // Token expired or invalid
       localStorage.removeItem('authToken');
-      localStorage.removeItem('user');
-      window.location.href = '/login';
+      localStorage.removeItem('userData');
+      // Don't auto-redirect here, let the auth context handle it
     }
     return Promise.reject(error);
   }
 );
 
 class AuthService {
+  async loginWithEmail(email, password) {
+    try {
+      const response = await api.post('/auth/login', { email, password });
+      const { token, user } = response.data;
+      
+      // Store token and user data
+      localStorage.setItem('authToken', token);
+      localStorage.setItem('userData', JSON.stringify(user));
+      
+      return { token, user };
+    } catch (error) {
+      throw new Error(error.response?.data?.error || 'Login failed');
+    }
+  }
+
+  async registerWithEmail(username, email, password) {
+    try {
+      const response = await api.post('/auth/register', { username, email, password });
+      const { token, user } = response.data;
+      
+      // Store token and user data
+      localStorage.setItem('authToken', token);
+      localStorage.setItem('userData', JSON.stringify(user));
+      
+      return { token, user };
+    } catch (error) {
+      throw new Error(error.response?.data?.error || 'Registration failed');
+    }
+  }
+
   async loginWithGoogle(credential) {
     try {
       const response = await api.post('/auth/google', { credential });
@@ -49,11 +79,11 @@ class AuthService {
       
       // Store token and user data
       localStorage.setItem('authToken', token);
-      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('userData', JSON.stringify(user));
       
       return { success: true, user, token };
     } catch (error) {
-      throw new Error(error.response?.data?.message || 'Google login failed');
+      throw new Error(error.response?.data?.error || 'Google login failed');
     }
   }
 
@@ -65,7 +95,7 @@ class AuthService {
     } finally {
       // Clear local storage regardless of API call success
       localStorage.removeItem('authToken');
-      localStorage.removeItem('user');
+      localStorage.removeItem('userData');
     }
   }
 
@@ -80,7 +110,7 @@ class AuthService {
       const { token, user } = response.data;
       
       localStorage.setItem('authToken', token);
-      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('userData', JSON.stringify(user));
       
       return { success: true, user, token };
     } catch (error) {
