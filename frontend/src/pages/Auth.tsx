@@ -46,7 +46,19 @@ const GoogleSignInButton = ({
   isLoading: boolean;
   text?: string;
 }) => {
+  const [googleError, setGoogleError] = useState(false);
+  
   useEffect(() => {
+    // Check if we're on the correct origin for Google OAuth
+    const currentOrigin = window.location.origin;
+    const allowedOrigins = ['http://localhost:8000', 'http://localhost:8080', 'https://yourdomain.com'];
+    
+    if (!allowedOrigins.includes(currentOrigin)) {
+      console.warn(`Google OAuth not configured for origin: ${currentOrigin}`);
+      setGoogleError(true);
+      return;
+    }
+    
     // Load Google Sign-In script
     const script = document.createElement('script');
     script.src = 'https://accounts.google.com/gsi/client';
@@ -56,22 +68,27 @@ const GoogleSignInButton = ({
 
     script.onload = () => {
       if (window.google) {
-        window.google.accounts.id.initialize({
-          client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID || 'demo-client-id',
-          callback: (response: any) => {
-            onGoogleSignIn(response.credential);
-          },
-        });
+        try {
+          window.google.accounts.id.initialize({
+            client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID || 'demo-client-id',
+            callback: (response: any) => {
+              onGoogleSignIn(response.credential);
+            },
+          });
 
-        window.google.accounts.id.renderButton(
-          document.getElementById("google-auth-button"),
-          {
-            theme: "outline",
-            size: "large",
-            width: 400,
-            text: text.includes("Sign up") ? "signup_with" : "signin_with",
-          }
-        );
+          window.google.accounts.id.renderButton(
+            document.getElementById("google-auth-button"),
+            {
+              theme: "outline",
+              size: "large",
+              width: 400,
+              text: text.includes("Sign up") ? "signup_with" : "signin_with",
+            }
+          );
+        } catch (error) {
+          console.error('Google OAuth initialization failed:', error);
+          setGoogleError(true);
+        }
       }
     };
 
@@ -81,6 +98,16 @@ const GoogleSignInButton = ({
       }
     };
   }, [onGoogleSignIn, text]);
+
+  if (googleError) {
+    return (
+      <div className="w-full p-4 border border-orange-200 rounded-md bg-orange-50 dark:bg-orange-950 dark:border-orange-800">
+        <p className="text-sm text-orange-700 dark:text-orange-300 text-center">
+          ⚠️ Google OAuth not available on this origin. Use email/password authentication below.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full">
