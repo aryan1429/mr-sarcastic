@@ -2,6 +2,8 @@ import axios from 'axios';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8001/api';
 
+console.log('Environment variables:', import.meta.env);
+console.log('VITE_API_BASE_URL from env:', import.meta.env.VITE_API_BASE_URL);
 console.log('API_BASE_URL configured as:', API_BASE_URL);
 
 // Create axios instance with default config
@@ -61,6 +63,8 @@ class AuthService {
 
   async registerWithEmail(username, email, password) {
     try {
+      console.log('Attempting registration with base URL:', api.defaults.baseURL);
+      console.log('Full URL will be:', `${api.defaults.baseURL}/auth/register`);
       const response = await api.post('/auth/register', { username, email, password });
       const { token, user } = response.data;
       
@@ -70,6 +74,8 @@ class AuthService {
       
       return { token, user };
     } catch (error) {
+      console.error('Registration error:', error);
+      console.error('Error response:', error.response?.data);
       throw new Error(error.response?.data?.error || 'Registration failed');
     }
   }

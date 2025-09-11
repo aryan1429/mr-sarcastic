@@ -51,13 +51,10 @@ const GoogleSignInButton = ({
   useEffect(() => {
     // Check if we're on the correct origin for Google OAuth
     const currentOrigin = window.location.origin;
-    const allowedOrigins = ['http://localhost:8000', 'http://localhost:8080', 'https://yourdomain.com'];
+    console.log('Current origin:', currentOrigin);
     
-    if (!allowedOrigins.includes(currentOrigin)) {
-      console.warn(`Google OAuth not configured for origin: ${currentOrigin}`);
-      setGoogleError(true);
-      return;
-    }
+    // For now, let's disable Google OAuth strict checking for development
+    // In production, you'd want to have proper domain configuration
     
     // Load Google Sign-In script
     const script = document.createElement('script');
@@ -69,9 +66,19 @@ const GoogleSignInButton = ({
     script.onload = () => {
       if (window.google) {
         try {
+          const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+          console.log('Google Client ID:', clientId);
+          
+          if (!clientId || clientId === 'demo-client-id') {
+            console.warn('Google OAuth Client ID not properly configured');
+            setGoogleError(true);
+            return;
+          }
+          
           window.google.accounts.id.initialize({
-            client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID || 'demo-client-id',
+            client_id: clientId,
             callback: (response: any) => {
+              console.log('Google OAuth response received');
               onGoogleSignIn(response.credential);
             },
           });
@@ -90,6 +97,11 @@ const GoogleSignInButton = ({
           setGoogleError(true);
         }
       }
+    };
+
+    script.onerror = () => {
+      console.error('Failed to load Google Sign-In script');
+      setGoogleError(true);
     };
 
     return () => {

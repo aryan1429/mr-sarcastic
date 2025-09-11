@@ -14,8 +14,11 @@
 2. Click **Create Credentials > OAuth 2.0 Client IDs**
 3. Set Application type to **Web application**
 4. Add authorized JavaScript origins:
-   - For development: `http://localhost:8080`
+   - For development: `http://localhost:5173`
+   - For development backup: `http://localhost:5174`
    - For production: `https://yourdomain.com`
+
+**Important**: Make sure to use `http://localhost:5173` (not port 8080 or 3000) as this is the port Vite uses by default.
 
 ### Step 3: Configure Environment Variables
 
