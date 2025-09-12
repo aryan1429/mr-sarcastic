@@ -8,7 +8,8 @@ import {
   MessageCircle,
   Music,
   User,
-  X
+  X,
+  Brain
 } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -34,6 +35,7 @@ const Navigation = () => {
     { name: "Home", path: "/", icon: Home },
     { name: "Chatbot", path: "/chat", icon: MessageCircle },
     { name: "Songs", path: "/songs", icon: Music },
+    { name: "Training", path: "/training", icon: Brain },
     { name: "Profile", path: "/profile", icon: User },
   ];
 

@@ -3,31 +3,39 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Send, Bot, User } from "lucide-react";
+import { Send, Bot, User, Loader2 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { useAuth } from "@/context/AuthContext";
 
 interface Message {
   id: string;
   text: string;
   isUser: boolean;
   timestamp: Date;
+  mood?: string;
+  confidence?: number;
 }
 
 const Chat = () => {
+  const { token } = useAuth();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "Hey there! I'm Mr Sarcastic, your friendly neighborhood AI with a sense of humor. What's on your mind today?",
+      text: "Hey there! I'm Mr Sarcastic, your friendly neighborhood AI with a sense of humor and a love for good music. What's on your mind today?",
       isUser: false,
       timestamp: new Date(),
+      mood: "neutral",
+      confidence: 1.0
     },
   ]);
   const [inputText, setInputText] = useState("");
   const [detectedMood, setDetectedMood] = useState("Neutral");
+  const [isLoading, setIsLoading] = useState(false);
+  const [conversationHistory, setConversationHistory] = useState<Array<{message: string, response: string}>>([]);
 
-  const handleSendMessage = () => {
-    if (!inputText.trim()) return;
+  const handleSendMessage = async () => {
+    if (!inputText.trim() || isLoading) return;
 
     const newMessage: Message = {
       id: Date.now().toString(),
@@ -37,18 +45,69 @@ const Chat = () => {
     };
 
     setMessages((prev) => [...prev, newMessage]);
+    const currentInput = inputText;
     setInputText("");
+    setIsLoading(true);
 
-    // Simulate bot response
-    setTimeout(() => {
-      const botResponse: Message = {
+    try {
+      // Call the backend chat API
+      const response = await fetch('/api/chat/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          message: currentInput,
+          conversationHistory: conversationHistory
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to get response from server');
+      }
+
+      const data = await response.json();
+      
+      if (data.success) {
+        const botResponse: Message = {
+          id: (Date.now() + 1).toString(),
+          text: data.data.message,
+          isUser: false,
+          timestamp: new Date(),
+          mood: data.data.mood,
+          confidence: data.data.confidence
+        };
+
+        setMessages((prev) => [...prev, botResponse]);
+        setDetectedMood(data.data.mood.charAt(0).toUpperCase() + data.data.mood.slice(1));
+        
+        // Update conversation history
+        setConversationHistory(prev => [...prev, {
+          message: currentInput,
+          response: data.data.message
+        }].slice(-10)); // Keep last 10 exchanges
+        
+      } else {
+        throw new Error(data.error || 'Unknown error');
+      }
+
+    } catch (error) {
+      console.error('Error sending message:', error);
+      
+      // Fallback response
+      const errorResponse: Message = {
         id: (Date.now() + 1).toString(),
-        text: "Oh, that's interesting! Let me think about that for a hot second... 🤔",
+        text: "Oops! Something went wrong with my sarcasm circuits. Try again, I promise to be extra snarky next time!",
         isUser: false,
         timestamp: new Date(),
+        mood: "neutral",
+        confidence: 0.5
       };
-      setMessages((prev) => [...prev, botResponse]);
-    }, 1000);
+      setMessages((prev) => [...prev, errorResponse]);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -91,9 +150,23 @@ const Chat = () => {
                       }`}
                     >
                       <p className="text-sm">{message.text}</p>
-                      <span className="text-xs opacity-70 mt-1 block">
-                        {message.timestamp.toLocaleTimeString()}
-                      </span>
+                      <div className="flex items-center justify-between mt-1">
+                        <span className="text-xs opacity-70">
+                          {message.timestamp.toLocaleTimeString()}
+                        </span>
+                        {!message.isUser && message.mood && (
+                          <div className="flex items-center gap-1">
+                            <span className="text-xs opacity-60">
+                              {message.mood}
+                            </span>
+                            {message.confidence && (
+                              <span className="text-xs opacity-60">
+                                ({Math.round(message.confidence * 100)}%)
+                              </span>
+                            )}
+                          </div>
+                        )}
+                      </div>
                     </div>
                     {message.isUser && (
                       <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center">
@@ -111,13 +184,28 @@ const Chat = () => {
                     value={inputText}
                     onChange={(e) => setInputText(e.target.value)}
                     placeholder="Type your message here..."
-                    onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
+                    onKeyPress={(e) => e.key === "Enter" && !isLoading && handleSendMessage()}
                     className="flex-1"
+                    disabled={isLoading}
                   />
-                  <Button onClick={handleSendMessage} size="icon" className="shrink-0">
-                    <Send className="w-4 h-4" />
+                  <Button 
+                    onClick={handleSendMessage} 
+                    size="icon" 
+                    className="shrink-0"
+                    disabled={isLoading || !inputText.trim()}
+                  >
+                    {isLoading ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : (
+                      <Send className="w-4 h-4" />
+                    )}
                   </Button>
                 </div>
+                {isLoading && (
+                  <p className="text-xs text-muted-foreground mt-2">
+                    Mr. Sarcastic is thinking of something witty...
+                  </p>
+                )}
               </div>
             </Card>
           </div>

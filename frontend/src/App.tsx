@@ -11,6 +11,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
 import Songs from "./pages/Songs";
+import Training from "./pages/Training";
 
 const queryClient = new QueryClient();
 
@@ -47,6 +48,11 @@ const App = () => {
               <Route path="/profile" element={
                 <ProtectedRoute>
                   <Profile />
+                </ProtectedRoute>
+              } />
+              <Route path="/training" element={
+                <ProtectedRoute>
+                  <Training />
                 </ProtectedRoute>
               } />
               

@@ -64,3 +64,63 @@ pids
 *.tgz
 *.tar.gz
 .nyc_output
+
+# ML and Python specific
+ml/venv/
+ml/__pycache__/
+ml/.venv/
+backend/venv/
+backend/__pycache__/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ML Models and Large Files
+ml/youtube_gpt2_model/
+ml/*.model
+ml/*.bin
+ml/*.safetensors
+ml/models/
+ml/checkpoints/
+ml/weights/
+
+# Training Data (keep small datasets, exclude large ones)
+ml/*_dataset.jsonl
+ml/training_data.txt
+ml/large_*.jsonl
+ml/combined_*.jsonl
+
+# But keep our main training files
+!ml/youtube_humor_dataset.jsonl
+!ml/sarcastic_responses.json
+
+# Model outputs
+ml/*.pkl
+ml/*.joblib
+
+# Jupyter Notebooks checkpoints
+ml/.ipynb_checkpoints/
+
+# Test files
+test_chat_api.js
