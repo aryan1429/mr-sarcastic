@@ -1,0 +1,157 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Production build
+/dist
+/build
+
+# Development
+.vite/
+.cache/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Frontend specific environment files
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Frontend specific
+frontend/.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Helper scripts
+open-workspace.bat
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Misc
+*.tgz
+*.tar.gz
+.nyc_output
+
+# ML and Python specific
+ml/venv/
+ml/__pycache__/
+ml/.venv/
+backend/venv/
+backend/__pycache__/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ML Models and Large Files
+ml/youtube_gpt2_model/
+ml/*.model
+ml/*.bin
+ml/*.safetensors
+ml/models/
+ml/checkpoints/
+ml/weights/
+ml/fine_tuned_*/
+ml/sarcastic_model/
+ml/sarcastic_model_final/
+ml/*.h5
+ml/*.pb
+ml/*.onnx
+ml/*.tflite
+ml/*.pt
+ml/*.pth
+ml/*.ckpt
+ml/*.tar.gz
+ml/*.zip
+
+# Training Data (keep small datasets, exclude large ones)
+ml/*_dataset.jsonl
+ml/training_data.txt
+ml/large_*.jsonl
+ml/combined_*.jsonl
+ml/processed_*.jsonl
+ml/youtube_*.jsonl
+
+# But keep our main training files
+!ml/youtube_humor_dataset.jsonl
+!ml/sarcastic_responses.json
+
+# Model outputs and cache
+ml/*.pkl
+ml/*.joblib
+ml/*.cache
+ml/*.index
+ml/*.faiss
+ml/*.ann
+
+# Large data files
+*.jsonl
+*.csv
+*.txt
+*.log
+*.out
+
+# But keep essential config files
+!ml/youtube_urls.json
+!ml/youtube_urls_config.py
+!ml/youtube_urls.txt
+
+# Jupyter Notebooks checkpoints
+ml/.ipynb_checkpoints/
+
+# Test files
+test_chat_api.js
+test_chat_fix.js

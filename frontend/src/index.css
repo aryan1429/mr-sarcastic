@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* AI Chatbot Design System - Dark mode with vibrant accents */
+
+@layer base {
+  :root {
+    /* Dark theme base colors */
+    --background: 225 25% 8%;
+    --foreground: 210 20% 95%;
+    
+    /* Card and surface colors */
+    --card: 225 20% 10%;
+    --card-foreground: 210 20% 95%;
+    
+    /* Chat specific colors */
+    --chat-background: 225 30% 6%;
+    --chat-user-bubble: 271 81% 56%;
+    --chat-bot-bubble: 225 20% 14%;
+    --chat-user-text: 0 0% 100%;
+    --chat-bot-text: 210 20% 95%;
+
+    --popover: 225 20% 12%;
+    --popover-foreground: 210 20% 95%;
+
+    /* Brand colors with vibrant accents */
+    --primary: 271 81% 56%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 271 81% 70%;
+    
+    --secondary: 225 20% 14%;
+    --secondary-foreground: 210 20% 95%;
+    
+    /* Accent colors for mood and features */
+    --accent: 195 100% 50%;
+    --accent-foreground: 225 25% 8%;
+    --accent-glow: 195 100% 70%;
+    
+    /* Mood colors */
+    --mood-happy: 51 100% 50%;
+    --mood-chill: 271 81% 56%;
+    --mood-energetic: 348 83% 47%;
+    --mood-sad: 217 91% 60%;
+
+    --muted: 225 20% 16%;
+    --muted-foreground: 215 15% 60%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 225 20% 18%;
+    --input: 225 20% 14%;
+    --ring: 271 81% 56%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(271 81% 56%), hsl(195 100% 50%));
+    --gradient-chat: linear-gradient(180deg, hsl(225 30% 6%), hsl(225 25% 8%));
+    --gradient-hero: linear-gradient(135deg, hsl(225 25% 8%), hsl(225 30% 12%));
+    
+    /* Shadows and glows */
+    --shadow-glow: 0 0 40px hsl(271 81% 56% / 0.3);
+    --shadow-accent: 0 0 30px hsl(195 100% 50% / 0.3);
+    --shadow-card: 0 10px 30px hsl(225 25% 0% / 0.5);
+
+    --radius: 0.75rem;
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Dark mode is default - no class needed */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Chat bubble animations */
+  .chat-bubble-enter {
+    @apply animate-in slide-in-from-bottom-2 fade-in duration-300;
+  }
+  
+  .chat-bubble-user {
+    @apply bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-2xl rounded-br-md px-4 py-3 max-w-[80%] ml-auto shadow-lg;
+  }
+  
+  .chat-bubble-bot {
+    @apply bg-secondary text-secondary-foreground rounded-2xl rounded-bl-md px-4 py-3 max-w-[80%] mr-auto shadow-lg;
+  }
+  
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .glow-accent {
+    box-shadow: var(--shadow-accent);
+  }
+  
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent;
+  }
+  
+  /* Interactive elements */
+  .interactive-scale {
+    @apply transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98];
+  }
+  
+  /* Custom input styles */
+  .input-glow:focus {
+    box-shadow: 0 0 0 2px hsl(var(--ring)), var(--shadow-glow);
+  }
+}
