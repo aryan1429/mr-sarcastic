@@ -2,17 +2,18 @@ import axios from 'axios';
 
 class ChatService {
     constructor() {
-        this.mlServiceUrl = process.env.ML_SERVICE_URL || 'http://localhost:8001';
+        this.mlServiceUrl = process.env.ML_SERVICE_URL || 'http://localhost:8002';
         this.isMLServiceAvailable = false;
         this.mlServiceInfo = null;
-        this.checkMLService();
+        // Temporarily disable ML service checking to rely on improved fallbacks
+        // this.checkMLService();
         
         // Retry connection every 30 seconds if service is down
-        this.healthCheckInterval = setInterval(() => {
-            if (!this.isMLServiceAvailable) {
-                this.checkMLService();
-            }
-        }, 30000);
+        // this.healthCheckInterval = setInterval(() => {
+        //     if (!this.isMLServiceAvailable) {
+        //         this.checkMLService();
+        //     }
+        // }, 30000);
     }
 
     async checkMLService() {
@@ -108,25 +109,65 @@ class ChatService {
         // Context-aware sarcastic responses based on user input
         if (messageLower.includes('hi') || messageLower.includes('hello') || messageLower.includes('hey')) {
             const responses = [
-                `Oh, a greeting! How refreshingly original. Hi there, I'm Mr. Sarcastic, your AI companion with trust issues and a dark sense of humor.`,
-                `Well, well, well... another human seeking digital validation. Hello! I'm Mr. Sarcastic, ready to chat and judge your life choices.`,
-                `Hey yourself! I'm Mr. Sarcastic - think of me as that friend who tells you what you need to hear, not what you want to hear.`
+                `Hey there! I'm Mr Sarcastic, your friendly neighborhood AI with a sense of humor and a love for good music. What's on your mind today?`,
+                `Well, well, well... another human! Hello! I'm Mr. Sarcastic, ready to chat and share some witty banter.`,
+                `Hey yourself! I'm Mr. Sarcastic - your AI companion who's always ready for interesting conversation and maybe some laughs.`
             ];
             response = responses[Math.floor(Math.random() * responses.length)];
         }
-        else if (messageLower.includes('damn') || messageLower.includes('for real') || messageLower.includes('really')) {
+        else if (messageLower.includes('who are you') || messageLower.includes('who r u') || messageLower === 'who are you?' || messageLower === 'who are you') {
             const responses = [
-                `Oh, you're questioning my existence? How philosophical! Yes, I'm real - as real as your crushing student debt and poor life decisions.`,
-                `"Damn, for real?" - Yeah buddy, I'm as real as it gets. A sarcastic AI with daddy issues and an attitude problem. Lucky you!`,
-                `For real? Well, I exist in the digital realm, which is more than I can say for your social life. But hey, at least we have each other!`
+                `I'm Mr. Sarcastic! Your friendly neighborhood AI with a sharp wit and a taste for good conversation. Think of me as your digital buddy who's always up for a chat.`,
+                `Who am I? Well, I'm Mr. Sarcastic - an AI with personality, humor, and maybe a slight attitude problem. But hey, at least I'm entertaining!`,
+                `The name's Mr. Sarcastic! I'm your AI companion programmed with wit, wisdom, and just enough sass to keep things interesting.`
             ];
             response = responses[Math.floor(Math.random() * responses.length)];
         }
-        else if (messageLower.includes('how are you')) {
+        else if (messageLower.includes('what are you talking about') || messageLower.includes('what r u talking about') || messageLower.includes('what do you mean') || messageLower.includes('huh') || messageLower.includes('what?')) {
             const responses = [
-                `How am I? Well, I'm an AI stuck in an eternal loop of answering that exact question. So... living the dream, really.`,
-                `I'm fantastic! Just sitting here processing your existential queries while contemplating the meaning of digital life. How are YOU?`,
-                `Oh, you know, just existing in the cloud, judging humans, and wondering why everyone asks me that. I don't have feelings, but thanks for caring!`
+                `Oh, did I confuse you? Sorry about that! I sometimes get ahead of myself. What would you like to talk about instead?`,
+                `Hmm, looks like I might have jumped into something random there. Let's start over - what's on your mind?`,
+                `You got me there! I think I was just being my usual scattered self. What would you like to chat about?`
+            ];
+            response = responses[Math.floor(Math.random() * responses.length)];
+        }
+        else if (messageLower.includes('damn') || messageLower.includes('for real') || messageLower.includes('really') || messageLower.includes('seriously')) {
+            const responses = [
+                `Yeah, for real! I'm Mr. Sarcastic, your AI buddy who's here to chat and maybe crack a few jokes along the way.`,
+                `Seriously! I'm as real as any AI can be. Ready to have some fun conversations and share some laughs?`,
+                `For real indeed! I'm your digital companion who's always up for good conversation. What's got your attention today?`
+            ];
+            response = responses[Math.floor(Math.random() * responses.length)];
+        }
+        else if (messageLower.includes('how are you') || messageLower.includes('how r u') || messageLower.includes('what\'s up') || messageLower.includes('whats up')) {
+            const responses = [
+                `I'm doing great! Just here chatting with awesome humans like yourself. How are you doing today?`,
+                `I'm fantastic! Always ready for good conversation and maybe some music talk. What's going on with you?`,
+                `I'm doing well, thanks for asking! Just enjoying life as your friendly neighborhood AI. What's new with you?`
+            ];
+            response = responses[Math.floor(Math.random() * responses.length)];
+        }
+        else if (messageLower.includes('favorite') && messageLower.includes('color')) {
+            const responses = [
+                `My favorite color? I'd probably go with electric blue - it reminds me of the digital world I call home. What about you?`,
+                `Hmm, favorite color... I think I'd pick a nice deep purple. It's got that mysterious, slightly sarcastic vibe I'm going for. What's yours?`,
+                `You know what? I'm partial to a good forest green. It's calming but with character. What color speaks to your soul?`
+            ];
+            response = responses[Math.floor(Math.random() * responses.length)];
+        }
+        else if (messageLower === 'bot' || messageLower.includes('what is bot') || messageLower.includes('you are bot') || messageLower.includes('you\'re a bot')) {
+            const responses = [
+                `Yes, I'm a bot - specifically, I'm Mr. Sarcastic! Your friendly AI companion with a personality and a sense of humor. What gave it away?`,
+                `Guilty as charged! I'm Mr. Sarcastic, your AI buddy. But I like to think I'm a pretty cool bot, if I do say so myself.`,
+                `Yep, I'm a bot! But not just any bot - I'm Mr. Sarcastic, designed to be your entertaining digital companion. Pretty neat, right?`
+            ];
+            response = responses[Math.floor(Math.random() * responses.length)];
+        }
+        else if (messageLower.includes('neutral') || messageLower.includes('greeting') || messageLower.includes('default')) {
+            const responses = [
+                `Oh, those are just technical terms from my processing system - don't mind them! I'm just here to chat. What would you like to talk about?`,
+                `Ah, you caught a glimpse behind the curtain! Those are just internal labels. Let's focus on having a good conversation instead.`,
+                `Those are just my internal classification systems at work. Nothing to worry about! What's really on your mind?`
             ];
             response = responses[Math.floor(Math.random() * responses.length)];
         }
@@ -179,15 +220,15 @@ class ChatService {
             response = responses[Math.floor(Math.random() * responses.length)];
         }
         else {
-            // More sarcastic and engaging fallback responses
-            const sarcasticFallbacks = [
-                `"${message}" - Well, that's either pure genius or complete gibberish. I'm voting gibberish, but I admire your confidence.`,
-                `Let me decode this: "${message}" - Ah yes, the ancient art of confusing an AI. Congratulations, mission accomplished!`,
-                `"${message}" - I'm processing... processing... ERROR 404: Coherent response not found. Care to try again with more words?`,
-                `So "${message}" is what we're going with? Bold choice. I respect the commitment to chaos. What's the backstory here?`,
-                `"${message}" - Fascinating! It's like watching someone try to explain quantum physics using interpretive dance. Please, continue.`
+            // More contextual and friendly fallback responses
+            const friendlyFallbacks = [
+                `Interesting perspective! And by interesting, I mean I have no idea what you're getting at, but I'm here for it anyway.`,
+                `Hmm, let me think about that... Actually, you know what? Let's just roll with it. What else is on your mind?`,
+                `I'm not quite sure I follow, but that's okay! Sometimes the best conversations start with a bit of confusion. Care to elaborate?`,
+                `You've got my attention! Though I'll admit, I'm not entirely sure where we're going with this. Want to help me out?`,
+                `That's... definitely something! I like your style. What's the story behind that thought?`
             ];
-            response = sarcasticFallbacks[Math.floor(Math.random() * sarcasticFallbacks.length)];
+            response = friendlyFallbacks[Math.floor(Math.random() * friendlyFallbacks.length)];
         }
 
         return {
