@@ -1,4 +1,6 @@
 import axios from 'axios';
+import fs from 'fs';
+import path from 'path';
 
 class ChatService {
     constructor() {
@@ -6,6 +8,10 @@ class ChatService {
         this.isMLServiceAvailable = false;
         this.mlServiceInfo = null;
         this.conversationHistory = new Map(); // Store conversation history per user
+        this.songs = []; // Store songs from our playlist
+        
+        // Load songs from the JSON file
+        this.loadSongs();
         
         // Check ML service on startup
         this.checkMLService();
@@ -16,6 +22,76 @@ class ChatService {
                 this.checkMLService();
             }
         }, 30000);
+    }
+
+    loadSongs() {
+        try {
+            const songsPath = path.join(process.cwd(), 'data', 'songs.json');
+            const songsData = fs.readFileSync(songsPath, 'utf8');
+            this.songs = JSON.parse(songsData);
+            console.log(`✅ Loaded ${this.songs.length} songs from playlist`);
+        } catch (error) {
+            console.error('❌ Error loading songs:', error);
+            this.songs = [];
+        }
+    }
+
+    getSongsByMood(mood, limit = 3) {
+        // Map detected moods to song moods
+        const moodMapping = {
+            'sad': ['Sad'],
+            'happy': ['Happy'],
+            'angry': ['Angry'], 
+            'bored': ['Chill', 'Relaxed'],
+            'sarcastic': ['Energetic', 'Happy'],
+            'energetic': ['Energetic'],
+            'chill': ['Chill', 'Relaxed'],
+            'focus': ['Focus'],
+            'relaxed': ['Relaxed']
+        };
+
+        const targetMoods = moodMapping[mood.toLowerCase()] || ['Happy', 'Energetic'];
+        
+        // Filter songs by mood and shuffle them
+        const matchingSongs = this.songs.filter(song => 
+            targetMoods.includes(song.mood)
+        );
+
+        // Shuffle and return limited number of songs
+        const shuffled = matchingSongs.sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, limit);
+    }
+
+    formatSongRecommendations(songs, mood) {
+        if (!songs || songs.length === 0) {
+            return "I'd suggest some songs, but seems like my playlist is taking a break. Maybe try humming your own tune?";
+        }
+
+        const moodTexts = {
+            'sad': "feeling a bit down, so here are some songs that might resonate with your soul (or make you cry more, your choice)",
+            'happy': "in a good mood! Here are some upbeat tracks to keep that energy flowing",
+            'angry': "feeling some rage, so here are some tracks to help you channel that energy",
+            'bored': "looking to chill out, so here are some relaxing vibes for you",
+            'sarcastic': "being your usual charming self, so here are some energetic tracks to match your personality",
+            'energetic': "pumped up! Here are some high-energy songs to fuel your enthusiasm",
+            'chill': "wanting to relax, so here are some chill vibes for you",
+            'focus': "need to concentrate, so here are some focus-friendly tracks",
+            'relaxed': "in a mellow mood, so here are some peaceful songs"
+        };
+
+        const moodText = moodTexts[mood.toLowerCase()] || "in the mood for some music";
+        
+        let recommendation = `I see you're ${moodText}:\n\n`;
+        
+        songs.forEach((song, index) => {
+            recommendation += `${index + 1}. **${song.title}** by ${song.artist}\n`;
+            recommendation += `   ${song.youtubeUrl}\n`;
+            recommendation += `   Duration: ${song.duration} | Mood: ${song.mood}\n\n`;
+        });
+
+        recommendation += "These are straight from our Songs page playlist - only the finest curated tracks for your sophisticated taste! 🎵";
+        
+        return recommendation;
     }
 
     async checkMLService() {
@@ -205,13 +281,77 @@ class ChatService {
             ];
             response = responses[Math.floor(Math.random() * responses.length)];
         }
-        else if (messageLower.includes('music') || messageLower.includes('song') || messageLower.includes('band')) {
-            const responses = [
-                `Music! Finally, someone with taste wants to talk about something worthwhile. What's your flavor? Rock? Pop? Existential crisis soundtrack?`,
-                `Ah, a fellow music lover! I've got opinions on everything from classical to death metal. What genre makes your soul less empty?`,
-                `Music is the universal language of "I have feelings but can't express them properly." What speaks to your emotionally damaged heart?`
+        else if (messageLower.includes('music') || messageLower.includes('song') || messageLower.includes('band') || 
+                 messageLower.includes('recommend') || messageLower.includes('suggest') || messageLower.includes('listen')) {
+            
+            // Check if user is asking for song recommendations based on mood
+            const isMoodRequest = messageLower.includes('mood') || messageLower.includes('feel') || 
+                                messageLower.includes('recommend') || messageLower.includes('suggest') ||
+                                messageLower.includes('what should i listen') || messageLower.includes('what to listen');
+            
+            if (isMoodRequest) {
+                const detectedMood = this.detectMood(messageLower);
+                const recommendedSongs = this.getSongsByMood(detectedMood, 3);
+                
+                const sarcasticIntros = [
+                    `Oh, you want music recommendations? How original! Let me consult my superior taste in music...`,
+                    `Music suggestions based on your mood? Fine, I'll be your personal DJ for a moment.`,
+                    `Ah, looking for the perfect soundtrack to your life's drama? I've got you covered.`,
+                    `Let me guess, your usual Spotify algorithm isn't cutting it? Well, lucky for you, I have actual good taste.`
+                ];
+                
+                const intro = sarcasticIntros[Math.floor(Math.random() * sarcasticIntros.length)];
+                const songRecommendations = this.formatSongRecommendations(recommendedSongs, detectedMood);
+                
+                response = `${intro}\n\n${songRecommendations}`;
+            } else {
+                const responses = [
+                    `Music! Finally, someone with taste wants to talk about something worthwhile. Want some recommendations based on your mood? Just tell me how you're feeling!`,
+                    `Ah, a fellow music lover! I've got a curated playlist that'll blow your mind. What's your current mood? Happy? Sad? Existentially confused?`,
+                    `Music is the universal language of "I have feelings but can't express them properly." Tell me your mood and I'll suggest some tracks from our premium playlist!`
+                ];
+                response = responses[Math.floor(Math.random() * responses.length)];
+            }
+        }
+        // Handle direct mood expressions like "I feel sad", "I'm happy", etc.
+        else if (messageLower.includes('i feel') || messageLower.includes('i\'m feeling') || messageLower.includes('im feeling') || 
+                 messageLower.includes('feeling') || messageLower.includes('i am')) {
+            
+            const detectedMood = this.detectMood(messageLower);
+            const recommendedSongs = this.getSongsByMood(detectedMood, 3);
+            
+            const moodResponses = {
+                'sad': [
+                    "Ah, the blues have got you, huh? Well, misery loves company and good music.",
+                    "Feeling down? Join the club! At least we have good taste in sad songs.",
+                    "Oh no, someone's having feelings! Quick, let's fix that with some emotional music."
+                ],
+                'happy': [
+                    "Well, well, someone's in a good mood! How refreshing. Let's keep that energy up!",
+                    "Happy, are we? That's... surprisingly pleasant. Here's some music to maintain that rare state.",
+                    "Look at you, all sunshine and rainbows! Let me add to that with some upbeat tracks."
+                ],
+                'angry': [
+                    "Ooh, someone's got their feathers ruffled! Channel that rage into some good music.",
+                    "Angry? Perfect! Nothing like some aggressive beats to work through those anger issues.",
+                    "Mad at the world? Been there. Here's some music that gets it."
+                ],
+                'energetic': [
+                    "Full of energy? That's either coffee or youth. Either way, here's some high-octane music!",
+                    "Bouncing off the walls, are we? Let's give you something to match that energy!",
+                    "Energetic mood detected! Time for some tracks that'll keep you moving."
+                ]
+            };
+            
+            const specificResponses = moodResponses[detectedMood] || [
+                `So you're feeling ${detectedMood}? Interesting choice of emotion. Here's some music that might help.`,
+                `${detectedMood.charAt(0).toUpperCase() + detectedMood.slice(1)} vibes, eh? I've got just the thing for you.`
             ];
-            response = responses[Math.floor(Math.random() * responses.length)];
+            
+            const moodResponse = specificResponses[Math.floor(Math.random() * specificResponses.length)];
+            const songRecommendations = this.formatSongRecommendations(recommendedSongs, detectedMood);
+            
+            response = `${moodResponse}\n\n${songRecommendations}`;
         }
         else if (message.includes('?')) {
             const responses = [
@@ -244,10 +384,15 @@ class ChatService {
     detectMood(message) {
         const messageLower = message.toLowerCase();
         
-        const sadKeywords = ['sad', 'depressed', 'down', 'unhappy', 'crying', 'upset', 'feel bad'];
-        const happyKeywords = ['happy', 'excited', 'joy', 'great', 'awesome', 'fantastic', 'good'];
-        const angryKeywords = ['angry', 'mad', 'furious', 'hate', 'annoyed', 'pissed', 'damn'];
-        const boredKeywords = ['bored', 'boring', 'dull', 'nothing to do', 'tired', 'meh'];
+        // Enhanced mood detection with more keywords
+        const sadKeywords = ['sad', 'depressed', 'down', 'unhappy', 'crying', 'upset', 'feel bad', 'lonely', 'blue', 'melancholy', 'heartbroken', 'miserable'];
+        const happyKeywords = ['happy', 'excited', 'joy', 'great', 'awesome', 'fantastic', 'good', 'cheerful', 'elated', 'thrilled', 'upbeat', 'positive', 'wonderful'];
+        const angryKeywords = ['angry', 'mad', 'furious', 'hate', 'annoyed', 'pissed', 'damn', 'frustrated', 'irritated', 'rage', 'livid'];
+        const boredKeywords = ['bored', 'boring', 'dull', 'nothing to do', 'tired', 'meh', 'whatever', 'sleepy', 'uninterested'];
+        const energeticKeywords = ['energetic', 'pumped', 'hyper', 'excited', 'ready', 'motivated', 'workout', 'exercise', 'party'];
+        const chillKeywords = ['chill', 'relaxed', 'calm', 'peaceful', 'mellow', 'laid back', 'zen', 'tranquil'];
+        const focusKeywords = ['focus', 'concentrate', 'study', 'work', 'productive', 'serious', 'intense'];
+        const relaxedKeywords = ['relaxed', 'peaceful', 'serene', 'comfortable', 'content'];
         
         if (sadKeywords.some(word => messageLower.includes(word))) {
             return 'sad';
@@ -255,6 +400,14 @@ class ChatService {
             return 'happy';
         } else if (angryKeywords.some(word => messageLower.includes(word))) {
             return 'angry';
+        } else if (energeticKeywords.some(word => messageLower.includes(word))) {
+            return 'energetic';
+        } else if (focusKeywords.some(word => messageLower.includes(word))) {
+            return 'focus';
+        } else if (chillKeywords.some(word => messageLower.includes(word))) {
+            return 'chill';
+        } else if (relaxedKeywords.some(word => messageLower.includes(word))) {
+            return 'relaxed';
         } else if (boredKeywords.some(word => messageLower.includes(word))) {
             return 'bored';
         }
