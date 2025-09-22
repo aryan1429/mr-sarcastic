@@ -1,0 +1,95 @@
+// Generated songs from YouTube Music playlist
+// Add these to your existing songs array in Songs.tsx
+
+const newSongs: Song[] = [
+  {
+    id: "yt_playlist_1",
+    title: "Lofi Hip Hop Study Mix",
+    artist: "ChillBeats Collective",
+    mood: "Chill",
+    duration: "3:45",
+    youtubeUrl: "https://youtube.com/watch?v=dQw4w9WgXcQ",
+    thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+  },
+  {
+    id: "yt_playlist_2",
+    title: "Upbeat Pop Energy",
+    artist: "Dance Nation",
+    mood: "Energetic",
+    duration: "4:12",
+    youtubeUrl: "https://youtube.com/watch?v=dQw4w9WgXcR",
+    thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcR/maxresdefault.jpg"
+  },
+  {
+    id: "yt_playlist_3",
+    title: "Acoustic Coffee Shop",
+    artist: "Indie Folk Artists",
+    mood: "Relaxed",
+    duration: "3:18",
+    youtubeUrl: "https://youtube.com/watch?v=dQw4w9WgXcS",
+    thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcS/maxresdefault.jpg"
+  },
+  {
+    id: "yt_playlist_4",
+    title: "Electronic Focus Beats",
+    artist: "Productivity Sounds",
+    mood: "Focus",
+    duration: "5:30",
+    youtubeUrl: "https://youtube.com/watch?v=dQw4w9WgXcT",
+    thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcT/maxresdefault.jpg"
+  },
+  {
+    id: "yt_playlist_5",
+    title: "Happy Sunshine Vibes",
+    artist: "Positive Energy Band",
+    mood: "Energetic",
+    duration: "3:20",
+    youtubeUrl: "https://youtube.com/watch?v=dQw4w9WgXcU",
+    thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcU/maxresdefault.jpg"
+  },
+  {
+    id: "yt_playlist_6",
+    title: "Melancholic Piano",
+    artist: "Emotional Instrumentals",
+    mood: "Sad",
+    duration: "4:45",
+    youtubeUrl: "https://youtube.com/watch?v=dQw4w9WgXcV",
+    thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcV/maxresdefault.jpg"
+  },
+  {
+    id: "yt_playlist_7",
+    title: "Aggressive Rock Anthem",
+    artist: "Metal Thunder",
+    mood: "Angry",
+    duration: "4:00",
+    youtubeUrl: "https://youtube.com/watch?v=dQw4w9WgXcW",
+    thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcW/maxresdefault.jpg"
+  },
+  {
+    id: "yt_playlist_8",
+    title: "Zen Garden Meditation",
+    artist: "Peaceful Sounds",
+    mood: "Chill",
+    duration: "6:15",
+    youtubeUrl: "https://youtube.com/watch?v=dQw4w9WgXcX",
+    thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcX/maxresdefault.jpg"
+  },
+  {
+    id: "yt_playlist_9",
+    title: "Party Dance Mix",
+    artist: "Club Beats",
+    mood: "Energetic",
+    duration: "3:30",
+    youtubeUrl: "https://youtube.com/watch?v=dQw4w9WgXcY",
+    thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcY/maxresdefault.jpg"
+  },
+  {
+    id: "yt_playlist_10",
+    title: "Chill Vibes Only",
+    artist: "Relaxation Station",
+    mood: "Chill",
+    duration: "4:25",
+    youtubeUrl: "https://youtube.com/watch?v=dQw4w9WgXcZ",
+    thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcZ/maxresdefault.jpg"
+  },
+];
