@@ -41,10 +41,19 @@ const Songs = () => {
     setCurrentSong(null);
   };
 
-  // Songs from your actual YouTube playlist with exact matching titles
+  // All songs from your actual YouTube playlist with exact matching titles
   const songs: Song[] = [
     {
       id: "1",
+      title: "Lose My Mind [From F1® The Movie] (feat. Doja Cat)",
+      artist: "Don Toliver",
+      mood: "Energetic",
+      duration: "3:30",
+      youtubeUrl: "https://youtube.com/watch?v=AVN7SJkNOR0",
+      thumbnail: "https://i.ytimg.com/vi/AVN7SJkNOR0/maxresdefault.jpg"
+    },
+    {
+      id: "2",
       title: "I Want It That Way",
       artist: "Backstreet Boys",
       mood: "Happy",
@@ -53,7 +62,7 @@ const Songs = () => {
       thumbnail: "https://i.ytimg.com/vi/LwkrXybZ1uo/maxresdefault.jpg"
     },
     {
-      id: "2",
+      id: "3",
       title: "Memory Reboot",
       artist: "VØJ & Narvent",
       mood: "Chill",
@@ -62,7 +71,25 @@ const Songs = () => {
       thumbnail: "https://i.ytimg.com/vi/EASIaOpeSTY/maxresdefault.jpg"
     },
     {
-      id: "3",
+      id: "4",
+      title: "I Can't Say Goodbye To You",
+      artist: "Helen Reddy",
+      mood: "Sad",
+      duration: "3:30",
+      youtubeUrl: "https://youtube.com/watch?v=O3VInGi9OLU",
+      thumbnail: "https://i.ytimg.com/vi/O3VInGi9OLU/maxresdefault.jpg"
+    },
+    {
+      id: "5",
+      title: "Maging Sino Ka Man (Inspirational Version)",
+      artist: "Martin Nievera",
+      mood: "Relaxed",
+      duration: "3:51",
+      youtubeUrl: "https://youtube.com/watch?v=w9B1Ckhhyuw",
+      thumbnail: "https://i.ytimg.com/vi/w9B1Ckhhyuw/maxresdefault.jpg"
+    },
+    {
+      id: "6",
       title: "Attention",
       artist: "Charlie Puth",
       mood: "Happy",
@@ -71,7 +98,16 @@ const Songs = () => {
       thumbnail: "https://i.ytimg.com/vi/vxUBYHz_q1I/maxresdefault.jpg"
     },
     {
-      id: "4",
+      id: "7",
+      title: "Fainted (Slowed)",
+      artist: "Narvent",
+      mood: "Chill",
+      duration: "3:32",
+      youtubeUrl: "https://youtube.com/watch?v=rpB6iJbhocA",
+      thumbnail: "https://i.ytimg.com/vi/rpB6iJbhocA/maxresdefault.jpg"
+    },
+    {
+      id: "8",
       title: "Rather Be (feat. Jess Glynne)",
       artist: "Clean Bandit",
       mood: "Energetic",
@@ -80,7 +116,16 @@ const Songs = () => {
       thumbnail: "https://i.ytimg.com/vi/dHdMAdh4Xgc/maxresdefault.jpg"
     },
     {
-      id: "5",
+      id: "9",
+      title: "Ngayong Gabi - Kai Honasan [Lyrics on Description]",
+      artist: "ZakiChi Umetarou",
+      mood: "Relaxed",
+      duration: "3:48",
+      youtubeUrl: "https://youtube.com/watch?v=Yqp4yJ5cYDo",
+      thumbnail: "https://i.ytimg.com/vi/Yqp4yJ5cYDo/maxresdefault.jpg"
+    },
+    {
+      id: "10",
       title: "A Thousand Miles",
       artist: "Vanessa Carlton",
       mood: "Relaxed",
@@ -89,25 +134,124 @@ const Songs = () => {
       thumbnail: "https://i.ytimg.com/vi/PNoIn1WKiEc/maxresdefault.jpg"
     },
     {
-      id: "6",
+      id: "11",
+      title: "FUNK UNIVERSO (Slowed)",
+      artist: "Irokz",
+      mood: "Energetic",
+      duration: "3:58",
+      youtubeUrl: "https://youtube.com/watch?v=yHKXRcZxpG8",
+      thumbnail: "https://i.ytimg.com/vi/yHKXRcZxpG8/maxresdefault.jpg"
+    },
+    {
+      id: "12",
+      title: "I Think They Call This Love (Cover)",
+      artist: "Matthew Ifield",
+      mood: "Relaxed",
+      duration: "2:30",
+      youtubeUrl: "https://youtube.com/watch?v=CnEqrgMlWLQ",
+      thumbnail: "https://i.ytimg.com/vi/CnEqrgMlWLQ/maxresdefault.jpg"
+    },
+    {
+      id: "13",
+      title: "Young Black & Rich",
+      artist: "Melly Mike",
+      mood: "Energetic",
+      duration: "3:17",
+      youtubeUrl: "https://youtube.com/watch?v=5ObIlA0Y2yE",
+      thumbnail: "https://i.ytimg.com/vi/5ObIlA0Y2yE/maxresdefault.jpg"
+    },
+    {
+      id: "14",
+      title: "Mahal Ka Sa Akin",
+      artist: "Tanya",
+      mood: "Sad",
+      duration: "2:36",
+      youtubeUrl: "https://youtube.com/watch?v=fAJLkS6MoOU",
+      thumbnail: "https://i.ytimg.com/vi/fAJLkS6MoOU/maxresdefault.jpg"
+    },
+    {
+      id: "15",
       title: "Hall of Fame (feat. will.i.am)",
       artist: "The Script",
       mood: "Energetic",
-      duration: "3:21",
+      duration: "1:43",
       youtubeUrl: "https://youtube.com/watch?v=snx5qGUtVi8",
       thumbnail: "https://i.ytimg.com/vi/snx5qGUtVi8/maxresdefault.jpg"
     },
     {
-      id: "7",
-      title: "Yellow",
-      artist: "Coldplay",
-      mood: "Chill",
-      duration: "3:37",
-      youtubeUrl: "https://youtube.com/watch?v=9qnqYL0eNNI",
-      thumbnail: "https://i.ytimg.com/vi/9qnqYL0eNNI/maxresdefault.jpg"
+      id: "16",
+      title: "I'm with You",
+      artist: "Avril Lavigne",
+      mood: "Sad",
+      duration: "3:08",
+      youtubeUrl: "https://youtube.com/watch?v=_qHWIvq_WR4",
+      thumbnail: "https://i.ytimg.com/vi/_qHWIvq_WR4/maxresdefault.jpg"
     },
     {
-      id: "8",
+      id: "17",
+      title: "Nothing's Gonna Change My Love for You",
+      artist: "George Benson",
+      mood: "Relaxed",
+      duration: "4:03",
+      youtubeUrl: "https://youtube.com/watch?v=f1De87ETXwo",
+      thumbnail: "https://i.ytimg.com/vi/f1De87ETXwo/maxresdefault.jpg"
+    },
+    {
+      id: "18",
+      title: "Hey Mama (feat. Afrojack, Bebe Rexha & Nicki Minaj)",
+      artist: "David Guetta",
+      mood: "Energetic",
+      duration: "4:09",
+      youtubeUrl: "https://youtube.com/watch?v=Hsz6hL_a69Q",
+      thumbnail: "https://i.ytimg.com/vi/Hsz6hL_a69Q/maxresdefault.jpg"
+    },
+    {
+      id: "19",
+      title: "Stereo Hearts (feat. Adam Levine)",
+      artist: "Gym Class Heroes",
+      mood: "Happy",
+      duration: "3:13",
+      youtubeUrl: "https://youtube.com/watch?v=SiRJw4f_ufc",
+      thumbnail: "https://i.ytimg.com/vi/SiRJw4f_ufc/maxresdefault.jpg"
+    },
+    {
+      id: "20",
+      title: "Live While We're Young",
+      artist: "One Direction",
+      mood: "Energetic",
+      duration: "3:31",
+      youtubeUrl: "https://youtube.com/watch?v=blCNvso3UDU",
+      thumbnail: "https://i.ytimg.com/vi/blCNvso3UDU/maxresdefault.jpg"
+    },
+    {
+      id: "21",
+      title: "Glad You Came",
+      artist: "The Wanted",
+      mood: "Energetic",
+      duration: "3:21",
+      youtubeUrl: "https://youtube.com/watch?v=XsMvL1uvl_o",
+      thumbnail: "https://i.ytimg.com/vi/XsMvL1uvl_o/maxresdefault.jpg"
+    },
+    {
+      id: "22",
+      title: "Don't Look Back in Anger",
+      artist: "Oasis",
+      mood: "Chill",
+      duration: "3:19",
+      youtubeUrl: "https://youtube.com/watch?v=X59TlszGtfM",
+      thumbnail: "https://i.ytimg.com/vi/X59TlszGtfM/maxresdefault.jpg"
+    },
+    {
+      id: "23",
+      title: "Steal My Girl",
+      artist: "One Direction",
+      mood: "Happy",
+      duration: "4:50",
+      youtubeUrl: "https://youtube.com/watch?v=gnN_jiesIkM",
+      thumbnail: "https://i.ytimg.com/vi/gnN_jiesIkM/maxresdefault.jpg"
+    },
+    {
+      id: "24",
       title: "In the End",
       artist: "Linkin Park",
       mood: "Angry",
@@ -116,16 +260,88 @@ const Songs = () => {
       thumbnail: "https://i.ytimg.com/vi/BLZWkjBXfN8/maxresdefault.jpg"
     },
     {
-      id: "9",
-      title: "Call Me Maybe",
-      artist: "Carly Rae Jepsen",
-      mood: "Happy",
-      duration: "2:46",
-      youtubeUrl: "https://youtube.com/watch?v=dlObDivWgx8",
-      thumbnail: "https://i.ytimg.com/vi/dlObDivWgx8/maxresdefault.jpg"
+      id: "25",
+      title: "Yellow",
+      artist: "Coldplay",
+      mood: "Chill",
+      duration: "3:37",
+      youtubeUrl: "https://youtube.com/watch?v=9qnqYL0eNNI",
+      thumbnail: "https://i.ytimg.com/vi/9qnqYL0eNNI/maxresdefault.jpg"
     },
     {
-      id: "10",
+      id: "26",
+      title: "Hinahanap-Hanap Kita",
+      artist: "Rivermaya",
+      mood: "Sad",
+      duration: "3:38",
+      youtubeUrl: "https://youtube.com/watch?v=JsjzVo2pAnc",
+      thumbnail: "https://i.ytimg.com/vi/JsjzVo2pAnc/maxresdefault.jpg"
+    },
+    {
+      id: "27",
+      title: "Kisapmata",
+      artist: "Rivermaya",
+      mood: "Angry",
+      duration: "5:59",
+      youtubeUrl: "https://youtube.com/watch?v=XZvTk1WItqE",
+      thumbnail: "https://i.ytimg.com/vi/XZvTk1WItqE/maxresdefault.jpg"
+    },
+    {
+      id: "28",
+      title: "Sorry, Blame It On Me",
+      artist: "Akon",
+      mood: "Sad",
+      duration: "4:41",
+      youtubeUrl: "https://youtube.com/watch?v=km1dvRb6sZs",
+      thumbnail: "https://i.ytimg.com/vi/km1dvRb6sZs/maxresdefault.jpg"
+    },
+    {
+      id: "29",
+      title: "Thank You",
+      artist: "Dido",
+      mood: "Relaxed",
+      duration: "4:56",
+      youtubeUrl: "https://youtube.com/watch?v=Yj8ZufvGfvk",
+      thumbnail: "https://i.ytimg.com/vi/Yj8ZufvGfvk/maxresdefault.jpg"
+    },
+    {
+      id: "30",
+      title: "Toxic",
+      artist: "Britney Spears",
+      mood: "Energetic",
+      duration: "5:25",
+      youtubeUrl: "https://youtube.com/watch?v=tVdr_JWmnsA",
+      thumbnail: "https://i.ytimg.com/vi/tVdr_JWmnsA/maxresdefault.jpg"
+    },
+    {
+      id: "31",
+      title: "Till I Collapse (feat. Nate Dogg)",
+      artist: "Eminem",
+      mood: "Focus",
+      duration: "3:29",
+      youtubeUrl: "https://youtube.com/watch?v=Obim8BYGnOE",
+      thumbnail: "https://i.ytimg.com/vi/Obim8BYGnOE/maxresdefault.jpg"
+    },
+    {
+      id: "32",
+      title: "Elesi",
+      artist: "Rivermaya",
+      mood: "Sad",
+      duration: "4:58",
+      youtubeUrl: "https://youtube.com/watch?v=12eR72YJM64",
+      thumbnail: "https://i.ytimg.com/vi/12eR72YJM64/maxresdefault.jpg"
+    },
+    {
+      id: "33",
+      title: "214",
+      artist: "Rivermaya",
+      mood: "Sad",
+      duration: "4:59",
+      youtubeUrl: "https://youtube.com/watch?v=6yrmsZgW3RE",
+      thumbnail: "https://i.ytimg.com/vi/6yrmsZgW3RE/maxresdefault.jpg"
+    },
+    {
+      id: "34",
       title: "Treasure",
       artist: "Bruno Mars",
       mood: "Energetic",
@@ -134,22 +350,256 @@ const Songs = () => {
       thumbnail: "https://i.ytimg.com/vi/cy6Arnjp-hQ/maxresdefault.jpg"
     },
     {
-      id: "11",
+      id: "35",
+      title: "Call Me Maybe",
+      artist: "Carly Rae Jepsen",
+      mood: "Happy",
+      duration: "2:46",
+      youtubeUrl: "https://youtube.com/watch?v=dlObDivWgx8",
+      thumbnail: "https://i.ytimg.com/vi/dlObDivWgx8/maxresdefault.jpg"
+    },
+    {
+      id: "36",
+      title: "Don't Matter",
+      artist: "Akon",
+      mood: "Energetic",
+      duration: "3:14",
+      youtubeUrl: "https://youtube.com/watch?v=oadfmOPGjOY",
+      thumbnail: "https://i.ytimg.com/vi/oadfmOPGjOY/maxresdefault.jpg"
+    },
+    {
+      id: "37",
+      title: "Lover (Remix) (feat. Shawn Mendes)",
+      artist: "Taylor Swift",
+      mood: "Happy",
+      duration: "2:25",
+      youtubeUrl: "https://youtube.com/watch?v=GCEljC8gZbU",
+      thumbnail: "https://i.ytimg.com/vi/GCEljC8gZbU/maxresdefault.jpg"
+    },
+    {
+      id: "38",
+      title: "Tuwing Umuulan at Kapiling Ka",
+      artist: "Basil Valdez",
+      mood: "Relaxed",
+      duration: "3:42",
+      youtubeUrl: "https://youtube.com/watch?v=a8GyUhTFx4k",
+      thumbnail: "https://i.ytimg.com/vi/a8GyUhTFx4k/maxresdefault.jpg"
+    },
+    {
+      id: "39",
+      title: "Alapaap",
+      artist: "Eraserheads",
+      mood: "Chill",
+      duration: "5:01",
+      youtubeUrl: "https://youtube.com/watch?v=-CJyexGXKK0",
+      thumbnail: "https://i.ytimg.com/vi/-CJyexGXKK0/maxresdefault.jpg"
+    },
+    {
+      id: "40",
+      title: "Magasin",
+      artist: "Eraserheads",
+      mood: "Chill",
+      duration: "4:23",
+      youtubeUrl: "https://youtube.com/watch?v=LYtAEgCbxJ4",
+      thumbnail: "https://i.ytimg.com/vi/LYtAEgCbxJ4/maxresdefault.jpg"
+    },
+    {
+      id: "41",
+      title: "Ligaya",
+      artist: "Eraserheads",
+      mood: "Happy",
+      duration: "4:09",
+      youtubeUrl: "https://youtube.com/watch?v=XI_H2wY9VHo",
+      thumbnail: "https://i.ytimg.com/vi/XI_H2wY9VHo/maxresdefault.jpg"
+    },
+    {
+      id: "42",
+      title: "Buko",
+      artist: "Jireh Lim",
+      mood: "Relaxed",
+      duration: "4:30",
+      youtubeUrl: "https://youtube.com/watch?v=URR3FKn8NvU",
+      thumbnail: "https://i.ytimg.com/vi/URR3FKn8NvU/maxresdefault.jpg"
+    },
+    {
+      id: "43",
+      title: "Kahit Walang Sabihin",
+      artist: "Rico Blanco",
+      mood: "Sad",
+      duration: "5:13",
+      youtubeUrl: "https://youtube.com/watch?v=UFZFkVcfJS8",
+      thumbnail: "https://i.ytimg.com/vi/UFZFkVcfJS8/maxresdefault.jpg"
+    },
+    {
+      id: "44",
+      title: "Way down We Go",
+      artist: "KALEO",
+      mood: "Chill",
+      duration: "4:48",
+      youtubeUrl: "https://youtube.com/watch?v=YTCS7IWUJu8",
+      thumbnail: "https://i.ytimg.com/vi/YTCS7IWUJu8/maxresdefault.jpg"
+    },
+    {
+      id: "45",
+      title: "We Don't Talk Anymore (feat. Selena Gomez)",
+      artist: "Charlie Puth",
+      mood: "Sad",
+      duration: "3:34",
+      youtubeUrl: "https://youtube.com/watch?v=ffqliB42Nh4",
+      thumbnail: "https://i.ytimg.com/vi/ffqliB42Nh4/maxresdefault.jpg"
+    },
+    {
+      id: "46",
+      title: "It's Gonna Be Me",
+      artist: "*NSYNC",
+      mood: "Energetic",
+      duration: "3:16",
+      youtubeUrl: "https://youtube.com/watch?v=dyDBxOiR4dc",
+      thumbnail: "https://i.ytimg.com/vi/dyDBxOiR4dc/maxresdefault.jpg"
+    },
+    {
+      id: "47",
+      title: "As Long as You Love Me",
+      artist: "Backstreet Boys",
+      mood: "Happy",
+      duration: "3:13",
+      youtubeUrl: "https://youtube.com/watch?v=960wzRtcl-Y",
+      thumbnail: "https://i.ytimg.com/vi/960wzRtcl-Y/maxresdefault.jpg"
+    },
+    {
+      id: "48",
+      title: "Iris",
+      artist: "Goo Goo Dolls",
+      mood: "Sad",
+      duration: "3:33",
+      youtubeUrl: "https://youtube.com/watch?v=Dy_eP-mqWow",
+      thumbnail: "https://i.ytimg.com/vi/Dy_eP-mqWow/maxresdefault.jpg"
+    },
+    {
+      id: "49",
+      title: "Even the Nights Are Better",
+      artist: "Air Supply",
+      mood: "Relaxed",
+      duration: "4:50",
+      youtubeUrl: "https://youtube.com/watch?v=2fSBjXnhwSw",
+      thumbnail: "https://i.ytimg.com/vi/2fSBjXnhwSw/maxresdefault.jpg"
+    },
+    {
+      id: "50",
+      title: "YMCA (Original Version 1978)",
+      artist: "Village People",
+      mood: "Energetic",
+      duration: "4:05",
+      youtubeUrl: "https://youtube.com/watch?v=RN8Li7kYNnw",
+      thumbnail: "https://i.ytimg.com/vi/RN8Li7kYNnw/maxresdefault.jpg"
+    },
+    {
+      id: "51",
+      title: "Do You Remember (feat. Sean Paul & Lil Jon)",
+      artist: "Jay Sean",
+      mood: "Energetic",
+      duration: "4:10",
+      youtubeUrl: "https://youtube.com/watch?v=9LvgomJNXkg",
+      thumbnail: "https://i.ytimg.com/vi/9LvgomJNXkg/maxresdefault.jpg"
+    },
+    {
+      id: "52",
+      title: "Down (feat. Lil Wayne)",
+      artist: "Jay Sean",
+      mood: "Energetic",
+      duration: "3:31",
+      youtubeUrl: "https://youtube.com/watch?v=DQ514qIthSc",
+      thumbnail: "https://i.ytimg.com/vi/DQ514qIthSc/maxresdefault.jpg"
+    },
+    {
+      id: "53",
+      title: "Night Changes",
+      artist: "One Direction",
+      mood: "Chill",
+      duration: "3:33",
+      youtubeUrl: "https://youtube.com/watch?v=8BiLurrzFRw",
+      thumbnail: "https://i.ytimg.com/vi/8BiLurrzFRw/maxresdefault.jpg"
+    },
+    {
+      id: "54",
+      title: "Lose Yourself",
+      artist: "Eminem",
+      mood: "Focus",
+      duration: "2:13",
+      youtubeUrl: "https://youtube.com/watch?v=4wOLVrGHiIU",
+      thumbnail: "https://i.ytimg.com/vi/4wOLVrGHiIU/maxresdefault.jpg"
+    },
+    {
+      id: "55",
+      title: "Time",
+      artist: "Hans Zimmer",
+      mood: "Focus",
+      duration: "3:02",
+      youtubeUrl: "https://youtube.com/watch?v=jgyShFzdB_Q",
+      thumbnail: "https://i.ytimg.com/vi/jgyShFzdB_Q/maxresdefault.jpg"
+    },
+    {
+      id: "56",
+      title: "Eye of the Tiger",
+      artist: "Survivor",
+      mood: "Energetic",
+      duration: "4:50",
+      youtubeUrl: "https://youtube.com/watch?v=S-LO6dctBms",
+      thumbnail: "https://i.ytimg.com/vi/S-LO6dctBms/maxresdefault.jpg"
+    },
+    {
+      id: "57",
+      title: "I Think They Call This Love",
+      artist: "Elliot James Reay",
+      mood: "Relaxed",
+      duration: "3:29",
+      youtubeUrl: "https://youtube.com/watch?v=EAnLyHsc3-Y",
+      thumbnail: "https://i.ytimg.com/vi/EAnLyHsc3-Y/maxresdefault.jpg"
+    },
+    {
+      id: "58",
+      title: "METAMORPHOSIS",
+      artist: "INTERWORLD",
+      mood: "Energetic",
+      duration: "3:14",
+      youtubeUrl: "https://youtube.com/watch?v=lJvRohYSrZM",
+      thumbnail: "https://i.ytimg.com/vi/lJvRohYSrZM/maxresdefault.jpg"
+    },
+    {
+      id: "59",
       title: "Skyfall",
       artist: "Adele",
       mood: "Sad",
-      duration: "4:47",
+      duration: "2:05",
       youtubeUrl: "https://youtube.com/watch?v=LJzp_mDxaT0",
       thumbnail: "https://i.ytimg.com/vi/LJzp_mDxaT0/maxresdefault.jpg"
     },
     {
-      id: "12",
-      title: "Lose Yourself",
-      artist: "Eminem",
-      mood: "Focus",
-      duration: "5:23",
-      youtubeUrl: "https://youtube.com/watch?v=4wOLVrGHiIU",
-      thumbnail: "https://i.ytimg.com/vi/4wOLVrGHiIU/maxresdefault.jpg"
+      id: "60",
+      title: "Teenage Dirtbag",
+      artist: "Wheatus",
+      mood: "Angry",
+      duration: "4:47",
+      youtubeUrl: "https://youtube.com/watch?v=dSlYFtXENPo",
+      thumbnail: "https://i.ytimg.com/vi/dSlYFtXENPo/maxresdefault.jpg"
+    },
+    {
+      id: "61",
+      title: "Bloody Mary",
+      artist: "Lady Gaga",
+      mood: "Energetic",
+      duration: "4:02",
+      youtubeUrl: "https://youtube.com/watch?v=1e32cgJrbBo",
+      thumbnail: "https://i.ytimg.com/vi/1e32cgJrbBo/maxresdefault.jpg"
+    },
+    {
+      id: "62",
+      title: "Love Story",
+      artist: "Indila",
+      mood: "Relaxed",
+      duration: "4:05",
+      youtubeUrl: "https://youtube.com/watch?v=4TIGwaBHuzg",
+      thumbnail: "https://i.ytimg.com/vi/4TIGwaBHuzg/maxresdefault.jpg"
     }
   ];
 
