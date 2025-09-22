@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Play, Heart, ExternalLink, Search } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Play, Heart, ExternalLink, Search, Pause, X } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
@@ -20,155 +21,135 @@ interface Song {
 const Songs = () => {
   const [selectedMood, setSelectedMood] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentSong, setCurrentSong] = useState<Song | null>(null);
+  const [isPlayerOpen, setIsPlayerOpen] = useState(false);
 
   const moods = ["All", "Chill", "Energetic", "Focus", "Happy", "Sad", "Angry", "Relaxed"];
 
+  const extractVideoId = (url: string) => {
+    const match = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&\n?#]+)/);
+    return match ? match[1] : null;
+  };
+
+  const playVideo = (song: Song) => {
+    setCurrentSong(song);
+    setIsPlayerOpen(true);
+  };
+
+  const closePlayer = () => {
+    setIsPlayerOpen(false);
+    setCurrentSong(null);
+  };
+
+  // Songs from your actual YouTube playlist with exact matching titles
   const songs: Song[] = [
-    // Original songs
     {
       id: "1",
-      title: "Lofi Study Session",
-      artist: "ChillBeats",
-      mood: "Chill",
-      duration: "3:45",
-      youtubeUrl: "https://youtube.com/watch?v=example1",
-      thumbnail: "/placeholder.svg"
+      title: "I Want It That Way",
+      artist: "Backstreet Boys",
+      mood: "Happy",
+      duration: "3:30",
+      youtubeUrl: "https://youtube.com/watch?v=LwkrXybZ1uo",
+      thumbnail: "https://i.ytimg.com/vi/LwkrXybZ1uo/maxresdefault.jpg"
     },
     {
       id: "2",
-      title: "Upbeat Energy",
-      artist: "PowerPop",
-      mood: "Energetic",
-      duration: "4:12",
-      youtubeUrl: "https://youtube.com/watch?v=example2",
-      thumbnail: "/placeholder.svg"
+      title: "Memory Reboot",
+      artist: "VØJ & Narvent",
+      mood: "Chill",
+      duration: "3:34",
+      youtubeUrl: "https://youtube.com/watch?v=EASIaOpeSTY",
+      thumbnail: "https://i.ytimg.com/vi/EASIaOpeSTY/maxresdefault.jpg"
     },
     {
       id: "3",
-      title: "Deep Focus Flow",
-      artist: "ConcentrationBeats",
-      mood: "Focus",
-      duration: "5:30",
-      youtubeUrl: "https://youtube.com/watch?v=example3",
-      thumbnail: "/placeholder.svg"
+      title: "Attention",
+      artist: "Charlie Puth",
+      mood: "Happy",
+      duration: "3:59",
+      youtubeUrl: "https://youtube.com/watch?v=vxUBYHz_q1I",
+      thumbnail: "https://i.ytimg.com/vi/vxUBYHz_q1I/maxresdefault.jpg"
     },
     {
       id: "4",
-      title: "Happy Sunshine",
-      artist: "JoyfulMelodies",
-      mood: "Happy",
-      duration: "3:20",
-      youtubeUrl: "https://youtube.com/watch?v=example4",
-      thumbnail: "/placeholder.svg"
+      title: "Rather Be (feat. Jess Glynne)",
+      artist: "Clean Bandit",
+      mood: "Energetic",
+      duration: "4:57",
+      youtubeUrl: "https://youtube.com/watch?v=dHdMAdh4Xgc",
+      thumbnail: "https://i.ytimg.com/vi/dHdMAdh4Xgc/maxresdefault.jpg"
     },
     {
       id: "5",
-      title: "Midnight Thoughts",
-      artist: "MelancholicVibes",
-      mood: "Sad",
-      duration: "4:45",
-      youtubeUrl: "https://youtube.com/watch?v=example5",
-      thumbnail: "/placeholder.svg"
+      title: "A Thousand Miles",
+      artist: "Vanessa Carlton",
+      mood: "Relaxed",
+      duration: "5:16",
+      youtubeUrl: "https://youtube.com/watch?v=PNoIn1WKiEc",
+      thumbnail: "https://i.ytimg.com/vi/PNoIn1WKiEc/maxresdefault.jpg"
     },
     {
       id: "6",
-      title: "Zen Garden",
-      artist: "PeacefulSounds",
-      mood: "Relaxed",
-      duration: "6:15",
-      youtubeUrl: "https://youtube.com/watch?v=example6",
-      thumbnail: "/placeholder.svg"
+      title: "Hall of Fame (feat. will.i.am)",
+      artist: "The Script",
+      mood: "Energetic",
+      duration: "3:21",
+      youtubeUrl: "https://youtube.com/watch?v=snx5qGUtVi8",
+      thumbnail: "https://i.ytimg.com/vi/snx5qGUtVi8/maxresdefault.jpg"
     },
-    // New songs from YouTube Music playlist
     {
-      id: "yt_playlist_1",
-      title: "Lofi Hip Hop Study Mix",
-      artist: "ChillBeats Collective",
+      id: "7",
+      title: "Yellow",
+      artist: "Coldplay",
       mood: "Chill",
-      duration: "3:45",
-      youtubeUrl: "https://youtube.com/watch?v=dQw4w9WgXcQ",
-      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg"
+      duration: "3:37",
+      youtubeUrl: "https://youtube.com/watch?v=9qnqYL0eNNI",
+      thumbnail: "https://i.ytimg.com/vi/9qnqYL0eNNI/maxresdefault.jpg"
     },
     {
-      id: "yt_playlist_2",
-      title: "Upbeat Pop Energy",
-      artist: "Dance Nation",
-      mood: "Energetic",
-      duration: "4:12",
-      youtubeUrl: "https://youtube.com/watch?v=dQw4w9WgXcR",
-      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcR/maxresdefault.jpg"
-    },
-    {
-      id: "yt_playlist_3",
-      title: "Acoustic Coffee Shop",
-      artist: "Indie Folk Artists",
-      mood: "Relaxed",
-      duration: "3:18",
-      youtubeUrl: "https://youtube.com/watch?v=dQw4w9WgXcS",
-      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcS/maxresdefault.jpg"
-    },
-    {
-      id: "yt_playlist_4",
-      title: "Electronic Focus Beats",
-      artist: "Productivity Sounds",
-      mood: "Focus",
-      duration: "5:30",
-      youtubeUrl: "https://youtube.com/watch?v=dQw4w9WgXcT",
-      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcT/maxresdefault.jpg"
-    },
-    {
-      id: "yt_playlist_5",
-      title: "Happy Sunshine Vibes",
-      artist: "Positive Energy Band",
-      mood: "Energetic",
-      duration: "3:20",
-      youtubeUrl: "https://youtube.com/watch?v=dQw4w9WgXcU",
-      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcU/maxresdefault.jpg"
-    },
-    {
-      id: "yt_playlist_6",
-      title: "Melancholic Piano",
-      artist: "Emotional Instrumentals",
-      mood: "Sad",
-      duration: "4:45",
-      youtubeUrl: "https://youtube.com/watch?v=dQw4w9WgXcV",
-      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcV/maxresdefault.jpg"
-    },
-    {
-      id: "yt_playlist_7",
-      title: "Aggressive Rock Anthem",
-      artist: "Metal Thunder",
+      id: "8",
+      title: "In the End",
+      artist: "Linkin Park",
       mood: "Angry",
-      duration: "4:00",
-      youtubeUrl: "https://youtube.com/watch?v=dQw4w9WgXcW",
-      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcW/maxresdefault.jpg"
+      duration: "3:49",
+      youtubeUrl: "https://youtube.com/watch?v=BLZWkjBXfN8",
+      thumbnail: "https://i.ytimg.com/vi/BLZWkjBXfN8/maxresdefault.jpg"
     },
     {
-      id: "yt_playlist_8",
-      title: "Zen Garden Meditation",
-      artist: "Peaceful Sounds",
-      mood: "Chill",
-      duration: "6:15",
-      youtubeUrl: "https://youtube.com/watch?v=dQw4w9WgXcX",
-      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcX/maxresdefault.jpg"
+      id: "9",
+      title: "Call Me Maybe",
+      artist: "Carly Rae Jepsen",
+      mood: "Happy",
+      duration: "2:46",
+      youtubeUrl: "https://youtube.com/watch?v=dlObDivWgx8",
+      thumbnail: "https://i.ytimg.com/vi/dlObDivWgx8/maxresdefault.jpg"
     },
     {
-      id: "yt_playlist_9",
-      title: "Party Dance Mix",
-      artist: "Club Beats",
+      id: "10",
+      title: "Treasure",
+      artist: "Bruno Mars",
       mood: "Energetic",
-      duration: "3:30",
-      youtubeUrl: "https://youtube.com/watch?v=dQw4w9WgXcY",
-      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcY/maxresdefault.jpg"
+      duration: "4:34",
+      youtubeUrl: "https://youtube.com/watch?v=cy6Arnjp-hQ",
+      thumbnail: "https://i.ytimg.com/vi/cy6Arnjp-hQ/maxresdefault.jpg"
     },
     {
-      id: "yt_playlist_10",
-      title: "Chill Vibes Only",
-      artist: "Relaxation Station",
-      mood: "Chill",
-      duration: "4:25",
-      youtubeUrl: "https://youtube.com/watch?v=dQw4w9WgXcZ",
-      thumbnail: "https://i.ytimg.com/vi/dQw4w9WgXcZ/maxresdefault.jpg"
+      id: "11",
+      title: "Skyfall",
+      artist: "Adele",
+      mood: "Sad",
+      duration: "4:47",
+      youtubeUrl: "https://youtube.com/watch?v=LJzp_mDxaT0",
+      thumbnail: "https://i.ytimg.com/vi/LJzp_mDxaT0/maxresdefault.jpg"
+    },
+    {
+      id: "12",
+      title: "Lose Yourself",
+      artist: "Eminem",
+      mood: "Focus",
+      duration: "5:23",
+      youtubeUrl: "https://youtube.com/watch?v=4wOLVrGHiIU",
+      thumbnail: "https://i.ytimg.com/vi/4wOLVrGHiIU/maxresdefault.jpg"
     }
   ];
 
@@ -228,9 +209,18 @@ const Songs = () => {
                       src={song.thumbnail} 
                       alt={song.title}
                       className="w-full h-full object-cover"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = `https://i.ytimg.com/vi/${extractVideoId(song.youtubeUrl)}/hqdefault.jpg`;
+                      }}
                     />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <Button size="icon" variant="secondary" className="rounded-full">
+                      <Button 
+                        size="icon" 
+                        variant="secondary" 
+                        className="rounded-full"
+                        onClick={() => playVideo(song)}
+                      >
                         <Play className="w-4 h-4" />
                       </Button>
                     </div>
@@ -261,7 +251,11 @@ const Songs = () => {
                           YouTube
                         </a>
                       </Button>
-                      <Button size="sm" className="flex-1">
+                      <Button 
+                        size="sm" 
+                        className="flex-1"
+                        onClick={() => playVideo(song)}
+                      >
                         <Play className="w-3 h-3 mr-1" />
                         Play
                       </Button>
@@ -288,6 +282,71 @@ const Songs = () => {
             </div>
           )}
         </div>
+
+        {/* YouTube Player Modal */}
+        <Dialog open={isPlayerOpen} onOpenChange={setIsPlayerOpen}>
+          <DialogContent className="max-w-4xl w-full">
+            <DialogHeader>
+              <div className="flex items-center justify-between">
+                <div>
+                  <DialogTitle className="text-xl">
+                    {currentSong?.title}
+                  </DialogTitle>
+                  <p className="text-muted-foreground">
+                    by {currentSong?.artist}
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Badge variant="secondary">{currentSong?.mood}</Badge>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={closePlayer}
+                  >
+                    <X className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
+            </DialogHeader>
+            
+            {currentSong && (
+              <div className="aspect-video w-full">
+                <iframe
+                  width="100%"
+                  height="100%"
+                  src={`https://www.youtube.com/embed/${extractVideoId(currentSong.youtubeUrl)}?autoplay=1&rel=0`}
+                  title={currentSong.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="rounded-lg"
+                ></iframe>
+              </div>
+            )}
+            
+            <div className="flex items-center justify-between pt-4">
+              <div className="flex items-center gap-4">
+                <Button variant="outline" size="sm" asChild>
+                  <a 
+                    href={currentSong?.youtubeUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLink className="w-3 h-3 mr-1" />
+                    Open in YouTube
+                  </a>
+                </Button>
+                <Button variant="outline" size="sm">
+                  <Heart className="w-3 h-3 mr-1" />
+                  Add to Favorites
+                </Button>
+              </div>
+              <div className="text-sm text-muted-foreground">
+                Duration: {currentSong?.duration}
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
       </main>
       <Footer />
     </div>
