@@ -2,18 +2,20 @@ import axios from 'axios';
 
 class ChatService {
     constructor() {
-        this.mlServiceUrl = process.env.ML_SERVICE_URL || 'http://localhost:8002';
+        this.mlServiceUrl = process.env.ML_SERVICE_URL || 'http://localhost:8001';  // Changed port to 8001
         this.isMLServiceAvailable = false;
         this.mlServiceInfo = null;
-        // Temporarily disable ML service checking to rely on improved fallbacks
-        // this.checkMLService();
+        this.conversationHistory = new Map(); // Store conversation history per user
+        
+        // Check ML service on startup
+        this.checkMLService();
         
         // Retry connection every 30 seconds if service is down
-        // this.healthCheckInterval = setInterval(() => {
-        //     if (!this.isMLServiceAvailable) {
-        //         this.checkMLService();
-        //     }
-        // }, 30000);
+        this.healthCheckInterval = setInterval(() => {
+            if (!this.isMLServiceAvailable) {
+                this.checkMLService();
+            }
+        }, 30000);
     }
 
     async checkMLService() {
@@ -26,9 +28,9 @@ class ChatService {
                 this.isMLServiceAvailable = true;
                 this.mlServiceInfo = response.data;
                 console.log('✅ Enhanced ML Service connected:', {
-                    model: response.data.model_status.model_key,
-                    fine_tuned: response.data.model_status.supports_fine_tuned,
-                    uptime: `${response.data.service_uptime.toFixed(1)}s`
+                    model: response.data.model_status?.model_type || 'Enhanced',
+                    context_aware: response.data.model_status?.context_aware || false,
+                    conversations: response.data.active_conversations || 0
                 });
             } else {
                 this.isMLServiceAvailable = false;
@@ -39,7 +41,7 @@ class ChatService {
             
             // Log error details for debugging
             if (error.code === 'ECONNREFUSED') {
-                console.log('💡 Start the ML service with: python backend/services/enhanced_ml_backend.py');
+                console.log('💡 Start the enhanced ML service with: python ml/enhanced_sarcastic_backend.py');
             }
         }
     }
