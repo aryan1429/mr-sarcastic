@@ -7,6 +7,7 @@ import authRoutes from './routes/authFirebase.js';  // Updated to use Firebase a
 import userRoutes from './routes/users.js';
 import storageRoutes from './routes/storage.js';
 import chatRoutes from './routes/chat.js';
+import enhancedChatRoutes from './routes/enhancedChat.js';  // New enhanced chat routes
 import databaseService from './services/database.js';
 import mockDatabaseService from './services/mockDatabase.js';
 
@@ -14,6 +15,13 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// Log startup configuration
+console.log('🚀 Starting Mr. Sarcastic Backend Server...');
+console.log(`🤖 Dual Model Service: ${process.env.USE_DUAL_MODEL === 'true' ? 'ENABLED' : 'DISABLED'}`);
+console.log(`🔑 OpenAI API: ${process.env.OPENAI_API_KEY ? 'CONFIGURED' : 'NOT CONFIGURED'}`);
+console.log(`🤖 Grok API: ${process.env.GROK_API_KEY ? 'CONFIGURED' : 'NOT CONFIGURED'}`);
+console.log(`📡 ML Service: ${process.env.ML_SERVICE_URL || 'http://localhost:8001'}`);
 
 // Security middleware
 app.use(helmet());
@@ -48,6 +56,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/storage', storageRoutes);
 app.use('/api/chat', chatRoutes);
+app.use('/api/enhanced-chat', enhancedChatRoutes);  // New enhanced chat with dual model support
 
 // Health check endpoint
 app.get('/health', (req, res) => {
