@@ -13,6 +13,14 @@ export interface Song {
 export interface ApiResponse<T> {
   success: boolean;
   data: T;
+  pagination?: {
+    currentPage: number;
+    totalPages: number;
+    totalSongs: number;
+    songsPerPage: number;
+    hasNextPage: boolean;
+    hasPreviousPage: boolean;
+  };
   count?: number;
   message?: string;
   error?: string;
@@ -39,15 +47,31 @@ class SongsService {
     return response.json();
   }
 
-  async getAllSongs(): Promise<Song[]> {
+  async getAllSongs(page: number = 1, limit: number = 20, search?: string, mood?: string): Promise<{ songs: Song[], pagination: any }> {
     try {
-      const response: ApiResponse<Song[]> = await this.fetchWithAuth('/api/songs');
+      const params = new URLSearchParams({
+        page: page.toString(),
+        limit: limit.toString(),
+      });
+      
+      if (search) {
+        params.append('search', search);
+      }
+      
+      if (mood && mood !== 'All') {
+        params.append('mood', mood);
+      }
+      
+      const response: ApiResponse<Song[]> = await this.fetchWithAuth(`/api/songs?${params}`);
       
       if (!response.success) {
         throw new Error(response.message || 'Failed to fetch songs');
       }
       
-      return response.data;
+      return {
+        songs: response.data,
+        pagination: response.pagination
+      };
     } catch (error) {
       console.error('Error fetching songs:', error);
       throw error;

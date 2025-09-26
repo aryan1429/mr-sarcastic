@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Play, Heart, ExternalLink, Search, X, Loader2, RefreshCw } from "lucide-react";
+import { Play, Heart, ExternalLink, Search, X, Loader2, RefreshCw, ChevronLeft, ChevronRight } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { songsService, type Song } from "@/services/songsService";
@@ -18,22 +18,26 @@ const Songs = () => {
   const [songs, setSongs] = useState<Song[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [pagination, setPagination] = useState<any>(null);
   const { toast } = useToast();
 
   const moods = ["All", "Chill", "Energetic", "Focus", "Happy", "Sad", "Angry", "Relaxed"];
+  const songsPerPage = 20;
 
   // Load songs from API
   useEffect(() => {
     loadSongs();
-  }, []);
+  }, [currentPage, selectedMood, searchTerm]);
 
-  const loadSongs = async () => {
+  const loadSongs = useCallback(async () => {
     try {
       setLoading(true);
       setError(null);
-      const fetchedSongs = await songsService.getAllSongs();
-      setSongs(fetchedSongs);
-      console.log(`✅ Loaded ${fetchedSongs.length} songs from backend`);
+      const result = await songsService.getAllSongs(currentPage, songsPerPage, searchTerm || undefined, selectedMood);
+      setSongs(result.songs);
+      setPagination(result.pagination);
+      console.log(`✅ Loaded ${result.songs.length} songs from backend (Page ${currentPage})`);
     } catch (err) {
       console.error('Failed to load songs:', err);
       setError(err instanceof Error ? err.message : 'Failed to load songs');
@@ -45,6 +49,24 @@ const Songs = () => {
     } finally {
       setLoading(false);
     }
+  }, [currentPage, selectedMood, searchTerm, toast]);
+
+  // Handle mood change
+  const handleMoodChange = (mood: string) => {
+    setSelectedMood(mood);
+    setCurrentPage(1); // Reset to first page when filtering
+  };
+
+  // Handle search
+  const handleSearchChange = (search: string) => {
+    setSearchTerm(search);
+    setCurrentPage(1); // Reset to first page when searching
+  };
+
+  // Handle page change
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const extractVideoId = (url: string) => {
@@ -61,13 +83,6 @@ const Songs = () => {
     setIsPlayerOpen(false);
     setCurrentSong(null);
   };
-
-  const filteredSongs = songs.filter(song => {
-    const matchesMood = selectedMood === "All" || song.mood === selectedMood;
-    const matchesSearch = song.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         song.artist.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesMood && matchesSearch;
-  });
 
   // Loading state
   if (loading) {
@@ -123,9 +138,13 @@ const Songs = () => {
             <p className="text-lg text-muted-foreground mb-2">
               Let Mr Sarcastic suggest the perfect soundtrack for your current vibe
             </p>
-            <p className="text-sm text-muted-foreground">
-              {songs.length} songs available from our curated playlist
-            </p>
+            {pagination && (
+              <p className="text-sm text-muted-foreground">
+                Showing {((currentPage - 1) * songsPerPage) + 1} - {Math.min(currentPage * songsPerPage, pagination.totalSongs)} of {pagination.totalSongs} songs
+                {selectedMood !== "All" && ` (filtered by ${selectedMood})`}
+                {searchTerm && ` (search: "${searchTerm}")`}
+              </p>
+            )}
           </div>
 
           {/* Search and Filters */}
@@ -135,7 +154,7 @@ const Songs = () => {
               <Input
                 placeholder="Search songs or artists..."
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={(e) => handleSearchChange(e.target.value)}
                 className="pl-10"
               />
             </div>
@@ -146,7 +165,7 @@ const Songs = () => {
                   key={mood}
                   variant={selectedMood === mood ? "default" : "outline"}
                   size="sm"
-                  onClick={() => setSelectedMood(mood)}
+                  onClick={() => handleMoodChange(mood)}
                   className="text-xs"
                 >
                   {mood}
@@ -157,7 +176,7 @@ const Songs = () => {
 
           {/* Songs Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredSongs.map((song) => (
+            {songs.map((song) => (
               <Card key={song.id} className="group hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary/40">
                 <div className="p-4">
                   <div className="aspect-video bg-muted rounded-lg mb-4 relative overflow-hidden">
@@ -222,19 +241,93 @@ const Songs = () => {
             ))}
           </div>
 
-          {filteredSongs.length === 0 && songs.length > 0 && (
+          {/* Pagination Controls */}
+          {pagination && pagination.totalPages > 1 && (
+            <div className="mt-8 space-y-4">
+              <div className="text-center text-sm text-muted-foreground">
+                Page {pagination.currentPage} of {pagination.totalPages}
+              </div>
+              
+              <div className="flex justify-center items-center space-x-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => handlePageChange(currentPage - 1)}
+                  disabled={!pagination.hasPreviousPage}
+                  className="flex items-center"
+                >
+                  <ChevronLeft className="w-4 h-4 mr-1" />
+                  Previous
+                </Button>
+                
+                <div className="flex items-center space-x-1">
+                  {/* Show page numbers */}
+                  {Array.from({ length: Math.min(5, pagination.totalPages) }, (_, i) => {
+                    const pageNum = Math.max(1, Math.min(pagination.totalPages - 4, currentPage - 2)) + i;
+                    if (pageNum > pagination.totalPages) return null;
+                    
+                    return (
+                      <Button
+                        key={pageNum}
+                        variant={pageNum === currentPage ? "default" : "outline"}
+                        size="sm"
+                        onClick={() => handlePageChange(pageNum)}
+                        className="min-w-[40px]"
+                      >
+                        {pageNum}
+                      </Button>
+                    );
+                  })}
+                  
+                  {pagination.totalPages > 5 && currentPage < pagination.totalPages - 2 && (
+                    <>
+                      <span className="px-2 text-muted-foreground">...</span>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handlePageChange(pagination.totalPages)}
+                        className="min-w-[40px]"
+                      >
+                        {pagination.totalPages}
+                      </Button>
+                    </>
+                  )}
+                </div>
+                
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => handlePageChange(currentPage + 1)}
+                  disabled={!pagination.hasNextPage}
+                  className="flex items-center"
+                >
+                  Next
+                  <ChevronRight className="w-4 h-4 ml-1" />
+                </Button>
+              </div>
+            </div>
+          )}
+
+          {/* No results message */}
+          {songs.length === 0 && !loading && (
             <div className="text-center py-12">
-              <p className="text-muted-foreground">No songs found matching your criteria.</p>
-              <Button 
-                variant="outline" 
-                className="mt-4"
-                onClick={() => {
-                  setSelectedMood("All");
-                  setSearchTerm("");
-                }}
-              >
-                Clear Filters
-              </Button>
+              <p className="text-muted-foreground">
+                {searchTerm || selectedMood !== "All" 
+                  ? "No songs found matching your criteria." 
+                  : "No songs available."}
+              </p>
+              {(searchTerm || selectedMood !== "All") && (
+                <Button 
+                  variant="outline" 
+                  className="mt-4"
+                  onClick={() => {
+                    handleMoodChange("All");
+                    handleSearchChange("");
+                  }}
+                >
+                  Clear Filters
+                </Button>
+              )}
             </div>
           )}
         </div>
