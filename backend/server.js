@@ -7,6 +7,7 @@ import authRoutes from './routes/authFirebase.js';  // Updated to use Firebase a
 import userRoutes from './routes/users.js';
 import storageRoutes from './routes/storage.js';
 import chatRoutes from './routes/chat.js';
+import songsRoutes from './routes/songs.js';
 import databaseService from './services/database.js';
 import mockDatabaseService from './services/mockDatabase.js';
 
@@ -48,6 +49,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/storage', storageRoutes);
 app.use('/api/chat', chatRoutes);
+app.use('/api/songs', songsRoutes);
 
 // Health check endpoint
 app.get('/health', (req, res) => {
