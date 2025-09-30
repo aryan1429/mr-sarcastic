@@ -3,11 +3,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Send, Bot, User, Loader2 } from "lucide-react";
+import { Send, Bot, User, Loader2, Music, ExternalLink } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useAuth } from "@/context/AuthContext";
 import { api } from "@/services/api";
+import { useNavigate } from "react-router-dom";
 
 interface Message {
   id: string;
@@ -16,10 +17,20 @@ interface Message {
   timestamp: Date;
   mood?: string;
   confidence?: number;
+  songData?: {
+    id: string;
+    title: string;
+    artist: string;
+    mood: string;
+    duration: string;
+    youtubeUrl: string;
+    thumbnail?: string;
+  } | null;
 }
 
 const Chat = () => {
   const { token } = useAuth();
+  const navigate = useNavigate();
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -34,6 +45,11 @@ const Chat = () => {
   const [detectedMood, setDetectedMood] = useState("Neutral");
   const [isLoading, setIsLoading] = useState(false);
   const [conversationHistory, setConversationHistory] = useState<Array<{message: string, response: string}>>([]);
+
+  const handleGoToSong = (songId: string) => {
+    // Navigate to songs page with the specific song ID as a query parameter
+    navigate(`/songs?songId=${songId}`);
+  };
 
   const handleSendMessage = async () => {
     if (!inputText.trim() || isLoading) return;
@@ -66,7 +82,8 @@ const Chat = () => {
           isUser: false,
           timestamp: new Date(),
           mood: data.data.mood,
-          confidence: data.data.confidence
+          confidence: data.data.confidence,
+          songData: data.data.songData
         };
 
         setMessages((prev) => [...prev, botResponse]);
@@ -140,6 +157,41 @@ const Chat = () => {
                       }`}
                     >
                       <p className="text-sm">{message.text}</p>
+                      
+                      {/* Song Recommendation Button */}
+                      {!message.isUser && message.songData && (
+                        <div className="mt-3 p-3 bg-primary/10 rounded-lg border border-primary/20">
+                          <div className="flex items-center gap-2 mb-2">
+                            <Music className="w-4 h-4 text-primary" />
+                            <span className="text-xs font-medium text-primary">Recommended Song</span>
+                          </div>
+                          <div className="text-sm">
+                            <p className="font-medium">{message.songData.title}</p>
+                            <p className="text-xs opacity-70">by {message.songData.artist}</p>
+                            <p className="text-xs opacity-60">{message.songData.duration} • {message.songData.mood}</p>
+                          </div>
+                          <div className="flex gap-2 mt-2">
+                            <Button
+                              size="sm"
+                              onClick={() => handleGoToSong(message.songData!.id)}
+                              className="flex items-center gap-1 text-xs"
+                            >
+                              <Music className="w-3 h-3" />
+                              Listen on Songs Page
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => window.open(message.songData!.youtubeUrl, '_blank')}
+                              className="flex items-center gap-1 text-xs"
+                            >
+                              <ExternalLink className="w-3 h-3" />
+                              YouTube
+                            </Button>
+                          </div>
+                        </div>
+                      )}
+                      
                       <div className="flex items-center justify-between mt-1">
                         <span className="text-xs opacity-70">
                           {message.timestamp.toLocaleTimeString()}

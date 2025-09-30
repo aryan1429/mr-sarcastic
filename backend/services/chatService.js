@@ -36,7 +36,7 @@ class ChatService {
         }
     }
 
-    getSongsByMood(mood, limit = 3) {
+    getSongsByMood(mood, limit = 1) {
         // Map detected moods to song moods
         const moodMapping = {
             'sad': ['Sad'],
@@ -64,34 +64,46 @@ class ChatService {
 
     formatSongRecommendations(songs, mood) {
         if (!songs || songs.length === 0) {
-            return "I'd suggest some songs, but seems like my playlist is taking a break. Maybe try humming your own tune?";
+            return {
+                text: "I'd suggest some songs, but seems like my playlist is taking a break. Maybe try humming your own tune?",
+                songData: null
+            };
         }
 
         const moodTexts = {
-            'sad': "feeling a bit down, so here are some songs that might resonate with your soul (or make you cry more, your choice)",
-            'happy': "in a good mood! Here are some upbeat tracks to keep that energy flowing",
-            'angry': "feeling some rage, so here are some tracks to help you channel that energy",
-            'bored': "looking to chill out, so here are some relaxing vibes for you",
-            'sarcastic': "being your usual charming self, so here are some energetic tracks to match your personality",
-            'energetic': "pumped up! Here are some high-energy songs to fuel your enthusiasm",
-            'chill': "wanting to relax, so here are some chill vibes for you",
-            'focus': "need to concentrate, so here are some focus-friendly tracks",
-            'relaxed': "in a mellow mood, so here are some peaceful songs"
+            'sad': "feeling a bit down, so here's a song that might resonate with your soul (or make you cry more, your choice)",
+            'happy': "in a good mood! Here's an upbeat track to keep that energy flowing",
+            'angry': "feeling some rage, so here's a track to help you channel that energy",
+            'bored': "looking to chill out, so here's a relaxing vibe for you",
+            'sarcastic': "being your usual charming self, so here's an energetic track to match your personality",
+            'energetic': "pumped up! Here's a high-energy song to fuel your enthusiasm",
+            'chill': "wanting to relax, so here's a chill vibe for you",
+            'focus': "need to concentrate, so here's a focus-friendly track",
+            'relaxed': "in a mellow mood, so here's a peaceful song"
         };
 
         const moodText = moodTexts[mood.toLowerCase()] || "in the mood for some music";
+        const song = songs[0]; // Just get the first song since we're only returning one
         
-        let recommendation = `I see you're ${moodText}:\n\n`;
-        
-        songs.forEach((song, index) => {
-            recommendation += `${index + 1}. **${song.title}** by ${song.artist}\n`;
-            recommendation += `   ${song.youtubeUrl}\n`;
-            recommendation += `   Duration: ${song.duration} | Mood: ${song.mood}\n\n`;
-        });
+        const recommendation = `Oh, you want music recommendations? How original! Let me consult my superior taste in music... I see you're ${moodText}:
 
-        recommendation += "These are straight from our Songs page playlist - only the finest curated tracks for your sophisticated taste! 🎵";
+**${song.title}** by ${song.artist}
+Duration: ${song.duration} | Mood: ${song.mood}
+
+This is straight from our Songs page playlist - only the finest curated track for your sophisticated taste! 🎵`;
         
-        return recommendation;
+        return {
+            text: recommendation,
+            songData: {
+                id: song.id,
+                title: song.title,
+                artist: song.artist,
+                mood: song.mood,
+                duration: song.duration,
+                youtubeUrl: song.youtubeUrl,
+                thumbnail: song.thumbnail
+            }
+        };
     }
 
     async checkMLService() {
@@ -291,7 +303,7 @@ class ChatService {
             
             if (isMoodRequest) {
                 const detectedMood = this.detectMood(messageLower);
-                const recommendedSongs = this.getSongsByMood(detectedMood, 3);
+                const recommendedSongs = this.getSongsByMood(detectedMood, 1);
                 
                 const sarcasticIntros = [
                     `Oh, you want music recommendations? How original! Let me consult my superior taste in music...`,
@@ -301,9 +313,15 @@ class ChatService {
                 ];
                 
                 const intro = sarcasticIntros[Math.floor(Math.random() * sarcasticIntros.length)];
-                const songRecommendations = this.formatSongRecommendations(recommendedSongs, detectedMood);
+                const songResult = this.formatSongRecommendations(recommendedSongs, detectedMood);
                 
-                response = `${intro}\n\n${songRecommendations}`;
+                return {
+                    text: `${intro}\n\n${songResult.text}`,
+                    mood: detectedMood,
+                    confidence: 0.85,
+                    source: 'contextual-sarcastic',
+                    songData: songResult.songData
+                };
             } else {
                 const responses = [
                     `Music! Finally, someone with taste wants to talk about something worthwhile. Want some recommendations based on your mood? Just tell me how you're feeling!`,
@@ -349,9 +367,15 @@ class ChatService {
             ];
             
             const moodResponse = specificResponses[Math.floor(Math.random() * specificResponses.length)];
-            const songRecommendations = this.formatSongRecommendations(recommendedSongs, detectedMood);
+            const songResult = this.formatSongRecommendations(recommendedSongs, detectedMood);
             
-            response = `${moodResponse}\n\n${songRecommendations}`;
+            return {
+                text: `${moodResponse}\n\n${songResult.text}`,
+                mood: detectedMood,
+                confidence: 0.9,
+                source: 'contextual-sarcastic',
+                songData: songResult.songData
+            };
         }
         else if (message.includes('?')) {
             const responses = [

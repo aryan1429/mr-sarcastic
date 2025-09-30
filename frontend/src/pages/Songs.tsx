@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -9,6 +9,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { songsService, type Song } from "@/services/songsService";
 import { useToast } from "@/hooks/use-toast";
+import { useSearchParams } from "react-router-dom";
 
 const Songs = () => {
   const [selectedMood, setSelectedMood] = useState("All");
@@ -20,7 +21,10 @@ const Songs = () => {
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [pagination, setPagination] = useState<any>(null);
+  const [highlightedSongId, setHighlightedSongId] = useState<string | null>(null);
   const { toast } = useToast();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const songRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
 
   const moods = ["All", "Chill", "Energetic", "Focus", "Happy", "Sad", "Angry", "Relaxed"];
   const songsPerPage = 20;
@@ -29,6 +33,28 @@ const Songs = () => {
   useEffect(() => {
     loadSongs();
   }, [currentPage, selectedMood, searchTerm]);
+
+  // Handle songId from URL parameters
+  useEffect(() => {
+    const songId = searchParams.get('songId');
+    if (songId) {
+      setHighlightedSongId(songId);
+      // Clear the search params after handling
+      const newSearchParams = new URLSearchParams(searchParams);
+      newSearchParams.delete('songId');
+      setSearchParams(newSearchParams, { replace: true });
+      
+      // Scroll to song when songs are loaded
+      setTimeout(() => {
+        const songElement = songRefs.current[songId];
+        if (songElement) {
+          songElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          // Remove highlight after 3 seconds
+          setTimeout(() => setHighlightedSongId(null), 3000);
+        }
+      }, 500);
+    }
+  }, [searchParams, setSearchParams, songs]);
 
   const loadSongs = useCallback(async () => {
     try {
@@ -177,7 +203,13 @@ const Songs = () => {
           {/* Songs Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {songs.map((song) => (
-              <Card key={song.id} className="group hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary/40">
+              <Card 
+                key={song.id} 
+                ref={(el) => (songRefs.current[song.id] = el)}
+                className={`group hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary/40 ${
+                  highlightedSongId === song.id ? 'ring-2 ring-primary ring-offset-2 bg-primary/5' : ''
+                }`}
+              >
                 <div className="p-4">
                   <div className="aspect-video bg-muted rounded-lg mb-4 relative overflow-hidden">
                     <img 

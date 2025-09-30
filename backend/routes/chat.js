@@ -33,6 +33,7 @@ router.post('/send-no-auth', async (req, res) => {
                 mood: response.mood,
                 confidence: response.confidence,
                 source: response.source,
+                songData: response.songData || null,
                 timestamp: new Date().toISOString()
             }
         });
@@ -74,6 +75,7 @@ router.post('/test', async (req, res) => {
                 mood: response.mood,
                 confidence: response.confidence,
                 source: response.source,
+                songData: response.songData || null,
                 timestamp: new Date().toISOString()
             }
         });
@@ -129,6 +131,7 @@ router.post('/send', async (req, res) => {
                 mood: response.mood,
                 confidence: response.confidence,
                 source: response.source,
+                songData: response.songData || null,
                 timestamp: new Date().toISOString()
             }
         });
