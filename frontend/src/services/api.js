@@ -157,6 +157,23 @@ class UserService {
     return response.data;
   }
 
+  async updateProfilePicture(file) {
+    const formData = new FormData();
+    formData.append('picture', file);
+
+    const response = await api.put('/users/me/picture', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    
+    // Update local storage
+    const updatedUser = response.data.user;
+    localStorage.setItem('user', JSON.stringify(updatedUser));
+    
+    return response.data;
+  }
+
   async deleteAccount() {
     const response = await api.delete('/users/me');
     

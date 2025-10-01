@@ -10,16 +10,17 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/context/AuthContext";
 import { storageService, userService } from "@/services/api";
-import { Heart, LogOut, MessageCircle, Music, Settings, Upload } from "lucide-react";
+import { Heart, LogOut, MessageCircle, Music, Settings, Upload, Camera } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 const Profile = () => {
-  const { user: authUser, logout } = useAuth();
+  const { user: authUser, logout, updateUser } = useAuth();
   const [userProfile, setUserProfile] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdating, setIsUpdating] = useState(false);
   const [uploadingFile, setUploadingFile] = useState(false);
+  const [uploadingProfilePic, setUploadingProfilePic] = useState(false);
   const [userFiles, setUserFiles] = useState<any[]>([]);
   const [formData, setFormData] = useState({
     name: "",
@@ -63,6 +64,7 @@ const Profile = () => {
     try {
       const response = await userService.updateProfile(formData);
       setUserProfile(response.user);
+      updateUser(response.user); // Update AuthContext
       toast.success("Profile updated successfully!");
     } catch (error: any) {
       toast.error(error.message || "Failed to update profile");
@@ -84,6 +86,37 @@ const Profile = () => {
       toast.error(error.message || "Failed to upload file");
     } finally {
       setUploadingFile(false);
+    }
+  };
+
+  const handleProfilePictureUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      toast.error("Please select an image file");
+      return;
+    }
+
+    // Validate file size (5MB limit)
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error("Image size must be less than 5MB");
+      return;
+    }
+
+    setUploadingProfilePic(true);
+    try {
+      const response = await userService.updateProfilePicture(file);
+      setUserProfile(response.user);
+      updateUser(response.user); // Update AuthContext
+      toast.success("Profile picture updated successfully!");
+    } catch (error: any) {
+      toast.error(error.message || "Failed to update profile picture");
+    } finally {
+      setUploadingProfilePic(false);
+      // Reset file input
+      event.target.value = '';
     }
   };
 
@@ -167,13 +200,37 @@ const Profile = () => {
         <div className="container mx-auto px-4 py-8">
           {/* Profile Header */}
           <div className="text-center mb-8">
-            <div className="flex justify-center mb-4">
+            <div className="flex justify-center mb-4 relative">
               <Avatar className="w-24 h-24 border-4 border-primary/20">
                 <AvatarImage src={displayUser?.picture} alt={displayUser?.name || "User"} />
                 <AvatarFallback className="text-2xl">
                   {displayUser?.name?.split(' ').map((n: string) => n[0]).join('') || "U"}
                 </AvatarFallback>
               </Avatar>
+              {/* Profile Picture Upload Button */}
+              <div className="absolute -bottom-1 -right-1">
+                <input
+                  type="file"
+                  id="profile-picture-upload"
+                  className="hidden"
+                  accept="image/*"
+                  onChange={handleProfilePictureUpload}
+                />
+                <Button
+                  size="sm"
+                  variant="secondary"
+                  className="w-8 h-8 rounded-full p-0"
+                  onClick={() => document.getElementById('profile-picture-upload')?.click()}
+                  disabled={uploadingProfilePic}
+                  title="Change profile picture"
+                >
+                  {uploadingProfilePic ? (
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary"></div>
+                  ) : (
+                    <Upload className="w-4 h-4" />
+                  )}
+                </Button>
+              </div>
             </div>
             <div className="space-y-2">
               <h1 className="text-3xl font-bold text-primary mb-2">{displayUser?.name || "User"}</h1>
@@ -324,7 +381,53 @@ const Profile = () => {
 
             <TabsContent value="settings" className="space-y-4">
               <Card className="p-6">
-                <h3 className="text-lg font-semibold mb-4">Profile Settings</h3>
+                <h3 className="text-lg font-semibold mb-6">Profile Settings</h3>
+                
+                {/* Profile Picture Section */}
+                <div className="mb-6 pb-6 border-b">
+                  <Label className="text-sm font-medium">Profile Picture</Label>
+                  <div className="flex items-center gap-4 mt-2">
+                    <Avatar className="w-16 h-16">
+                      <AvatarImage src={displayUser?.picture} alt={displayUser?.name || "User"} />
+                      <AvatarFallback className="text-lg">
+                        {displayUser?.name?.split(' ').map((n: string) => n[0]).join('') || "U"}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="flex flex-col gap-2">
+                      <input
+                        type="file"
+                        id="settings-profile-picture-upload"
+                        className="hidden"
+                        accept="image/*"
+                        onChange={handleProfilePictureUpload}
+                      />
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => document.getElementById('settings-profile-picture-upload')?.click()}
+                        disabled={uploadingProfilePic}
+                        className="flex items-center gap-2"
+                      >
+                        {uploadingProfilePic ? (
+                          <>
+                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-primary"></div>
+                            Uploading...
+                          </>
+                        ) : (
+                          <>
+                            <Camera className="w-4 h-4" />
+                            Change Picture
+                          </>
+                        )}
+                      </Button>
+                      <p className="text-xs text-muted-foreground">
+                        Upload an image (max 5MB)
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Profile Information */}
                 <div className="space-y-4">
                   <div>
                     <Label htmlFor="name">Display Name</Label>
@@ -333,6 +436,7 @@ const Profile = () => {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="Enter your display name"
+                      className="mt-1"
                     />
                   </div>
                   
@@ -346,6 +450,7 @@ const Profile = () => {
                         preferences: { ...formData.preferences, favoriteGenre: e.target.value }
                       })}
                       placeholder="e.g., Lo-fi, Pop, Classical"
+                      className="mt-1"
                     />
                   </div>
                   
@@ -359,6 +464,7 @@ const Profile = () => {
                         preferences: { ...formData.preferences, preferredMood: e.target.value }
                       })}
                       placeholder="e.g., Chill, Energetic, Focus"
+                      className="mt-1"
                     />
                   </div>
                   

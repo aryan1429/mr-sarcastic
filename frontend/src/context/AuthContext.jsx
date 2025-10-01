@@ -205,6 +205,11 @@ export const AuthProvider = ({ children }) => {
     return localStorage.getItem('authToken');
   };
 
+  const updateUser = (updatedUserData) => {
+    setUser(prev => ({ ...prev, ...updatedUserData }));
+    localStorage.setItem('userData', JSON.stringify({ ...user, ...updatedUserData }));
+  };
+
   const value = {
     user,
     isAuthenticated,
@@ -212,6 +217,7 @@ export const AuthProvider = ({ children }) => {
     login,
     logout,
     signup,
+    updateUser,
     token: getToken(),
     getToken
   };
