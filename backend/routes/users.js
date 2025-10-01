@@ -59,11 +59,14 @@ const upload = multer({
 // Get current user profile
 router.get('/me', authenticateToken, async (req, res) => {
   try {
+    console.log('GET /me - User from token:', req.user);
     const user = await findUserByToken(req.user);
     if (!user) {
+      console.log('GET /me - User not found in database');
       return res.status(404).json({ error: 'User not found' });
     }
 
+    console.log('GET /me - User found:', user.email);
     res.json({
       success: true,
       user: user.getPublicProfile()

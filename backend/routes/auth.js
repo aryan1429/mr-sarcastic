@@ -370,6 +370,57 @@ router.post('/logout', (req, res) => {
   res.json({ success: true, message: 'Logged out successfully' });
 });
 
+// Test login endpoint for development
+router.post('/test-login', async (req, res) => {
+  if (process.env.NODE_ENV !== 'development') {
+    return res.status(403).json({ error: 'Test endpoint only available in development' });
+  }
+  
+  try {
+    // Create or find test user
+    let user = await User.findByEmail('test@example.com');
+    if (!user) {
+      user = new User({
+        email: 'test@example.com',
+        name: 'Test User',
+        authProvider: 'email',
+        emailVerified: true,
+        lastLogin: new Date()
+      });
+      await user.save();
+      console.log('Test user created:', user.email);
+    } else {
+      user.lastLogin = new Date();
+      await user.save();
+      console.log('Test user found:', user.email);
+    }
+    
+    // Generate token
+    const token = jwt.sign(
+      {
+        userId: user._id,
+        email: user.email,
+        name: user.name,
+        authProvider: 'email'
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: '7d' }
+    );
+    
+    console.log('Test token generated for user:', user.email);
+    
+    res.json({
+      success: true,
+      token,
+      user: user.getPublicProfile(),
+      message: 'Test login successful'
+    });
+  } catch (error) {
+    console.error('Test login error:', error);
+    res.status(500).json({ error: 'Test login failed' });
+  }
+});
+
 // Refresh token endpoint
 router.post('/refresh', async (req, res) => {
   try {

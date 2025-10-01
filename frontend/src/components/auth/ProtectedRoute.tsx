@@ -12,8 +12,12 @@ export const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   const { isAuthenticated, loading } = useAuth();
   const navigate = useNavigate();
 
+  console.log('ProtectedRoute - Auth State:', { isAuthenticated, loading });
+
   useEffect(() => {
+    console.log('ProtectedRoute useEffect - Auth check:', { loading, isAuthenticated });
     if (!loading && !isAuthenticated) {
+      console.log('ProtectedRoute - Redirecting to login');
       navigate('/login');
     }
   }, [isAuthenticated, loading, navigate]);

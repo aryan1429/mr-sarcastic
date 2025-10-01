@@ -3,6 +3,16 @@
 ## Overview
 Successfully implemented user profile editing functionality that allows users to update their name and profile picture, with data stored in MongoDB.
 
+## ⚠️ Important: Authentication Required
+
+**To test the profile update functionality, users must be authenticated first:**
+
+1. Navigate to `/auth` to log in (or any protected route will redirect there)
+2. Use Google OAuth or Firebase authentication
+3. Once authenticated, access `/profile` to test the new features
+
+The 401 errors occur when trying to access protected endpoints without authentication. This is expected behavior.
+
 ## Backend Changes
 
 ### 1. Updated User Routes (`backend/routes/users.js`)
@@ -85,6 +95,26 @@ Successfully implemented user profile editing functionality that allows users to
 The existing User model already supported the required fields:
 - `name`: String field for display name
 - `picture`: String field for profile picture URL
+
+## Troubleshooting
+
+### 401 Unauthorized Errors
+If you see 401 errors when accessing `/api/users/me` or other protected endpoints:
+
+1. **Ensure user is authenticated**: Navigate to `/auth` and log in first
+2. **Check token in localStorage**: The frontend stores JWT tokens in `localStorage.authToken`
+3. **Verify API URL**: Frontend is configured to use `http://localhost:3001/api` (updated from 8001)
+
+### Common Issues
+- **Port conflicts**: Backend runs on 3001, frontend on 5173
+- **Authentication flow**: All main routes are protected and require login
+- **Environment variables**: Ensure `.env` files have correct API URLs
+
+### Debug Steps
+1. Open browser dev tools → Console to see authentication logs
+2. Check Network tab for API requests and response codes
+3. Verify localStorage contains `authToken` after login
+4. Backend logs show authentication middleware activity
 
 ## API Endpoints
 

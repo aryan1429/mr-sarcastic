@@ -15,7 +15,16 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 const Profile = () => {
-  const { user: authUser, logout, updateUser } = useAuth();
+  const { user: authUser, logout, updateUser, isAuthenticated, loading: authLoading } = useAuth();
+  
+  // Debug authentication state
+  console.log('Profile - Auth State:', { 
+    authUser: !!authUser, 
+    isAuthenticated, 
+    authLoading,
+    hasToken: !!localStorage.getItem('authToken')
+  });
+  
   const [userProfile, setUserProfile] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdating, setIsUpdating] = useState(false);
@@ -31,9 +40,15 @@ const Profile = () => {
   });
 
   useEffect(() => {
-    fetchUserProfile();
-    fetchUserFiles();
-  }, []);
+    console.log('Profile useEffect - Auth check:', { isAuthenticated, authLoading });
+    if (isAuthenticated && !authLoading) {
+      console.log('Profile - Making API calls');
+      fetchUserProfile();
+      fetchUserFiles();
+    } else {
+      console.log('Profile - Skipping API calls, not authenticated');
+    }
+  }, [isAuthenticated, authLoading]);
 
   const fetchUserProfile = async () => {
     try {
