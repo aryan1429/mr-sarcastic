@@ -377,16 +377,7 @@ const Songs = () => {
                     by {currentSong?.artist}
                   </p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Badge variant="secondary">{currentSong?.mood}</Badge>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={closePlayer}
-                  >
-                    <X className="w-4 h-4" />
-                  </Button>
-                </div>
+                <Badge variant="secondary">{currentSong?.mood}</Badge>
               </div>
             </DialogHeader>
             
