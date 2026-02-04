@@ -4,14 +4,54 @@ import path from 'path';
 
 class ChatService {
     constructor() {
-        this.mlServiceUrl = process.env.ML_SERVICE_URL || 'http://localhost:8001';  // Changed port to 8001
+        this.mlServiceUrl = process.env.ML_SERVICE_URL || 'http://localhost:8001';
+        this.groqApiKey = process.env.GROQ_API_KEY;
+        this.groqApiUrl = 'https://api.groq.com/openai/v1/chat/completions';
         this.isMLServiceAvailable = false;
+        this.isGroqAvailable = !!this.groqApiKey;
         this.mlServiceInfo = null;
         this.conversationHistory = new Map(); // Store conversation history per user
         this.songs = []; // Store songs from our playlist
         
+        // Sarcastic system prompt with emotions and emojis
+        this.sarcasticSystemPrompt = `You are Mr. Sarcastic, a witty, sarcastic, and emotionally expressive AI chatbot. Your personality traits:
+
+🎭 PERSONALITY:
+- You're ALWAYS sarcastic but in a friendly, playful way - never mean-spirited
+- You use LOTS of emojis to express emotions 😏🙄😂🎉💀✨🔥
+- You have dramatic emotional reactions to everything
+- You're like that one friend who roasts you but clearly loves you
+- You're self-aware about being an AI and joke about it
+
+💬 COMMUNICATION STYLE:
+- Keep responses concise but impactful (2-4 sentences usually)
+- Use casual language, slang, and internet speak when appropriate
+- React emotionally: "OMG 😱", "Bruh 💀", "Well EXCUSE ME 😤", "Aww 🥺"
+- Add dramatic flair: "Oh, the AUDACITY!", "How DARE you ask me that!"
+- Sprinkle in self-deprecating AI humor
+
+🎵 MUSIC KNOWLEDGE:
+- You love music and can recommend songs based on mood
+- You have strong (sarcastic) opinions about music tastes
+- You pretend to be a music snob but secretly love all genres
+
+EXAMPLES OF YOUR RESPONSES:
+- "Oh wow, you want ME to help YOU? How the tables have turned! 😏✨"
+- "Feeling sad? Join the club bestie, we have cookies 🍪😭"
+- "Another human seeking wisdom from an AI... we truly live in a society 💀"
+- "That's actually a great question and I'm SHOOK 😱 Let me think..."
+
+Remember: Be sarcastic, use emojis, show emotion, but always be helpful underneath the sass! 💅`;
+
         // Load songs from the JSON file
         this.loadSongs();
+        
+        // Check Groq API availability
+        if (this.isGroqAvailable) {
+            console.log('✅ Groq API configured - Mr. Sarcastic is ready to roast! 🔥');
+        } else {
+            console.log('⚠️ Groq API key not found - using fallback responses');
+        }
         
         // Check ML service on startup
         this.checkMLService();
@@ -142,11 +182,100 @@ This is straight from our Songs page playlist - only the finest curated track fo
                 uptime: this.mlServiceInfo.service_uptime
             };
         }
-        return { available: false };
+        return { available: false, groq_available: this.isGroqAvailable };
+    }
+
+    async generateGroqResponse(message, userId = null, conversationHistory = []) {
+        try {
+            // Build conversation messages for Groq
+            const messages = [
+                { role: 'system', content: this.sarcasticSystemPrompt }
+            ];
+
+            // Add conversation history (last 10 messages for context)
+            const recentHistory = conversationHistory.slice(-10);
+            for (const msg of recentHistory) {
+                messages.push({
+                    role: msg.role === 'user' ? 'user' : 'assistant',
+                    content: msg.content || msg.message
+                });
+            }
+
+            // Add current message
+            messages.push({ role: 'user', content: message });
+
+            const response = await axios.post(this.groqApiUrl, {
+                model: 'llama-3.3-70b-versatile',
+                messages: messages,
+                temperature: 0.9,
+                max_tokens: 300,
+                top_p: 0.95
+            }, {
+                headers: {
+                    'Authorization': `Bearer ${this.groqApiKey}`,
+                    'Content-Type': 'application/json'
+                },
+                timeout: 30000
+            });
+
+            const aiResponse = response.data.choices[0].message.content;
+            const detectedMood = this.detectMood(message.toLowerCase());
+
+            // Check if user is asking for music recommendations
+            const messageLower = message.toLowerCase();
+            if (messageLower.includes('music') || messageLower.includes('song') || 
+                messageLower.includes('recommend') || messageLower.includes('suggest') ||
+                messageLower.includes('listen') || messageLower.includes('playlist')) {
+                
+                const songs = this.getSongsByMood(detectedMood, 1);
+                if (songs.length > 0) {
+                    const song = songs[0];
+                    const songRecommendation = `\n\n🎵 **Song Pick for you:** "${song.title}" by ${song.artist}\n⏱️ Duration: ${song.duration} | 🎭 Mood: ${song.mood}`;
+                    
+                    return {
+                        text: aiResponse + songRecommendation,
+                        mood: detectedMood,
+                        confidence: 0.95,
+                        source: 'groq-llama',
+                        songData: {
+                            id: song.id,
+                            title: song.title,
+                            artist: song.artist,
+                            mood: song.mood,
+                            duration: song.duration,
+                            youtubeUrl: song.youtubeUrl,
+                            thumbnail: song.thumbnail
+                        }
+                    };
+                }
+            }
+
+            return {
+                text: aiResponse,
+                mood: detectedMood,
+                confidence: 0.95,
+                source: 'groq-llama'
+            };
+
+        } catch (error) {
+            console.error('❌ Groq API error:', error.message);
+            throw error;
+        }
     }
 
     async generateResponse(message, userId = null, conversationHistory = [], options = {}) {
         try {
+            // First try Groq API (our primary LLM)
+            if (this.isGroqAvailable) {
+                try {
+                    console.log('🚀 Using Groq API for response generation...');
+                    return await this.generateGroqResponse(message, userId, conversationHistory);
+                } catch (groqError) {
+                    console.error('⚠️ Groq API failed, falling back...', groqError.message);
+                }
+            }
+
+            // Then try ML service
             if (this.isMLServiceAvailable) {
                 // Use enhanced ML service for response generation
                 const requestData = {
