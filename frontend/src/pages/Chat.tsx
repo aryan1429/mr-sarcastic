@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -9,6 +9,7 @@ import Footer from "@/components/Footer";
 import { useAuth } from "@/context/AuthContext";
 import { api } from "@/services/api";
 import { useNavigate } from "react-router-dom";
+import { TypingAnimation } from "@/components/TypingAnimation";
 
 interface Message {
   id: string;
@@ -17,6 +18,7 @@ interface Message {
   timestamp: Date;
   mood?: string;
   confidence?: number;
+  isTyping?: boolean;
   songData?: {
     id: string;
     title: string;
@@ -31,6 +33,7 @@ interface Message {
 const Chat = () => {
   const { token } = useAuth();
   const navigate = useNavigate();
+  const messagesEndRef = useRef<HTMLDivElement>(null);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -38,13 +41,19 @@ const Chat = () => {
       isUser: false,
       timestamp: new Date(),
       mood: "neutral",
-      confidence: 1.0
+      confidence: 1.0,
+      isTyping: false
     },
   ]);
   const [inputText, setInputText] = useState("");
   const [detectedMood, setDetectedMood] = useState("Neutral");
   const [isLoading, setIsLoading] = useState(false);
   const [conversationHistory, setConversationHistory] = useState<Array<{message: string, response: string}>>([]);
+
+  // Auto-scroll to bottom when new messages arrive
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
   const handleGoToSong = (songId: string) => {
     // Navigate to songs page with the specific song ID as a query parameter
@@ -83,7 +92,8 @@ const Chat = () => {
           timestamp: new Date(),
           mood: data.data.mood,
           confidence: data.data.confidence,
-          songData: data.data.songData
+          songData: data.data.songData,
+          isTyping: true // Enable typing animation for new messages
         };
 
         setMessages((prev) => [...prev, botResponse]);
@@ -156,7 +166,26 @@ const Chat = () => {
                           : "bg-muted text-muted-foreground"
                       }`}
                     >
-                      <p className="text-sm">{message.text}</p>
+                      <p className="text-sm">
+                        {!message.isUser && message.isTyping ? (
+                          <TypingAnimation 
+                            text={message.text} 
+                            speed={20}
+                            onComplete={() => {
+                              // Mark typing as complete
+                              setMessages(prev => 
+                                prev.map(msg => 
+                                  msg.id === message.id 
+                                    ? { ...msg, isTyping: false } 
+                                    : msg
+                                )
+                              );
+                            }}
+                          />
+                        ) : (
+                          message.text
+                        )}
+                      </p>
                       
                       {/* Song Recommendation Button */}
                       {!message.isUser && message.songData && (
@@ -217,6 +246,7 @@ const Chat = () => {
                     )}
                   </div>
                 ))}
+                <div ref={messagesEndRef} />
               </div>
               
               {/* Input Area */}
