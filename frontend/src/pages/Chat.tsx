@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { TypingAnimation } from "@/components/TypingAnimation";
 import { ClearChatDialog } from "@/components/ClearChatDialog";
 import { ExportDropdown } from "@/components/ExportDropdown";
+import { MoodSelectorModal } from "@/components/MoodSelectorModal";
 
 interface Message {
   id: string;
@@ -71,6 +72,12 @@ const Chat = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [conversationHistory, setConversationHistory] = useState<Array<{ message: string, response: string }>>([]);
   const [clearChatDialogOpen, setClearChatDialogOpen] = useState(false);
+  const [moodSelectorOpen, setMoodSelectorOpen] = useState(false);
+
+  // Handle mood change from modal
+  const handleMoodChange = (mood: string) => {
+    setDetectedMood(mood.charAt(0).toUpperCase() + mood.slice(1));
+  };
 
   // Handle clearing chat history
   const handleClearChat = () => {
@@ -352,7 +359,12 @@ const Chat = () => {
                   Clear Chat History
                 </Button>
                 <ExportDropdown messages={messages} />
-                <Button variant="outline" size="sm" className="w-full justify-start">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full justify-start"
+                  onClick={() => setMoodSelectorOpen(true)}
+                >
                   Change Mood
                 </Button>
               </div>
@@ -365,6 +377,12 @@ const Chat = () => {
         open={clearChatDialogOpen}
         onOpenChange={setClearChatDialogOpen}
         onConfirm={handleClearChat}
+      />
+      <MoodSelectorModal
+        open={moodSelectorOpen}
+        onOpenChange={setMoodSelectorOpen}
+        currentMood={detectedMood}
+        onMoodChange={handleMoodChange}
       />
     </div>
   );
