@@ -358,18 +358,24 @@ const Chat = () => {
             </Card>
 
             <Card className="p-4 border-primary/20">
-              <h3 className="font-semibold text-primary mb-3">Quick Actions</h3>
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="font-semibold text-primary">Quick Actions</h3>
+                <Badge variant="secondary" className="text-xs">
+                  {messages.length} {messages.length === 1 ? 'message' : 'messages'}
+                </Badge>
+              </div>
               <div className="space-y-2">
                 <Button
                   variant="outline"
                   size="sm"
                   className="w-full justify-start gap-2"
                   onClick={() => setClearChatDialogOpen(true)}
+                  disabled={messages.length <= 1}
                 >
                   <Trash2 className="w-4 h-4" />
                   Clear Chat History
                 </Button>
-                <ExportDropdown messages={messages} />
+                <ExportDropdown messages={messages} disabled={messages.length <= 1} />
                 <Button
                   variant="outline"
                   size="sm"
