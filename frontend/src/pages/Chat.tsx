@@ -30,25 +30,53 @@ interface Message {
   } | null;
 }
 
+const CHAT_STORAGE_KEY = 'mr-sarcastic-chat-history';
+
+const getDefaultWelcomeMessage = (): Message => ({
+  id: "1",
+  text: "Hey there! I'm Mr Sarcastic, your friendly neighborhood AI with a sense of humor and a love for good music. What's on your mind today?",
+  isUser: false,
+  timestamp: new Date(),
+  mood: "neutral",
+  confidence: 1.0,
+  isTyping: false
+});
+
+const loadMessagesFromStorage = (): Message[] => {
+  try {
+    const stored = localStorage.getItem(CHAT_STORAGE_KEY);
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      // Convert timestamp strings back to Date objects
+      return parsed.map((msg: Message) => ({
+        ...msg,
+        timestamp: new Date(msg.timestamp)
+      }));
+    }
+  } catch (error) {
+    console.error('Failed to load chat history:', error);
+  }
+  return [getDefaultWelcomeMessage()];
+};
+
 const Chat = () => {
   const { token } = useAuth();
   const navigate = useNavigate();
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: "1",
-      text: "Hey there! I'm Mr Sarcastic, your friendly neighborhood AI with a sense of humor and a love for good music. What's on your mind today?",
-      isUser: false,
-      timestamp: new Date(),
-      mood: "neutral",
-      confidence: 1.0,
-      isTyping: false
-    },
-  ]);
+  const [messages, setMessages] = useState<Message[]>(loadMessagesFromStorage);
   const [inputText, setInputText] = useState("");
   const [detectedMood, setDetectedMood] = useState("Neutral");
   const [isLoading, setIsLoading] = useState(false);
-  const [conversationHistory, setConversationHistory] = useState<Array<{message: string, response: string}>>([]);
+  const [conversationHistory, setConversationHistory] = useState<Array<{ message: string, response: string }>>([]);
+
+  // Save messages to localStorage whenever they change
+  useEffect(() => {
+    try {
+      localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(messages));
+    } catch (error) {
+      console.error('Failed to save chat history:', error);
+    }
+  }, [messages]);
 
   // Auto-scroll to bottom when new messages arrive
   useEffect(() => {
@@ -83,7 +111,7 @@ const Chat = () => {
       });
 
       const data = response.data;
-      
+
       if (data.success) {
         const botResponse: Message = {
           id: (Date.now() + 1).toString(),
@@ -98,20 +126,20 @@ const Chat = () => {
 
         setMessages((prev) => [...prev, botResponse]);
         setDetectedMood(data.data.mood.charAt(0).toUpperCase() + data.data.mood.slice(1));
-        
+
         // Update conversation history
         setConversationHistory(prev => [...prev, {
           message: currentInput,
           response: data.data.message
         }].slice(-10)); // Keep last 10 exchanges
-        
+
       } else {
         throw new Error(data.error || 'Unknown error');
       }
 
     } catch (error) {
       console.error('Error sending message:', error);
-      
+
       // Fallback response
       const errorResponse: Message = {
         id: (Date.now() + 1).toString(),
@@ -144,15 +172,14 @@ const Chat = () => {
                   </Badge>
                 </div>
               </div>
-              
+
               {/* Messages */}
               <div className="flex-1 p-4 overflow-y-auto space-y-4">
                 {messages.map((message) => (
                   <div
                     key={message.id}
-                    className={`flex gap-3 animate-fade-in ${
-                      message.isUser ? "justify-end" : "justify-start"
-                    }`}
+                    className={`flex gap-3 animate-fade-in ${message.isUser ? "justify-end" : "justify-start"
+                      }`}
                   >
                     {!message.isUser && (
                       <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
@@ -160,23 +187,22 @@ const Chat = () => {
                       </div>
                     )}
                     <div
-                      className={`max-w-[70%] p-3 rounded-lg ${
-                        message.isUser
+                      className={`max-w-[70%] p-3 rounded-lg ${message.isUser
                           ? "bg-primary text-primary-foreground"
                           : "bg-muted text-muted-foreground"
-                      }`}
+                        }`}
                     >
                       <p className="text-sm">
                         {!message.isUser && message.isTyping ? (
-                          <TypingAnimation 
-                            text={message.text} 
+                          <TypingAnimation
+                            text={message.text}
                             speed={20}
                             onComplete={() => {
                               // Mark typing as complete
-                              setMessages(prev => 
-                                prev.map(msg => 
-                                  msg.id === message.id 
-                                    ? { ...msg, isTyping: false } 
+                              setMessages(prev =>
+                                prev.map(msg =>
+                                  msg.id === message.id
+                                    ? { ...msg, isTyping: false }
                                     : msg
                                 )
                               );
@@ -186,7 +212,7 @@ const Chat = () => {
                           message.text
                         )}
                       </p>
-                      
+
                       {/* Song Recommendation Button */}
                       {!message.isUser && message.songData && (
                         <div className="mt-3 p-3 bg-primary/10 rounded-lg border border-primary/20">
@@ -220,7 +246,7 @@ const Chat = () => {
                           </div>
                         </div>
                       )}
-                      
+
                       <div className="flex items-center justify-between mt-1">
                         <span className="text-xs opacity-70">
                           {message.timestamp.toLocaleTimeString()}
@@ -248,7 +274,7 @@ const Chat = () => {
                 ))}
                 <div ref={messagesEndRef} />
               </div>
-              
+
               {/* Input Area */}
               <div className="p-4 border-t border-primary/20">
                 <div className="flex gap-2">
@@ -260,9 +286,9 @@ const Chat = () => {
                     className="flex-1"
                     disabled={isLoading}
                   />
-                  <Button 
-                    onClick={handleSendMessage} 
-                    size="icon" 
+                  <Button
+                    onClick={handleSendMessage}
+                    size="icon"
                     className="shrink-0"
                     disabled={isLoading || !inputText.trim()}
                   >
