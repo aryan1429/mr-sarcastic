@@ -10,6 +10,7 @@ import { useAuth } from "@/context/AuthContext";
 import { api } from "@/services/api";
 import { useNavigate } from "react-router-dom";
 import { TypingAnimation } from "@/components/TypingAnimation";
+import { ClearChatDialog } from "@/components/ClearChatDialog";
 
 interface Message {
   id: string;
@@ -68,6 +69,16 @@ const Chat = () => {
   const [detectedMood, setDetectedMood] = useState("Neutral");
   const [isLoading, setIsLoading] = useState(false);
   const [conversationHistory, setConversationHistory] = useState<Array<{ message: string, response: string }>>([]);
+  const [clearChatDialogOpen, setClearChatDialogOpen] = useState(false);
+
+  // Handle clearing chat history
+  const handleClearChat = () => {
+    setMessages([getDefaultWelcomeMessage()]);
+    setConversationHistory([]);
+    setDetectedMood("Neutral");
+    localStorage.removeItem(CHAT_STORAGE_KEY);
+    setClearChatDialogOpen(false);
+  };
 
   // Save messages to localStorage whenever they change
   useEffect(() => {
@@ -188,8 +199,8 @@ const Chat = () => {
                     )}
                     <div
                       className={`max-w-[70%] p-3 rounded-lg ${message.isUser
-                          ? "bg-primary text-primary-foreground"
-                          : "bg-muted text-muted-foreground"
+                        ? "bg-primary text-primary-foreground"
+                        : "bg-muted text-muted-foreground"
                         }`}
                     >
                       <p className="text-sm">
@@ -331,7 +342,12 @@ const Chat = () => {
             <Card className="p-4 border-primary/20">
               <h3 className="font-semibold text-primary mb-3">Quick Actions</h3>
               <div className="space-y-2">
-                <Button variant="outline" size="sm" className="w-full justify-start">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full justify-start"
+                  onClick={() => setClearChatDialogOpen(true)}
+                >
                   Clear Chat History
                 </Button>
                 <Button variant="outline" size="sm" className="w-full justify-start">
@@ -346,6 +362,11 @@ const Chat = () => {
         </div>
       </main>
       <Footer />
+      <ClearChatDialog
+        open={clearChatDialogOpen}
+        onOpenChange={setClearChatDialogOpen}
+        onConfirm={handleClearChat}
+      />
     </div>
   );
 };
