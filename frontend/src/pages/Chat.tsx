@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Send, Bot, User, Loader2, Music, ExternalLink } from "lucide-react";
+import { Send, Bot, User, Loader2, Music, ExternalLink, Trash2, Smile } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useAuth } from "@/context/AuthContext";
@@ -13,6 +13,7 @@ import { TypingAnimation } from "@/components/TypingAnimation";
 import { ClearChatDialog } from "@/components/ClearChatDialog";
 import { ExportDropdown } from "@/components/ExportDropdown";
 import { MoodSelectorModal } from "@/components/MoodSelectorModal";
+import { useToast } from "@/hooks/use-toast";
 
 interface Message {
   id: string;
@@ -73,10 +74,15 @@ const Chat = () => {
   const [conversationHistory, setConversationHistory] = useState<Array<{ message: string, response: string }>>([]);
   const [clearChatDialogOpen, setClearChatDialogOpen] = useState(false);
   const [moodSelectorOpen, setMoodSelectorOpen] = useState(false);
+  const { toast } = useToast();
 
   // Handle mood change from modal
   const handleMoodChange = (mood: string) => {
     setDetectedMood(mood.charAt(0).toUpperCase() + mood.slice(1));
+    toast({
+      title: "Mood Changed!",
+      description: `Your mood is now set to ${mood.charAt(0).toUpperCase() + mood.slice(1)}`,
+    });
   };
 
   // Handle clearing chat history
@@ -86,6 +92,10 @@ const Chat = () => {
     setDetectedMood("Neutral");
     localStorage.removeItem(CHAT_STORAGE_KEY);
     setClearChatDialogOpen(false);
+    toast({
+      title: "Chat Cleared",
+      description: "Your conversation history has been cleared.",
+    });
   };
 
   // Save messages to localStorage whenever they change
@@ -353,18 +363,20 @@ const Chat = () => {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="w-full justify-start"
+                  className="w-full justify-start gap-2"
                   onClick={() => setClearChatDialogOpen(true)}
                 >
+                  <Trash2 className="w-4 h-4" />
                   Clear Chat History
                 </Button>
                 <ExportDropdown messages={messages} />
                 <Button
                   variant="outline"
                   size="sm"
-                  className="w-full justify-start"
+                  className="w-full justify-start gap-2"
                   onClick={() => setMoodSelectorOpen(true)}
                 >
+                  <Smile className="w-4 h-4" />
                   Change Mood
                 </Button>
               </div>
