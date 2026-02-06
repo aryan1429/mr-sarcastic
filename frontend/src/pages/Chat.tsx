@@ -11,6 +11,7 @@ import { api } from "@/services/api";
 import { useNavigate } from "react-router-dom";
 import { TypingAnimation } from "@/components/TypingAnimation";
 import { ClearChatDialog } from "@/components/ClearChatDialog";
+import { exportToText, downloadFile, getExportFilename } from "@/utils/chatExport";
 
 interface Message {
   id: string;
@@ -78,6 +79,12 @@ const Chat = () => {
     setDetectedMood("Neutral");
     localStorage.removeItem(CHAT_STORAGE_KEY);
     setClearChatDialogOpen(false);
+  };
+
+  // Handle exporting chat as text
+  const handleExportText = () => {
+    const textContent = exportToText(messages);
+    downloadFile(textContent, getExportFilename('txt'), 'text/plain');
   };
 
   // Save messages to localStorage whenever they change
@@ -350,7 +357,12 @@ const Chat = () => {
                 >
                   Clear Chat History
                 </Button>
-                <Button variant="outline" size="sm" className="w-full justify-start">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full justify-start"
+                  onClick={handleExportText}
+                >
                   Export Conversation
                 </Button>
                 <Button variant="outline" size="sm" className="w-full justify-start">
