@@ -2,6 +2,7 @@ import express from 'express';
 import jwt from 'jsonwebtoken';
 import chatService from '../services/chatService.js';
 import { authenticateToken } from '../middleware/auth.js';
+import User from '../models/User.js';
 
 const router = express.Router();
 
@@ -19,8 +20,8 @@ router.post('/send-no-auth', async (req, res) => {
 
         // Generate AI response
         const response = await chatService.generateResponse(
-            message, 
-            userId, 
+            message,
+            userId,
             conversationHistory
         );
 
@@ -61,8 +62,8 @@ router.post('/test', async (req, res) => {
 
         // Generate AI response
         const response = await chatService.generateResponse(
-            message, 
-            userId, 
+            message,
+            userId,
             conversationHistory
         );
 
@@ -93,16 +94,16 @@ router.post('/test', async (req, res) => {
 router.post('/send', async (req, res) => {
     try {
         const { message, conversationHistory = [] } = req.body;
-        
+
         // Try to get user ID from token, but don't require it
         let userId = 'anonymous-user';
         const authHeader = req.headers['authorization'];
         const token = authHeader && authHeader.split(' ')[1];
-        
+
         if (token) {
             try {
                 const decoded = jwt.verify(token, process.env.JWT_SECRET);
-                userId = decoded.id || 'authenticated-user';
+                userId = decoded.userId || decoded.googleId || decoded.firebaseUID || decoded.id || 'authenticated-user';
             } catch (err) {
                 // Token invalid, but continue with anonymous user
                 console.log('Invalid token, using anonymous user');
@@ -117,12 +118,32 @@ router.post('/send', async (req, res) => {
 
         // Generate AI response
         const response = await chatService.generateResponse(
-            message, 
-            userId, 
+            message,
+            userId,
             conversationHistory
         );
 
         console.log('🤖 Generated response:', response);
+
+        // Increment chat count for authenticated users
+        if (userId !== 'anonymous-user' && userId !== 'authenticated-user') {
+            try {
+                const user = await User.findById(userId) ||
+                    await User.findOne({ googleId: userId }) ||
+                    await User.findOne({ firebaseUID: userId });
+                if (user) {
+                    if (!user.stats) {
+                        user.stats = { totalChats: 0, favoriteSongIds: [] };
+                    }
+                    user.stats.totalChats = (user.stats.totalChats || 0) + 1;
+                    await user.save();
+                    console.log('📊 Incremented chat count for user:', userId, 'Total:', user.stats.totalChats);
+                }
+            } catch (statsError) {
+                console.error('Failed to increment chat count:', statsError);
+                // Don't fail the request if stats update fails
+            }
+        }
 
         res.json({
             success: true,
@@ -151,8 +172,8 @@ router.post('/train', authenticateToken, async (req, res) => {
         const { customData, youtubeUrls, maxSteps = 500 } = req.body;
 
         if (!customData && !youtubeUrls) {
-            return res.status(400).json({ 
-                error: 'Either customData or youtubeUrls must be provided for training' 
+            return res.status(400).json({
+                error: 'Either customData or youtubeUrls must be provided for training'
             });
         }
 
@@ -182,7 +203,7 @@ router.post('/train', authenticateToken, async (req, res) => {
 router.get('/training-status', authenticateToken, async (req, res) => {
     try {
         const status = await chatService.getTrainingStatus();
-        
+
         res.json({
             success: true,
             data: status
