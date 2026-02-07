@@ -16,15 +16,15 @@ import { toast } from "sonner";
 
 const Profile = () => {
   const { user: authUser, logout, updateUser, isAuthenticated, loading: authLoading } = useAuth();
-  
+
   // Debug authentication state
-  console.log('Profile - Auth State:', { 
-    authUser: !!authUser, 
-    isAuthenticated, 
+  console.log('Profile - Auth State:', {
+    authUser: !!authUser,
+    isAuthenticated,
     authLoading,
     hasToken: !!localStorage.getItem('authToken')
   });
-  
+
   const [userProfile, setUserProfile] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isUpdating, setIsUpdating] = useState(false);
@@ -38,6 +38,10 @@ const Profile = () => {
       preferredMood: ""
     }
   });
+  const [userStats, setUserStats] = useState({
+    totalChats: 0,
+    favoriteSongsCount: 0
+  });
 
   useEffect(() => {
     console.log('Profile useEffect - Auth check:', { isAuthenticated, authLoading });
@@ -45,6 +49,7 @@ const Profile = () => {
       console.log('Profile - Making API calls');
       fetchUserProfile();
       fetchUserFiles();
+      fetchUserStats();
     } else {
       console.log('Profile - Skipping API calls, not authenticated');
     }
@@ -71,6 +76,20 @@ const Profile = () => {
       setUserFiles(response.files || []);
     } catch (error) {
       console.error("Failed to load files:", error);
+    }
+  };
+
+  const fetchUserStats = async () => {
+    try {
+      const response = await userService.getUserStats();
+      if (response.success && response.stats) {
+        setUserStats({
+          totalChats: response.stats.totalChats || 0,
+          favoriteSongsCount: response.stats.favoriteSongsCount || 0
+        });
+      }
+    } catch (error) {
+      console.error("Failed to load stats:", error);
     }
   };
 
@@ -168,7 +187,7 @@ const Profile = () => {
       mood: "Focus"
     },
     {
-      id: "2", 
+      id: "2",
       title: "Feeling stressed about work",
       date: "2024-01-14",
       messages: 8,
@@ -211,7 +230,7 @@ const Profile = () => {
     <ProtectedRoute>
       <div className="min-h-screen bg-gradient-to-br from-background via-card to-background">
         <Navigation />
-        
+
         <div className="container mx-auto px-4 py-8">
           {/* Profile Header */}
           <div className="text-center mb-8">
@@ -250,14 +269,14 @@ const Profile = () => {
             <div className="space-y-2">
               <h1 className="text-3xl font-bold text-primary mb-2">{displayUser?.name || "User"}</h1>
               <p className="text-muted-foreground mb-4">{displayUser?.email}</p>
-              
+
               <div className="flex justify-center gap-6 text-center">
                 <div>
-                  <div className="text-2xl font-bold text-primary">47</div>
+                  <div className="text-2xl font-bold text-primary">{userStats.totalChats}</div>
                   <div className="text-sm text-muted-foreground">Total Chats</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-accent">23</div>
+                  <div className="text-2xl font-bold text-accent">{userStats.favoriteSongsCount}</div>
                   <div className="text-sm text-muted-foreground">Favorite Songs</div>
                 </div>
                 <div>
@@ -352,7 +371,7 @@ const Profile = () => {
                       onChange={handleFileUpload}
                       accept="image/*,text/*,application/pdf"
                     />
-                    <Button 
+                    <Button
                       onClick={() => document.getElementById('file-upload')?.click()}
                       disabled={uploadingFile}
                       className="flex items-center gap-2"
@@ -362,7 +381,7 @@ const Profile = () => {
                     </Button>
                   </div>
                 </div>
-                
+
                 <div className="space-y-4">
                   {userFiles.length === 0 ? (
                     <div className="text-center py-8 text-muted-foreground">
@@ -397,7 +416,7 @@ const Profile = () => {
             <TabsContent value="settings" className="space-y-4">
               <Card className="p-6">
                 <h3 className="text-lg font-semibold mb-6">Profile Settings</h3>
-                
+
                 {/* Profile Picture Section */}
                 <div className="mb-6 pb-6 border-b">
                   <Label className="text-sm font-medium">Profile Picture</Label>
@@ -454,45 +473,45 @@ const Profile = () => {
                       className="mt-1"
                     />
                   </div>
-                  
+
                   <div>
                     <Label htmlFor="favorite-genre">Favorite Music Genre</Label>
                     <Input
                       id="favorite-genre"
                       value={formData.preferences.favoriteGenre}
-                      onChange={(e) => setFormData({ 
-                        ...formData, 
+                      onChange={(e) => setFormData({
+                        ...formData,
                         preferences: { ...formData.preferences, favoriteGenre: e.target.value }
                       })}
                       placeholder="e.g., Lo-fi, Pop, Classical"
                       className="mt-1"
                     />
                   </div>
-                  
+
                   <div>
                     <Label htmlFor="preferred-mood">Preferred Mood</Label>
                     <Input
                       id="preferred-mood"
                       value={formData.preferences.preferredMood}
-                      onChange={(e) => setFormData({ 
-                        ...formData, 
+                      onChange={(e) => setFormData({
+                        ...formData,
                         preferences: { ...formData.preferences, preferredMood: e.target.value }
                       })}
                       placeholder="e.g., Chill, Energetic, Focus"
                       className="mt-1"
                     />
                   </div>
-                  
+
                   <div className="flex gap-4 pt-4">
-                    <Button 
+                    <Button
                       onClick={handleUpdateProfile}
                       disabled={isUpdating}
                       className="flex-1"
                     >
                       {isUpdating ? "Updating..." : "Update Profile"}
                     </Button>
-                    
-                    <Button 
+
+                    <Button
                       onClick={handleLogout}
                       variant="outline"
                       className="flex items-center gap-2"
@@ -506,7 +525,7 @@ const Profile = () => {
             </TabsContent>
           </Tabs>
         </div>
-        
+
         <Footer />
       </div>
     </ProtectedRoute>
