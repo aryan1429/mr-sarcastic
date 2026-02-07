@@ -242,7 +242,7 @@ const Profile = () => {
                   <div className="text-sm text-muted-foreground mt-1">Mood</div>
                 </div>
                 <div>
-                  <div className="text-sm font-medium">{displayUser?.createdAt ? new Date(displayUser.createdAt).toLocaleDateString() : "Recently"}</div>
+                  <div className="text-sm font-medium">{displayUser?.createdAt ? new Date(displayUser.createdAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : "New Member"}</div>
                   <div className="text-sm text-muted-foreground">Member Since</div>
                 </div>
               </div>
