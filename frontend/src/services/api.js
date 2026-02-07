@@ -55,11 +55,11 @@ class AuthService {
     try {
       const response = await api.post('/auth/login', { email, password });
       const { token, user } = response.data;
-      
+
       // Store token and user data
       localStorage.setItem('authToken', token);
       localStorage.setItem('userData', JSON.stringify(user));
-      
+
       return { token, user };
     } catch (error) {
       throw new Error(error.response?.data?.error || 'Login failed');
@@ -72,11 +72,11 @@ class AuthService {
       console.log('Full URL will be:', `${api.defaults.baseURL}/auth/register`);
       const response = await api.post('/auth/register', { username, email, password });
       const { token, user } = response.data;
-      
+
       // Store token and user data
       localStorage.setItem('authToken', token);
       localStorage.setItem('userData', JSON.stringify(user));
-      
+
       return { token, user };
     } catch (error) {
       console.error('Registration error:', error);
@@ -89,11 +89,11 @@ class AuthService {
     try {
       const response = await api.post('/auth/google', { credential });
       const { token, user } = response.data;
-      
+
       // Store token and user data
       localStorage.setItem('authToken', token);
       localStorage.setItem('userData', JSON.stringify(user));
-      
+
       return { success: true, user, token };
     } catch (error) {
       throw new Error(error.response?.data?.error || 'Google login failed');
@@ -121,10 +121,10 @@ class AuthService {
 
       const response = await api.post('/auth/refresh', { token: currentToken });
       const { token, user } = response.data;
-      
+
       localStorage.setItem('authToken', token);
       localStorage.setItem('userData', JSON.stringify(user));
-      
+
       return { success: true, user, token };
     } catch (error) {
       this.logout(); // Clear invalid token
@@ -154,11 +154,11 @@ class UserService {
 
   async updateProfile(userData) {
     const response = await api.put('/users/me', userData);
-    
+
     // Update local storage
     const updatedUser = response.data.user;
     localStorage.setItem('user', JSON.stringify(updatedUser));
-    
+
     return response.data;
   }
 
@@ -171,21 +171,41 @@ class UserService {
         'Content-Type': 'multipart/form-data',
       },
     });
-    
+
     // Update local storage
     const updatedUser = response.data.user;
     localStorage.setItem('user', JSON.stringify(updatedUser));
-    
+
     return response.data;
   }
 
   async deleteAccount() {
     const response = await api.delete('/users/me');
-    
+
     // Clear local storage
     localStorage.removeItem('authToken');
     localStorage.removeItem('user');
-    
+
+    return response.data;
+  }
+
+  async getUserStats() {
+    const response = await api.get('/users/me/stats');
+    return response.data;
+  }
+
+  async getFavoriteSongs() {
+    const response = await api.get('/users/me/favorites');
+    return response.data;
+  }
+
+  async addFavoriteSong(songId) {
+    const response = await api.post(`/users/me/favorites/${songId}`);
+    return response.data;
+  }
+
+  async removeFavoriteSong(songId) {
+    const response = await api.delete(`/users/me/favorites/${songId}`);
     return response.data;
   }
 }
