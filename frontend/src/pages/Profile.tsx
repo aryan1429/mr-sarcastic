@@ -178,53 +178,11 @@ const Profile = () => {
 
   const displayUser = userProfile || authUser;
 
-  const recentConversations = [
-    {
-      id: "1",
-      title: "Music recommendations for studying",
-      date: "2024-01-15",
-      messages: 12,
-      mood: "Focus"
-    },
-    {
-      id: "2",
-      title: "Feeling stressed about work",
-      date: "2024-01-14",
-      messages: 8,
-      mood: "Stressed"
-    },
-    {
-      id: "3",
-      title: "Happy Friday vibes!",
-      date: "2024-01-12",
-      messages: 15,
-      mood: "Happy"
-    }
-  ];
+  // Conversations and favorites are now tracked via stats only
+  // Actual conversation history is stored in localStorage on the Chat page
+  const recentConversations: any[] = [];
 
-  const favoriteSongs = [
-    {
-      id: "1",
-      title: "Lofi Study Session",
-      artist: "ChillBeats",
-      mood: "Focus",
-      plays: 23
-    },
-    {
-      id: "2",
-      title: "Upbeat Pop Mix",
-      artist: "EnergyVibes",
-      mood: "Happy",
-      plays: 45
-    },
-    {
-      id: "3",
-      title: "Relaxing Nature Sounds",
-      artist: "CalmSpace",
-      mood: "Chill",
-      plays: 12
-    }
-  ];
+  const favoriteSongs: any[] = [];
 
   return (
     <ProtectedRoute>
@@ -316,21 +274,29 @@ const Profile = () => {
               <Card className="p-6">
                 <h3 className="text-lg font-semibold mb-4">Recent Conversations</h3>
                 <div className="space-y-4">
-                  {recentConversations.map((conversation) => (
-                    <div key={conversation.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent/10 transition-colors">
-                      <div className="flex items-center gap-3">
-                        <MessageCircle className="w-5 h-5 text-primary" />
-                        <div>
-                          <h4 className="font-medium">{conversation.title}</h4>
-                          <p className="text-sm text-muted-foreground">{conversation.messages} messages</p>
+                  {recentConversations.length === 0 ? (
+                    <div className="text-center py-8 text-muted-foreground">
+                      <MessageCircle className="w-12 h-12 mx-auto mb-4 opacity-50" />
+                      <p>No conversations yet</p>
+                      <p className="text-sm">Start chatting with Mr. Sarcastic to see your history here</p>
+                    </div>
+                  ) : (
+                    recentConversations.map((conversation) => (
+                      <div key={conversation.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent/10 transition-colors">
+                        <div className="flex items-center gap-3">
+                          <MessageCircle className="w-5 h-5 text-primary" />
+                          <div>
+                            <h4 className="font-medium">{conversation.title}</h4>
+                            <p className="text-sm text-muted-foreground">{conversation.messages} messages</p>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <Badge variant="outline">{conversation.mood}</Badge>
+                          <div className="text-sm text-muted-foreground mt-1">{conversation.date}</div>
                         </div>
                       </div>
-                      <div className="text-right">
-                        <Badge variant="outline">{conversation.mood}</Badge>
-                        <div className="text-sm text-muted-foreground mt-1">{conversation.date}</div>
-                      </div>
-                    </div>
-                  ))}
+                    ))
+                  )}
                 </div>
               </Card>
             </TabsContent>
@@ -339,22 +305,30 @@ const Profile = () => {
               <Card className="p-6">
                 <h3 className="text-lg font-semibold mb-4">Favorite Songs</h3>
                 <div className="space-y-4">
-                  {favoriteSongs.map((song) => (
-                    <div key={song.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent/10 transition-colors">
-                      <div className="flex items-center gap-3">
-                        <Music className="w-5 h-5 text-accent" />
-                        <div>
-                          <h4 className="font-medium">{song.title}</h4>
-                          <p className="text-sm text-muted-foreground">{song.artist}</p>
+                  {favoriteSongs.length === 0 ? (
+                    <div className="text-center py-8 text-muted-foreground">
+                      <Music className="w-12 h-12 mx-auto mb-4 opacity-50" />
+                      <p>No favorite songs yet</p>
+                      <p className="text-sm">Songs you favorite will appear here</p>
+                    </div>
+                  ) : (
+                    favoriteSongs.map((song) => (
+                      <div key={song.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-accent/10 transition-colors">
+                        <div className="flex items-center gap-3">
+                          <Music className="w-5 h-5 text-accent" />
+                          <div>
+                            <h4 className="font-medium">{song.title}</h4>
+                            <p className="text-sm text-muted-foreground">{song.artist}</p>
+                          </div>
+                        </div>
+                        <div className="text-right flex items-center gap-2">
+                          <Badge variant="outline">{song.mood}</Badge>
+                          <div className="text-sm text-muted-foreground">{song.plays} plays</div>
+                          <Heart className="w-4 h-4 text-accent" />
                         </div>
                       </div>
-                      <div className="text-right flex items-center gap-2">
-                        <Badge variant="outline">{song.mood}</Badge>
-                        <div className="text-sm text-muted-foreground">{song.plays} plays</div>
-                        <Heart className="w-4 h-4 text-accent" />
-                      </div>
-                    </div>
-                  ))}
+                    ))
+                  )}
                 </div>
               </Card>
             </TabsContent>
