@@ -12,31 +12,31 @@ const router = express.Router();
 // Helper function to find user by any identifier
 const findUserByToken = async (userToken) => {
   const { userId, googleId, firebaseUID } = userToken;
-  
+
   // Try finding by MongoDB ObjectId first
   if (userId) {
     const userById = await User.findById(userId);
     if (userById) return userById;
   }
-  
+
   // Try finding by Google ID
   if (googleId) {
     const userByGoogle = await User.findByGoogleId(googleId);
     if (userByGoogle) return userByGoogle;
   }
-  
+
   // Try finding by Firebase UID
   if (firebaseUID) {
     const userByFirebase = await User.findByFirebaseUID(firebaseUID);
     if (userByFirebase) return userByFirebase;
   }
-  
+
   // Fallback: try finding by userId as Google ID (legacy compatibility)
   if (userId) {
     const userByLegacyGoogle = await User.findByGoogleId(userId);
     if (userByLegacyGoogle) return userByLegacyGoogle;
   }
-  
+
   return null;
 };
 
@@ -129,23 +129,23 @@ router.put('/me/picture', authenticateToken, upload.single('picture'), async (re
         user._id.toString(),
         'profile-pictures'
       );
-      
+
       pictureUrl = uploadResult.publicUrl;
       console.log('Profile picture uploaded to Google Cloud Storage:', pictureUrl);
     } catch (storageError) {
       console.warn('Google Cloud Storage upload failed, falling back to local storage:', storageError.message);
-      
+
       // Fallback to local storage
       const uploadsDir = path.join(process.cwd(), 'uploads', 'profile-pictures');
       await fs.mkdir(uploadsDir, { recursive: true });
-      
+
       const fileExtension = path.extname(req.file.originalname);
       const fileName = `${user._id}_${Date.now()}${fileExtension}`;
       const filePath = path.join(uploadsDir, fileName);
-      
+
       await fs.writeFile(filePath, req.file.buffer);
       pictureUrl = `/uploads/profile-pictures/${fileName}`;
-      
+
       console.log('Profile picture saved locally:', pictureUrl);
     }
 
@@ -198,7 +198,7 @@ router.get('/picture/:filename', (req, res) => {
   try {
     const { filename } = req.params;
     const filePath = path.join(process.cwd(), 'uploads', 'profile-pictures', filename);
-    
+
     // Check if file exists and serve it
     res.sendFile(filePath, (err) => {
       if (err) {
@@ -209,6 +209,133 @@ router.get('/picture/:filename', (req, res) => {
   } catch (error) {
     console.error('Serve profile picture error:', error);
     res.status(500).json({ error: 'Failed to serve profile picture' });
+  }
+});
+
+// Get user stats
+router.get('/me/stats', authenticateToken, async (req, res) => {
+  try {
+    const user = await findUserByToken(req.user);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const stats = user.stats || { totalChats: 0, favoriteSongIds: [] };
+    res.json({
+      success: true,
+      stats: {
+        totalChats: stats.totalChats || 0,
+        favoriteSongsCount: (stats.favoriteSongIds || []).length,
+        favoriteSongIds: stats.favoriteSongIds || []
+      }
+    });
+  } catch (error) {
+    console.error('Get stats error:', error);
+    res.status(500).json({ error: 'Failed to get user stats' });
+  }
+});
+
+// Get favorite songs list
+router.get('/me/favorites', authenticateToken, async (req, res) => {
+  try {
+    const user = await findUserByToken(req.user);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const favoriteSongIds = user.stats?.favoriteSongIds || [];
+    res.json({
+      success: true,
+      favorites: favoriteSongIds
+    });
+  } catch (error) {
+    console.error('Get favorites error:', error);
+    res.status(500).json({ error: 'Failed to get favorites' });
+  }
+});
+
+// Add song to favorites
+router.post('/me/favorites/:songId', authenticateToken, async (req, res) => {
+  try {
+    const { songId } = req.params;
+    const user = await findUserByToken(req.user);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Initialize stats if not present
+    if (!user.stats) {
+      user.stats = { totalChats: 0, favoriteSongIds: [] };
+    }
+    if (!user.stats.favoriteSongIds) {
+      user.stats.favoriteSongIds = [];
+    }
+
+    // Add to favorites if not already present
+    if (!user.stats.favoriteSongIds.includes(songId)) {
+      user.stats.favoriteSongIds.push(songId);
+      await user.save();
+    }
+
+    res.json({
+      success: true,
+      message: 'Song added to favorites',
+      favoriteSongsCount: user.stats.favoriteSongIds.length
+    });
+  } catch (error) {
+    console.error('Add favorite error:', error);
+    res.status(500).json({ error: 'Failed to add favorite' });
+  }
+});
+
+// Remove song from favorites
+router.delete('/me/favorites/:songId', authenticateToken, async (req, res) => {
+  try {
+    const { songId } = req.params;
+    const user = await findUserByToken(req.user);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    if (user.stats?.favoriteSongIds) {
+      user.stats.favoriteSongIds = user.stats.favoriteSongIds.filter(id => id !== songId);
+      await user.save();
+    }
+
+    res.json({
+      success: true,
+      message: 'Song removed from favorites',
+      favoriteSongsCount: user.stats?.favoriteSongIds?.length || 0
+    });
+  } catch (error) {
+    console.error('Remove favorite error:', error);
+    res.status(500).json({ error: 'Failed to remove favorite' });
+  }
+});
+
+// Increment chat count (internal use)
+router.post('/me/stats/increment-chat', authenticateToken, async (req, res) => {
+  try {
+    const user = await findUserByToken(req.user);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Initialize stats if not present
+    if (!user.stats) {
+      user.stats = { totalChats: 0, favoriteSongIds: [] };
+    }
+
+    user.stats.totalChats = (user.stats.totalChats || 0) + 1;
+    await user.save();
+
+    res.json({
+      success: true,
+      totalChats: user.stats.totalChats
+    });
+  } catch (error) {
+    console.error('Increment chat error:', error);
+    res.status(500).json({ error: 'Failed to increment chat count' });
   }
 });
 
