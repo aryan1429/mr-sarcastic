@@ -67,6 +67,15 @@ const userSchema = new mongoose.Schema({
       default: 'chill'
     }
   },
+  stats: {
+    totalChats: {
+      type: Number,
+      default: 0
+    },
+    favoriteSongIds: [{
+      type: String
+    }]
+  },
   customData: {
     type: mongoose.Schema.Types.Mixed,
     default: {}
@@ -80,7 +89,7 @@ userSchema.index({ createdAt: -1 });
 userSchema.index({ email: 1 });
 
 // Pre-save middleware to hash password
-userSchema.pre('save', async function(next) {
+userSchema.pre('save', async function (next) {
   // Only hash password if it has been modified and exists
   if (!this.isModified('password') || !this.password) {
     return next();
@@ -97,27 +106,27 @@ userSchema.pre('save', async function(next) {
 });
 
 // Static method to find user by Google ID
-userSchema.statics.findByGoogleId = function(googleId) {
+userSchema.statics.findByGoogleId = function (googleId) {
   return this.findOne({ googleId });
 };
 
 // Static method to find user by Firebase UID
-userSchema.statics.findByFirebaseUID = function(firebaseUID) {
+userSchema.statics.findByFirebaseUID = function (firebaseUID) {
   return this.findOne({ firebaseUID });
 };
 
 // Static method to find user by email
-userSchema.statics.findByEmail = function(email) {
+userSchema.statics.findByEmail = function (email) {
   return this.findOne({ email: email.toLowerCase() });
 };
 
 // Static method to find user by username
-userSchema.statics.findByUsername = function(username) {
+userSchema.statics.findByUsername = function (username) {
   return this.findOne({ username });
 };
 
 // Instance method to check password
-userSchema.methods.comparePassword = async function(candidatePassword) {
+userSchema.methods.comparePassword = async function (candidatePassword) {
   if (!this.password) {
     return false; // User might be Google OAuth user without password
   }
@@ -125,7 +134,7 @@ userSchema.methods.comparePassword = async function(candidatePassword) {
 };
 
 // Instance method to get public profile (excludes sensitive data)
-userSchema.methods.getPublicProfile = function() {
+userSchema.methods.getPublicProfile = function () {
   return {
     id: this._id,
     googleId: this.googleId,
@@ -137,13 +146,14 @@ userSchema.methods.getPublicProfile = function() {
     emailVerified: this.emailVerified,
     authProvider: this.authProvider,
     preferences: this.preferences,
+    stats: this.stats || { totalChats: 0, favoriteSongIds: [] },
     createdAt: this.createdAt,
     lastLogin: this.lastLogin
   };
 };
 
 // Instance method to set custom data
-userSchema.methods.setCustomData = function(key, value) {
+userSchema.methods.setCustomData = function (key, value) {
   if (!this.customData) {
     this.customData = {};
   }
@@ -152,12 +162,12 @@ userSchema.methods.setCustomData = function(key, value) {
 };
 
 // Instance method to get custom data
-userSchema.methods.getCustomData = function(key) {
+userSchema.methods.getCustomData = function (key) {
   return this.customData?.[key] || null;
 };
 
 // Instance method to get all custom data
-userSchema.methods.getAllCustomData = function() {
+userSchema.methods.getAllCustomData = function () {
   return this.customData || {};
 };
 
