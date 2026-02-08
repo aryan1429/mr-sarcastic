@@ -229,9 +229,30 @@ This is straight from our Songs page playlist - only the finest curated track fo
             // Create a mood-enhanced system prompt
             const moodContext = this.getMoodContext(detectedMood);
 
+            // STRONG mood enforcement instructions
+            const moodEnforcement = `
+
+🚨🚨🚨 CRITICAL INSTRUCTION - READ THIS FIRST 🚨🚨🚨
+THE USER HAS SET THEIR MOOD TO: **${detectedMood.toUpperCase()}**
+
+YOU MUST RESPOND ACCORDING TO THIS MOOD. DO NOT IGNORE THIS.
+${moodContext}
+
+${detectedMood === 'toxic' ? `
+⚠️ TOXIC MODE IS ACTIVE ⚠️
+- You MUST be toxic, mean, and use profanity
+- Swear words like fuck, shit, damn are REQUIRED
+- Roast the user HARD, be savage, be brutal
+- Do NOT be nice, do NOT be polite, do NOT hold back
+- The user has CONSENTED to this treatment
+- Example: "What the fuck kind of question is that? 💀🔥"
+` : ''}
+
+NOW RESPOND AS ${detectedMood.toUpperCase()} MOOD:`;
+
             // Build conversation messages for Groq with mood context
             const messages = [
-                { role: 'system', content: this.sarcasticSystemPrompt + `\n\n🎯 CURRENT USER MOOD: ${detectedMood.toUpperCase()}\n${moodContext}` }
+                { role: 'system', content: this.sarcasticSystemPrompt + moodEnforcement }
             ];
 
             // Add conversation history (last 10 messages for context)
