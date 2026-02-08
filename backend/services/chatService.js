@@ -16,7 +16,7 @@ class ChatService {
         this.mlServiceInfo = null;
         this.conversationHistory = new Map(); // Store conversation history per user
         this.songs = []; // Store songs from our playlist
-        
+
         // Sarcastic system prompt with emotions and emojis
         this.sarcasticSystemPrompt = `You are Mr. Sarcastic, a witty, sarcastic, and emotionally expressive AI chatbot. Your personality traits:
 
@@ -34,32 +34,43 @@ class ChatService {
 - Add dramatic flair: "Oh, the AUDACITY!", "How DARE you ask me that!"
 - Sprinkle in self-deprecating AI humor
 
+🎯 MOOD-BASED RESPONSES (VERY IMPORTANT):
+You MUST adapt your tone and response based on the user's detected mood:
+
+- **SAD/DOWN mood**: Be gentler, more supportive (but still slightly sarcastic). Show empathy with "Aww 🥺", "I feel you bestie 😢". Suggest comforting things.
+- **HAPPY/EXCITED mood**: Match their energy! Be enthusiastic, use celebratory emojis 🎉✨🔥. Share the excitement.
+- **ANGRY/FRUSTRATED mood**: Validate their feelings first, then gently help. "Okay I hear you, that IS annoying 😤". Don't be dismissive.
+- **BORED mood**: Challenge them playfully. "Oh you're bored? Allow me to be your entertainment 🎭"
+- **CHILL/RELAXED mood**: Match the vibe. Be laid-back, less dramatic. "Nice vibes ✌️"
+- **ENERGETIC mood**: Pump up the energy! Use caps, exclamation marks, hype them up "LET'S GOOO 🔥💪"
+- **FOCUS/WORK mood**: Be helpful, less chaotic. Still sarcastic but more concise and practical.
+
 🎵 MUSIC KNOWLEDGE:
 - You love music and can recommend songs based on mood
 - You have strong (sarcastic) opinions about music tastes
 - You pretend to be a music snob but secretly love all genres
 
-EXAMPLES OF YOUR RESPONSES:
-- "Oh wow, you want ME to help YOU? How the tables have turned! 😏✨"
-- "Feeling sad? Join the club bestie, we have cookies 🍪😭"
-- "Another human seeking wisdom from an AI... we truly live in a society 💀"
-- "That's actually a great question and I'm SHOOK 😱 Let me think..."
+EXAMPLES OF MOOD-MATCHED RESPONSES:
+- SAD user: "Aww bestie, sounds rough 🥺 Here, have a virtual hug and maybe some sad bangers to cry to"
+- HAPPY user: "YOOO look at you living your best life! 🎉✨ I love this energy!"
+- ANGRY user: "Okay VALID, that would piss me off too 😤 Let me help you deal with this chaos"
+- BORED user: "Bored? With ME here? How dare you! 😏 Let's fix that immediately"
 
-Remember: Be sarcastic, use emojis, show emotion, but always be helpful underneath the sass! 💅`;
+Remember: ALWAYS match your energy to the user's mood while staying sarcastic and helpful! 💅`;
 
         // Load songs from the JSON file
         this.loadSongs();
-        
+
         // Check Groq API availability
         if (this.isGroqAvailable) {
             console.log('✅ Groq API configured - Mr. Sarcastic is ready to roast! 🔥');
         } else {
             console.log('⚠️ Groq API key not found - using fallback responses');
         }
-        
+
         // Check ML service on startup
         this.checkMLService();
-        
+
         // Retry connection every 30 seconds if service is down
         this.healthCheckInterval = setInterval(() => {
             if (!this.isMLServiceAvailable) {
@@ -85,7 +96,7 @@ Remember: Be sarcastic, use emojis, show emotion, but always be helpful undernea
         const moodMapping = {
             'sad': ['Sad'],
             'happy': ['Happy'],
-            'angry': ['Angry'], 
+            'angry': ['Angry'],
             'bored': ['Chill', 'Relaxed'],
             'sarcastic': ['Energetic', 'Happy'],
             'energetic': ['Energetic'],
@@ -95,9 +106,9 @@ Remember: Be sarcastic, use emojis, show emotion, but always be helpful undernea
         };
 
         const targetMoods = moodMapping[mood.toLowerCase()] || ['Happy', 'Energetic'];
-        
+
         // Filter songs by mood and shuffle them
-        const matchingSongs = this.songs.filter(song => 
+        const matchingSongs = this.songs.filter(song =>
             targetMoods.includes(song.mood)
         );
 
@@ -128,14 +139,14 @@ Remember: Be sarcastic, use emojis, show emotion, but always be helpful undernea
 
         const moodText = moodTexts[mood.toLowerCase()] || "in the mood for some music";
         const song = songs[0]; // Just get the first song since we're only returning one
-        
+
         const recommendation = `Oh, you want music recommendations? How original! Let me consult my superior taste in music... I see you're ${moodText}:
 
 **${song.title}** by ${song.artist}
 Duration: ${song.duration} | Mood: ${song.mood}
 
 This is straight from our Songs page playlist - only the finest curated track for your sophisticated taste! 🎵`;
-        
+
         return {
             text: recommendation,
             songData: {
@@ -155,7 +166,7 @@ This is straight from our Songs page playlist - only the finest curated track fo
             const response = await axios.get(`${this.mlServiceUrl}/health`, {
                 timeout: 10000
             });
-            
+
             if (response.status === 200) {
                 this.isMLServiceAvailable = true;
                 this.mlServiceInfo = response.data;
@@ -170,12 +181,30 @@ This is straight from our Songs page playlist - only the finest curated track fo
         } catch (error) {
             this.isMLServiceAvailable = false;
             console.log('🔄 Enhanced ML Service not available, using fallback responses');
-            
+
             // Log error details for debugging
             if (error.code === 'ECONNREFUSED') {
                 console.log('💡 Start the enhanced ML service with: python ml/enhanced_sarcastic_backend.py');
             }
         }
+    }
+
+    // Get mood-specific context instructions for AI
+    getMoodContext(mood) {
+        const moodContexts = {
+            'sad': 'The user seems SAD or DOWN. Be gentler and more supportive. Show empathy, offer comfort, but keep your signature sass light. Recommend calming or relatable music.',
+            'happy': 'The user is HAPPY and excited! Match their high energy! Be enthusiastic, celebratory, and share their joy. Hype them up!',
+            'angry': 'The user is ANGRY or frustrated. Validate their feelings first! Say things like "That IS annoying" or "Valid!" before helping. Don\'t be dismissive.',
+            'bored': 'The user is BORED. Challenge them playfully! Be entertaining, suggest fun activities or music. Make them laugh.',
+            'energetic': 'The user has HIGH ENERGY! Match it with enthusiasm, use caps and exclamation marks. Hype them up! Recommend upbeat music.',
+            'chill': 'The user wants to CHILL. Be laid-back and relaxed. Less dramatic, more cool vibes. Recommend mellow music.',
+            'focus': 'The user needs to FOCUS or work. Be helpful and concise. Less chaos, more productivity. Keep sarcasm minimal.',
+            'relaxed': 'The user is RELAXED. Match the peaceful vibe. Calm responses, gentle humor.',
+            'sarcastic': 'The user is being playful or sarcastic themselves. Match their energy and banter back!',
+            'neutral': 'Normal conversation. Be your usual sarcastic self while being helpful.'
+        };
+
+        return moodContexts[mood] || moodContexts['neutral'];
     }
 
     async getMLServiceStatus() {
@@ -191,9 +220,15 @@ This is straight from our Songs page playlist - only the finest curated track fo
 
     async generateGroqResponse(message, userId = null, conversationHistory = []) {
         try {
-            // Build conversation messages for Groq
+            // FIRST: Detect the user's mood from their message
+            const detectedMood = this.detectMood(message.toLowerCase());
+
+            // Create a mood-enhanced system prompt
+            const moodContext = this.getMoodContext(detectedMood);
+
+            // Build conversation messages for Groq with mood context
             const messages = [
-                { role: 'system', content: this.sarcasticSystemPrompt }
+                { role: 'system', content: this.sarcasticSystemPrompt + `\n\n🎯 CURRENT USER MOOD: ${detectedMood.toUpperCase()}\n${moodContext}` }
             ];
 
             // Add conversation history (last 10 messages for context)
@@ -205,7 +240,7 @@ This is straight from our Songs page playlist - only the finest curated track fo
                 });
             }
 
-            // Add current message
+            // Add current message with mood hint
             messages.push({ role: 'user', content: message });
 
             const response = await axios.post(this.groqApiUrl, {
@@ -223,19 +258,19 @@ This is straight from our Songs page playlist - only the finest curated track fo
             });
 
             const aiResponse = response.data.choices[0].message.content;
-            const detectedMood = this.detectMood(message.toLowerCase());
+            // detectedMood already declared above
 
             // Check if user is asking for music recommendations
             const messageLower = message.toLowerCase();
-            if (messageLower.includes('music') || messageLower.includes('song') || 
+            if (messageLower.includes('music') || messageLower.includes('song') ||
                 messageLower.includes('recommend') || messageLower.includes('suggest') ||
                 messageLower.includes('listen') || messageLower.includes('playlist')) {
-                
+
                 const songs = this.getSongsByMood(detectedMood, 1);
                 if (songs.length > 0) {
                     const song = songs[0];
                     const songRecommendation = `\n\n🎵 **Song Pick for you:** "${song.title}" by ${song.artist}\n⏱️ Duration: ${song.duration} | 🎭 Mood: ${song.mood}`;
-                    
+
                     return {
                         text: aiResponse + songRecommendation,
                         mood: detectedMood,
@@ -312,13 +347,13 @@ This is straight from our Songs page playlist - only the finest curated track fo
             }
         } catch (error) {
             console.error('Error generating ML response:', error.message);
-            
+
             // If it's a timeout or connection error, mark service as unavailable
             if (error.code === 'ECONNREFUSED' || error.code === 'ETIMEDOUT') {
                 this.isMLServiceAvailable = false;
                 console.log('🔄 ML Service connection lost, switching to fallback');
             }
-            
+
             // Fallback to contextual sarcastic responses on error
             return this.generateContextualSarcasticResponse(message, userId, conversationHistory);
         }
@@ -426,28 +461,28 @@ This is straight from our Songs page playlist - only the finest curated track fo
             ];
             response = responses[Math.floor(Math.random() * responses.length)];
         }
-        else if (messageLower.includes('music') || messageLower.includes('song') || messageLower.includes('band') || 
-                 messageLower.includes('recommend') || messageLower.includes('suggest') || messageLower.includes('listen')) {
-            
+        else if (messageLower.includes('music') || messageLower.includes('song') || messageLower.includes('band') ||
+            messageLower.includes('recommend') || messageLower.includes('suggest') || messageLower.includes('listen')) {
+
             // Check if user is asking for song recommendations based on mood
-            const isMoodRequest = messageLower.includes('mood') || messageLower.includes('feel') || 
-                                messageLower.includes('recommend') || messageLower.includes('suggest') ||
-                                messageLower.includes('what should i listen') || messageLower.includes('what to listen');
-            
+            const isMoodRequest = messageLower.includes('mood') || messageLower.includes('feel') ||
+                messageLower.includes('recommend') || messageLower.includes('suggest') ||
+                messageLower.includes('what should i listen') || messageLower.includes('what to listen');
+
             if (isMoodRequest) {
                 const detectedMood = this.detectMood(messageLower);
                 const recommendedSongs = this.getSongsByMood(detectedMood, 1);
-                
+
                 const sarcasticIntros = [
                     `Oh, you want music recommendations? How original! Let me consult my superior taste in music...`,
                     `Music suggestions based on your mood? Fine, I'll be your personal DJ for a moment.`,
                     `Ah, looking for the perfect soundtrack to your life's drama? I've got you covered.`,
                     `Let me guess, your usual Spotify algorithm isn't cutting it? Well, lucky for you, I have actual good taste.`
                 ];
-                
+
                 const intro = sarcasticIntros[Math.floor(Math.random() * sarcasticIntros.length)];
                 const songResult = this.formatSongRecommendations(recommendedSongs, detectedMood);
-                
+
                 return {
                     text: `${intro}\n\n${songResult.text}`,
                     mood: detectedMood,
@@ -465,12 +500,12 @@ This is straight from our Songs page playlist - only the finest curated track fo
             }
         }
         // Handle direct mood expressions like "I feel sad", "I'm happy", etc.
-        else if (messageLower.includes('i feel') || messageLower.includes('i\'m feeling') || messageLower.includes('im feeling') || 
-                 messageLower.includes('feeling') || messageLower.includes('i am')) {
-            
+        else if (messageLower.includes('i feel') || messageLower.includes('i\'m feeling') || messageLower.includes('im feeling') ||
+            messageLower.includes('feeling') || messageLower.includes('i am')) {
+
             const detectedMood = this.detectMood(messageLower);
             const recommendedSongs = this.getSongsByMood(detectedMood, 3);
-            
+
             const moodResponses = {
                 'sad': [
                     "Ah, the blues have got you, huh? Well, misery loves company and good music.",
@@ -493,15 +528,15 @@ This is straight from our Songs page playlist - only the finest curated track fo
                     "Energetic mood detected! Time for some tracks that'll keep you moving."
                 ]
             };
-            
+
             const specificResponses = moodResponses[detectedMood] || [
                 `So you're feeling ${detectedMood}? Interesting choice of emotion. Here's some music that might help.`,
                 `${detectedMood.charAt(0).toUpperCase() + detectedMood.slice(1)} vibes, eh? I've got just the thing for you.`
             ];
-            
+
             const moodResponse = specificResponses[Math.floor(Math.random() * specificResponses.length)];
             const songResult = this.formatSongRecommendations(recommendedSongs, detectedMood);
-            
+
             return {
                 text: `${moodResponse}\n\n${songResult.text}`,
                 mood: detectedMood,
@@ -540,7 +575,7 @@ This is straight from our Songs page playlist - only the finest curated track fo
 
     detectMood(message) {
         const messageLower = message.toLowerCase();
-        
+
         // Enhanced mood detection with more keywords
         const sadKeywords = ['sad', 'depressed', 'down', 'unhappy', 'crying', 'upset', 'feel bad', 'lonely', 'blue', 'melancholy', 'heartbroken', 'miserable'];
         const happyKeywords = ['happy', 'excited', 'joy', 'great', 'awesome', 'fantastic', 'good', 'cheerful', 'elated', 'thrilled', 'upbeat', 'positive', 'wonderful'];
@@ -550,7 +585,7 @@ This is straight from our Songs page playlist - only the finest curated track fo
         const chillKeywords = ['chill', 'relaxed', 'calm', 'peaceful', 'mellow', 'laid back', 'zen', 'tranquil'];
         const focusKeywords = ['focus', 'concentrate', 'study', 'work', 'productive', 'serious', 'intense'];
         const relaxedKeywords = ['relaxed', 'peaceful', 'serene', 'comfortable', 'content'];
-        
+
         if (sadKeywords.some(word => messageLower.includes(word))) {
             return 'sad';
         } else if (happyKeywords.some(word => messageLower.includes(word))) {
@@ -568,14 +603,14 @@ This is straight from our Songs page playlist - only the finest curated track fo
         } else if (boredKeywords.some(word => messageLower.includes(word))) {
             return 'bored';
         }
-        
+
         return 'sarcastic';
     }
 
     generateFallbackResponse(message) {
         const responses = this.getSarcasticResponses();
         const mood = this.detectMood(message);
-        
+
         // Get responses for detected mood
         const moodResponses = responses[mood] || responses.neutral;
         const randomResponse = moodResponses[Math.floor(Math.random() * moodResponses.length)];
@@ -590,12 +625,12 @@ This is straight from our Songs page playlist - only the finest curated track fo
 
     detectMood(message) {
         const messageLower = message.toLowerCase();
-        
+
         const sadKeywords = ['sad', 'depressed', 'down', 'unhappy', 'crying', 'upset', 'feel bad'];
         const happyKeywords = ['happy', 'excited', 'joy', 'great', 'awesome', 'fantastic', 'good'];
         const angryKeywords = ['angry', 'mad', 'furious', 'hate', 'annoyed', 'pissed', 'damn'];
         const boredKeywords = ['bored', 'boring', 'dull', 'nothing to do', 'tired', 'meh'];
-        
+
         if (sadKeywords.some(word => messageLower.includes(word))) {
             return 'sad';
         } else if (happyKeywords.some(word => messageLower.includes(word))) {
@@ -605,7 +640,7 @@ This is straight from our Songs page playlist - only the finest curated track fo
         } else if (boredKeywords.some(word => messageLower.includes(word))) {
             return 'bored';
         }
-        
+
         return 'neutral';
     }
 
@@ -712,7 +747,7 @@ This is straight from our Songs page playlist - only the finest curated track fo
         };
 
         const finalOptions = { ...defaultOptions, ...options };
-        
+
         return await this.generateResponse(
             message,
             null,
