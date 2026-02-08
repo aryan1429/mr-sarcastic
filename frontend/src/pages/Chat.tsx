@@ -75,6 +75,8 @@ const Chat = () => {
   const [clearChatDialogOpen, setClearChatDialogOpen] = useState(false);
   const [moodSelectorOpen, setMoodSelectorOpen] = useState(false);
   const { toast } = useToast();
+  const isInitialLoad = useRef(true);
+  const prevMessageCount = useRef(messages.length);
 
   // Handle mood change from modal
   const handleMoodChange = (mood: string) => {
@@ -107,9 +109,21 @@ const Chat = () => {
     }
   }, [messages]);
 
-  // Auto-scroll to bottom when new messages arrive
+  // Auto-scroll to bottom ONLY when new messages are added (not on initial load)
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    // Skip scroll on initial load/reload
+    if (isInitialLoad.current) {
+      isInitialLoad.current = false;
+      prevMessageCount.current = messages.length;
+      return;
+    }
+
+    // Only scroll if messages were actually added
+    if (messages.length > prevMessageCount.current) {
+      messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    prevMessageCount.current = messages.length;
   }, [messages]);
 
   const handleGoToSong = (songId: string) => {
