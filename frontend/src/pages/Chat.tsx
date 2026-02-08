@@ -150,7 +150,8 @@ const Chat = () => {
       // Call the backend chat API using the API service
       const response = await api.post('/chat/send', {
         message: currentInput,
-        conversationHistory: conversationHistory
+        conversationHistory: conversationHistory,
+        userMood: detectedMood.toLowerCase() // Send user's selected mood to backend
       });
 
       const data = response.data;
@@ -208,10 +209,51 @@ const Chat = () => {
             <Card className="h-[600px] flex flex-col border-primary/20">
               <div className="p-4 border-b border-primary/20">
                 <h2 className="text-xl font-bold text-primary">Chat with Mr Sarcastic</h2>
-                <div className="flex items-center gap-2 mt-2">
-                  <span className="text-sm text-muted-foreground">Detected Mood:</span>
-                  <Badge variant="secondary" className="bg-accent/20 text-accent-foreground">
-                    {detectedMood}
+
+                {/* Prominent Mood Indicator Card */}
+                <div className={`mt-3 p-3 rounded-lg border-2 flex items-center justify-between ${detectedMood.toLowerCase() === 'toxic'
+                    ? 'bg-red-100 dark:bg-red-950 border-red-500'
+                    : detectedMood.toLowerCase() === 'happy'
+                      ? 'bg-yellow-100 dark:bg-yellow-950 border-yellow-500'
+                      : detectedMood.toLowerCase() === 'sad'
+                        ? 'bg-blue-100 dark:bg-blue-950 border-blue-500'
+                        : detectedMood.toLowerCase() === 'energetic'
+                          ? 'bg-orange-100 dark:bg-orange-950 border-orange-500'
+                          : detectedMood.toLowerCase() === 'calm' || detectedMood.toLowerCase() === 'chill'
+                            ? 'bg-green-100 dark:bg-green-950 border-green-500'
+                            : detectedMood.toLowerCase() === 'focused'
+                              ? 'bg-purple-100 dark:bg-purple-950 border-purple-500'
+                              : 'bg-muted/50 border-muted-foreground/30'
+                  }`}>
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">
+                      {detectedMood.toLowerCase() === 'toxic' ? '😈' :
+                        detectedMood.toLowerCase() === 'happy' ? '😊' :
+                          detectedMood.toLowerCase() === 'sad' ? '😢' :
+                            detectedMood.toLowerCase() === 'energetic' ? '⚡' :
+                              detectedMood.toLowerCase() === 'calm' || detectedMood.toLowerCase() === 'chill' ? '☁️' :
+                                detectedMood.toLowerCase() === 'focused' ? '🎯' : '😐'}
+                    </span>
+                    <div>
+                      <p className="text-xs text-muted-foreground">Current Mood</p>
+                      <p className={`font-bold text-lg ${detectedMood.toLowerCase() === 'toxic' ? 'text-red-600' :
+                          detectedMood.toLowerCase() === 'happy' ? 'text-yellow-600' :
+                            detectedMood.toLowerCase() === 'sad' ? 'text-blue-600' :
+                              detectedMood.toLowerCase() === 'energetic' ? 'text-orange-600' :
+                                detectedMood.toLowerCase() === 'calm' || detectedMood.toLowerCase() === 'chill' ? 'text-green-600' :
+                                  detectedMood.toLowerCase() === 'focused' ? 'text-purple-600' : 'text-foreground'
+                        }`}>{detectedMood}</p>
+                    </div>
+                  </div>
+                  <Badge
+                    variant="secondary"
+                    className={`${detectedMood.toLowerCase() === 'toxic'
+                        ? 'bg-red-500 text-white'
+                        : 'bg-accent/20 text-accent-foreground'
+                      } cursor-pointer`}
+                    onClick={() => setMoodSelectorOpen(true)}
+                  >
+                    Change Mood
                   </Badge>
                 </div>
               </div>

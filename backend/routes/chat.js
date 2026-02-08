@@ -93,7 +93,7 @@ router.post('/test', async (req, res) => {
 // Send a message and get AI response
 router.post('/send', async (req, res) => {
     try {
-        const { message, conversationHistory = [] } = req.body;
+        const { message, conversationHistory = [], userMood = null } = req.body;
 
         // Try to get user ID from token, but don't require it
         let userId = 'anonymous-user';
@@ -114,13 +114,14 @@ router.post('/send', async (req, res) => {
             return res.status(400).json({ error: 'Message is required' });
         }
 
-        console.log('📨 Received message from user:', userId, '- Message:', message);
+        console.log('📨 Received message from user:', userId, '- Message:', message, '- User Mood:', userMood || 'auto-detect');
 
-        // Generate AI response
+        // Generate AI response with user's selected mood
         const response = await chatService.generateResponse(
             message,
             userId,
-            conversationHistory
+            conversationHistory,
+            { forceMood: userMood } // Pass user's selected mood
         );
 
         console.log('🤖 Generated response:', response);

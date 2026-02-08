@@ -219,10 +219,12 @@ This is straight from our Songs page playlist - only the finest curated track fo
         return { available: false, groq_available: this.isGroqAvailable };
     }
 
-    async generateGroqResponse(message, userId = null, conversationHistory = []) {
+    async generateGroqResponse(message, userId = null, conversationHistory = [], options = {}) {
         try {
-            // FIRST: Detect the user's mood from their message
-            const detectedMood = this.detectMood(message.toLowerCase());
+            // Use forced mood from user selection OR detect from message
+            const detectedMood = options.forceMood || this.detectMood(message.toLowerCase());
+
+            console.log('🎭 Using mood:', detectedMood, options.forceMood ? '(user selected)' : '(auto-detected)');
 
             // Create a mood-enhanced system prompt
             const moodContext = this.getMoodContext(detectedMood);
@@ -308,8 +310,8 @@ This is straight from our Songs page playlist - only the finest curated track fo
             // First try Groq API (our primary LLM)
             if (this.isGroqAvailable) {
                 try {
-                    console.log('🚀 Using Groq API for response generation...');
-                    return await this.generateGroqResponse(message, userId, conversationHistory);
+                    console.log('🚀 Using Groq API for response generation with options:', options);
+                    return await this.generateGroqResponse(message, userId, conversationHistory, options);
                 } catch (groqError) {
                     console.error('⚠️ Groq API failed, falling back...', groqError.message);
                 }
