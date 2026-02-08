@@ -169,7 +169,8 @@ const Chat = () => {
         };
 
         setMessages((prev) => [...prev, botResponse]);
-        setDetectedMood(data.data.mood.charAt(0).toUpperCase() + data.data.mood.slice(1));
+        // Don't overwrite user's selected mood - it should persist until manually changed
+        // setDetectedMood(data.data.mood.charAt(0).toUpperCase() + data.data.mood.slice(1));
 
         // Update conversation history
         setConversationHistory(prev => [...prev, {
@@ -212,18 +213,18 @@ const Chat = () => {
 
                 {/* Prominent Mood Indicator Card */}
                 <div className={`mt-3 p-3 rounded-lg border-2 flex items-center justify-between ${detectedMood.toLowerCase() === 'toxic'
-                    ? 'bg-red-100 dark:bg-red-950 border-red-500'
-                    : detectedMood.toLowerCase() === 'happy'
-                      ? 'bg-yellow-100 dark:bg-yellow-950 border-yellow-500'
-                      : detectedMood.toLowerCase() === 'sad'
-                        ? 'bg-blue-100 dark:bg-blue-950 border-blue-500'
-                        : detectedMood.toLowerCase() === 'energetic'
-                          ? 'bg-orange-100 dark:bg-orange-950 border-orange-500'
-                          : detectedMood.toLowerCase() === 'calm' || detectedMood.toLowerCase() === 'chill'
-                            ? 'bg-green-100 dark:bg-green-950 border-green-500'
-                            : detectedMood.toLowerCase() === 'focused'
-                              ? 'bg-purple-100 dark:bg-purple-950 border-purple-500'
-                              : 'bg-muted/50 border-muted-foreground/30'
+                  ? 'bg-red-100 dark:bg-red-950 border-red-500'
+                  : detectedMood.toLowerCase() === 'happy'
+                    ? 'bg-yellow-100 dark:bg-yellow-950 border-yellow-500'
+                    : detectedMood.toLowerCase() === 'sad'
+                      ? 'bg-blue-100 dark:bg-blue-950 border-blue-500'
+                      : detectedMood.toLowerCase() === 'energetic'
+                        ? 'bg-orange-100 dark:bg-orange-950 border-orange-500'
+                        : detectedMood.toLowerCase() === 'calm' || detectedMood.toLowerCase() === 'chill'
+                          ? 'bg-green-100 dark:bg-green-950 border-green-500'
+                          : detectedMood.toLowerCase() === 'focused'
+                            ? 'bg-purple-100 dark:bg-purple-950 border-purple-500'
+                            : 'bg-muted/50 border-muted-foreground/30'
                   }`}>
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">
@@ -237,19 +238,19 @@ const Chat = () => {
                     <div>
                       <p className="text-xs text-muted-foreground">Current Mood</p>
                       <p className={`font-bold text-lg ${detectedMood.toLowerCase() === 'toxic' ? 'text-red-600' :
-                          detectedMood.toLowerCase() === 'happy' ? 'text-yellow-600' :
-                            detectedMood.toLowerCase() === 'sad' ? 'text-blue-600' :
-                              detectedMood.toLowerCase() === 'energetic' ? 'text-orange-600' :
-                                detectedMood.toLowerCase() === 'calm' || detectedMood.toLowerCase() === 'chill' ? 'text-green-600' :
-                                  detectedMood.toLowerCase() === 'focused' ? 'text-purple-600' : 'text-foreground'
+                        detectedMood.toLowerCase() === 'happy' ? 'text-yellow-600' :
+                          detectedMood.toLowerCase() === 'sad' ? 'text-blue-600' :
+                            detectedMood.toLowerCase() === 'energetic' ? 'text-orange-600' :
+                              detectedMood.toLowerCase() === 'calm' || detectedMood.toLowerCase() === 'chill' ? 'text-green-600' :
+                                detectedMood.toLowerCase() === 'focused' ? 'text-purple-600' : 'text-foreground'
                         }`}>{detectedMood}</p>
                     </div>
                   </div>
                   <Badge
                     variant="secondary"
                     className={`${detectedMood.toLowerCase() === 'toxic'
-                        ? 'bg-red-500 text-white'
-                        : 'bg-accent/20 text-accent-foreground'
+                      ? 'bg-red-500 text-white'
+                      : 'bg-accent/20 text-accent-foreground'
                       } cursor-pointer`}
                     onClick={() => setMoodSelectorOpen(true)}
                   >
