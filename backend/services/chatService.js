@@ -272,16 +272,44 @@ NOW RESPOND AS ${detectedMood.toUpperCase()} MOOD:`;
                 { role: 'system', content: this.sarcasticSystemPrompt + moodEnforcement }
             ];
 
-            // Add conversation history (last 10 messages for context)
-            const recentHistory = conversationHistory.slice(-10);
-            for (const msg of recentHistory) {
-                messages.push({
-                    role: msg.role === 'user' ? 'user' : 'assistant',
-                    content: msg.content || msg.message
-                });
+            // Add conversation history (last 15 messages for richer context)
+            const maxHistory = 15;
+            const recentHistory = conversationHistory.slice(-maxHistory);
+
+            // If conversation is long, add a summary preamble for older context
+            if (conversationHistory.length > maxHistory) {
+                const olderMessages = conversationHistory.slice(0, -maxHistory);
+                const topicsSummary = olderMessages
+                    .filter(msg => msg.role === 'user' || msg.message)
+                    .map(msg => msg.content || msg.message || msg.response || '')
+                    .filter(text => text.length > 0)
+                    .slice(-5)
+                    .join('; ');
+
+                if (topicsSummary) {
+                    messages.push({
+                        role: 'system',
+                        content: `[Earlier conversation context — the user previously discussed: ${topicsSummary}]`
+                    });
+                }
             }
 
-            // Add current message with mood hint
+            // Add recent conversation history with proper role mapping
+            for (const msg of recentHistory) {
+                // Handle both {role, content} format and {message, response} format
+                if (msg.role) {
+                    messages.push({
+                        role: msg.role === 'user' ? 'user' : 'assistant',
+                        content: msg.content || msg.message || ''
+                    });
+                } else if (msg.message && msg.response) {
+                    // Legacy format: {message, response} pairs
+                    messages.push({ role: 'user', content: msg.message });
+                    messages.push({ role: 'assistant', content: msg.response });
+                }
+            }
+
+            // Add current message
             messages.push({ role: 'user', content: message });
 
             const response = await axios.post(this.groqApiUrl, {
