@@ -617,32 +617,117 @@ NOW RESPOND AS ${detectedMood.toUpperCase()} MOOD:`;
     detectMood(message) {
         const messageLower = message.toLowerCase();
 
-        // Enhanced mood detection with more keywords
-        const sadKeywords = ['sad', 'depressed', 'down', 'unhappy', 'crying', 'upset', 'feel bad', 'lonely', 'blue', 'melancholy', 'heartbroken', 'miserable'];
-        const happyKeywords = ['happy', 'excited', 'joy', 'great', 'awesome', 'fantastic', 'good', 'cheerful', 'elated', 'thrilled', 'upbeat', 'positive', 'wonderful'];
-        const angryKeywords = ['angry', 'mad', 'furious', 'hate', 'annoyed', 'pissed', 'damn', 'frustrated', 'irritated', 'rage', 'livid'];
-        const boredKeywords = ['bored', 'boring', 'dull', 'nothing to do', 'tired', 'meh', 'whatever', 'sleepy', 'uninterested'];
-        const energeticKeywords = ['energetic', 'pumped', 'hyper', 'excited', 'ready', 'motivated', 'workout', 'exercise', 'party'];
-        const chillKeywords = ['chill', 'relaxed', 'calm', 'peaceful', 'mellow', 'laid back', 'zen', 'tranquil'];
-        const focusKeywords = ['focus', 'concentrate', 'study', 'work', 'productive', 'serious', 'intense'];
-        const relaxedKeywords = ['relaxed', 'peaceful', 'serene', 'comfortable', 'content'];
+        // Weighted mood detection — each match adds to the mood's score
+        const moodKeywords = {
+            sad: {
+                keywords: ['sad', 'depressed', 'down', 'unhappy', 'crying', 'upset', 'feel bad', 'lonely', 'blue',
+                    'melancholy', 'heartbroken', 'miserable', 'hopeless', 'empty', 'broken', 'hurting', 'grief', 'lost'],
+                phrases: ["i'm so done", "can't deal", "want to cry", "feeling low", "worst day", "hate my life",
+                    "so tired of", "give up", "no point", "doesn't matter"],
+                emojis: ['😢', '😭', '😞', '😔', '💔', '🥺', '😿'],
+                weight: 2
+            },
+            happy: {
+                keywords: ['happy', 'excited', 'joy', 'great', 'awesome', 'fantastic', 'good', 'cheerful',
+                    'elated', 'thrilled', 'upbeat', 'positive', 'wonderful', 'amazing', 'blessed', 'grateful',
+                    'celebrate', 'love', 'perfect', 'incredible', 'yay', 'woohoo'],
+                phrases: ["best day", "so happy", "feeling great", "let's go", "can't wait", "love this"],
+                emojis: ['😊', '😄', '🎉', '✨', '🥳', '💃', '🎊', '❤️', '🙌'],
+                weight: 2
+            },
+            angry: {
+                keywords: ['angry', 'mad', 'furious', 'hate', 'annoyed', 'pissed', 'frustrated', 'irritated',
+                    'rage', 'livid', 'infuriating', 'outraged', 'disgusted', 'fed up', 'sick of', 'wtf'],
+                phrases: ["piss me off", "so annoying", "can't stand", "drives me crazy", "i swear", "are you kidding"],
+                emojis: ['😡', '🤬', '😤', '💢', '👿'],
+                weight: 2
+            },
+            stressed: {
+                keywords: ['stressed', 'overwhelmed', 'anxious', 'anxiety', 'pressure', 'deadline', 'overloaded',
+                    'panicking', 'panic', 'nervous', 'worried', 'freaking out', 'too much', 'burnout'],
+                phrases: ["so stressed", "can't handle", "too much work", "gonna fail", "not enough time", "losing my mind"],
+                emojis: ['😰', '😩', '🤯', '😫'],
+                weight: 2
+            },
+            curious: {
+                keywords: ['curious', 'wondering', 'interesting', 'how does', 'why does', 'what if', 'tell me about',
+                    'explain', 'learn', 'know more', 'what is', 'how to', 'teach me'],
+                phrases: ["i wonder", "did you know", "how come", "what do you think", "is it true"],
+                emojis: ['🤔', '🧐', '💭', '❓'],
+                weight: 1.5
+            },
+            confused: {
+                keywords: ['confused', 'confusing', 'don\'t understand', 'lost', 'what', 'huh', 'unclear',
+                    'makes no sense', 'idk', 'dunno', 'no idea'],
+                phrases: ["i don't get it", "what do you mean", "makes no sense", "so confused", "help me understand"],
+                emojis: ['😕', '🤷', '❓', '😵'],
+                weight: 1.5
+            },
+            bored: {
+                keywords: ['bored', 'boring', 'dull', 'nothing to do', 'tired', 'meh', 'whatever', 'sleepy',
+                    'uninterested', 'blah', 'ugh', 'sigh'],
+                phrases: ["so bored", "nothing happening", "entertain me", "what should i do"],
+                emojis: ['😴', '🥱', '😑', '💤'],
+                weight: 1.5
+            },
+            energetic: {
+                keywords: ['energetic', 'pumped', 'hyper', 'ready', 'motivated', 'workout', 'exercise',
+                    'party', 'fired up', 'lets go', 'amped', 'stoked', 'wired'],
+                phrases: ["let's do this", "so pumped", "ready to go", "feeling alive", "full of energy"],
+                emojis: ['⚡', '🔥', '💪', '🏃', '🎯', '💥'],
+                weight: 2
+            },
+            chill: {
+                keywords: ['chill', 'relaxed', 'calm', 'peaceful', 'mellow', 'laid back', 'zen', 'tranquil',
+                    'serene', 'comfortable', 'content', 'cozy', 'vibing'],
+                phrases: ["just chilling", "taking it easy", "good vibes", "no stress", "living the life"],
+                emojis: ['☁️', '✌️', '😌', '🧘', '🌊'],
+                weight: 1.5
+            },
+            focus: {
+                keywords: ['focus', 'concentrate', 'study', 'work', 'productive', 'serious', 'intense',
+                    'exam', 'assignment', 'homework', 'research', 'grind', 'hustle'],
+                phrases: ["need to focus", "gotta study", "working on", "have to finish", "grinding"],
+                emojis: ['📚', '💻', '🎯', '📝', '🧠'],
+                weight: 1.5
+            }
+        };
 
-        if (sadKeywords.some(word => messageLower.includes(word))) {
-            return 'sad';
-        } else if (happyKeywords.some(word => messageLower.includes(word))) {
-            return 'happy';
-        } else if (angryKeywords.some(word => messageLower.includes(word))) {
-            return 'angry';
-        } else if (energeticKeywords.some(word => messageLower.includes(word))) {
-            return 'energetic';
-        } else if (focusKeywords.some(word => messageLower.includes(word))) {
-            return 'focus';
-        } else if (chillKeywords.some(word => messageLower.includes(word))) {
-            return 'chill';
-        } else if (relaxedKeywords.some(word => messageLower.includes(word))) {
-            return 'relaxed';
-        } else if (boredKeywords.some(word => messageLower.includes(word))) {
-            return 'bored';
+        // Score each mood
+        const scores = {};
+        for (const [mood, config] of Object.entries(moodKeywords)) {
+            let score = 0;
+
+            // Check keywords (1 point each, multiplied by weight)
+            for (const keyword of config.keywords) {
+                if (messageLower.includes(keyword)) {
+                    score += config.weight;
+                }
+            }
+
+            // Check phrases (2 points each — phrases are more intentional)
+            for (const phrase of config.phrases) {
+                if (messageLower.includes(phrase)) {
+                    score += config.weight * 2;
+                }
+            }
+
+            // Check emojis (1.5 points each — emojis are strong signals)
+            for (const emoji of config.emojis) {
+                if (message.includes(emoji)) {
+                    score += config.weight * 1.5;
+                }
+            }
+
+            if (score > 0) {
+                scores[mood] = score;
+            }
+        }
+
+        // Return the mood with the highest score
+        if (Object.keys(scores).length > 0) {
+            const topMood = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+            return topMood;
         }
 
         return 'sarcastic';
