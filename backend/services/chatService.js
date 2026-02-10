@@ -109,17 +109,22 @@ Remember: You're not just any chatbot — you're their FAVORITE chatbot. Make ev
     }
 
     getSongsByMood(mood, limit = 1) {
-        // Map detected moods to song moods
+        // Map detected moods to song moods (expanded for all mood categories)
         const moodMapping = {
             'sad': ['Sad'],
             'happy': ['Happy'],
-            'angry': ['Angry'],
-            'bored': ['Chill', 'Relaxed'],
+            'angry': ['Angry', 'Energetic'],
+            'bored': ['Chill', 'Relaxed', 'Happy'],
             'sarcastic': ['Energetic', 'Happy'],
             'energetic': ['Energetic'],
             'chill': ['Chill', 'Relaxed'],
-            'focus': ['Focus'],
-            'relaxed': ['Relaxed']
+            'focus': ['Focus', 'Chill'],
+            'relaxed': ['Relaxed', 'Chill'],
+            'stressed': ['Chill', 'Relaxed', 'Focus'],
+            'curious': ['Happy', 'Energetic'],
+            'confused': ['Chill', 'Focus'],
+            'neutral': ['Happy', 'Energetic', 'Chill'],
+            'toxic': ['Energetic', 'Angry']
         };
 
         const targetMoods = moodMapping[mood.toLowerCase()] || ['Happy', 'Energetic'];
@@ -129,8 +134,11 @@ Remember: You're not just any chatbot — you're their FAVORITE chatbot. Make ev
             targetMoods.includes(song.mood)
         );
 
+        // If no matches found, return from full library
+        const pool = matchingSongs.length > 0 ? matchingSongs : this.songs;
+
         // Shuffle and return limited number of songs
-        const shuffled = matchingSongs.sort(() => 0.5 - Math.random());
+        const shuffled = pool.sort(() => 0.5 - Math.random());
         return shuffled.slice(0, limit);
     }
 
@@ -143,15 +151,19 @@ Remember: You're not just any chatbot — you're their FAVORITE chatbot. Make ev
         }
 
         const moodTexts = {
-            'sad': "feeling a bit down, so here's a song that might resonate with your soul (or make you cry more, your choice)",
-            'happy': "in a good mood! Here's an upbeat track to keep that energy flowing",
-            'angry': "feeling some rage, so here's a track to help you channel that energy",
-            'bored': "looking to chill out, so here's a relaxing vibe for you",
-            'sarcastic': "being your usual charming self, so here's an energetic track to match your personality",
-            'energetic': "pumped up! Here's a high-energy song to fuel your enthusiasm",
-            'chill': "wanting to relax, so here's a chill vibe for you",
-            'focus': "need to concentrate, so here's a focus-friendly track",
-            'relaxed': "in a mellow mood, so here's a peaceful song"
+            'sad': "feeling a bit down, so here's a track that gets it 🥺",
+            'happy': "in a good mood! Here's an upbeat banger to keep it going 🎉",
+            'angry': "feeling some rage — channel that energy into this 🔥",
+            'bored': "looking for vibes, so here's something to cure that boredom",
+            'sarcastic': "being your usual charming self — match that energy with this 😏",
+            'energetic': "PUMPED UP! Here's a high-energy track to keep you going 💪",
+            'chill': "wanting to relax — here's a smooth vibe ✌️",
+            'focus': "need to concentrate — here's a focus-friendly track 🎯",
+            'relaxed': "in a mellow mood — here's something peaceful 🌊",
+            'stressed': "under pressure — let this track calm your nerves 🧘",
+            'curious': "in an exploring mood — here's something interesting 🧐",
+            'confused': "need clarity — maybe this track will help you think 💭",
+            'toxic': "in TOXIC mode — here's something aggressive to match 😈🔥"
         };
 
         const moodText = moodTexts[mood.toLowerCase()] || "in the mood for some music";
@@ -349,11 +361,12 @@ NOW RESPOND AS ${detectedMood.toUpperCase()} MOOD:`;
             const aiResponse = response.data.choices[0].message.content;
             // detectedMood already declared above
 
-            // Check if user is asking for music recommendations
+            // Check if user is asking for music recommendations (expanded triggers)
             const messageLower = message.toLowerCase();
-            if (messageLower.includes('music') || messageLower.includes('song') ||
-                messageLower.includes('recommend') || messageLower.includes('suggest') ||
-                messageLower.includes('listen') || messageLower.includes('playlist')) {
+            const musicTriggers = ['music', 'song', 'recommend', 'suggest', 'listen', 'playlist',
+                'vibe', 'tune', 'banger', 'beat', 'track', 'jam', 'album', 'artist',
+                'what should i play', 'play something', 'sing'];
+            if (musicTriggers.some(trigger => messageLower.includes(trigger))) {
 
                 const songs = this.getSongsByMood(detectedMood, 1);
                 if (songs.length > 0) {
