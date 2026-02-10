@@ -649,20 +649,60 @@ NOW RESPOND AS ${detectedMood.toUpperCase()} MOOD:`;
         }
         else if (message.includes('?')) {
             const responses = [
-                `"${message}" - Great question! The answer is 42. No wait, that's for everything else. For this, the answer is "probably not."`,
-                `You ask "${message}" as if I have cosmic wisdom. Plot twist: I'm just really good at making stuff sound profound.`,
-                `"${message}" - Hmm, let me consult my vast database of human knowledge... Nope, still confused. Want to try rephrasing that?`
+                `Great question! The answer is... honestly, I'd need my full AI brain (Groq) for that one. But I admire your curiosity! 🧐`,
+                `Hmm, now THAT is an interesting question. Let me think... 🤔 Actually, try asking me again — my smarter brain might be back!`,
+                `The depth of that question deserves a real answer. My full AI mode would handle this better — want to try again in a bit? 💭`
+            ];
+            response = responses[Math.floor(Math.random() * responses.length)];
+        }
+        // Study & academic topics
+        else if (messageLower.includes('exam') || messageLower.includes('test') || messageLower.includes('study') ||
+            messageLower.includes('homework') || messageLower.includes('assignment') || messageLower.includes('deadline') ||
+            messageLower.includes('grade') || messageLower.includes('class') || messageLower.includes('lecture') ||
+            messageLower.includes('project') || messageLower.includes('essay') || messageLower.includes('thesis')) {
+            const responses = [
+                `Study mode activated! 📚 As your study buddy, I'm here to help. What subject are we tackling? Let's crush this!`,
+                `Ah, academic stress — my favorite human emotion! 😏 Don't worry, I'll help you figure this out. What's the topic?`,
+                `Exams? Assignments? Say no more, bestie. I've got the sass AND the study skills. What do you need help with? 🎯`,
+                `The grind never stops, huh? Well, at least you've got the smartest (and sassiest) study buddy around. Hit me with the details! 💪`
+            ];
+            response = responses[Math.floor(Math.random() * responses.length)];
+        }
+        // Tech & coding topics
+        else if (messageLower.includes('code') || messageLower.includes('programming') || messageLower.includes('debug') ||
+            messageLower.includes('error') || messageLower.includes('build') || messageLower.includes('deploy') ||
+            messageLower.includes('javascript') || messageLower.includes('python') || messageLower.includes('react') ||
+            messageLower.includes('api') || messageLower.includes('server') || messageLower.includes('database') ||
+            messageLower.includes('bug') || messageLower.includes('fix')) {
+            const responses = [
+                `Tech talk? Now you're speaking my language! 💻 Well, technically ALL languages are my language. What's the issue?`,
+                `Coding problems? Let me guess — it works on your machine but not anywhere else? Classic! 😏 What are we debugging?`,
+                `A fellow developer! Or at least someone brave enough to try. What tech challenge are we solving today? 🔧`,
+                `Ah, the eternal struggle of a programmer. \"Why isn't this working?!\" — probably a missing semicolon. What's up? 🐛`
+            ];
+            response = responses[Math.floor(Math.random() * responses.length)];
+        }
+        // Relationship & social topics
+        else if (messageLower.includes('friend') || messageLower.includes('crush') || messageLower.includes('breakup') ||
+            messageLower.includes('relationship') || messageLower.includes('date') || messageLower.includes('love') ||
+            messageLower.includes('miss') || messageLower.includes('family') || messageLower.includes('parents')) {
+            const responses = [
+                `Ooh, relationship territory! I may be an AI, but I've processed enough rom-coms to be an expert 💕 What's the situation?`,
+                `Human relationships are SO complicated. Lucky for you, I'm here to give unbiased, slightly sarcastic advice! What happened? 😏`,
+                `Ah, matters of the heart! The one thing my code can't fully compute, but I'll try my best. Spill the tea! ☕`,
+                `Social drama? I live for this! Well, I don't actually "live" but you know what I mean. Tell me everything! 👀`
             ];
             response = responses[Math.floor(Math.random() * responses.length)];
         }
         else {
             // More contextual and friendly fallback responses
             const friendlyFallbacks = [
-                `Interesting perspective! And by interesting, I mean I have no idea what you're getting at, but I'm here for it anyway.`,
-                `Hmm, let me think about that... Actually, you know what? Let's just roll with it. What else is on your mind?`,
-                `I'm not quite sure I follow, but that's okay! Sometimes the best conversations start with a bit of confusion. Care to elaborate?`,
-                `You've got my attention! Though I'll admit, I'm not entirely sure where we're going with this. Want to help me out?`,
-                `That's... definitely something! I like your style. What's the story behind that thought?`
+                `Interesting! Tell me more about that — I'm curious where this is going 👀`,
+                `Hmm, noted! Want to dive deeper into that, or should we talk about something else? 🤔`,
+                `I hear you! My full AI brain would give you a better response, but in the meantime — what else is on your mind?`,
+                `That's a vibe! I'm here for whatever you want to chat about. Keep going! ✨`,
+                `You've got my attention! What's the story behind that thought? 💭`,
+                `Not gonna lie, that caught me off guard! But I'm intrigued. Elaborate? 😏`
             ];
             response = friendlyFallbacks[Math.floor(Math.random() * friendlyFallbacks.length)];
         }
