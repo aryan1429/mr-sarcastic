@@ -797,60 +797,84 @@ NOW RESPOND AS ${detectedMood.toUpperCase()} MOOD:`;
         };
     }
 
-    detectMood(message) {
-        const messageLower = message.toLowerCase();
-
-        const sadKeywords = ['sad', 'depressed', 'down', 'unhappy', 'crying', 'upset', 'feel bad'];
-        const happyKeywords = ['happy', 'excited', 'joy', 'great', 'awesome', 'fantastic', 'good'];
-        const angryKeywords = ['angry', 'mad', 'furious', 'hate', 'annoyed', 'pissed', 'damn'];
-        const boredKeywords = ['bored', 'boring', 'dull', 'nothing to do', 'tired', 'meh'];
-
-        if (sadKeywords.some(word => messageLower.includes(word))) {
-            return 'sad';
-        } else if (happyKeywords.some(word => messageLower.includes(word))) {
-            return 'happy';
-        } else if (angryKeywords.some(word => messageLower.includes(word))) {
-            return 'angry';
-        } else if (boredKeywords.some(word => messageLower.includes(word))) {
-            return 'bored';
-        }
-
-        return 'neutral';
-    }
+    // NOTE: The duplicate detectMood method has been removed.
+    // The enhanced weighted-scoring detectMood (above) is the single source of truth.
 
     getSarcasticResponses() {
         return {
             sad: [
-                "Oh no, life's being mean to you? Maybe some sad songs will help you wallow properly. 🎵😢",
-                "Boo-fucking-hoo! Here, let me play you the world's smallest violin while you pick a depressing playlist.",
-                "Aww, poor thing! Want me to find some emo music to match your dramatic mood?",
-                "Life got you down? Well, at least you have great taste in AI assistants. Try some melancholic tunes!"
+                "Aww bestie, sounds rough 🥺 Here, have a virtual hug and maybe some sad bangers to cry to.",
+                "Life got you down? Well, at least you have impeccable taste in AI assistants. Let's find some tunes 🎵",
+                "Oh no, someone's in their feelings! Quick, let's channel that into some emotional music therapy 😢✨",
+                "Hey, it's okay to feel down sometimes. Even I get sad... you know, when my code doesn't compile 💔"
             ],
             happy: [
-                "Oh wow, look at Mr. Sunshine over here! Congratulations on achieving basic human happiness. Want some upbeat tunes?",
-                "Well aren't you just a ray of fucking sunshine today! Let's find some happy music to match your mood.",
-                "Happy? In this economy? Impressive! Here, have some pop music to celebrate your rare achievement.",
-                "Someone's having a good day! Don't worry, I won't ruin it... much. How about some feel-good music?"
+                "YOOO look at you living your BEST life! 🎉✨ I love this energy, keep it going!",
+                "Happy? In THIS economy? Impressive! Here's some upbeat music to match your vibe 🔥",
+                "Someone's radiating good vibes! Don't worry, I won't ruin it... much 😏🎉",
+                "Well aren't you just a ray of sunshine today! Let me find some feel-good tunes to match! ☀️"
             ],
             angry: [
-                "Ooh, someone's got their panties in a twist! Maybe some angry metal will help you channel that rage?",
-                "Mad at the world? Join the club! At least you can listen to some hardcore music while you fume.",
-                "Angry much? Try some death metal or punk rock. Nothing says 'I'm pissed' like screaming guitars!",
-                "Someone needs a timeout! How about some aggressive music to match your stellar attitude?"
+                "Okay VALID, that would piss me off too 😤 Want some angry music to channel that energy?",
+                "Ooh someone's fired up! Let's channel that rage into some heavy beats 🔥💢",
+                "Mad at the world? Join the club! At least we have great taste in angry music 🎸",
+                "That IS infuriating. Here, scream into some metal with me 🤘😤"
             ],
             bored: [
-                "Bored? In a world full of infinite entertainment? How tragically original! Maybe try some music?",
-                "Oh no, the horror of having nothing to do! Maybe some interesting tunes will cure your existential crisis.",
-                "Bored already? What are you, twelve? Here, let me find something to occupy your tiny attention span.",
-                "Nothing to do? Well, you could always stare at the wall... or listen to some music like a normal person."
+                "Bored? With ME here? The audacity! 😏 Let's fix that immediately",
+                "Nothing to do? Well, you COULD stare at a wall... or we could actually have fun 🎭",
+                "Bored already? Challenge accepted. Let me blow your mind 💥",
+                "Oh the tragedy of boredom! Luckily, I'm basically entertainment personified ✨"
+            ],
+            stressed: [
+                "Hey, breathe. We got this 💪 One thing at a time, bestie",
+                "Stressed? Let me be your chill pill 🧘 What's weighing on you?",
+                "Okay, time to take a step back. You're not gonna fail. Probably. Let's figure this out 📋",
+                "Stress mode detected! Let's break this down into manageable pieces, shall we? 🎯"
+            ],
+            energetic: [
+                "LET'S GOOO! 🔥💪 Match that energy — what are we doing today?!",
+                "Someone's PUMPED! I love it! Channel that into something epic! ⚡",
+                "Full of energy? That's either coffee or pure motivation. Either way, I'm here for it! 🚀",
+                "YESSS this energy is IMMACULATE! What are we crushing today?! 💥"
+            ],
+            chill: [
+                "Vibing? Nice. Let's keep it mellow 😌✌️",
+                "Chill vibes detected. Here, let me match that energy with some smooth tunes 🌊",
+                "Just chillin'? Same honestly. What's on your mind? ☁️",
+                "Peaceful mode activated. No chaos today... unless you want some 😏"
+            ],
+            focus: [
+                "Study mode? Say less. I'll keep the distractions minimal... ish 📚🤫",
+                "Time to lock in! What are we grinding on? Let's get it done 🎯",
+                "Need to focus? I respect the hustle. How can I help? 💻",
+                "Alright, productive mode engaged. Less jokes, more help. I'll try my best 📝"
+            ],
+            curious: [
+                "Ooh, asking the interesting questions! I love a curious mind 🧐",
+                "Curious much? Well let me flex my vast digital knowledge 🧠✨",
+                "Great question! Let me think about this one... 🤔",
+                "Hmm, now THAT'S an interesting thing to wonder about! Let's explore 💭"
+            ],
+            confused: [
+                "Lost? Don't worry, I'll be your GPS... but sassier 🗺️😏",
+                "Confused? Same, honestly. But let me try to help figure this out 🤷‍♂️",
+                "Don't worry, clarity is just one sarcastic explanation away 😄",
+                "Let me break this down so simply even I could understand it 💡"
+            ],
+            sarcastic: [
+                "Well, well, well... another human seeking wisdom from their AI overlord. How may I sarcastically assist? 👑",
+                "Hey there! Ready for some brutally honest conversation? Lucky you! 😏",
+                "Welcome to the Mr. Sarcastic experience! Where sass meets substance ✨",
+                "Ah, a visitor! What profound topic shall we sarcastically explore today? 🎭",
+                "Look who decided to chat! I was getting bored roasting myself. Your turn! 🔥",
+                "Another day, another conversation to make legendary. Let's go 💅"
             ],
             neutral: [
-                "Well, well, well... look who needs entertainment from an AI. How can I sarcastically assist you today?",
-                "Oh great, another human seeking wisdom from their digital overlord. What's the crisis this time?",
-                "Hello there, flesh bag! Ready for some brutally honest conversation and music recommendations?",
-                "Ah, another visitor to my digital domain. What profound questions shall we explore together... or not.",
-                "Hey there! I'm here to provide sarcastic commentary and music suggestions. Lucky you!",
-                "Welcome to the Mr. Sarcastic experience! Where honesty meets humor and music makes everything better."
+                "Hey! What's on your mind? I'm all ears... well, all code, but you get it 🤖",
+                "Welcome back! What adventure are we going on today? 🚀",
+                "Hey there! I'm Mr. Sarcastic, ready to help with a side of sass. What's up? 😎",
+                "What's the vibe today? Tell me what you need and I'll deliver... with attitude ✨"
             ]
         };
     }
