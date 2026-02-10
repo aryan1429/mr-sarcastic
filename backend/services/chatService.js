@@ -311,13 +311,33 @@ NOW RESPOND AS ${detectedMood.toUpperCase()} MOOD:`;
 
             // Add current message
             messages.push({ role: 'user', content: message });
+            // Dynamic temperature based on mood for optimal response quality
+            const moodTemperatures = {
+                'toxic': 1.0,      // Maximum creativity for roasts
+                'energetic': 0.95, // High energy, creative responses
+                'happy': 0.9,      // Enthusiastic and varied
+                'sarcastic': 0.9,  // Classic sarcastic mode
+                'bored': 0.85,     // Creative to entertain
+                'angry': 0.8,      // Expressive but controlled
+                'curious': 0.75,   // Balanced creativity with accuracy
+                'sad': 0.75,       // Empathetic, thoughtful
+                'confused': 0.7,   // Clear and helpful
+                'stressed': 0.7,   // Calming and practical
+                'chill': 0.7,      // Laid-back and mellow
+                'focus': 0.6,      // Precise and concise
+                'neutral': 0.8     // Balanced default
+            };
+
+            const temperature = moodTemperatures[detectedMood] || 0.8;
 
             const response = await axios.post(this.groqApiUrl, {
                 model: 'llama-3.3-70b-versatile',
                 messages: messages,
-                temperature: 0.9,
-                max_tokens: 300,
-                top_p: 0.95
+                temperature: temperature,
+                max_tokens: 500,
+                top_p: 0.92,
+                frequency_penalty: 0.3,
+                presence_penalty: 0.2
             }, {
                 headers: {
                     'Authorization': `Bearer ${this.groqApiKey}`,
