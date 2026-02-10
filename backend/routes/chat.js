@@ -110,21 +110,36 @@ router.post('/send', async (req, res) => {
             }
         }
 
+        // Input validation
         if (!message || message.trim() === '') {
-            return res.status(400).json({ error: 'Message is required' });
+            return res.status(400).json({
+                success: false,
+                error: 'Message is required',
+                errorCode: 'EMPTY_MESSAGE'
+            });
         }
 
-        console.log('📨 Received message from user:', userId, '- Message:', message, '- User Mood:', userMood || 'auto-detect');
+        // Message length validation
+        const sanitizedMessage = message.trim().replace(/\s+/g, ' ');
+        if (sanitizedMessage.length > 2000) {
+            return res.status(400).json({
+                success: false,
+                error: 'Message is too long. Please keep it under 2000 characters.',
+                errorCode: 'MESSAGE_TOO_LONG'
+            });
+        }
+
+        console.log('📨 Received message from user:', userId, '- Message:', sanitizedMessage.substring(0, 100) + (sanitizedMessage.length > 100 ? '...' : ''), '- User Mood:', userMood || 'auto-detect');
 
         // Generate AI response with user's selected mood
         const response = await chatService.generateResponse(
-            message,
+            sanitizedMessage,
             userId,
             conversationHistory,
             { forceMood: userMood } // Pass user's selected mood
         );
 
-        console.log('🤖 Generated response:', response);
+        console.log('🤖 Generated response source:', response.source, '| mood:', response.mood);
 
         // Increment chat count for authenticated users
         if (userId !== 'anonymous-user' && userId !== 'authenticated-user') {
@@ -146,10 +161,13 @@ router.post('/send', async (req, res) => {
             }
         }
 
+        // Sanitize response text (strip null bytes or control characters)
+        const sanitizedResponse = response.text ? response.text.replace(/\0/g, '').trim() : 'Hmm, I seem to be at a loss for words. Try again? 🤔';
+
         res.json({
             success: true,
             data: {
-                message: response.text,
+                message: sanitizedResponse,
                 mood: response.mood,
                 confidence: response.confidence,
                 source: response.source,
@@ -159,10 +177,16 @@ router.post('/send', async (req, res) => {
         });
 
     } catch (error) {
-        console.error('❌ Chat error:', error);
-        res.status(500).json({
+        console.error('❌ Chat error:', error.message);
+
+        // Structured error response
+        const statusCode = error.code === 'ECONNREFUSED' ? 503 : 500;
+        res.status(statusCode).json({
+            success: false,
             error: 'Failed to generate response',
-            message: process.env.NODE_ENV === 'development' ? error.message : 'Internal server error'
+            errorCode: 'GENERATION_FAILED',
+            message: process.env.NODE_ENV === 'development' ? error.message : 'Something went wrong. Please try again.',
+            retryable: true
         });
     }
 });
