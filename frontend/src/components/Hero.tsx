@@ -5,43 +5,45 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-card to-background"></div>
       
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-float"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "2s" }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-primary/5 rounded-full blur-3xl animate-pulse-glow"></div>
+      {/* Animated Background Elements - hidden on low-power mobile */}
+      <div className="absolute inset-0 overflow-hidden hidden sm:block">
+        <div className="absolute top-1/4 left-1/4 w-48 sm:w-64 h-48 sm:h-64 bg-primary/10 rounded-full blur-3xl animate-float gpu-accelerated"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 sm:w-96 h-64 sm:h-96 bg-accent/10 rounded-full blur-3xl animate-float gpu-accelerated" style={{ animationDelay: "2s" }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 sm:w-80 h-60 sm:h-80 bg-primary/5 rounded-full blur-3xl animate-pulse-glow gpu-accelerated"></div>
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-0">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Column - Text Content */}
-          <div className="text-center lg:text-left space-y-8">
+          <div className="text-center lg:text-left space-y-6 sm:space-y-8">
             <div className="space-y-4">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-medium text-sm animate-bounce-in">
-                <Sparkles className="h-4 w-4 mr-2" />
-                AI-Powered Sass & Music Recommendations
+              <div className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-medium text-xs sm:text-sm animate-bounce-in">
+                <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-2" />
+                AI-Powered Sass & Music
               </div>
               
-              <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tight">
                 Meet{" "}
                 <span className="gradient-text">Mr Sarcastic</span>
                 <br />
-                Your Sarcastic AI Companion
+                <span className="text-3xl sm:text-4xl lg:text-5xl text-muted-foreground font-semibold">
+                  Your Sarcastic AI Companion
+                </span>
               </h1>
               
-              <p className="text-xl text-muted-foreground max-w-2xl">
+              <p className="text-base sm:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed">
                 Get ready for brutally honest conversations and mood-based music recommendations from an AI with real f'ing personality unlike your ex
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
               <Link to="/chat">
-                <Button variant="hero" size="lg" className="group">
+                <Button variant="hero" size="lg" className="group w-full sm:w-auto text-base touch-manipulation">
                   <MessageCircle className="h-5 w-5 mr-2" />
                   Start Chatting
                   <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -49,7 +51,7 @@ const Hero = () => {
               </Link>
               
               <Link to="/songs">
-                <Button variant="outline" size="lg" className="group">
+                <Button variant="outline" size="lg" className="group w-full sm:w-auto text-base touch-manipulation">
                   Discover Music
                   <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -57,30 +59,32 @@ const Hero = () => {
             </div>
 
             {/* Features Preview */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-8">
-              <div className="text-center p-4 rounded-lg bg-card/50 backdrop-blur-sm border border-border hover:border-primary/50 transition-colors">
-                <div className="text-2xl font-bold gradient-text">500+</div>
-                <div className="text-sm text-muted-foreground">Sarcastic Responses</div>
+            <div className="grid grid-cols-3 gap-3 sm:gap-4 pt-6 sm:pt-8">
+              <div className="text-center p-3 sm:p-4 rounded-xl glass-card hover:border-primary/50 transition-all duration-300 interactive-scale">
+                <div className="text-xl sm:text-2xl font-bold gradient-text">500+</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">Sarcastic Responses</div>
               </div>
-              <div className="text-center p-4 rounded-lg bg-card/50 backdrop-blur-sm border border-border hover:border-primary/50 transition-colors">
-                <div className="text-2xl font-bold gradient-text">24/7</div>
-                <div className="text-sm text-muted-foreground">Mood Detection</div>
+              <div className="text-center p-3 sm:p-4 rounded-xl glass-card hover:border-primary/50 transition-all duration-300 interactive-scale">
+                <div className="text-xl sm:text-2xl font-bold gradient-text">24/7</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">Mood Detection</div>
               </div>
-              <div className="text-center p-4 rounded-lg bg-card/50 backdrop-blur-sm border border-border hover:border-primary/50 transition-colors">
-                <div className="text-2xl font-bold gradient-text">1000+</div>
-                <div className="text-sm text-muted-foreground">Song Recommendations</div>
+              <div className="text-center p-3 sm:p-4 rounded-xl glass-card hover:border-primary/50 transition-all duration-300 interactive-scale">
+                <div className="text-xl sm:text-2xl font-bold gradient-text">1000+</div>
+                <div className="text-xs sm:text-sm text-muted-foreground">Song Picks</div>
               </div>
             </div>
           </div>
 
           {/* Right Column - Mascot */}
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex justify-center lg:justify-end order-first lg:order-last">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-2xl opacity-30 animate-pulse-glow"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-2xl opacity-20 sm:opacity-30 animate-pulse-glow gpu-accelerated"></div>
               <img
                 src={chatbotMascot}
                 alt="Mr Sarcastic Mascot"
-                className="relative z-10 w-80 h-80 lg:w-96 lg:h-96 object-contain animate-float"
+                className="relative z-10 w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 object-contain animate-float gpu-accelerated"
+                loading="eager"
+                fetchPriority="high"
               />
             </div>
           </div>
