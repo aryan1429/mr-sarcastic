@@ -201,15 +201,15 @@ const Chat = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-card to-background">
+    <div className="min-h-screen bg-gradient-to-br from-background via-card to-background flex flex-col">
       <Navigation />
-      <main className="container mx-auto px-4 py-8 max-w-4xl">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <main className="container mx-auto px-3 sm:px-4 py-4 sm:py-8 max-w-5xl flex-1">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
           {/* Chat Area */}
           <div className="lg:col-span-2">
-            <Card className="h-[600px] flex flex-col border-primary/20">
-              <div className="p-4 border-b border-primary/20">
-                <h2 className="text-xl font-bold text-primary">Chat with Mr Sarcastic</h2>
+            <Card className="h-[calc(100dvh-12rem)] sm:h-[600px] flex flex-col border-primary/20 shadow-lg">
+              <div className="p-3 sm:p-4 border-b border-primary/20">
+                <h2 className="text-lg sm:text-xl font-bold text-primary">Chat with Mr Sarcastic</h2>
 
                 {/* Prominent Mood Indicator Card */}
                 <div className={`mt-3 p-3 rounded-lg border-2 flex items-center justify-between ${detectedMood.toLowerCase() === 'toxic'
@@ -260,22 +260,22 @@ const Chat = () => {
               </div>
 
               {/* Messages */}
-              <div className="flex-1 p-4 overflow-y-auto space-y-4">
+              <div className="flex-1 p-3 sm:p-4 overflow-y-auto space-y-3 sm:space-y-4 overscroll-contain scroll-smooth">
                 {messages.map((message) => (
                   <div
                     key={message.id}
-                    className={`flex gap-3 animate-fade-in ${message.isUser ? "justify-end" : "justify-start"
+                    className={`flex gap-2 sm:gap-3 animate-fade-in ${message.isUser ? "justify-end" : "justify-start"
                       }`}
                   >
                     {!message.isUser && (
-                      <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-                        <Bot className="w-4 h-4 text-primary" />
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                        <Bot className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
                       </div>
                     )}
                     <div
-                      className={`max-w-[70%] p-3 rounded-lg ${message.isUser
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted text-muted-foreground"
+                      className={`max-w-[85%] sm:max-w-[70%] p-3 rounded-2xl ${message.isUser
+                        ? "bg-primary text-primary-foreground rounded-br-md"
+                        : "bg-muted text-muted-foreground rounded-bl-md"
                         }`}
                     >
                       <p className="text-sm">
@@ -352,8 +352,8 @@ const Chat = () => {
                       </div>
                     </div>
                     {message.isUser && (
-                      <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center">
-                        <User className="w-4 h-4 text-accent" />
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                        <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent" />
                       </div>
                     )}
                   </div>
