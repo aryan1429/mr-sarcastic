@@ -38,9 +38,9 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav className="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-xl supports-[backdrop-filter]:bg-card/60">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 safe-area-inset">
+        <div className="flex justify-between items-center h-14 sm:h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-3 group">
             <div className="p-2 rounded-xl bg-gradient-to-br from-primary to-accent shadow-lg group-hover:shadow-xl transition-all duration-300 glow-primary">
@@ -83,31 +83,36 @@ const Navigation = () => {
             <Button
               variant="ghost"
               size="icon"
+              className="h-10 w-10 touch-manipulation"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isMenuOpen}
             >
-              {isMenuOpen ? (
-                <X className="h-6 w-6" />
-              ) : (
-                <Menu className="h-6 w-6" />
-              )}
+              <span className={`transition-transform duration-200 ${isMenuOpen ? 'rotate-90' : ''}`}>
+                {isMenuOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Menu className="h-5 w-5" />
+                )}
+              </span>
             </Button>
           </div>
         </div>
 
         {/* Mobile Navigation Menu */}
         {isMenuOpen && (
-          <div className="md:hidden animate-fade-in">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-card/95 backdrop-blur-lg rounded-lg mt-2 border border-border shadow-xl">
+          <div className="md:hidden animate-in slide-in-from-top-2 fade-in duration-200">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-card/95 backdrop-blur-xl rounded-xl mt-2 border border-border shadow-2xl">
               {navItems.map((item) => {
                 const Icon = item.icon;
                 return (
                   <Link
                     key={item.name}
                     to={item.path}
-                    className={`flex items-center space-x-3 px-3 py-2 rounded-lg font-medium transition-all duration-200 ${
+                    className={`flex items-center space-x-3 px-4 py-3 rounded-xl font-medium transition-all duration-200 touch-manipulation active:scale-[0.98] ${
                       isActive(item.path)
-                        ? "bg-primary text-primary-foreground"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                        ? "bg-primary text-primary-foreground shadow-md"
+                        : "text-muted-foreground hover:text-foreground hover:bg-muted active:bg-muted"
                     }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
