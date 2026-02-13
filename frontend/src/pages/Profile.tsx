@@ -189,13 +189,13 @@ const Profile = () => {
       <div className="min-h-screen bg-gradient-to-br from-background via-card to-background">
         <Navigation />
 
-        <div className="container mx-auto px-4 py-8">
+        <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
           {/* Profile Header */}
-          <div className="text-center mb-8">
+          <div className="text-center mb-6 sm:mb-8">
             <div className="flex justify-center mb-4 relative">
-              <Avatar className="w-24 h-24 border-4 border-primary/20">
+              <Avatar className="w-20 h-20 sm:w-24 sm:h-24 border-4 border-primary/20 shadow-lg">
                 <AvatarImage src={displayUser?.picture} alt={displayUser?.name || "User"} />
-                <AvatarFallback className="text-2xl">
+                <AvatarFallback className="text-xl sm:text-2xl">
                   {displayUser?.name?.split(' ').map((n: string) => n[0]).join('') || "U"}
                 </AvatarFallback>
               </Avatar>
@@ -225,10 +225,10 @@ const Profile = () => {
               </div>
             </div>
             <div className="space-y-2">
-              <h1 className="text-3xl font-bold text-primary mb-2">{displayUser?.name || "User"}</h1>
-              <p className="text-muted-foreground mb-4">{displayUser?.email}</p>
+              <h1 className="text-2xl sm:text-3xl font-bold text-primary mb-2">{displayUser?.name || "User"}</h1>
+              <p className="text-sm sm:text-base text-muted-foreground mb-4">{displayUser?.email}</p>
 
-              <div className="flex justify-center gap-6 text-center">
+              <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-center">
                 <div>
                   <div className="text-2xl font-bold text-primary">{userStats.totalChats}</div>
                   <div className="text-sm text-muted-foreground">Total Chats</div>
@@ -251,21 +251,22 @@ const Profile = () => {
 
           {/* Profile Tabs */}
           <Tabs defaultValue="activity" className="w-full">
-            <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="activity" className="flex items-center gap-2">
-                <MessageCircle className="w-4 h-4" />
-                Activity
+            <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 h-auto gap-1">
+              <TabsTrigger value="activity" className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm py-2.5">
+                <MessageCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                <span className="hidden xs:inline">Activity</span>
+                <span className="xs:hidden">Activity</span>
               </TabsTrigger>
-              <TabsTrigger value="music" className="flex items-center gap-2">
-                <Music className="w-4 h-4" />
+              <TabsTrigger value="music" className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm py-2.5">
+                <Music className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 Music
               </TabsTrigger>
-              <TabsTrigger value="files" className="flex items-center gap-2">
-                <Upload className="w-4 h-4" />
+              <TabsTrigger value="files" className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm py-2.5">
+                <Upload className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 Files
               </TabsTrigger>
-              <TabsTrigger value="settings" className="flex items-center gap-2">
-                <Settings className="w-4 h-4" />
+              <TabsTrigger value="settings" className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm py-2.5">
+                <Settings className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 Settings
               </TabsTrigger>
             </TabsList>
