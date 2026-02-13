@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback, useRef, memo } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -157,11 +157,11 @@ const Songs = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-card to-background">
       <Navigation />
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-primary mb-4">Mood-Based Music</h1>
-            <p className="text-lg text-muted-foreground mb-2">
+          <div className="text-center mb-6 sm:mb-8">
+            <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-3 sm:mb-4">Mood-Based Music</h1>
+            <p className="text-base sm:text-lg text-muted-foreground mb-2">
               Let Mr Sarcastic suggest the perfect soundtrack for your current vibe
             </p>
             {pagination && (
@@ -174,25 +174,25 @@ const Songs = () => {
           </div>
 
           {/* Search and Filters */}
-          <div className="mb-8 space-y-4">
+          <div className="mb-6 sm:mb-8 space-y-3 sm:space-y-4">
             <div className="relative max-w-md mx-auto">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <Input
                 placeholder="Search songs or artists..."
                 value={searchTerm}
                 onChange={(e) => handleSearchChange(e.target.value)}
-                className="pl-10"
+                className="pl-10 h-11 text-base touch-manipulation"
               />
             </div>
             
-            <div className="flex flex-wrap justify-center gap-2">
+            <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2">
               {moods.map((mood) => (
                 <Button
                   key={mood}
                   variant={selectedMood === mood ? "default" : "outline"}
                   size="sm"
                   onClick={() => handleMoodChange(mood)}
-                  className="text-xs"
+                  className="text-xs touch-manipulation h-9"
                 >
                   {mood}
                 </Button>
@@ -201,21 +201,23 @@ const Songs = () => {
           </div>
 
           {/* Songs Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {songs.map((song) => (
               <Card 
                 key={song.id} 
                 ref={(el) => (songRefs.current[song.id] = el)}
-                className={`group hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary/40 ${
+                className={`group hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary/40 interactive-scale ${
                   highlightedSongId === song.id ? 'ring-2 ring-primary ring-offset-2 bg-primary/5' : ''
                 }`}
               >
-                <div className="p-4">
-                  <div className="aspect-video bg-muted rounded-lg mb-4 relative overflow-hidden">
+                <div className="p-3 sm:p-4">
+                  <div className="aspect-video bg-muted rounded-lg mb-3 sm:mb-4 relative overflow-hidden">
                     <img 
                       src={song.thumbnail} 
                       alt={song.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
                         target.src = `https://i.ytimg.com/vi/${extractVideoId(song.youtubeUrl)}/hqdefault.jpg`;
