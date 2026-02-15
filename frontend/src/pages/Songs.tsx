@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import { songsService, type Song } from "@/services/songsService";
 import { useToast } from "@/hooks/use-toast";
 import { useSearchParams } from "react-router-dom";
+import PageTransition from "@/components/PageTransition";
 
 const Songs = () => {
   const [selectedMood, setSelectedMood] = useState("All");
@@ -157,6 +158,7 @@ const Songs = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-card to-background">
       <Navigation />
+      <PageTransition>
       <main className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-6 sm:mb-8">
@@ -409,6 +411,7 @@ const Songs = () => {
           </DialogContent>
         </Dialog>
       </main>
+      </PageTransition>
       <Footer />
     </div>
   );

@@ -13,6 +13,7 @@ import { storageService, userService } from "@/services/api";
 import { Heart, LogOut, MessageCircle, Music, Settings, Upload, Camera } from "lucide-react";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import PageTransition from "@/components/PageTransition";
 
 const Profile = () => {
   const { user: authUser, logout, updateUser, isAuthenticated, loading: authLoading } = useAuth();
@@ -189,6 +190,7 @@ const Profile = () => {
       <div className="min-h-screen bg-gradient-to-br from-background via-card to-background">
         <Navigation />
 
+        <PageTransition>
         <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
           {/* Profile Header */}
           <div className="text-center mb-6 sm:mb-8">
@@ -500,6 +502,7 @@ const Profile = () => {
             </TabsContent>
           </Tabs>
         </div>
+        </PageTransition>
 
         <Footer />
       </div>

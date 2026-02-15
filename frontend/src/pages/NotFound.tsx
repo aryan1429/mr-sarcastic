@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Home, ArrowLeft, Bot } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
+import PageTransition from "@/components/PageTransition";
 
 const NotFound = () => {
   const location = useLocation();
@@ -14,6 +15,7 @@ const NotFound = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-background via-card to-background px-4">
+      <PageTransition>
       <div className="text-center max-w-md mx-auto space-y-6">
         {/* Animated mascot */}
         <div className="relative mx-auto w-24 h-24">
@@ -61,6 +63,7 @@ const NotFound = () => {
           </Button>
         </div>
       </div>
+      </PageTransition>
     </div>
   );
 };

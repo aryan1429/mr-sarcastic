@@ -13,6 +13,7 @@ import { TypingAnimation } from "@/components/TypingAnimation";
 import { ClearChatDialog } from "@/components/ClearChatDialog";
 import { ExportDropdown } from "@/components/ExportDropdown";
 import { MoodSelectorModal } from "@/components/MoodSelectorModal";
+import PageTransition from "@/components/PageTransition";
 import { useToast } from "@/hooks/use-toast";
 
 interface Message {
@@ -203,6 +204,7 @@ const Chat = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-card to-background flex flex-col">
       <Navigation />
+      <PageTransition>
       <main className="container mx-auto px-3 sm:px-4 py-4 sm:py-8 max-w-5xl flex-1">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
           {/* Chat Area */}
@@ -447,6 +449,7 @@ const Chat = () => {
           </div>
         </div>
       </main>
+      </PageTransition>
       <Footer />
       <ClearChatDialog
         open={clearChatDialogOpen}
