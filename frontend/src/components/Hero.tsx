@@ -60,15 +60,15 @@ const Hero = () => {
 
             {/* Features Preview */}
             <div className="grid grid-cols-3 gap-3 sm:gap-4 pt-6 sm:pt-8">
-              <div className="text-center p-3 sm:p-4 rounded-xl glass-card hover:border-primary/50 transition-all duration-300 interactive-scale">
+              <div className="text-center p-3 sm:p-4 rounded-xl glass-card hover:border-primary/50 transition-all duration-300 hover-lift animate-fade-in stagger-1">
                 <div className="text-xl sm:text-2xl font-bold gradient-text">500+</div>
                 <div className="text-xs sm:text-sm text-muted-foreground">Sarcastic Responses</div>
               </div>
-              <div className="text-center p-3 sm:p-4 rounded-xl glass-card hover:border-primary/50 transition-all duration-300 interactive-scale">
+              <div className="text-center p-3 sm:p-4 rounded-xl glass-card hover:border-primary/50 transition-all duration-300 hover-lift animate-fade-in stagger-2">
                 <div className="text-xl sm:text-2xl font-bold gradient-text">24/7</div>
                 <div className="text-xs sm:text-sm text-muted-foreground">Mood Detection</div>
               </div>
-              <div className="text-center p-3 sm:p-4 rounded-xl glass-card hover:border-primary/50 transition-all duration-300 interactive-scale">
+              <div className="text-center p-3 sm:p-4 rounded-xl glass-card hover:border-primary/50 transition-all duration-300 hover-lift animate-fade-in stagger-3">
                 <div className="text-xl sm:text-2xl font-bold gradient-text">1000+</div>
                 <div className="text-xs sm:text-sm text-muted-foreground">Song Picks</div>
               </div>

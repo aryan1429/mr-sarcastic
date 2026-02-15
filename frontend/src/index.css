@@ -154,6 +154,23 @@
   .interactive-scale {
     @apply transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98];
   }
+
+  /* Staggered animation delays */
+  .stagger-1 { animation-delay: 0.1s; animation-fill-mode: both; }
+  .stagger-2 { animation-delay: 0.2s; animation-fill-mode: both; }
+  .stagger-3 { animation-delay: 0.3s; animation-fill-mode: both; }
+  .stagger-4 { animation-delay: 0.4s; animation-fill-mode: both; }
+  .stagger-5 { animation-delay: 0.5s; animation-fill-mode: both; }
+  .stagger-6 { animation-delay: 0.6s; animation-fill-mode: both; }
+
+  /* Hover card lift effect */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px hsl(var(--primary) / 0.15);
+  }
   
   /* Custom input styles */
   .input-glow:focus {

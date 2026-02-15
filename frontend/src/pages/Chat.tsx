@@ -398,25 +398,25 @@ const Chat = () => {
 
           {/* Mood & Song Suggestions */}
           <div className="space-y-4">
-            <Card className="p-4 border-primary/20">
+            <Card className="p-4 border-primary/20 hover-lift">
               <h3 className="font-semibold text-primary mb-3">Mood-Based Songs</h3>
               <div className="space-y-2">
-                <div className="p-3 bg-muted/50 rounded-lg hover:bg-muted/70 transition-colors cursor-pointer">
+                <div className="p-3 bg-muted/50 rounded-lg hover:bg-muted/70 hover:translate-x-1 transition-all duration-200 cursor-pointer">
                   <h4 className="font-medium text-sm">Chill Vibes</h4>
                   <p className="text-xs text-muted-foreground">Lofi Hip Hop Mix</p>
                 </div>
-                <div className="p-3 bg-muted/50 rounded-lg hover:bg-muted/70 transition-colors cursor-pointer">
+                <div className="p-3 bg-muted/50 rounded-lg hover:bg-muted/70 hover:translate-x-1 transition-all duration-200 cursor-pointer">
                   <h4 className="font-medium text-sm">Energetic</h4>
                   <p className="text-xs text-muted-foreground">Upbeat Pop Hits</p>
                 </div>
-                <div className="p-3 bg-muted/50 rounded-lg hover:bg-muted/70 transition-colors cursor-pointer">
+                <div className="p-3 bg-muted/50 rounded-lg hover:bg-muted/70 hover:translate-x-1 transition-all duration-200 cursor-pointer">
                   <h4 className="font-medium text-sm">Focus Mode</h4>
                   <p className="text-xs text-muted-foreground">Instrumental Study</p>
                 </div>
               </div>
             </Card>
 
-            <Card className="p-4 border-primary/20">
+            <Card className="p-4 border-primary/20 hover-lift">
               <div className="flex items-center justify-between mb-3">
                 <h3 className="font-semibold text-primary">Quick Actions</h3>
                 <Badge variant="secondary" className="text-xs">
