@@ -11,6 +11,7 @@ import { songsService, type Song } from "@/services/songsService";
 import { useToast } from "@/hooks/use-toast";
 import { useSearchParams } from "react-router-dom";
 import PageTransition from "@/components/PageTransition";
+import { SongsGridSkeleton } from "@/components/ui/skeleton";
 
 const Songs = () => {
   const [selectedMood, setSelectedMood] = useState("All");
@@ -118,11 +119,13 @@ const Songs = () => {
         <Navigation />
         <main className="container mx-auto px-4 py-8">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center py-12">
-              <Loader2 className="w-8 h-8 animate-spin mx-auto mb-4" />
-              <h2 className="text-xl font-semibold mb-2">Loading Songs...</h2>
-              <p className="text-muted-foreground">Fetching the latest tracks from our playlist</p>
+            <div className="text-center mb-8">
+              <div className="space-y-3">
+                <h2 className="text-xl font-semibold gradient-text animate-pulse">Loading Songs...</h2>
+                <p className="text-muted-foreground text-sm">Fetching the latest tracks from our playlist</p>
+              </div>
             </div>
+            <SongsGridSkeleton />
           </div>
         </main>
         <Footer />

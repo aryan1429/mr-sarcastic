@@ -21,9 +21,15 @@ const Songs = lazy(() => import("./pages/Songs"));
 // Loading fallback component
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center bg-background">
-    <div className="text-center space-y-3">
-      <Loader2 className="w-8 h-8 animate-spin text-primary mx-auto" />
-      <p className="text-sm text-muted-foreground">Loading...</p>
+    <div className="text-center space-y-4">
+      <div className="relative">
+        <div className="w-12 h-12 rounded-full border-4 border-primary/20 border-t-primary animate-spin mx-auto" />
+        <div className="absolute inset-0 w-12 h-12 rounded-full mx-auto animate-pulse-glow" />
+      </div>
+      <div className="space-y-2">
+        <p className="text-sm font-medium text-foreground animate-pulse">Loading...</p>
+        <p className="text-xs text-muted-foreground">Preparing your experience</p>
+      </div>
     </div>
   </div>
 );
