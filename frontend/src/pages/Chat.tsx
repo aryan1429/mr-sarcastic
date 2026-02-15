@@ -262,22 +262,26 @@ const Chat = () => {
               </div>
 
               {/* Messages */}
-              <div className="flex-1 p-3 sm:p-4 overflow-y-auto space-y-3 sm:space-y-4 overscroll-contain scroll-smooth">
-                {messages.map((message) => (
+              <div className="flex-1 p-3 sm:p-4 overflow-y-auto space-y-3 sm:space-y-4 overscroll-contain scroll-smooth custom-scrollbar">
+                {messages.map((message, index) => (
                   <div
                     key={message.id}
-                    className={`flex gap-2 sm:gap-3 animate-fade-in ${message.isUser ? "justify-end" : "justify-start"
+                    className={`flex gap-2 sm:gap-3 ${message.isUser ? "justify-end" : "justify-start"
                       }`}
+                    style={{
+                      animation: `${message.isUser ? 'slideInRight' : 'slideInLeft'} 0.4s ease-out both`,
+                      animationDelay: `${Math.min(index * 0.05, 0.3)}s`
+                    }}
                   >
                     {!message.isUser && (
-                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0">
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0 ring-2 ring-primary/10 transition-all duration-300 hover:ring-primary/30 hover:scale-110">
                         <Bot className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
                       </div>
                     )}
                     <div
-                      className={`max-w-[85%] sm:max-w-[70%] p-3 rounded-2xl ${message.isUser
-                        ? "bg-primary text-primary-foreground rounded-br-md"
-                        : "bg-muted text-muted-foreground rounded-bl-md"
+                      className={`max-w-[85%] sm:max-w-[70%] p-3 rounded-2xl transition-all duration-200 hover:shadow-md ${message.isUser
+                        ? "bg-primary text-primary-foreground rounded-br-md shadow-lg shadow-primary/20"
+                        : "bg-muted text-muted-foreground rounded-bl-md shadow-sm"
                         }`}
                     >
                       <p className="text-sm">
@@ -354,7 +358,7 @@ const Chat = () => {
                       </div>
                     </div>
                     {message.isUser && (
-                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-accent/20 flex items-center justify-center shrink-0 ring-2 ring-accent/10 transition-all duration-300 hover:ring-accent/30 hover:scale-110">
                         <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent" />
                       </div>
                     )}
@@ -388,9 +392,14 @@ const Chat = () => {
                   </Button>
                 </div>
                 {isLoading && (
-                  <p className="text-xs text-muted-foreground mt-2">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2">
+                    <span className="flex gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0s' }} />
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0.15s' }} />
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0.3s' }} />
+                    </span>
                     Mr. Sarcastic is thinking of something witty...
-                  </p>
+                  </div>
                 )}
               </div>
             </Card>
