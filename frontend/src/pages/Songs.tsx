@@ -207,13 +207,16 @@ const Songs = () => {
 
           {/* Songs Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {songs.map((song) => (
+            {songs.map((song, index) => (
               <Card 
                 key={song.id} 
                 ref={(el) => (songRefs.current[song.id] = el)}
-                className={`group hover:shadow-lg transition-all duration-300 border-primary/20 hover:border-primary/40 interactive-scale ${
-                  highlightedSongId === song.id ? 'ring-2 ring-primary ring-offset-2 bg-primary/5' : ''
+                className={`group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-primary/20 hover:border-primary/40 ${
+                  highlightedSongId === song.id ? 'ring-2 ring-primary ring-offset-2 bg-primary/5 animate-pulse-glow' : ''
                 }`}
+                style={{
+                  animation: `slideUp 0.4s ease-out ${Math.min(index * 0.05, 0.5)}s both`,
+                }}
               >
                 <div className="p-3 sm:p-4">
                   <div className="aspect-video bg-muted rounded-lg mb-3 sm:mb-4 relative overflow-hidden">
@@ -228,11 +231,11 @@ const Songs = () => {
                         target.src = `https://i.ytimg.com/vi/${extractVideoId(song.youtubeUrl)}/hqdefault.jpg`;
                       }}
                     />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-[2px]">
                       <Button 
                         size="icon" 
                         variant="secondary" 
-                        className="rounded-full"
+                        className="rounded-full scale-75 group-hover:scale-100 transition-transform duration-300 shadow-lg"
                         onClick={() => playVideo(song)}
                       >
                         <Play className="w-4 h-4" />
@@ -246,7 +249,7 @@ const Songs = () => {
                         <h3 className="font-semibold text-sm truncate" title={song.title}>{song.title}</h3>
                         <p className="text-xs text-muted-foreground" title={song.artist}>{song.artist}</p>
                       </div>
-                      <Button variant="ghost" size="icon" className="shrink-0 h-8 w-8">
+                      <Button variant="ghost" size="icon" className="shrink-0 h-8 w-8 hover:text-red-500 transition-colors duration-200">
                         <Heart className="w-3 h-3" />
                       </Button>
                     </div>

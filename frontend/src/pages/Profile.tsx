@@ -194,8 +194,8 @@ const Profile = () => {
         <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8">
           {/* Profile Header */}
           <div className="text-center mb-6 sm:mb-8">
-            <div className="flex justify-center mb-4 relative">
-              <Avatar className="w-20 h-20 sm:w-24 sm:h-24 border-4 border-primary/20 shadow-lg">
+            <div className="flex justify-center mb-4 relative group">
+              <Avatar className="w-20 h-20 sm:w-24 sm:h-24 border-4 border-primary/20 shadow-lg ring-4 ring-primary/10 group-hover:ring-primary/30 transition-all duration-500">
                 <AvatarImage src={displayUser?.picture} alt={displayUser?.name || "User"} />
                 <AvatarFallback className="text-xl sm:text-2xl">
                   {displayUser?.name?.split(' ').map((n: string) => n[0]).join('') || "U"}
@@ -231,19 +231,19 @@ const Profile = () => {
               <p className="text-sm sm:text-base text-muted-foreground mb-4">{displayUser?.email}</p>
 
               <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-center">
-                <div>
+                <div className="p-3 rounded-xl hover:bg-muted/50 transition-all duration-300 hover-lift">
                   <div className="text-2xl font-bold text-primary">{userStats.totalChats}</div>
                   <div className="text-sm text-muted-foreground">Total Chats</div>
                 </div>
-                <div>
+                <div className="p-3 rounded-xl hover:bg-muted/50 transition-all duration-300 hover-lift">
                   <div className="text-2xl font-bold text-accent">{userStats.favoriteSongsCount}</div>
                   <div className="text-sm text-muted-foreground">Favorite Songs</div>
                 </div>
-                <div>
+                <div className="p-3 rounded-xl hover:bg-muted/50 transition-all duration-300">
                   <Badge variant="secondary" className="text-xs">{formData.preferences.preferredMood || "Chill"}</Badge>
                   <div className="text-sm text-muted-foreground mt-1">Mood</div>
                 </div>
-                <div>
+                <div className="p-3 rounded-xl hover:bg-muted/50 transition-all duration-300">
                   <div className="text-sm font-medium">{displayUser?.createdAt ? new Date(displayUser.createdAt).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : "New Member"}</div>
                   <div className="text-sm text-muted-foreground">Member Since</div>
                 </div>

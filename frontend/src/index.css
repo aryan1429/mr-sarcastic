@@ -107,6 +107,19 @@
     -webkit-tap-highlight-color: transparent;
     -webkit-text-size-adjust: 100%;
   }
+
+  /* Text selection styling */
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+    color: hsl(var(--foreground));
+  }
+
+  /* Focus ring styling */
+  :focus-visible {
+    outline: 2px solid hsl(var(--ring));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
   
   /* Safe area support for notched devices */
   .safe-area-inset {
@@ -243,5 +256,16 @@
   to {
     opacity: 1;
     transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
