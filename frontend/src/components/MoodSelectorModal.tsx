@@ -81,14 +81,15 @@ export const MoodSelectorModal = ({
                         <DialogTitle>Change Your Mood</DialogTitle>
                     </DialogHeader>
                     <div className="grid grid-cols-2 gap-3 py-4">
-                        {moodOptions.map((mood) => (
+                        {moodOptions.map((mood, index) => (
                             <Button
                                 key={mood.value}
                                 variant={currentMood.toLowerCase() === mood.value ? "default" : "outline"}
-                                className={`flex items-center justify-start gap-3 h-14 ${currentMood.toLowerCase() === mood.value
-                                        ? mood.isDangerous ? "bg-red-600 hover:bg-red-700" : ""
+                                className={`flex items-center justify-start gap-3 h-14 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] ${currentMood.toLowerCase() === mood.value
+                                        ? mood.isDangerous ? "bg-red-600 hover:bg-red-700 shadow-lg shadow-red-500/20" : "shadow-lg shadow-primary/20"
                                         : mood.color
                                     } ${mood.isDangerous ? "border-red-500 hover:bg-red-50 dark:hover:bg-red-950" : ""}`}
+                                style={{ animationDelay: `${index * 0.05}s` }}
                                 onClick={() => handleMoodSelect(mood.value, mood.isDangerous)}
                             >
                                 {mood.icon}
