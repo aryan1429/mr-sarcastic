@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback, memo } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -64,6 +64,133 @@ const loadMessagesFromStorage = (): Message[] => {
   return [getDefaultWelcomeMessage()];
 };
 
+/** Memoized chat message bubble for render optimization */
+const ChatMessage = memo(({
+  message,
+  onTypingComplete,
+  onGoToSong,
+}: {
+  message: Message;
+  onTypingComplete: (id: string) => void;
+  onGoToSong: (songId: string) => void;
+}) => {
+  return (
+    <div
+      className={`flex gap-2 sm:gap-3 ${message.isUser ? "justify-end" : "justify-start"}`}
+      style={{
+        animation: `${message.isUser ? 'slideInRight' : 'slideInLeft'} 0.35s cubic-bezier(0.22, 1, 0.36, 1) both`,
+      }}
+    >
+      {!message.isUser && (
+        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0 ring-2 ring-primary/10"
+          style={{
+            transitionProperty: "box-shadow, transform",
+            transitionDuration: "300ms",
+            transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+          }}
+        >
+          <Bot className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
+        </div>
+      )}
+      <div
+        className={`max-w-[85%] sm:max-w-[70%] p-3 rounded-2xl ${message.isUser
+          ? "bg-primary text-primary-foreground rounded-br-md shadow-lg shadow-primary/20"
+          : "bg-muted text-muted-foreground rounded-bl-md shadow-sm"
+        }`}
+        style={{
+          transitionProperty: "box-shadow, transform",
+          transitionDuration: "200ms",
+          transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+        }}
+      >
+        <p className="text-sm">
+          {!message.isUser && message.isTyping ? (
+            <TypingAnimation
+              text={message.text}
+              speed={20}
+              onComplete={() => onTypingComplete(message.id)}
+            />
+          ) : (
+            message.text
+          )}
+        </p>
+
+        {/* Song Recommendation Button */}
+        {!message.isUser && message.songData && (
+          <div className="mt-3 p-3 bg-primary/10 rounded-lg border border-primary/20"
+            style={{
+              animation: "smoothSlideUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both",
+            }}
+          >
+            <div className="flex items-center gap-2 mb-2">
+              <Music className="w-4 h-4 text-primary" />
+              <span className="text-xs font-medium text-primary">Recommended Song</span>
+            </div>
+            <div className="text-sm">
+              <p className="font-medium">{message.songData.title}</p>
+              <p className="text-xs opacity-70">by {message.songData.artist}</p>
+              <p className="text-xs opacity-60">{message.songData.duration} • {message.songData.mood}</p>
+            </div>
+            <div className="flex gap-2 mt-2">
+              <Button
+                size="sm"
+                onClick={() => onGoToSong(message.songData!.id)}
+                className="flex items-center gap-1 text-xs"
+              >
+                <Music className="w-3 h-3" />
+                Listen on Songs Page
+              </Button>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={() => window.open(message.songData!.youtubeUrl, '_blank')}
+                className="flex items-center gap-1 text-xs"
+              >
+                <ExternalLink className="w-3 h-3" />
+                YouTube
+              </Button>
+            </div>
+          </div>
+        )}
+
+        <div className="flex items-center justify-between mt-1">
+          <span className="text-xs opacity-70">
+            {message.timestamp.toLocaleTimeString()}
+          </span>
+          {!message.isUser && message.mood && (
+            <div className="flex items-center gap-1">
+              <span className="text-xs opacity-60">{message.mood}</span>
+              {message.confidence && (
+                <span className="text-xs opacity-60">
+                  ({Math.round(message.confidence * 100)}%)
+                </span>
+              )}
+            </div>
+          )}
+        </div>
+      </div>
+      {message.isUser && (
+        <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-accent/20 flex items-center justify-center shrink-0 ring-2 ring-accent/10"
+          style={{
+            transitionProperty: "box-shadow, transform",
+            transitionDuration: "300ms",
+            transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+          }}
+        >
+          <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent" />
+        </div>
+      )}
+    </div>
+  );
+}, (prev, next) => {
+  // Only re-render if typing state changes or if it's a different message
+  return prev.message.id === next.message.id
+    && prev.message.isTyping === next.message.isTyping
+    && prev.message.text === next.message.text;
+});
+
+ChatMessage.displayName = "ChatMessage";
+
 const Chat = () => {
   const { token } = useAuth();
   const navigate = useNavigate();
@@ -80,16 +207,16 @@ const Chat = () => {
   const prevMessageCount = useRef(messages.length);
 
   // Handle mood change from modal
-  const handleMoodChange = (mood: string) => {
+  const handleMoodChange = useCallback((mood: string) => {
     setDetectedMood(mood.charAt(0).toUpperCase() + mood.slice(1));
     toast({
       title: "Mood Changed!",
       description: `Your mood is now set to ${mood.charAt(0).toUpperCase() + mood.slice(1)}`,
     });
-  };
+  }, [toast]);
 
   // Handle clearing chat history
-  const handleClearChat = () => {
+  const handleClearChat = useCallback(() => {
     setMessages([getDefaultWelcomeMessage()]);
     setConversationHistory([]);
     setDetectedMood("Neutral");
@@ -127,10 +254,18 @@ const Chat = () => {
     prevMessageCount.current = messages.length;
   }, [messages]);
 
-  const handleGoToSong = (songId: string) => {
+  const handleGoToSong = useCallback((songId: string) => {
     // Navigate to songs page with the specific song ID as a query parameter
     navigate(`/songs?songId=${songId}`);
-  };
+  }, [navigate]);
+
+  const handleTypingComplete = useCallback((messageId: string) => {
+    setMessages(prev =>
+      prev.map(msg =>
+        msg.id === messageId ? { ...msg, isTyping: false } : msg
+      )
+    );
+  }, []);
 
   const handleSendMessage = async () => {
     if (!inputText.trim() || isLoading) return;
@@ -262,107 +397,16 @@ const Chat = () => {
               </div>
 
               {/* Messages */}
-              <div className="flex-1 p-3 sm:p-4 overflow-y-auto space-y-3 sm:space-y-4 overscroll-contain scroll-smooth custom-scrollbar">
-                {messages.map((message, index) => (
-                  <div
+              <div className="flex-1 p-3 sm:p-4 overflow-y-auto space-y-3 sm:space-y-4 overscroll-contain custom-scrollbar"
+                style={{ scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}
+              >
+                {messages.map((message) => (
+                  <ChatMessage
                     key={message.id}
-                    className={`flex gap-2 sm:gap-3 ${message.isUser ? "justify-end" : "justify-start"
-                      }`}
-                    style={{
-                      animation: `${message.isUser ? 'slideInRight' : 'slideInLeft'} 0.4s ease-out both`,
-                      animationDelay: `${Math.min(index * 0.05, 0.3)}s`
-                    }}
-                  >
-                    {!message.isUser && (
-                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-primary/20 flex items-center justify-center shrink-0 ring-2 ring-primary/10 transition-all duration-300 hover:ring-primary/30 hover:scale-110">
-                        <Bot className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
-                      </div>
-                    )}
-                    <div
-                      className={`max-w-[85%] sm:max-w-[70%] p-3 rounded-2xl transition-all duration-200 hover:shadow-md ${message.isUser
-                        ? "bg-primary text-primary-foreground rounded-br-md shadow-lg shadow-primary/20"
-                        : "bg-muted text-muted-foreground rounded-bl-md shadow-sm"
-                        }`}
-                    >
-                      <p className="text-sm">
-                        {!message.isUser && message.isTyping ? (
-                          <TypingAnimation
-                            text={message.text}
-                            speed={20}
-                            onComplete={() => {
-                              // Mark typing as complete
-                              setMessages(prev =>
-                                prev.map(msg =>
-                                  msg.id === message.id
-                                    ? { ...msg, isTyping: false }
-                                    : msg
-                                )
-                              );
-                            }}
-                          />
-                        ) : (
-                          message.text
-                        )}
-                      </p>
-
-                      {/* Song Recommendation Button */}
-                      {!message.isUser && message.songData && (
-                        <div className="mt-3 p-3 bg-primary/10 rounded-lg border border-primary/20">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Music className="w-4 h-4 text-primary" />
-                            <span className="text-xs font-medium text-primary">Recommended Song</span>
-                          </div>
-                          <div className="text-sm">
-                            <p className="font-medium">{message.songData.title}</p>
-                            <p className="text-xs opacity-70">by {message.songData.artist}</p>
-                            <p className="text-xs opacity-60">{message.songData.duration} • {message.songData.mood}</p>
-                          </div>
-                          <div className="flex gap-2 mt-2">
-                            <Button
-                              size="sm"
-                              onClick={() => handleGoToSong(message.songData!.id)}
-                              className="flex items-center gap-1 text-xs"
-                            >
-                              <Music className="w-3 h-3" />
-                              Listen on Songs Page
-                            </Button>
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              onClick={() => window.open(message.songData!.youtubeUrl, '_blank')}
-                              className="flex items-center gap-1 text-xs"
-                            >
-                              <ExternalLink className="w-3 h-3" />
-                              YouTube
-                            </Button>
-                          </div>
-                        </div>
-                      )}
-
-                      <div className="flex items-center justify-between mt-1">
-                        <span className="text-xs opacity-70">
-                          {message.timestamp.toLocaleTimeString()}
-                        </span>
-                        {!message.isUser && message.mood && (
-                          <div className="flex items-center gap-1">
-                            <span className="text-xs opacity-60">
-                              {message.mood}
-                            </span>
-                            {message.confidence && (
-                              <span className="text-xs opacity-60">
-                                ({Math.round(message.confidence * 100)}%)
-                              </span>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                    {message.isUser && (
-                      <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-accent/20 flex items-center justify-center shrink-0 ring-2 ring-accent/10 transition-all duration-300 hover:ring-accent/30 hover:scale-110">
-                        <User className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent" />
-                      </div>
-                    )}
-                  </div>
+                    message={message}
+                    onTypingComplete={handleTypingComplete}
+                    onGoToSong={handleGoToSong}
+                  />
                 ))}
                 <div ref={messagesEndRef} />
               </div>
@@ -392,11 +436,13 @@ const Chat = () => {
                   </Button>
                 </div>
                 {isLoading && (
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2">
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2"
+                    style={{ animation: "smoothFadeIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) both" }}
+                  >
                     <span className="flex gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0s' }} />
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0.15s' }} />
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0.3s' }} />
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0s', animationDuration: '0.6s' }} />
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0.15s', animationDuration: '0.6s' }} />
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0.3s', animationDuration: '0.6s' }} />
                     </span>
                     Mr. Sarcastic is thinking of something witty...
                   </div>
