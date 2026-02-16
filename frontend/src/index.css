@@ -195,6 +195,28 @@
     transform: translateZ(0);
     will-change: transform;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* Content visibility optimization for off-screen elements */
+  .content-lazy {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 500px;
+  }
+
+  /* Layout containment for performance isolation */
+  .contain-layout {
+    contain: layout style;
+  }
+
+  .contain-paint {
+    contain: paint;
+  }
+
+  .contain-strict {
+    contain: strict;
+    contain-intrinsic-size: auto 300px;
   }
   
   /* Skeleton loading animation */
@@ -205,6 +227,7 @@
   /* Glass card effect */
   .glass-card {
     @apply bg-card/50 backdrop-blur-xl border border-border/50 shadow-xl;
+    transform: translateZ(0);
   }
   
   /* Scrollbar styling */
@@ -233,6 +256,42 @@
     .animate-bounce-in {
       animation: none !important;
     }
+    
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* High-performance smooth transitions */
+  .transition-gpu {
+    transition-property: transform, opacity;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    transition-duration: 400ms;
+    will-change: transform, opacity;
+  }
+  
+  /* Optimized backdrop blur - only on capable devices */
+  @supports (backdrop-filter: blur(1px)) {
+    .blur-optimized {
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+  }
+  
+  /* Composite-only animations (transform + opacity) for 60fps */
+  .animate-smooth-in {
+    animation: smoothFadeIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  
+  .animate-smooth-up {
+    animation: smoothSlideUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  
+  .animate-smooth-scale {
+    animation: smoothScaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   }
 }
 
@@ -267,5 +326,60 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* High-performance composite-only keyframes (transform + opacity only = GPU composited) */
+@keyframes smoothFadeIn {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes smoothSlideUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes smoothScaleIn {
+  from {
+    opacity: 0;
+    transform: scale3d(0.92, 0.92, 1);
+  }
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes smoothBounceIn {
+  0% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 1);
+  }
+  40% {
+    transform: scale3d(1.08, 1.08, 1);
+  }
+  60% {
+    transform: scale3d(0.96, 0.96, 1);
+  }
+  80% {
+    opacity: 1;
+    transform: scale3d(1.02, 1.02, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
   }
 }
