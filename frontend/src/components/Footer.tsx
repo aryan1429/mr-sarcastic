@@ -1,38 +1,51 @@
 import { ArrowUp, Bot, Github, Heart, Music, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, memo } from "react";
 
-const Footer = () => {
+const Footer = memo(() => {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
+    let rafId: number | undefined;
     const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 400);
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        setShowScrollTop(window.scrollY > 400);
+        rafId = undefined;
+      });
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
 
-  const scrollToTop = () => {
+  const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  }, []);
 
   return (
     <>
       {/* Scroll to top button */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-6 right-6 z-40 p-3 rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/25 transition-all duration-500 hover:scale-110 hover:shadow-xl hover:shadow-primary/30 active:scale-95 ${
+        className={`fixed bottom-6 right-6 z-40 p-3 rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/25 active:scale-95 ${
           showScrollTop
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-10 pointer-events-none"
         }`}
+        style={{
+          transitionProperty: "transform, opacity, box-shadow",
+          transitionDuration: "500ms",
+          transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+        }}
         aria-label="Scroll to top"
       >
         <ArrowUp className="h-5 w-5" />
       </button>
 
-      <footer className="bg-card/50 backdrop-blur-xl border-t border-border mt-auto relative overflow-hidden">
+      <footer className="bg-card/50 backdrop-blur-xl border-t border-border mt-auto relative overflow-hidden content-lazy">
         {/* Decorative gradient line at top of footer */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
         
@@ -41,7 +54,13 @@ const Footer = () => {
             {/* Brand Section */}
             <div className="space-y-4 col-span-2 sm:col-span-2 md:col-span-1">
               <div className="flex items-center space-x-3 group">
-                <div className="p-2 rounded-xl bg-gradient-to-br from-primary to-accent shadow-lg glow-primary group-hover:scale-110 transition-transform duration-300">
+                <div className="p-2 rounded-xl bg-gradient-to-br from-primary to-accent shadow-lg glow-primary"
+                  style={{
+                    transitionProperty: "transform",
+                    transitionDuration: "300ms",
+                    transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                  }}
+                >
                   <Bot className="h-6 w-6 text-white" />
                 </div>
                 <span className="text-xl font-bold gradient-text">Mr Sarcastic</span>
@@ -130,5 +149,7 @@ const Footer = () => {
     </>
   );
 };
+
+Footer.displayName = "Footer";
 
 export default Footer;

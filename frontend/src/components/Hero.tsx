@@ -8,8 +8,10 @@ const Hero = () => {
   const [mounted, setMounted] = useState(false);
   
   useEffect(() => {
-    const timer = setTimeout(() => setMounted(true), 100);
-    return () => clearTimeout(timer);
+    // Use rAF for smoother first paint
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setMounted(true));
+    });
   }, []);
 
   return (
@@ -35,26 +37,60 @@ const Hero = () => {
           {/* Left Column - Text Content */}
           <div className="text-center lg:text-left space-y-6 sm:space-y-8">
             <div className="space-y-4">
-              <div className={`inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-medium text-xs sm:text-sm transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
-                <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-2 animate-pulse" />
+              <div className={`inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-medium text-xs sm:text-sm ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}
+                style={{
+                  transitionProperty: "transform, opacity",
+                  transitionDuration: "700ms",
+                  transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                }}
+              >
+                <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-2 animate-breathe" />
                 AI-Powered Sass & Music
               </div>
               
-              <h1 className={`text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tight transition-all duration-700 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+              <h1 className={`text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tight ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+                style={{
+                  transitionProperty: "transform, opacity",
+                  transitionDuration: "700ms",
+                  transitionDelay: "200ms",
+                  transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+                }}
+              >
                 Meet{" "}
                 <span className="gradient-text bg-[length:200%_auto] animate-shimmer">Mr Sarcastic</span>
                 <br />
-                <span className={`text-3xl sm:text-4xl lg:text-5xl text-muted-foreground font-semibold inline-block transition-all duration-700 delay-300 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+                <span className={`text-3xl sm:text-4xl lg:text-5xl text-muted-foreground font-semibold inline-block ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+                  style={{
+                    transitionProperty: "transform, opacity",
+                    transitionDuration: "700ms",
+                    transitionDelay: "300ms",
+                    transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+                  }}
+                >
                   Your Sarcastic AI Companion
                 </span>
               </h1>
               
-              <p className={`text-base sm:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed transition-all duration-700 delay-[400ms] ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+              <p className={`text-base sm:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+                style={{
+                  transitionProperty: "transform, opacity",
+                  transitionDuration: "700ms",
+                  transitionDelay: "400ms",
+                  transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
+                }}
+              >
                 Get ready for brutally honest conversations and mood-based music recommendations from an AI with real f'ing personality unlike your ex
               </p>
             </div>
 
-            <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start transition-all duration-700 delay-500 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+            <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
+              style={{
+                transitionProperty: "transform, opacity",
+                transitionDuration: "700ms",
+                transitionDelay: "500ms",
+                transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+              }}
+            >
               <Link to="/chat">
                 <Button variant="hero" size="lg" className="group w-full sm:w-auto text-base touch-manipulation">
                   <MessageCircle className="h-5 w-5 mr-2 group-hover:animate-wiggle" />
@@ -73,15 +109,36 @@ const Hero = () => {
 
             {/* Features Preview */}
             <div className="grid grid-cols-3 gap-3 sm:gap-4 pt-6 sm:pt-8">
-              <div className={`text-center p-3 sm:p-4 rounded-xl glass-card hover:border-primary/50 transition-all duration-500 hover-lift delay-[600ms] ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <div className={`text-center p-3 sm:p-4 rounded-xl glass-card hover:border-primary/50 hover-lift ${mounted ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
+                style={{
+                  transitionProperty: "transform, opacity",
+                  transitionDuration: "600ms",
+                  transitionDelay: "600ms",
+                  transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                }}
+              >
                 <div className="text-xl sm:text-2xl font-bold gradient-text">500+</div>
                 <div className="text-xs sm:text-sm text-muted-foreground">Sarcastic Responses</div>
               </div>
-              <div className={`text-center p-3 sm:p-4 rounded-xl glass-card hover:border-primary/50 transition-all duration-500 hover-lift delay-[700ms] ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <div className={`text-center p-3 sm:p-4 rounded-xl glass-card hover:border-primary/50 hover-lift ${mounted ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
+                style={{
+                  transitionProperty: "transform, opacity",
+                  transitionDuration: "600ms",
+                  transitionDelay: "700ms",
+                  transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                }}
+              >
                 <div className="text-xl sm:text-2xl font-bold gradient-text">24/7</div>
                 <div className="text-xs sm:text-sm text-muted-foreground">Mood Detection</div>
               </div>
-              <div className={`text-center p-3 sm:p-4 rounded-xl glass-card hover:border-primary/50 transition-all duration-500 hover-lift delay-[800ms] ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <div className={`text-center p-3 sm:p-4 rounded-xl glass-card hover:border-primary/50 hover-lift ${mounted ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
+                style={{
+                  transitionProperty: "transform, opacity",
+                  transitionDuration: "600ms",
+                  transitionDelay: "800ms",
+                  transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                }}
+              >
                 <div className="text-xl sm:text-2xl font-bold gradient-text">1000+</div>
                 <div className="text-xs sm:text-sm text-muted-foreground">Song Picks</div>
               </div>
@@ -89,13 +146,30 @@ const Hero = () => {
           </div>
 
           {/* Right Column - Mascot */}
-          <div className={`flex justify-center lg:justify-end order-first lg:order-last transition-all duration-1000 delay-300 ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}>
+          <div className={`flex justify-center lg:justify-end order-first lg:order-last ${mounted ? 'opacity-100 scale-100' : 'opacity-0 scale-75'}`}
+            style={{
+              transitionProperty: "transform, opacity",
+              transitionDuration: "1000ms",
+              transitionDelay: "300ms",
+              transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+            }}
+          >
             <div className="relative group">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-2xl opacity-20 sm:opacity-30 animate-pulse-glow gpu-accelerated group-hover:opacity-40 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-primary to-accent rounded-full blur-2xl opacity-20 sm:opacity-30 animate-pulse-glow gpu-accelerated group-hover:opacity-40"
+                style={{
+                  transitionProperty: "opacity",
+                  transitionDuration: "500ms",
+                }}
+              ></div>
               <img
                 src={chatbotMascot}
                 alt="Mr Sarcastic Mascot"
-                className="relative z-10 w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 object-contain animate-float gpu-accelerated drop-shadow-2xl group-hover:scale-105 transition-transform duration-500"
+                className="relative z-10 w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 object-contain animate-float gpu-accelerated drop-shadow-2xl"
+                style={{
+                  transitionProperty: "transform",
+                  transitionDuration: "500ms",
+                  transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+                }}
                 loading="eager"
                 fetchPriority="high"
               />
