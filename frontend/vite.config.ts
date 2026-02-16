@@ -54,4 +54,42 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    // Performance optimizations
+    target: 'es2020',
+    cssCodeSplit: true,
+    sourcemap: mode === 'development',
+    minify: 'esbuild',
+    rollupOptions: {
+      output: {
+        // Manual chunk splitting for optimal caching
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom'],
+          'vendor-router': ['react-router-dom'],
+          'vendor-query': ['@tanstack/react-query'],
+          'vendor-ui': [
+            '@radix-ui/react-dialog',
+            '@radix-ui/react-dropdown-menu',
+            '@radix-ui/react-toast',
+            '@radix-ui/react-tooltip',
+          ],
+        },
+        // Use content hashing for long-term caching
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
+      },
+    },
+    // Increase chunk size warning limit
+    chunkSizeWarningLimit: 600,
+  },
+  // Optimize dependency pre-bundling
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'react-router-dom',
+      '@tanstack/react-query',
+    ],
+  },
 }));
