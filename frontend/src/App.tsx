@@ -12,6 +12,7 @@ import { Loader2 } from "lucide-react";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AuthCallback from "./pages/AuthCallback";
 import MiniPlayer from "./components/MiniPlayer";
+import ExpandedPlayer from "./components/ExpandedPlayer";
 
 // Lazy loaded (code-split) for better initial bundle size
 const Chat = lazy(() => import("./pages/Chat"));
@@ -92,6 +93,7 @@ const App = () => {
               </Routes>
             </Suspense>
             <MiniPlayer />
+            <ExpandedPlayer />
           </BrowserRouter>
         </TooltipProvider>
         </MusicPlayerProvider>
