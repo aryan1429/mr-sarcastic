@@ -1,0 +1,272 @@
+[
+  {
+    "id": "song_1",
+    "title": "Lofi Hip Hop Radio - Beats to Relax/Study to",
+    "artist": "Lofi Girl",
+    "mood": "Chill",
+    "duration": "3:45",
+    "youtubeUrl": "https://youtube.com/watch?v=jfKfPfyJRdk",
+    "thumbnail": "https://i.ytimg.com/vi/jfKfPfyJRdk/hqdefault.jpg"
+  },
+  {
+    "id": "song_2",
+    "title": "Blinding Lights",
+    "artist": "The Weeknd",
+    "mood": "Energetic",
+    "duration": "3:20",
+    "youtubeUrl": "https://youtube.com/watch?v=4NRXx6U8ABQ",
+    "thumbnail": "https://i.ytimg.com/vi/4NRXx6U8ABQ/hqdefault.jpg"
+  },
+  {
+    "id": "song_3",
+    "title": "Shape of You",
+    "artist": "Ed Sheeran",
+    "mood": "Happy",
+    "duration": "3:53",
+    "youtubeUrl": "https://youtube.com/watch?v=JGwWNGJdvx8",
+    "thumbnail": "https://i.ytimg.com/vi/JGwWNGJdvx8/hqdefault.jpg"
+  },
+  {
+    "id": "song_4",
+    "title": "Bohemian Rhapsody",
+    "artist": "Queen",
+    "mood": "Energetic",
+    "duration": "5:55",
+    "youtubeUrl": "https://youtube.com/watch?v=fJ9rUzIMcZQ",
+    "thumbnail": "https://i.ytimg.com/vi/fJ9rUzIMcZQ/hqdefault.jpg"
+  },
+  {
+    "id": "song_5",
+    "title": "Someone Like You",
+    "artist": "Adele",
+    "mood": "Sad",
+    "duration": "4:45",
+    "youtubeUrl": "https://youtube.com/watch?v=hLQl3WQQoQ0",
+    "thumbnail": "https://i.ytimg.com/vi/hLQl3WQQoQ0/hqdefault.jpg"
+  },
+  {
+    "id": "song_6",
+    "title": "Stressed Out",
+    "artist": "Twenty One Pilots",
+    "mood": "Focus",
+    "duration": "3:22",
+    "youtubeUrl": "https://youtube.com/watch?v=pXRviuL6vMY",
+    "thumbnail": "https://i.ytimg.com/vi/pXRviuL6vMY/hqdefault.jpg"
+  },
+  {
+    "id": "song_7",
+    "title": "Weightless",
+    "artist": "Marconi Union",
+    "mood": "Relaxed",
+    "duration": "8:09",
+    "youtubeUrl": "https://youtube.com/watch?v=UfcAVejslrU",
+    "thumbnail": "https://i.ytimg.com/vi/UfcAVejslrU/hqdefault.jpg"
+  },
+  {
+    "id": "song_8",
+    "title": "Thunderstruck",
+    "artist": "AC/DC",
+    "mood": "Angry",
+    "duration": "4:52",
+    "youtubeUrl": "https://youtube.com/watch?v=v2AC41dglnM",
+    "thumbnail": "https://i.ytimg.com/vi/v2AC41dglnM/hqdefault.jpg"
+  },
+  {
+    "id": "song_9",
+    "title": "Happy",
+    "artist": "Pharrell Williams",
+    "mood": "Happy",
+    "duration": "3:53",
+    "youtubeUrl": "https://youtube.com/watch?v=ZbZSe6N_BXs",
+    "thumbnail": "https://i.ytimg.com/vi/ZbZSe6N_BXs/hqdefault.jpg"
+  },
+  {
+    "id": "song_10",
+    "title": "Midnight City",
+    "artist": "M83",
+    "mood": "Chill",
+    "duration": "4:03",
+    "youtubeUrl": "https://youtube.com/watch?v=dX3k_QDnzHE",
+    "thumbnail": "https://i.ytimg.com/vi/dX3k_QDnzHE/hqdefault.jpg"
+  },
+  {
+    "id": "song_11",
+    "title": "Sunflower",
+    "artist": "Post Malone & Swae Lee",
+    "mood": "Happy",
+    "duration": "2:38",
+    "youtubeUrl": "https://youtube.com/watch?v=ApXoWvfEYVU",
+    "thumbnail": "https://i.ytimg.com/vi/ApXoWvfEYVU/hqdefault.jpg"
+  },
+  {
+    "id": "song_12",
+    "title": "Lose Yourself",
+    "artist": "Eminem",
+    "mood": "Energetic",
+    "duration": "5:26",
+    "youtubeUrl": "https://youtube.com/watch?v=_Yhyp-_hX2s",
+    "thumbnail": "https://i.ytimg.com/vi/_Yhyp-_hX2s/hqdefault.jpg"
+  },
+  {
+    "id": "song_13",
+    "title": "River Flows in You",
+    "artist": "Yiruma",
+    "mood": "Relaxed",
+    "duration": "3:12",
+    "youtubeUrl": "https://youtube.com/watch?v=7maJOI3QMu0",
+    "thumbnail": "https://i.ytimg.com/vi/7maJOI3QMu0/hqdefault.jpg"
+  },
+  {
+    "id": "song_14",
+    "title": "In the End",
+    "artist": "Linkin Park",
+    "mood": "Angry",
+    "duration": "3:36",
+    "youtubeUrl": "https://youtube.com/watch?v=eVTXPUF4Oz4",
+    "thumbnail": "https://i.ytimg.com/vi/eVTXPUF4Oz4/hqdefault.jpg"
+  },
+  {
+    "id": "song_15",
+    "title": "Fix You",
+    "artist": "Coldplay",
+    "mood": "Sad",
+    "duration": "4:55",
+    "youtubeUrl": "https://youtube.com/watch?v=k4V3Mo61fJM",
+    "thumbnail": "https://i.ytimg.com/vi/k4V3Mo61fJM/hqdefault.jpg"
+  },
+  {
+    "id": "song_16",
+    "title": "Chill Study Beats",
+    "artist": "Chillhop Music",
+    "mood": "Focus",
+    "duration": "4:30",
+    "youtubeUrl": "https://youtube.com/watch?v=5qap5aO4i9A",
+    "thumbnail": "https://i.ytimg.com/vi/5qap5aO4i9A/hqdefault.jpg"
+  },
+  {
+    "id": "song_17",
+    "title": "Uptown Funk",
+    "artist": "Bruno Mars",
+    "mood": "Energetic",
+    "duration": "4:30",
+    "youtubeUrl": "https://youtube.com/watch?v=OPf0YbXqDm0",
+    "thumbnail": "https://i.ytimg.com/vi/OPf0YbXqDm0/hqdefault.jpg"
+  },
+  {
+    "id": "song_18",
+    "title": "Can't Help Falling in Love",
+    "artist": "Elvis Presley",
+    "mood": "Relaxed",
+    "duration": "3:00",
+    "youtubeUrl": "https://youtube.com/watch?v=vGJTaP6anOU",
+    "thumbnail": "https://i.ytimg.com/vi/vGJTaP6anOU/hqdefault.jpg"
+  },
+  {
+    "id": "song_19",
+    "title": "Numb",
+    "artist": "Linkin Park",
+    "mood": "Angry",
+    "duration": "3:07",
+    "youtubeUrl": "https://youtube.com/watch?v=kXYiU_JCYtU",
+    "thumbnail": "https://i.ytimg.com/vi/kXYiU_JCYtU/hqdefault.jpg"
+  },
+  {
+    "id": "song_20",
+    "title": "Lovely",
+    "artist": "Billie Eilish & Khalid",
+    "mood": "Sad",
+    "duration": "3:20",
+    "youtubeUrl": "https://youtube.com/watch?v=V1Pl8CzNzCw",
+    "thumbnail": "https://i.ytimg.com/vi/V1Pl8CzNzCw/hqdefault.jpg"
+  },
+  {
+    "id": "song_21",
+    "title": "Dawn",
+    "artist": "Chillhop Music",
+    "mood": "Chill",
+    "duration": "3:15",
+    "youtubeUrl": "https://youtube.com/watch?v=lTRiuFIWV54",
+    "thumbnail": "https://i.ytimg.com/vi/lTRiuFIWV54/hqdefault.jpg"
+  },
+  {
+    "id": "song_22",
+    "title": "Don't Stop Me Now",
+    "artist": "Queen",
+    "mood": "Happy",
+    "duration": "3:29",
+    "youtubeUrl": "https://youtube.com/watch?v=HgzGwKwLmgM",
+    "thumbnail": "https://i.ytimg.com/vi/HgzGwKwLmgM/hqdefault.jpg"
+  },
+  {
+    "id": "song_23",
+    "title": "Deep Focus Music",
+    "artist": "Greenred Productions",
+    "mood": "Focus",
+    "duration": "5:00",
+    "youtubeUrl": "https://youtube.com/watch?v=oPVte6aMprI",
+    "thumbnail": "https://i.ytimg.com/vi/oPVte6aMprI/hqdefault.jpg"
+  },
+  {
+    "id": "song_24",
+    "title": "Levitating",
+    "artist": "Dua Lipa",
+    "mood": "Energetic",
+    "duration": "3:23",
+    "youtubeUrl": "https://youtube.com/watch?v=TUVcZfQe-Kw",
+    "thumbnail": "https://i.ytimg.com/vi/TUVcZfQe-Kw/hqdefault.jpg"
+  },
+  {
+    "id": "song_25",
+    "title": "The Night We Met",
+    "artist": "Lord Huron",
+    "mood": "Sad",
+    "duration": "3:28",
+    "youtubeUrl": "https://youtube.com/watch?v=KtlgYxa6BMU",
+    "thumbnail": "https://i.ytimg.com/vi/KtlgYxa6BMU/hqdefault.jpg"
+  },
+  {
+    "id": "song_26",
+    "title": "Café Music - Jazz & Bossa Nova",
+    "artist": "Cafe Music BGM Channel",
+    "mood": "Relaxed",
+    "duration": "3:40",
+    "youtubeUrl": "https://youtube.com/watch?v=VzDJseKbaxE",
+    "thumbnail": "https://i.ytimg.com/vi/VzDJseKbaxE/hqdefault.jpg"
+  },
+  {
+    "id": "song_27",
+    "title": "Breaking the Habit",
+    "artist": "Linkin Park",
+    "mood": "Angry",
+    "duration": "3:16",
+    "youtubeUrl": "https://youtube.com/watch?v=v2H4l9RpkwM",
+    "thumbnail": "https://i.ytimg.com/vi/v2H4l9RpkwM/hqdefault.jpg"
+  },
+  {
+    "id": "song_28",
+    "title": "Circles",
+    "artist": "Post Malone",
+    "mood": "Chill",
+    "duration": "3:35",
+    "youtubeUrl": "https://youtube.com/watch?v=wXhTHyIgQ_U",
+    "thumbnail": "https://i.ytimg.com/vi/wXhTHyIgQ_U/hqdefault.jpg"
+  },
+  {
+    "id": "song_29",
+    "title": "Walking on Sunshine",
+    "artist": "Katrina & The Waves",
+    "mood": "Happy",
+    "duration": "3:58",
+    "youtubeUrl": "https://youtube.com/watch?v=iPUmE-tne5U",
+    "thumbnail": "https://i.ytimg.com/vi/iPUmE-tne5U/hqdefault.jpg"
+  },
+  {
+    "id": "song_30",
+    "title": "Alpha Waves Focus",
+    "artist": "Study Music Project",
+    "mood": "Focus",
+    "duration": "6:00",
+    "youtubeUrl": "https://youtube.com/watch?v=WPni755-Krg",
+    "thumbnail": "https://i.ytimg.com/vi/WPni755-Krg/hqdefault.jpg"
+  }
+]
