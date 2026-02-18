@@ -11,6 +11,7 @@ import { Loader2 } from "lucide-react";
 // Eagerly loaded (critical path)
 import ProtectedRoute from "./components/ProtectedRoute";
 import AuthCallback from "./pages/AuthCallback";
+import MiniPlayer from "./components/MiniPlayer";
 
 // Lazy loaded (code-split) for better initial bundle size
 const Chat = lazy(() => import("./pages/Chat"));
@@ -90,6 +91,7 @@ const App = () => {
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
+            <MiniPlayer />
           </BrowserRouter>
         </TooltipProvider>
         </MusicPlayerProvider>
