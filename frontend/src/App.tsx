@@ -13,6 +13,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import AuthCallback from "./pages/AuthCallback";
 import MiniPlayer from "./components/MiniPlayer";
 import ExpandedPlayer from "./components/ExpandedPlayer";
+import { useKeyboardShortcuts, useMediaSession } from "./hooks/useMusicShortcuts";
 
 // Lazy loaded (code-split) for better initial bundle size
 const Chat = lazy(() => import("./pages/Chat"));
@@ -20,6 +21,13 @@ const Index = lazy(() => import("./pages/Index"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const Profile = lazy(() => import("./pages/Profile"));
 const Songs = lazy(() => import("./pages/Songs"));
+
+// Global music shortcuts (keyboard + media session)
+const MusicShortcuts = () => {
+  useKeyboardShortcuts();
+  useMediaSession();
+  return null;
+};
 
 // Loading fallback component
 const PageLoader = () => (
@@ -94,6 +102,7 @@ const App = () => {
             </Suspense>
             <MiniPlayer />
             <ExpandedPlayer />
+            <MusicShortcuts />
           </BrowserRouter>
         </TooltipProvider>
         </MusicPlayerProvider>
