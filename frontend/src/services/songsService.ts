@@ -116,6 +116,67 @@ class SongsService {
       throw error;
     }
   }
+
+  async getRandomSongs(count: number = 5, mood?: string): Promise<Song[]> {
+    try {
+      const params = new URLSearchParams({
+        count: count.toString(),
+      });
+
+      if (mood && mood !== 'All') {
+        params.append('mood', mood);
+      }
+
+      const response: ApiResponse<Song[]> = await this.fetchWithAuth(`/api/songs/random?${params}`);
+
+      if (!response.success) {
+        throw new Error(response.message || 'Failed to fetch random songs');
+      }
+
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching random songs:', error);
+      throw error;
+    }
+  }
+
+  async getSongById(id: string): Promise<Song | null> {
+    try {
+      const response: ApiResponse<Song> = await this.fetchWithAuth(`/api/songs/${id}`);
+
+      if (!response.success) {
+        return null;
+      }
+
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching song by id:', error);
+      return null;
+    }
+  }
+
+  /**
+   * Get all available mood categories from the songs library
+   */
+  getMoodCategories(): string[] {
+    return ['All', 'Chill', 'Energetic', 'Focus', 'Happy', 'Sad', 'Angry', 'Relaxed'];
+  }
+
+  /**
+   * Get the emoji icon for a given mood
+   */
+  getMoodEmoji(mood: string): string {
+    const emojiMap: Record<string, string> = {
+      chill: '😌',
+      energetic: '⚡',
+      focus: '🎯',
+      happy: '😊',
+      sad: '😢',
+      angry: '🔥',
+      relaxed: '🍃',
+    };
+    return emojiMap[mood.toLowerCase()] || '🎵';
+  }
 }
 
 export const songsService = new SongsService();
