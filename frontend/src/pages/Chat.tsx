@@ -15,6 +15,7 @@ import { ClearChatDialog } from "@/components/ClearChatDialog";
 import { ExportDropdown } from "@/components/ExportDropdown";
 import { MoodSelectorModal } from "@/components/MoodSelectorModal";
 import PageTransition from "@/components/PageTransition";
+import { songsService } from "@/services/songsService";
 import { useToast } from "@/hooks/use-toast";
 
 interface Message {
@@ -482,20 +483,45 @@ const Chat = () => {
           {/* Mood & Song Suggestions */}
           <div className="space-y-4">
             <Card className="p-4 border-primary/20 hover-lift">
-              <h3 className="font-semibold text-primary mb-3">Mood-Based Songs</h3>
+              <div className="flex items-center gap-2 mb-3">
+                <Music className="w-4 h-4 text-primary" />
+                <h3 className="font-semibold text-primary">Quick Play by Mood</h3>
+              </div>
               <div className="space-y-2">
-                <div className="p-3 bg-muted/50 rounded-lg hover:bg-muted/70 hover:translate-x-1 transition-all duration-200 cursor-pointer">
-                  <h4 className="font-medium text-sm">Chill Vibes</h4>
-                  <p className="text-xs text-muted-foreground">Lofi Hip Hop Mix</p>
-                </div>
-                <div className="p-3 bg-muted/50 rounded-lg hover:bg-muted/70 hover:translate-x-1 transition-all duration-200 cursor-pointer">
-                  <h4 className="font-medium text-sm">Energetic</h4>
-                  <p className="text-xs text-muted-foreground">Upbeat Pop Hits</p>
-                </div>
-                <div className="p-3 bg-muted/50 rounded-lg hover:bg-muted/70 hover:translate-x-1 transition-all duration-200 cursor-pointer">
-                  <h4 className="font-medium text-sm">Focus Mode</h4>
-                  <p className="text-xs text-muted-foreground">Instrumental Study</p>
-                </div>
+                {[
+                  { mood: 'Chill', emoji: '😌', desc: 'Lofi & Ambient' },
+                  { mood: 'Energetic', emoji: '⚡', desc: 'Upbeat Pop & Rock' },
+                  { mood: 'Focus', emoji: '🎯', desc: 'Study & Concentration' },
+                  { mood: 'Happy', emoji: '😊', desc: 'Feel-Good Hits' },
+                  { mood: 'Sad', emoji: '😢', desc: 'Emotional Ballads' },
+                  { mood: 'Relaxed', emoji: '🍃', desc: 'Calm & Peaceful' },
+                ].map(({ mood, emoji, desc }) => (
+                  <div
+                    key={mood}
+                    className="p-3 bg-muted/50 rounded-lg hover:bg-muted/70 hover:translate-x-1 transition-all duration-200 cursor-pointer flex items-center gap-3 group"
+                    onClick={async () => {
+                      try {
+                        const moodSongs = await songsService.getSongsByMood(mood, 10);
+                        if (moodSongs.length > 0) {
+                          const shuffled = [...moodSongs].sort(() => Math.random() - 0.5);
+                          playMusicSong(shuffled[0], shuffled);
+                          toast({ title: `${emoji} ${mood} vibes`, description: `Playing ${shuffled.length} ${mood.toLowerCase()} songs` });
+                        } else {
+                          toast({ title: "No songs found", description: `No ${mood} songs available`, variant: "destructive" });
+                        }
+                      } catch {
+                        toast({ title: "Couldn't load songs", variant: "destructive" });
+                      }
+                    }}
+                  >
+                    <span className="text-lg">{emoji}</span>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-medium text-sm">{mood}</h4>
+                      <p className="text-xs text-muted-foreground">{desc}</p>
+                    </div>
+                    <Play className="w-3.5 h-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                  </div>
+                ))}
               </div>
             </Card>
 
