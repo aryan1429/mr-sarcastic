@@ -3,10 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Send, Bot, User, Loader2, Music, ExternalLink, Trash2, Smile } from "lucide-react";
+import { Send, Bot, User, Loader2, Music, ExternalLink, Trash2, Smile, Play, Pause, ListPlus } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useAuth } from "@/context/AuthContext";
+import { useMusicPlayer } from "@/context/MusicPlayerContext";
 import { api } from "@/services/api";
 import { useNavigate } from "react-router-dom";
 import { TypingAnimation } from "@/components/TypingAnimation";
@@ -69,10 +70,12 @@ const ChatMessage = memo(({
   message,
   onTypingComplete,
   onGoToSong,
+  onPlaySong,
 }: {
   message: Message;
   onTypingComplete: (id: string) => void;
   onGoToSong: (songId: string) => void;
+  onPlaySong: (songData: NonNullable<Message['songData']>) => void;
 }) => {
   return (
     <div
@@ -134,11 +137,20 @@ const ChatMessage = memo(({
             <div className="flex gap-2 mt-2">
               <Button
                 size="sm"
+                onClick={() => onPlaySong(message.songData!)}
+                className="flex items-center gap-1 text-xs"
+              >
+                <Play className="w-3 h-3" />
+                Play Now
+              </Button>
+              <Button
+                size="sm"
+                variant="outline"
                 onClick={() => onGoToSong(message.songData!.id)}
                 className="flex items-center gap-1 text-xs"
               >
                 <Music className="w-3 h-3" />
-                Listen on Songs Page
+                Songs Page
               </Button>
               <Button
                 size="sm"
@@ -194,6 +206,7 @@ ChatMessage.displayName = "ChatMessage";
 const Chat = () => {
   const { token } = useAuth();
   const navigate = useNavigate();
+  const { playSong: playMusicSong, addToQueue } = useMusicPlayer();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [messages, setMessages] = useState<Message[]>(loadMessagesFromStorage);
   const [inputText, setInputText] = useState("");
@@ -266,6 +279,20 @@ const Chat = () => {
       )
     );
   }, []);
+
+  const handlePlaySongFromChat = useCallback((songData: NonNullable<Message['songData']>) => {
+    const song = {
+      id: songData.id,
+      title: songData.title,
+      artist: songData.artist,
+      mood: songData.mood,
+      duration: songData.duration,
+      youtubeUrl: songData.youtubeUrl,
+      thumbnail: songData.thumbnail || '',
+    };
+    playMusicSong(song);
+    toast({ title: "Now Playing", description: `${song.title} by ${song.artist}` });
+  }, [playMusicSong, toast]);
 
   const handleSendMessage = async () => {
     if (!inputText.trim() || isLoading) return;
@@ -406,6 +433,7 @@ const Chat = () => {
                     message={message}
                     onTypingComplete={handleTypingComplete}
                     onGoToSong={handleGoToSong}
+                    onPlaySong={handlePlaySongFromChat}
                   />
                 ))}
                 <div ref={messagesEndRef} />
