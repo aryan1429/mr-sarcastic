@@ -14,6 +14,7 @@ import { SongsGridSkeleton } from "@/components/ui/skeleton";
 import { useMusicPlayer } from "@/context/MusicPlayerContext";
 
 const Songs = () => {
+  const [activeTab, setActiveTab] = useState<'library' | 'favorites'>('library');
   const [selectedMood, setSelectedMood] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
   const [songs, setSongs] = useState<Song[]>([]);
@@ -25,7 +26,7 @@ const Songs = () => {
   const { toast } = useToast();
   const [searchParams, setSearchParams] = useSearchParams();
   const songRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
-  const { playSong, addToQueue, toggleFavorite, isFavorite, currentSong, isPlaying, togglePlay, setQueue } = useMusicPlayer();
+  const { playSong, addToQueue, toggleFavorite, isFavorite, currentSong, isPlaying, togglePlay, setQueue, favorites } = useMusicPlayer();
 
   const moods = ["All", "Chill", "Energetic", "Focus", "Happy", "Sad", "Angry", "Relaxed"];
   const songsPerPage = 20;
@@ -130,6 +131,115 @@ const Songs = () => {
     return currentSong?.id === song.id && isPlaying;
   };
 
+  // Get favorite songs from loaded songs
+  const favoriteSongs = songs.filter(s => favorites.includes(s.id));
+
+  // Render a song card (shared between library and favorites)
+  const renderSongCard = (song: Song, index: number) => (
+    <Card 
+      key={song.id} 
+      ref={(el) => (songRefs.current[song.id] = el)}
+      className={`group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-primary/20 hover:border-primary/40 ${
+        highlightedSongId === song.id ? 'ring-2 ring-primary ring-offset-2 bg-primary/5 animate-pulse-glow' : ''
+      }`}
+      style={{
+        animation: `slideUp 0.4s ease-out ${Math.min(index * 0.05, 0.5)}s both`,
+      }}
+    >
+      <div className="p-3 sm:p-4">
+        <div className="aspect-video bg-muted rounded-lg mb-3 sm:mb-4 relative overflow-hidden">
+          <img 
+            src={song.thumbnail} 
+            alt={song.title}
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+            decoding="async"
+            onError={(e) => {
+              const target = e.target as HTMLImageElement;
+              target.src = `https://i.ytimg.com/vi/${extractVideoId(song.youtubeUrl)}/hqdefault.jpg`;
+            }}
+          />
+          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-[2px] gap-2">
+            <Button 
+              size="icon" 
+              variant="secondary" 
+              className="rounded-full scale-75 group-hover:scale-100 transition-transform duration-300 shadow-lg"
+              onClick={() => handlePlaySong(song)}
+            >
+              {isCurrentlyPlaying(song) ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+            </Button>
+            <Button 
+              size="icon" 
+              variant="secondary" 
+              className="rounded-full scale-75 group-hover:scale-100 transition-transform duration-300 shadow-lg h-8 w-8"
+              onClick={(e) => handleAddToQueue(song, e)}
+              title="Add to queue"
+            >
+              <ListPlus className="w-3.5 h-3.5" />
+            </Button>
+          </div>
+          {isCurrentlyPlaying(song) && (
+            <div className="absolute bottom-2 left-2">
+              <div className="flex items-end gap-[2px] h-4 bg-black/60 rounded px-1.5 py-0.5">
+                {[1, 2, 3].map((i) => (
+                  <div
+                    key={i}
+                    className="w-[2px] bg-primary rounded-full animate-bounce"
+                    style={{ animationDelay: `${i * 0.15}s`, animationDuration: "0.6s", height: `${4 + Math.random() * 8}px` }}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+        
+        <div className="space-y-2">
+          <div className="flex items-start justify-between">
+            <div className="flex-1 min-w-0">
+              <h3 className="font-semibold text-sm truncate" title={song.title}>{song.title}</h3>
+              <p className="text-xs text-muted-foreground" title={song.artist}>{song.artist}</p>
+            </div>
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className={`shrink-0 h-8 w-8 transition-colors duration-200 ${isFavorite(song.id) ? 'text-red-500' : 'hover:text-red-500'}`}
+              onClick={() => toggleFavorite(song.id)}
+            >
+              <Heart className={`w-3 h-3 ${isFavorite(song.id) ? 'fill-red-500' : ''}`} />
+            </Button>
+          </div>
+          
+          <div className="flex items-center justify-between">
+            <Badge variant="secondary" className="text-xs">
+              {song.mood}
+            </Badge>
+            <span className="text-xs text-muted-foreground">{song.duration}</span>
+          </div>
+          
+          <div className="flex gap-2 pt-2">
+            <Button variant="outline" size="sm" className="flex-1" asChild>
+              <a href={song.youtubeUrl} target="_blank" rel="noopener noreferrer">
+                <ExternalLink className="w-3 h-3 mr-1" />
+                YouTube
+              </a>
+            </Button>
+            <Button 
+              size="sm" 
+              className="flex-1"
+              onClick={() => isCurrentlyPlaying(song) ? togglePlay() : handlePlaySong(song)}
+            >
+              {isCurrentlyPlaying(song) ? (
+                <><Pause className="w-3 h-3 mr-1" /> Pause</>
+              ) : (
+                <><Play className="w-3 h-3 mr-1" /> Play</>
+              )}
+            </Button>
+          </div>
+        </div>
+      </div>
+    </Card>
+  );
+
   // Loading state
   if (loading) {
     return (
@@ -206,6 +316,28 @@ const Songs = () => {
             </div>
           </div>
 
+          {/* Tab Navigation */}
+          <div className="flex justify-center mb-6">
+            <div className="inline-flex rounded-lg border border-border p-1 bg-muted/30">
+              <button
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${activeTab === 'library' ? 'bg-primary text-primary-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}
+                onClick={() => setActiveTab('library')}
+              >
+                <Music className="w-4 h-4 inline mr-1.5 -mt-0.5" />
+                Library ({pagination?.totalSongs || songs.length})
+              </button>
+              <button
+                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${activeTab === 'favorites' ? 'bg-primary text-primary-foreground shadow-sm' : 'text-muted-foreground hover:text-foreground'}`}
+                onClick={() => setActiveTab('favorites')}
+              >
+                <Heart className="w-4 h-4 inline mr-1.5 -mt-0.5" />
+                Favorites ({favorites.length})
+              </button>
+            </div>
+          </div>
+
+          {activeTab === 'library' ? (
+          <>
           {/* Search and Filters */}
           <div className="mb-6 sm:mb-8 space-y-3 sm:space-y-4">
             <div className="relative max-w-md mx-auto">
@@ -235,110 +367,7 @@ const Songs = () => {
 
           {/* Songs Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {songs.map((song, index) => (
-              <Card 
-                key={song.id} 
-                ref={(el) => (songRefs.current[song.id] = el)}
-                className={`group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-primary/20 hover:border-primary/40 ${
-                  highlightedSongId === song.id ? 'ring-2 ring-primary ring-offset-2 bg-primary/5 animate-pulse-glow' : ''
-                }`}
-                style={{
-                  animation: `slideUp 0.4s ease-out ${Math.min(index * 0.05, 0.5)}s both`,
-                }}
-              >
-                <div className="p-3 sm:p-4">
-                  <div className="aspect-video bg-muted rounded-lg mb-3 sm:mb-4 relative overflow-hidden">
-                    <img 
-                      src={song.thumbnail} 
-                      alt={song.title}
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      loading="lazy"
-                      decoding="async"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.src = `https://i.ytimg.com/vi/${extractVideoId(song.youtubeUrl)}/hqdefault.jpg`;
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-[2px] gap-2">
-                      <Button 
-                        size="icon" 
-                        variant="secondary" 
-                        className="rounded-full scale-75 group-hover:scale-100 transition-transform duration-300 shadow-lg"
-                        onClick={() => handlePlaySong(song)}
-                      >
-                        {isCurrentlyPlaying(song) ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-                      </Button>
-                      <Button 
-                        size="icon" 
-                        variant="secondary" 
-                        className="rounded-full scale-75 group-hover:scale-100 transition-transform duration-300 shadow-lg h-8 w-8"
-                        onClick={(e) => handleAddToQueue(song, e)}
-                        title="Add to queue"
-                      >
-                        <ListPlus className="w-3.5 h-3.5" />
-                      </Button>
-                    </div>
-                    {isCurrentlyPlaying(song) && (
-                      <div className="absolute bottom-2 left-2">
-                        <div className="flex items-end gap-[2px] h-4 bg-black/60 rounded px-1.5 py-0.5">
-                          {[1, 2, 3].map((i) => (
-                            <div
-                              key={i}
-                              className="w-[2px] bg-primary rounded-full animate-bounce"
-                              style={{ animationDelay: `${i * 0.15}s`, animationDuration: "0.6s", height: `${4 + Math.random() * 8}px` }}
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-semibold text-sm truncate" title={song.title}>{song.title}</h3>
-                        <p className="text-xs text-muted-foreground" title={song.artist}>{song.artist}</p>
-                      </div>
-                      <Button 
-                        variant="ghost" 
-                        size="icon" 
-                        className={`shrink-0 h-8 w-8 transition-colors duration-200 ${isFavorite(song.id) ? 'text-red-500' : 'hover:text-red-500'}`}
-                        onClick={() => toggleFavorite(song.id)}
-                      >
-                        <Heart className={`w-3 h-3 ${isFavorite(song.id) ? 'fill-red-500' : ''}`} />
-                      </Button>
-                    </div>
-                    
-                    <div className="flex items-center justify-between">
-                      <Badge variant="secondary" className="text-xs">
-                        {song.mood}
-                      </Badge>
-                      <span className="text-xs text-muted-foreground">{song.duration}</span>
-                    </div>
-                    
-                    <div className="flex gap-2 pt-2">
-                      <Button variant="outline" size="sm" className="flex-1" asChild>
-                        <a href={song.youtubeUrl} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="w-3 h-3 mr-1" />
-                          YouTube
-                        </a>
-                      </Button>
-                      <Button 
-                        size="sm" 
-                        className="flex-1"
-                        onClick={() => isCurrentlyPlaying(song) ? togglePlay() : handlePlaySong(song)}
-                      >
-                        {isCurrentlyPlaying(song) ? (
-                          <><Pause className="w-3 h-3 mr-1" /> Pause</>
-                        ) : (
-                          <><Play className="w-3 h-3 mr-1" /> Play</>
-                        )}
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </Card>
-            ))}
+            {songs.map((song, index) => renderSongCard(song, index))}
           </div>
 
           {/* Pagination Controls */}
@@ -429,6 +458,43 @@ const Songs = () => {
                 </Button>
               )}
             </div>
+          )}
+        </div>
+
+          </div>
+          </>
+          ) : (
+          /* Favorites Tab */
+          <div>
+            {favoriteSongs.length === 0 ? (
+              <div className="text-center py-16">
+                <Heart className="w-16 h-16 mx-auto mb-4 text-muted-foreground/30" />
+                <h3 className="text-lg font-semibold mb-2">No Favorites Yet</h3>
+                <p className="text-muted-foreground text-sm mb-4">
+                  Click the heart icon on any song to add it to your favorites
+                </p>
+                <Button variant="outline" onClick={() => setActiveTab('library')}>
+                  Browse Library
+                </Button>
+              </div>
+            ) : (
+              <>
+                <div className="flex justify-center gap-2 mb-6">
+                  <Button size="sm" onClick={() => { if (favoriteSongs.length > 0) { setQueue(favoriteSongs, 0); toast({ title: `Playing ${favoriteSongs.length} favorites` }); } }}>
+                    <Play className="w-3.5 h-3.5 mr-1.5" />
+                    Play Favorites
+                  </Button>
+                  <Button size="sm" variant="outline" onClick={() => { if (favoriteSongs.length > 0) { const shuffled = [...favoriteSongs].sort(() => Math.random() - 0.5); setQueue(shuffled, 0); toast({ title: "Shuffle favorites" }); } }}>
+                    <Shuffle className="w-3.5 h-3.5 mr-1.5" />
+                    Shuffle Favorites
+                  </Button>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                  {favoriteSongs.map((song, index) => renderSongCard(song, index))}
+                </div>
+              </>
+            )}
+          </div>
           )}
         </div>
 
