@@ -3,8 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Play, Heart, ExternalLink, Search, X, Loader2, RefreshCw, ChevronLeft, ChevronRight } from "lucide-react";
+import { Play, Pause, Heart, ExternalLink, Search, X, Loader2, RefreshCw, ChevronLeft, ChevronRight, ListPlus, Shuffle, Music } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { songsService, type Song } from "@/services/songsService";
@@ -12,12 +11,11 @@ import { useToast } from "@/hooks/use-toast";
 import { useSearchParams } from "react-router-dom";
 import PageTransition from "@/components/PageTransition";
 import { SongsGridSkeleton } from "@/components/ui/skeleton";
+import { useMusicPlayer } from "@/context/MusicPlayerContext";
 
 const Songs = () => {
   const [selectedMood, setSelectedMood] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
-  const [currentSong, setCurrentSong] = useState<Song | null>(null);
-  const [isPlayerOpen, setIsPlayerOpen] = useState(false);
   const [songs, setSongs] = useState<Song[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -27,6 +25,7 @@ const Songs = () => {
   const { toast } = useToast();
   const [searchParams, setSearchParams] = useSearchParams();
   const songRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  const { playSong, addToQueue, toggleFavorite, isFavorite, currentSong, isPlaying, togglePlay, setQueue } = useMusicPlayer();
 
   const moods = ["All", "Chill", "Energetic", "Focus", "Happy", "Sad", "Angry", "Relaxed"];
   const songsPerPage = 20;
@@ -102,14 +101,33 @@ const Songs = () => {
     return match ? match[1] : null;
   };
 
-  const playVideo = (song: Song) => {
-    setCurrentSong(song);
-    setIsPlayerOpen(true);
+  const handlePlaySong = (song: Song) => {
+    playSong(song, songs);
   };
 
-  const closePlayer = () => {
-    setIsPlayerOpen(false);
-    setCurrentSong(null);
+  const handlePlayAll = () => {
+    if (songs.length > 0) {
+      setQueue(songs, 0);
+      toast({ title: `Playing ${songs.length} songs`, description: "Enjoy the music!" });
+    }
+  };
+
+  const handleShuffleAll = () => {
+    if (songs.length > 0) {
+      const shuffled = [...songs].sort(() => Math.random() - 0.5);
+      setQueue(shuffled, 0);
+      toast({ title: "Shuffle play", description: `Playing ${songs.length} songs in random order` });
+    }
+  };
+
+  const handleAddToQueue = (song: Song, e: React.MouseEvent) => {
+    e.stopPropagation();
+    addToQueue(song);
+    toast({ title: "Added to queue", description: `${song.title} by ${song.artist}` });
+  };
+
+  const isCurrentlyPlaying = (song: Song) => {
+    return currentSong?.id === song.id && isPlaying;
   };
 
   // Loading state
@@ -176,6 +194,16 @@ const Songs = () => {
                 {searchTerm && ` (search: "${searchTerm}")`}
               </p>
             )}
+            <div className="flex justify-center gap-2 mt-3">
+              <Button size="sm" onClick={handlePlayAll} disabled={songs.length === 0}>
+                <Play className="w-3.5 h-3.5 mr-1.5" />
+                Play All
+              </Button>
+              <Button size="sm" variant="outline" onClick={handleShuffleAll} disabled={songs.length === 0}>
+                <Shuffle className="w-3.5 h-3.5 mr-1.5" />
+                Shuffle All
+              </Button>
+            </div>
           </div>
 
           {/* Search and Filters */}
@@ -231,16 +259,38 @@ const Songs = () => {
                         target.src = `https://i.ytimg.com/vi/${extractVideoId(song.youtubeUrl)}/hqdefault.jpg`;
                       }}
                     />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-[2px]">
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-[2px] gap-2">
                       <Button 
                         size="icon" 
                         variant="secondary" 
                         className="rounded-full scale-75 group-hover:scale-100 transition-transform duration-300 shadow-lg"
-                        onClick={() => playVideo(song)}
+                        onClick={() => handlePlaySong(song)}
                       >
-                        <Play className="w-4 h-4" />
+                        {isCurrentlyPlaying(song) ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+                      </Button>
+                      <Button 
+                        size="icon" 
+                        variant="secondary" 
+                        className="rounded-full scale-75 group-hover:scale-100 transition-transform duration-300 shadow-lg h-8 w-8"
+                        onClick={(e) => handleAddToQueue(song, e)}
+                        title="Add to queue"
+                      >
+                        <ListPlus className="w-3.5 h-3.5" />
                       </Button>
                     </div>
+                    {isCurrentlyPlaying(song) && (
+                      <div className="absolute bottom-2 left-2">
+                        <div className="flex items-end gap-[2px] h-4 bg-black/60 rounded px-1.5 py-0.5">
+                          {[1, 2, 3].map((i) => (
+                            <div
+                              key={i}
+                              className="w-[2px] bg-primary rounded-full animate-bounce"
+                              style={{ animationDelay: `${i * 0.15}s`, animationDuration: "0.6s", height: `${4 + Math.random() * 8}px` }}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                   
                   <div className="space-y-2">
@@ -249,8 +299,13 @@ const Songs = () => {
                         <h3 className="font-semibold text-sm truncate" title={song.title}>{song.title}</h3>
                         <p className="text-xs text-muted-foreground" title={song.artist}>{song.artist}</p>
                       </div>
-                      <Button variant="ghost" size="icon" className="shrink-0 h-8 w-8 hover:text-red-500 transition-colors duration-200">
-                        <Heart className="w-3 h-3" />
+                      <Button 
+                        variant="ghost" 
+                        size="icon" 
+                        className={`shrink-0 h-8 w-8 transition-colors duration-200 ${isFavorite(song.id) ? 'text-red-500' : 'hover:text-red-500'}`}
+                        onClick={() => toggleFavorite(song.id)}
+                      >
+                        <Heart className={`w-3 h-3 ${isFavorite(song.id) ? 'fill-red-500' : ''}`} />
                       </Button>
                     </div>
                     
@@ -271,10 +326,13 @@ const Songs = () => {
                       <Button 
                         size="sm" 
                         className="flex-1"
-                        onClick={() => playVideo(song)}
+                        onClick={() => isCurrentlyPlaying(song) ? togglePlay() : handlePlaySong(song)}
                       >
-                        <Play className="w-3 h-3 mr-1" />
-                        Play
+                        {isCurrentlyPlaying(song) ? (
+                          <><Pause className="w-3 h-3 mr-1" /> Pause</>
+                        ) : (
+                          <><Play className="w-3 h-3 mr-1" /> Play</>
+                        )}
                       </Button>
                     </div>
                   </div>
@@ -374,48 +432,8 @@ const Songs = () => {
           )}
         </div>
 
-        {/* YouTube Player Modal */}
-        <Dialog open={isPlayerOpen} onOpenChange={setIsPlayerOpen}>
-          <DialogContent className="max-w-4xl w-full">
-            <DialogHeader>
-              <div className="flex items-center justify-between">
-                <div>
-                  <DialogTitle className="text-xl">
-                    {currentSong?.title}
-                  </DialogTitle>
-                  <p className="text-muted-foreground">
-                    by {currentSong?.artist}
-                  </p>
-                </div>
-                <Badge variant="secondary">{currentSong?.mood}</Badge>
-              </div>
-            </DialogHeader>
-            
-            {currentSong && (
-              <div className="aspect-video w-full">
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src={`https://www.youtube.com/embed/${extractVideoId(currentSong.youtubeUrl)}?autoplay=1`}
-                  title={currentSong.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  className="rounded-lg"
-                ></iframe>
-              </div>
-            )}
-            
-            <div className="flex justify-between items-center pt-4 text-sm text-muted-foreground">
-              <div>
-                Artist: {currentSong?.artist}
-              </div>
-              <div>
-                Duration: {currentSong?.duration}
-              </div>
-            </div>
-          </DialogContent>
-        </Dialog>
+        {/* Bottom spacer for MiniPlayer */}
+        <div className="h-24" />
       </main>
       </PageTransition>
       <Footer />
