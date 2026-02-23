@@ -544,15 +544,6 @@ const Chat = () => {
                     Clear Chat History
                   </Button>
                   <ExportDropdown messages={messages} disabled={messages.length <= 1} />
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="w-full justify-start gap-2"
-                    onClick={() => setMoodSelectorOpen(true)}
-                  >
-                    <Smile className="w-4 h-4" />
-                    Change Mood
-                  </Button>
                 </div>
               </Card>
             </div>
