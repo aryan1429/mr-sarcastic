@@ -30,11 +30,10 @@ const Footer = memo(() => {
       {/* Scroll to top button */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-6 right-6 z-40 p-3 rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/25 active:scale-95 ${
-          showScrollTop
+        className={`fixed bottom-6 right-6 z-40 p-3 rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/25 active:scale-95 ${showScrollTop
             ? "opacity-100 translate-y-0"
             : "opacity-0 translate-y-10 pointer-events-none"
-        }`}
+          }`}
         style={{
           transitionProperty: "transform, opacity, box-shadow",
           transitionDuration: "500ms",
@@ -48,7 +47,7 @@ const Footer = memo(() => {
       <footer className="bg-card/50 backdrop-blur-xl border-t border-border mt-auto relative overflow-hidden content-lazy">
         {/* Decorative gradient line at top of footer */}
         <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             {/* Brand Section */}
@@ -66,20 +65,20 @@ const Footer = memo(() => {
                 <span className="text-xl font-bold gradient-text">Mr Sarcastic</span>
               </div>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                Your sarcastic AI companion that doesn't hold back. 
+                Your sarcastic AI companion that doesn't hold back.
                 Get real talk and great music recommendations.
               </p>
               <div className="flex space-x-1">
-                <a href="https://github.com/aryan1429/mr-sarcastic" target="_blank" rel="noopener noreferrer" 
-                   className="p-2.5 rounded-lg hover:bg-muted hover:text-primary hover:scale-110 transition-all duration-200 touch-manipulation" aria-label="GitHub">
+                <a href="https://github.com/aryan1429/mr-sarcastic" target="_blank" rel="noopener noreferrer"
+                  className="p-2.5 rounded-lg hover:bg-muted hover:text-primary hover:scale-110 transition-all duration-200 touch-manipulation" aria-label="GitHub">
                   <Github className="h-4 w-4" />
                 </a>
                 <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                   className="p-2.5 rounded-lg hover:bg-muted hover:text-accent hover:scale-110 transition-all duration-200 touch-manipulation" aria-label="Twitter">
+                  className="p-2.5 rounded-lg hover:bg-muted hover:text-accent hover:scale-110 transition-all duration-200 touch-manipulation" aria-label="Twitter">
                   <Twitter className="h-4 w-4" />
                 </a>
                 <a href="https://spotify.com" target="_blank" rel="noopener noreferrer"
-                   className="p-2.5 rounded-lg hover:bg-muted hover:text-green-500 hover:scale-110 transition-all duration-200 touch-manipulation" aria-label="Spotify">
+                  className="p-2.5 rounded-lg hover:bg-muted hover:text-green-500 hover:scale-110 transition-all duration-200 touch-manipulation" aria-label="Spotify">
                   <Music className="h-4 w-4" />
                 </a>
               </div>
@@ -148,7 +147,7 @@ const Footer = memo(() => {
       </footer>
     </>
   );
-};
+});
 
 Footer.displayName = "Footer";
 

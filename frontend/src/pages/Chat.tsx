@@ -100,7 +100,7 @@ const ChatMessage = memo(({
         className={`max-w-[85%] sm:max-w-[70%] p-3 rounded-2xl ${message.isUser
           ? "bg-primary text-primary-foreground rounded-br-md shadow-lg shadow-primary/20"
           : "bg-muted text-muted-foreground rounded-bl-md shadow-sm"
-        }`}
+          }`}
         style={{
           transitionProperty: "box-shadow, transform",
           transitionDuration: "200ms",
@@ -240,7 +240,7 @@ const Chat = () => {
       title: "Chat Cleared",
       description: "Your conversation history has been cleared.",
     });
-  };
+  }, [toast]);
 
   // Save messages to localStorage whenever they change
   useEffect(() => {
@@ -368,196 +368,196 @@ const Chat = () => {
     <div className="min-h-screen bg-gradient-to-br from-background via-card to-background flex flex-col">
       <Navigation />
       <PageTransition>
-      <main className="container mx-auto px-3 sm:px-4 py-4 sm:py-8 max-w-5xl flex-1">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
-          {/* Chat Area */}
-          <div className="lg:col-span-2">
-            <Card className="h-[calc(100dvh-12rem)] sm:h-[600px] flex flex-col border-primary/20 shadow-lg">
-              <div className="p-3 sm:p-4 border-b border-primary/20">
-                <h2 className="text-lg sm:text-xl font-bold text-primary">Chat with Mr Sarcastic</h2>
+        <main className="container mx-auto px-3 sm:px-4 py-4 sm:py-8 max-w-5xl flex-1">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
+            {/* Chat Area */}
+            <div className="lg:col-span-2">
+              <Card className="h-[calc(100dvh-12rem)] sm:h-[600px] flex flex-col border-primary/20 shadow-lg">
+                <div className="p-3 sm:p-4 border-b border-primary/20">
+                  <h2 className="text-lg sm:text-xl font-bold text-primary">Chat with Mr Sarcastic</h2>
 
-                {/* Prominent Mood Indicator Card */}
-                <div className={`mt-3 p-3 rounded-lg border-2 flex items-center justify-between ${detectedMood.toLowerCase() === 'toxic'
-                  ? 'bg-red-100 dark:bg-red-950 border-red-500'
-                  : detectedMood.toLowerCase() === 'happy'
-                    ? 'bg-yellow-100 dark:bg-yellow-950 border-yellow-500'
-                    : detectedMood.toLowerCase() === 'sad'
-                      ? 'bg-blue-100 dark:bg-blue-950 border-blue-500'
-                      : detectedMood.toLowerCase() === 'energetic'
-                        ? 'bg-orange-100 dark:bg-orange-950 border-orange-500'
-                        : detectedMood.toLowerCase() === 'calm' || detectedMood.toLowerCase() === 'chill'
-                          ? 'bg-green-100 dark:bg-green-950 border-green-500'
-                          : detectedMood.toLowerCase() === 'focused'
-                            ? 'bg-purple-100 dark:bg-purple-950 border-purple-500'
-                            : 'bg-muted/50 border-muted-foreground/30'
-                  }`}>
-                  <div className="flex items-center gap-3">
-                    <span className="text-2xl">
-                      {detectedMood.toLowerCase() === 'toxic' ? '😈' :
-                        detectedMood.toLowerCase() === 'happy' ? '😊' :
-                          detectedMood.toLowerCase() === 'sad' ? '😢' :
-                            detectedMood.toLowerCase() === 'energetic' ? '⚡' :
-                              detectedMood.toLowerCase() === 'calm' || detectedMood.toLowerCase() === 'chill' ? '☁️' :
-                                detectedMood.toLowerCase() === 'focused' ? '🎯' : '😐'}
-                    </span>
-                    <div>
-                      <p className="text-xs text-muted-foreground">Current Mood</p>
-                      <p className={`font-bold text-lg ${detectedMood.toLowerCase() === 'toxic' ? 'text-red-600' :
-                        detectedMood.toLowerCase() === 'happy' ? 'text-yellow-600' :
-                          detectedMood.toLowerCase() === 'sad' ? 'text-blue-600' :
-                            detectedMood.toLowerCase() === 'energetic' ? 'text-orange-600' :
-                              detectedMood.toLowerCase() === 'calm' || detectedMood.toLowerCase() === 'chill' ? 'text-green-600' :
-                                detectedMood.toLowerCase() === 'focused' ? 'text-purple-600' : 'text-foreground'
-                        }`}>{detectedMood}</p>
+                  {/* Prominent Mood Indicator Card */}
+                  <div className={`mt-3 p-3 rounded-lg border-2 flex items-center justify-between ${detectedMood.toLowerCase() === 'toxic'
+                    ? 'bg-red-100 dark:bg-red-950 border-red-500'
+                    : detectedMood.toLowerCase() === 'happy'
+                      ? 'bg-yellow-100 dark:bg-yellow-950 border-yellow-500'
+                      : detectedMood.toLowerCase() === 'sad'
+                        ? 'bg-blue-100 dark:bg-blue-950 border-blue-500'
+                        : detectedMood.toLowerCase() === 'energetic'
+                          ? 'bg-orange-100 dark:bg-orange-950 border-orange-500'
+                          : detectedMood.toLowerCase() === 'calm' || detectedMood.toLowerCase() === 'chill'
+                            ? 'bg-green-100 dark:bg-green-950 border-green-500'
+                            : detectedMood.toLowerCase() === 'focused'
+                              ? 'bg-purple-100 dark:bg-purple-950 border-purple-500'
+                              : 'bg-muted/50 border-muted-foreground/30'
+                    }`}>
+                    <div className="flex items-center gap-3">
+                      <span className="text-2xl">
+                        {detectedMood.toLowerCase() === 'toxic' ? '😈' :
+                          detectedMood.toLowerCase() === 'happy' ? '😊' :
+                            detectedMood.toLowerCase() === 'sad' ? '😢' :
+                              detectedMood.toLowerCase() === 'energetic' ? '⚡' :
+                                detectedMood.toLowerCase() === 'calm' || detectedMood.toLowerCase() === 'chill' ? '☁️' :
+                                  detectedMood.toLowerCase() === 'focused' ? '🎯' : '😐'}
+                      </span>
+                      <div>
+                        <p className="text-xs text-muted-foreground">Current Mood</p>
+                        <p className={`font-bold text-lg ${detectedMood.toLowerCase() === 'toxic' ? 'text-red-600' :
+                          detectedMood.toLowerCase() === 'happy' ? 'text-yellow-600' :
+                            detectedMood.toLowerCase() === 'sad' ? 'text-blue-600' :
+                              detectedMood.toLowerCase() === 'energetic' ? 'text-orange-600' :
+                                detectedMood.toLowerCase() === 'calm' || detectedMood.toLowerCase() === 'chill' ? 'text-green-600' :
+                                  detectedMood.toLowerCase() === 'focused' ? 'text-purple-600' : 'text-foreground'
+                          }`}>{detectedMood}</p>
+                      </div>
                     </div>
+                    <Badge
+                      variant="secondary"
+                      className={`${detectedMood.toLowerCase() === 'toxic'
+                        ? 'bg-red-500 text-white'
+                        : 'bg-accent/20 text-accent-foreground'
+                        } cursor-pointer`}
+                      onClick={() => setMoodSelectorOpen(true)}
+                    >
+                      Change Mood
+                    </Badge>
                   </div>
-                  <Badge
-                    variant="secondary"
-                    className={`${detectedMood.toLowerCase() === 'toxic'
-                      ? 'bg-red-500 text-white'
-                      : 'bg-accent/20 text-accent-foreground'
-                      } cursor-pointer`}
-                    onClick={() => setMoodSelectorOpen(true)}
-                  >
-                    Change Mood
+                </div>
+
+                {/* Messages */}
+                <div className="flex-1 p-3 sm:p-4 overflow-y-auto space-y-3 sm:space-y-4 overscroll-contain custom-scrollbar"
+                  style={{ scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}
+                >
+                  {messages.map((message) => (
+                    <ChatMessage
+                      key={message.id}
+                      message={message}
+                      onTypingComplete={handleTypingComplete}
+                      onGoToSong={handleGoToSong}
+                      onPlaySong={handlePlaySongFromChat}
+                    />
+                  ))}
+                  <div ref={messagesEndRef} />
+                </div>
+
+                {/* Input Area */}
+                <div className="p-4 border-t border-primary/20">
+                  <div className="flex gap-2">
+                    <Input
+                      value={inputText}
+                      onChange={(e) => setInputText(e.target.value)}
+                      placeholder="Type your message here..."
+                      onKeyPress={(e) => e.key === "Enter" && !isLoading && handleSendMessage()}
+                      className="flex-1"
+                      disabled={isLoading}
+                    />
+                    <Button
+                      onClick={handleSendMessage}
+                      size="icon"
+                      className="shrink-0"
+                      disabled={isLoading || !inputText.trim()}
+                    >
+                      {isLoading ? (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      ) : (
+                        <Send className="w-4 h-4" />
+                      )}
+                    </Button>
+                  </div>
+                  {isLoading && (
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2"
+                      style={{ animation: "smoothFadeIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) both" }}
+                    >
+                      <span className="flex gap-1">
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0s', animationDuration: '0.6s' }} />
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0.15s', animationDuration: '0.6s' }} />
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0.3s', animationDuration: '0.6s' }} />
+                      </span>
+                      Mr. Sarcastic is thinking of something witty...
+                    </div>
+                  )}
+                </div>
+              </Card>
+            </div>
+
+            {/* Mood & Song Suggestions */}
+            <div className="space-y-4">
+              <Card className="p-4 border-primary/20 hover-lift">
+                <div className="flex items-center gap-2 mb-3">
+                  <Music className="w-4 h-4 text-primary" />
+                  <h3 className="font-semibold text-primary">Quick Play by Mood</h3>
+                </div>
+                <div className="space-y-2">
+                  {[
+                    { mood: 'Chill', emoji: '😌', desc: 'Lofi & Ambient' },
+                    { mood: 'Energetic', emoji: '⚡', desc: 'Upbeat Pop & Rock' },
+                    { mood: 'Focus', emoji: '🎯', desc: 'Study & Concentration' },
+                    { mood: 'Happy', emoji: '😊', desc: 'Feel-Good Hits' },
+                    { mood: 'Sad', emoji: '😢', desc: 'Emotional Ballads' },
+                    { mood: 'Relaxed', emoji: '🍃', desc: 'Calm & Peaceful' },
+                  ].map(({ mood, emoji, desc }) => (
+                    <div
+                      key={mood}
+                      className="p-3 bg-muted/50 rounded-lg hover:bg-muted/70 hover:translate-x-1 transition-all duration-200 cursor-pointer flex items-center gap-3 group"
+                      onClick={async () => {
+                        try {
+                          const moodSongs = await songsService.getSongsByMood(mood, 10);
+                          if (moodSongs.length > 0) {
+                            const shuffled = [...moodSongs].sort(() => Math.random() - 0.5);
+                            playMusicSong(shuffled[0], shuffled);
+                            toast({ title: `${emoji} ${mood} vibes`, description: `Playing ${shuffled.length} ${mood.toLowerCase()} songs` });
+                          } else {
+                            toast({ title: "No songs found", description: `No ${mood} songs available`, variant: "destructive" });
+                          }
+                        } catch {
+                          toast({ title: "Couldn't load songs", variant: "destructive" });
+                        }
+                      }}
+                    >
+                      <span className="text-lg">{emoji}</span>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="font-medium text-sm">{mood}</h4>
+                        <p className="text-xs text-muted-foreground">{desc}</p>
+                      </div>
+                      <Play className="w-3.5 h-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </div>
+                  ))}
+                </div>
+              </Card>
+
+              <Card className="p-4 border-primary/20 hover-lift">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="font-semibold text-primary">Quick Actions</h3>
+                  <Badge variant="secondary" className="text-xs">
+                    {messages.length} {messages.length === 1 ? 'message' : 'messages'}
                   </Badge>
                 </div>
-              </div>
-
-              {/* Messages */}
-              <div className="flex-1 p-3 sm:p-4 overflow-y-auto space-y-3 sm:space-y-4 overscroll-contain custom-scrollbar"
-                style={{ scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}
-              >
-                {messages.map((message) => (
-                  <ChatMessage
-                    key={message.id}
-                    message={message}
-                    onTypingComplete={handleTypingComplete}
-                    onGoToSong={handleGoToSong}
-                    onPlaySong={handlePlaySongFromChat}
-                  />
-                ))}
-                <div ref={messagesEndRef} />
-              </div>
-
-              {/* Input Area */}
-              <div className="p-4 border-t border-primary/20">
-                <div className="flex gap-2">
-                  <Input
-                    value={inputText}
-                    onChange={(e) => setInputText(e.target.value)}
-                    placeholder="Type your message here..."
-                    onKeyPress={(e) => e.key === "Enter" && !isLoading && handleSendMessage()}
-                    className="flex-1"
-                    disabled={isLoading}
-                  />
+                <div className="space-y-2">
                   <Button
-                    onClick={handleSendMessage}
-                    size="icon"
-                    className="shrink-0"
-                    disabled={isLoading || !inputText.trim()}
+                    variant="outline"
+                    size="sm"
+                    className="w-full justify-start gap-2"
+                    onClick={() => setClearChatDialogOpen(true)}
+                    disabled={messages.length <= 1}
                   >
-                    {isLoading ? (
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                    ) : (
-                      <Send className="w-4 h-4" />
-                    )}
+                    <Trash2 className="w-4 h-4" />
+                    Clear Chat History
+                  </Button>
+                  <ExportDropdown messages={messages} disabled={messages.length <= 1} />
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full justify-start gap-2"
+                    onClick={() => setMoodSelectorOpen(true)}
+                  >
+                    <Smile className="w-4 h-4" />
+                    Change Mood
                   </Button>
                 </div>
-                {isLoading && (
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2"
-                    style={{ animation: "smoothFadeIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) both" }}
-                  >
-                    <span className="flex gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0s', animationDuration: '0.6s' }} />
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0.15s', animationDuration: '0.6s' }} />
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0.3s', animationDuration: '0.6s' }} />
-                    </span>
-                    Mr. Sarcastic is thinking of something witty...
-                  </div>
-                )}
-              </div>
-            </Card>
+              </Card>
+            </div>
           </div>
-
-          {/* Mood & Song Suggestions */}
-          <div className="space-y-4">
-            <Card className="p-4 border-primary/20 hover-lift">
-              <div className="flex items-center gap-2 mb-3">
-                <Music className="w-4 h-4 text-primary" />
-                <h3 className="font-semibold text-primary">Quick Play by Mood</h3>
-              </div>
-              <div className="space-y-2">
-                {[
-                  { mood: 'Chill', emoji: '😌', desc: 'Lofi & Ambient' },
-                  { mood: 'Energetic', emoji: '⚡', desc: 'Upbeat Pop & Rock' },
-                  { mood: 'Focus', emoji: '🎯', desc: 'Study & Concentration' },
-                  { mood: 'Happy', emoji: '😊', desc: 'Feel-Good Hits' },
-                  { mood: 'Sad', emoji: '😢', desc: 'Emotional Ballads' },
-                  { mood: 'Relaxed', emoji: '🍃', desc: 'Calm & Peaceful' },
-                ].map(({ mood, emoji, desc }) => (
-                  <div
-                    key={mood}
-                    className="p-3 bg-muted/50 rounded-lg hover:bg-muted/70 hover:translate-x-1 transition-all duration-200 cursor-pointer flex items-center gap-3 group"
-                    onClick={async () => {
-                      try {
-                        const moodSongs = await songsService.getSongsByMood(mood, 10);
-                        if (moodSongs.length > 0) {
-                          const shuffled = [...moodSongs].sort(() => Math.random() - 0.5);
-                          playMusicSong(shuffled[0], shuffled);
-                          toast({ title: `${emoji} ${mood} vibes`, description: `Playing ${shuffled.length} ${mood.toLowerCase()} songs` });
-                        } else {
-                          toast({ title: "No songs found", description: `No ${mood} songs available`, variant: "destructive" });
-                        }
-                      } catch {
-                        toast({ title: "Couldn't load songs", variant: "destructive" });
-                      }
-                    }}
-                  >
-                    <span className="text-lg">{emoji}</span>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="font-medium text-sm">{mood}</h4>
-                      <p className="text-xs text-muted-foreground">{desc}</p>
-                    </div>
-                    <Play className="w-3.5 h-3.5 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </div>
-                ))}
-              </div>
-            </Card>
-
-            <Card className="p-4 border-primary/20 hover-lift">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="font-semibold text-primary">Quick Actions</h3>
-                <Badge variant="secondary" className="text-xs">
-                  {messages.length} {messages.length === 1 ? 'message' : 'messages'}
-                </Badge>
-              </div>
-              <div className="space-y-2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-full justify-start gap-2"
-                  onClick={() => setClearChatDialogOpen(true)}
-                  disabled={messages.length <= 1}
-                >
-                  <Trash2 className="w-4 h-4" />
-                  Clear Chat History
-                </Button>
-                <ExportDropdown messages={messages} disabled={messages.length <= 1} />
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-full justify-start gap-2"
-                  onClick={() => setMoodSelectorOpen(true)}
-                >
-                  <Smile className="w-4 h-4" />
-                  Change Mood
-                </Button>
-              </div>
-            </Card>
-          </div>
-        </div>
-      </main>
+        </main>
       </PageTransition>
       <Footer />
       <ClearChatDialog
