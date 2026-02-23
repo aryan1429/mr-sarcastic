@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Send, Bot, User, Loader2, Music, ExternalLink, Trash2, Smile, Play, Pause, ListPlus } from "lucide-react";
+import { Send, Bot, User, Loader2, Music, ExternalLink, Trash2, Smile, Play, Pause, ListPlus, Zap } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useAuth } from "@/context/AuthContext";
@@ -527,7 +527,10 @@ const Chat = () => {
 
               <Card className="p-4 border-primary/20 hover-lift">
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="font-semibold text-primary">Quick Actions</h3>
+                  <div className="flex items-center gap-2">
+                    <Zap className="w-4 h-4 text-primary" />
+                    <h3 className="font-semibold text-primary">Quick Actions</h3>
+                  </div>
                   <Badge variant="secondary" className="text-xs">
                     {messages.length} {messages.length === 1 ? 'message' : 'messages'}
                   </Badge>
