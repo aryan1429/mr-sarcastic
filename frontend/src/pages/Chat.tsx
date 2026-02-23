@@ -446,7 +446,15 @@ const Chat = () => {
                     <Input
                       value={inputText}
                       onChange={(e) => setInputText(e.target.value)}
-                      placeholder="Type your message here..."
+                      placeholder={
+                        detectedMood.toLowerCase() === 'happy' ? "Feeling good? Share the vibes! 😊" :
+                          detectedMood.toLowerCase() === 'sad' ? "What's on your mind? I'm here... 💙" :
+                            detectedMood.toLowerCase() === 'energetic' ? "Let's gooo! What's up? ⚡" :
+                              detectedMood.toLowerCase() === 'calm' || detectedMood.toLowerCase() === 'chill' ? "Feeling chill? Tell me about it... ☁️" :
+                                detectedMood.toLowerCase() === 'focused' ? "Stay focused! What do you need? 🎯" :
+                                  detectedMood.toLowerCase() === 'toxic' ? "Bring it on, I can handle it... 😈" :
+                                    "Type your message here..."
+                      }
                       onKeyPress={(e) => e.key === "Enter" && !isLoading && handleSendMessage()}
                       className="flex-1"
                       disabled={isLoading}
