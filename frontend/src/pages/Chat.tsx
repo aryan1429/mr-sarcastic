@@ -544,6 +544,15 @@ const Chat = () => {
                     Clear Chat History
                   </Button>
                   <ExportDropdown messages={messages} disabled={messages.length <= 1} />
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full justify-start gap-2"
+                    onClick={() => navigate('/songs')}
+                  >
+                    <Music className="w-4 h-4" />
+                    Browse Songs
+                  </Button>
                 </div>
               </Card>
             </div>
