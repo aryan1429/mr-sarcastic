@@ -494,7 +494,8 @@ const Chat = () => {
 
             {/* Mood & Song Suggestions */}
             <div className="space-y-4">
-              <Card className="p-4 border-primary/20 hover-lift">
+              <Card className="p-4 border-primary/20 hover-lift relative overflow-hidden">
+                <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-accent to-primary" />
                 <div className="flex items-center gap-2 mb-3">
                   <Music className="w-4 h-4 text-primary" />
                   <h3 className="font-semibold text-primary">Quick Play by Mood</h3>
