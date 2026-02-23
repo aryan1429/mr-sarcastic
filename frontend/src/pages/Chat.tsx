@@ -481,7 +481,11 @@ const Chat = () => {
                         <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0.15s', animationDuration: '0.6s' }} />
                         <span className="w-1.5 h-1.5 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0.3s', animationDuration: '0.6s' }} />
                       </span>
-                      Mr. Sarcastic is thinking of something witty...
+                      {detectedMood.toLowerCase() === 'toxic' ? "Mr. Sarcastic is cooking up some venom... 🐍" :
+                        detectedMood.toLowerCase() === 'happy' ? "Mr. Sarcastic is vibing with your energy... ✨" :
+                          detectedMood.toLowerCase() === 'sad' ? "Mr. Sarcastic is finding the right words... 💭" :
+                            detectedMood.toLowerCase() === 'energetic' ? "Mr. Sarcastic is matching your energy... 🔥" :
+                              "Mr. Sarcastic is thinking of something witty..."}
                     </div>
                   )}
                 </div>
