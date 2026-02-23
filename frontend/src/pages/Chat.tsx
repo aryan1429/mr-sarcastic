@@ -497,16 +497,16 @@ const Chat = () => {
                 </div>
                 <div className="space-y-2">
                   {[
-                    { mood: 'Chill', emoji: '😌', desc: 'Lofi & Ambient' },
-                    { mood: 'Energetic', emoji: '⚡', desc: 'Upbeat Pop & Rock' },
-                    { mood: 'Focus', emoji: '🎯', desc: 'Study & Concentration' },
-                    { mood: 'Happy', emoji: '😊', desc: 'Feel-Good Hits' },
-                    { mood: 'Sad', emoji: '😢', desc: 'Emotional Ballads' },
-                    { mood: 'Relaxed', emoji: '🍃', desc: 'Calm & Peaceful' },
-                  ].map(({ mood, emoji, desc }) => (
+                    { mood: 'Chill', emoji: '😌', desc: 'Lofi & Ambient', hoverColor: 'hover:bg-green-500/10 hover:border-green-500/30' },
+                    { mood: 'Energetic', emoji: '⚡', desc: 'Upbeat Pop & Rock', hoverColor: 'hover:bg-orange-500/10 hover:border-orange-500/30' },
+                    { mood: 'Focus', emoji: '🎯', desc: 'Study & Concentration', hoverColor: 'hover:bg-purple-500/10 hover:border-purple-500/30' },
+                    { mood: 'Happy', emoji: '😊', desc: 'Feel-Good Hits', hoverColor: 'hover:bg-yellow-500/10 hover:border-yellow-500/30' },
+                    { mood: 'Sad', emoji: '😢', desc: 'Emotional Ballads', hoverColor: 'hover:bg-blue-500/10 hover:border-blue-500/30' },
+                    { mood: 'Relaxed', emoji: '🍃', desc: 'Calm & Peaceful', hoverColor: 'hover:bg-teal-500/10 hover:border-teal-500/30' },
+                  ].map(({ mood, emoji, desc, hoverColor }) => (
                     <div
                       key={mood}
-                      className="p-3 bg-muted/50 rounded-lg hover:bg-muted/70 hover:translate-x-1 transition-all duration-200 cursor-pointer flex items-center gap-3 group"
+                      className={`p-3 bg-muted/50 rounded-lg border border-transparent ${hoverColor} hover:translate-x-1 transition-all duration-200 cursor-pointer flex items-center gap-3 group`}
                       onClick={async () => {
                         try {
                           const moodSongs = await songsService.getSongsByMood(mood, 10);
