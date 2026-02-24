@@ -135,7 +135,7 @@ const Songs = () => {
     if (songs.length > 0) {
       const shuffled = [...songs].sort(() => Math.random() - 0.5);
       setQueue(shuffled, 0);
-      toast({ title: "Shuffle play", description: `Playing ${songs.length} songs in random order` });
+      toast({ title: "🔀 Shuffle play", description: `Playing ${songs.length} songs in random order` });
     }
   };
 
