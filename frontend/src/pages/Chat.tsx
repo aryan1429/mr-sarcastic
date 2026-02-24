@@ -569,6 +569,15 @@ const Chat = () => {
                     <Music className="w-4 h-4" />
                     Browse Songs
                   </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full justify-start gap-2"
+                    onClick={() => setMoodSelectorOpen(true)}
+                  >
+                    <Smile className="w-4 h-4" />
+                    Change Mood
+                  </Button>
                 </div>
               </Card>
             </div>

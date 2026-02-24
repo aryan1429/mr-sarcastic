@@ -1,4 +1,4 @@
-import chatbotMascot from "@/assets/chatbot-mascot.png";
+import chatbotMascot from "@/assets/new-chatbot.png";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 
 const Hero = () => {
   const [mounted, setMounted] = useState(false);
-  
+
   useEffect(() => {
     // Use rAF for smoother first paint
     requestAnimationFrame(() => {
@@ -18,7 +18,7 @@ const Hero = () => {
     <section className="relative min-h-[85vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-card to-background"></div>
-      
+
       {/* Animated Background Elements - hidden on low-power mobile */}
       <div className="absolute inset-0 overflow-hidden hidden sm:block">
         <div className="absolute top-1/4 left-1/4 w-48 sm:w-64 h-48 sm:h-64 bg-primary/10 rounded-full blur-3xl animate-float gpu-accelerated"></div>
@@ -47,7 +47,7 @@ const Hero = () => {
                 <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4 mr-2 animate-breathe" />
                 AI-Powered Sass & Music
               </div>
-              
+
               <h1 className={`text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] tracking-tight ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
                 style={{
                   transitionProperty: "transform, opacity",
@@ -70,7 +70,7 @@ const Hero = () => {
                   Your Sarcastic AI Companion
                 </span>
               </h1>
-              
+
               <p className={`text-base sm:text-xl text-muted-foreground max-w-2xl mx-auto lg:mx-0 leading-relaxed ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
                 style={{
                   transitionProperty: "transform, opacity",
@@ -98,7 +98,7 @@ const Hero = () => {
                   <ArrowRight className="h-4 w-4 ml-2 group-hover:translate-x-1.5 transition-transform duration-300" />
                 </Button>
               </Link>
-              
+
               <Link to="/songs">
                 <Button variant="outline" size="lg" className="group w-full sm:w-auto text-base touch-manipulation">
                   Discover Music

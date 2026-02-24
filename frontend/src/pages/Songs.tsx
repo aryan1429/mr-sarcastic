@@ -303,7 +303,7 @@ const Songs = () => {
             <div className="text-center mb-6 sm:mb-8">
               <h1 className="text-3xl sm:text-4xl font-bold text-primary mb-3 sm:mb-4">Mood-Based Music</h1>
               <p className="text-base sm:text-lg text-muted-foreground mb-2">
-                Let Mr Sarcastic suggest the perfect soundtrack for your current vibe
+                Let Mr Sarcastic set the vibe — curated tracks for every mood 🎧
               </p>
               {pagination && (
                 <p className="text-sm text-muted-foreground">
