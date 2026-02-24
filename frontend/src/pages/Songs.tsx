@@ -29,7 +29,16 @@ const Songs = () => {
   const songRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const { playSong, addToQueue, toggleFavorite, isFavorite, currentSong, isPlaying, togglePlay, setQueue, favorites } = useMusicPlayer();
 
-  const moods = ["All", "Chill", "Energetic", "Focus", "Happy", "Sad", "Angry", "Relaxed"];
+  const moods = [
+    { label: "All", emoji: "🎵" },
+    { label: "Chill", emoji: "😌" },
+    { label: "Energetic", emoji: "⚡" },
+    { label: "Focus", emoji: "🎯" },
+    { label: "Happy", emoji: "😊" },
+    { label: "Sad", emoji: "😢" },
+    { label: "Angry", emoji: "🔥" },
+    { label: "Relaxed", emoji: "🍃" },
+  ];
   const songsPerPage = 20;
 
   // Debounce searchInput → searchTerm so the API only fires after typing stops
@@ -359,15 +368,15 @@ const Songs = () => {
                   </div>
 
                   <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2">
-                    {moods.map((mood) => (
+                    {moods.map(({ label, emoji }) => (
                       <Button
-                        key={mood}
-                        variant={selectedMood === mood ? "default" : "outline"}
+                        key={label}
+                        variant={selectedMood === label ? "default" : "outline"}
                         size="sm"
-                        onClick={() => handleMoodChange(mood)}
+                        onClick={() => handleMoodChange(label)}
                         className="text-xs touch-manipulation h-9"
                       >
-                        {mood}
+                        {emoji} {label}
                       </Button>
                     ))}
                   </div>
