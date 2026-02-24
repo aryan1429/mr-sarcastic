@@ -257,8 +257,8 @@ const Songs = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-8">
               <div className="space-y-3">
-                <h2 className="text-xl font-semibold gradient-text animate-pulse">Loading Songs...</h2>
-                <p className="text-muted-foreground text-sm">Fetching the latest tracks from our playlist</p>
+                <h2 className="text-xl font-semibold gradient-text animate-pulse">Loading Your Playlist...</h2>
+                <p className="text-muted-foreground text-sm">Preparing 698 curated tracks ✨</p>
               </div>
             </div>
             <SongsGridSkeleton />
