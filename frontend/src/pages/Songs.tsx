@@ -287,13 +287,13 @@ const Songs = () => {
           <div className="max-w-6xl mx-auto">
             <div className="text-center py-12">
               <div className="text-destructive mb-4">
-                <X className="w-8 h-8 mx-auto" />
+                <Music className="w-8 h-8 mx-auto" />
               </div>
-              <h2 className="text-xl font-semibold mb-2">Failed to Load Songs</h2>
+              <h2 className="text-xl font-semibold mb-2">Oops! Couldn't Load Songs</h2>
               <p className="text-muted-foreground mb-4">{error}</p>
               <Button onClick={loadSongs} variant="outline">
                 <RefreshCw className="w-4 h-4 mr-2" />
-                Try Again
+                Retry
               </Button>
             </div>
           </div>
