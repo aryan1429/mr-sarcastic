@@ -127,7 +127,7 @@ const Songs = () => {
   const handlePlayAll = () => {
     if (songs.length > 0) {
       setQueue(songs, 0);
-      toast({ title: `Playing ${songs.length} songs`, description: "Enjoy the music!" });
+      toast({ title: `▶️ Playing ${songs.length} songs`, description: "Enjoy the music!" });
     }
   };
 
