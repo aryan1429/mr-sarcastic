@@ -19,15 +19,6 @@
   },
   {
     "id": "song_3",
-    "title": "Multo",
-    "artist": "Cup of Joe",
-    "mood": "Energetic",
-    "duration": "3:58",
-    "youtubeUrl": "https://youtube.com/watch?v=2cL2LkST4a4",
-    "thumbnail": "https://i.ytimg.com/vi/2cL2LkST4a4/hqdefault.jpg"
-  },
-  {
-    "id": "song_4",
     "title": "Hero",
     "artist": "Enrique Iglesias",
     "mood": "Energetic",
@@ -36,7 +27,7 @@
     "thumbnail": "https://i.ytimg.com/vi/CwTM0JfUsGs/hqdefault.jpg"
   },
   {
-    "id": "song_5",
+    "id": "song_4",
     "title": "Golden Brown",
     "artist": "stranglersofficial",
     "mood": "Happy",
@@ -45,7 +36,7 @@
     "thumbnail": "https://i.ytimg.com/vi/W2o_HupXq1g/hqdefault.jpg"
   },
   {
-    "id": "song_6",
+    "id": "song_5",
     "title": "Na Na Na Na",
     "artist": "J Star",
     "mood": "Happy",
@@ -54,7 +45,7 @@
     "thumbnail": "https://i.ytimg.com/vi/uHDhzEBo7HI/hqdefault.jpg"
   },
   {
-    "id": "song_7",
+    "id": "song_6",
     "title": "What's Up?",
     "artist": "4 Non Blondes",
     "mood": "Sad",
@@ -63,16 +54,7 @@
     "thumbnail": "https://i.ytimg.com/vi/B6GdsRIbTSk/hqdefault.jpg"
   },
   {
-    "id": "song_8",
-    "title": "Huwag Na Huwag Mong Sasabihin",
-    "artist": "Kitchie Nadal",
-    "mood": "Relaxed",
-    "duration": "4:10",
-    "youtubeUrl": "https://youtube.com/watch?v=fymhAXQ_aMI",
-    "thumbnail": "https://i.ytimg.com/vi/fymhAXQ_aMI/hqdefault.jpg"
-  },
-  {
-    "id": "song_9",
+    "id": "song_7",
     "title": "6 Cyclemind - Sandalan Acoustic Cover",
     "artist": "John Asis",
     "mood": "Chill",
@@ -81,7 +63,7 @@
     "thumbnail": "https://i.ytimg.com/vi/QN8bkNJ4Tdo/hqdefault.jpg"
   },
   {
-    "id": "song_10",
+    "id": "song_8",
     "title": "Sandalan",
     "artist": "6cyclemind",
     "mood": "Focus",
@@ -90,7 +72,7 @@
     "thumbnail": "https://i.ytimg.com/vi/GUdgFqMn7qo/hqdefault.jpg"
   },
   {
-    "id": "song_11",
+    "id": "song_9",
     "title": "poster boy",
     "artist": "2hollis",
     "mood": "Angry",
@@ -99,7 +81,7 @@
     "thumbnail": "https://i.ytimg.com/vi/jOLT6ukrQSg/hqdefault.jpg"
   },
   {
-    "id": "song_12",
+    "id": "song_10",
     "title": "Fainted (Slowed)",
     "artist": "Narvent",
     "mood": "Chill",
@@ -108,7 +90,7 @@
     "thumbnail": "https://i.ytimg.com/vi/rpB6iJbhocA/hqdefault.jpg"
   },
   {
-    "id": "song_13",
+    "id": "song_11",
     "title": "Rather Be (feat. Jess Glynne)",
     "artist": "Clean Bandit",
     "mood": "Happy",
@@ -117,16 +99,7 @@
     "thumbnail": "https://i.ytimg.com/vi/dHdMAdh4Xgc/hqdefault.jpg"
   },
   {
-    "id": "song_14",
-    "title": "Ligaya ~ Eraserheads OPM Acoustic Cover",
-    "artist": "John Asis",
-    "mood": "Chill",
-    "duration": "3:37",
-    "youtubeUrl": "https://youtube.com/watch?v=ZSIXOX3Fkd0",
-    "thumbnail": "https://i.ytimg.com/vi/ZSIXOX3Fkd0/hqdefault.jpg"
-  },
-  {
-    "id": "song_15",
+    "id": "song_12",
     "title": "Elesi | RIVERMAYA Acoustic Cover",
     "artist": "John Asis",
     "mood": "Chill",
@@ -135,7 +108,7 @@
     "thumbnail": "https://i.ytimg.com/vi/JX0kgYS84MI/hqdefault.jpg"
   },
   {
-    "id": "song_16",
+    "id": "song_13",
     "title": "Gloc 9 | Simpleng tao ACOUSTIC COVER",
     "artist": "John Asis",
     "mood": "Chill",
@@ -144,7 +117,7 @@
     "thumbnail": "https://i.ytimg.com/vi/hhZfbmFTV60/hqdefault.jpg"
   },
   {
-    "id": "song_17",
+    "id": "song_14",
     "title": "BIRDS OF A FEATHER",
     "artist": "Billie Eilish",
     "mood": "Sad",
@@ -153,7 +126,7 @@
     "thumbnail": "https://i.ytimg.com/vi/WKZO-CWeOVA/hqdefault.jpg"
   },
   {
-    "id": "song_18",
+    "id": "song_15",
     "title": "Baby, Now That I've Found You",
     "artist": "Alison Krauss",
     "mood": "Chill",
@@ -162,7 +135,7 @@
     "thumbnail": "https://i.ytimg.com/vi/l5QLod7F0Yk/hqdefault.jpg"
   },
   {
-    "id": "song_19",
+    "id": "song_16",
     "title": "Pretty Little Baby",
     "artist": "Connie Francis - Official",
     "mood": "Energetic",
@@ -171,7 +144,7 @@
     "thumbnail": "https://i.ytimg.com/vi/OsUFgUxm5bY/hqdefault.jpg"
   },
   {
-    "id": "song_20",
+    "id": "song_17",
     "title": "Can't Take My Eyes off You",
     "artist": "Frankie Valli and the Four Seasons",
     "mood": "Energetic",
@@ -180,7 +153,7 @@
     "thumbnail": "https://i.ytimg.com/vi/DYwQy_9JPtQ/hqdefault.jpg"
   },
   {
-    "id": "song_21",
+    "id": "song_18",
     "title": "Dying Inside To Hold You - Timmy Thomas",
     "artist": "Krapicon",
     "mood": "Happy",
@@ -189,7 +162,7 @@
     "thumbnail": "https://i.ytimg.com/vi/a3MWmObR4Ow/hqdefault.jpg"
   },
   {
-    "id": "song_22",
+    "id": "song_19",
     "title": "Invincible",
     "artist": "mgk",
     "mood": "Sad",
@@ -198,7 +171,7 @@
     "thumbnail": "https://i.ytimg.com/vi/9KSEcICBTbo/hqdefault.jpg"
   },
   {
-    "id": "song_23",
+    "id": "song_20",
     "title": "Run It Up",
     "artist": "Hanumankind",
     "mood": "Energetic",
@@ -207,7 +180,7 @@
     "thumbnail": "https://i.ytimg.com/vi/0r5Qu4KbESM/hqdefault.jpg"
   },
   {
-    "id": "song_24",
+    "id": "song_21",
     "title": "Black Magic",
     "artist": "Little Mix",
     "mood": "Relaxed",
@@ -216,7 +189,7 @@
     "thumbnail": "https://i.ytimg.com/vi/KRB-JIcVDv4/hqdefault.jpg"
   },
   {
-    "id": "song_25",
+    "id": "song_22",
     "title": "Marvel's Daredevil: Born Again Main Theme (From \"Marvel's Daredevil: Born Again\")",
     "artist": "The Newton Brothers",
     "mood": "Focus",
@@ -225,7 +198,7 @@
     "thumbnail": "https://i.ytimg.com/vi/05JvS0pRao4/hqdefault.jpg"
   },
   {
-    "id": "song_26",
+    "id": "song_23",
     "title": "Mondo Cozmo - Shine",
     "artist": "Mondo Cozmo",
     "mood": "Angry",
@@ -234,7 +207,7 @@
     "thumbnail": "https://i.ytimg.com/vi/1pOUbcbTvOU/hqdefault.jpg"
   },
   {
-    "id": "song_27",
+    "id": "song_24",
     "title": "I Think They Call This Love",
     "artist": "Elliot James Reay",
     "mood": "Focus",
@@ -243,7 +216,7 @@
     "thumbnail": "https://i.ytimg.com/vi/EAnLyHsc3-Y/hqdefault.jpg"
   },
   {
-    "id": "song_28",
+    "id": "song_25",
     "title": "Time",
     "artist": "Hans Zimmer",
     "mood": "Chill",
@@ -252,7 +225,7 @@
     "thumbnail": "https://i.ytimg.com/vi/jgyShFzdB_Q/hqdefault.jpg"
   },
   {
-    "id": "song_29",
+    "id": "song_26",
     "title": "METAMORPHOSIS",
     "artist": "INTERWORLD",
     "mood": "Energetic",
@@ -261,7 +234,7 @@
     "thumbnail": "https://i.ytimg.com/vi/lJvRohYSrZM/hqdefault.jpg"
   },
   {
-    "id": "song_30",
+    "id": "song_27",
     "title": "Endless crying - City hunter (soundtrack 4 )",
     "artist": "Perry Stefani",
     "mood": "Sad",
@@ -270,7 +243,7 @@
     "thumbnail": "https://i.ytimg.com/vi/L27tpcSF-1A/hqdefault.jpg"
   },
   {
-    "id": "song_31",
+    "id": "song_28",
     "title": "Hot spade - City hunter (soundtrack 1 )",
     "artist": "Perry Stefani",
     "mood": "Relaxed",
@@ -279,7 +252,7 @@
     "thumbnail": "https://i.ytimg.com/vi/pJ9yYC_FMwk/hqdefault.jpg"
   },
   {
-    "id": "song_32",
+    "id": "song_29",
     "title": "peekaboo",
     "artist": "Kendrick Lamar",
     "mood": "Happy",
@@ -288,7 +261,7 @@
     "thumbnail": "https://i.ytimg.com/vi/dJOtB4lZzMc/hqdefault.jpg"
   },
   {
-    "id": "song_33",
+    "id": "song_30",
     "title": "[Private video]",
     "artist": "Unknown Artist",
     "mood": "Sad",
@@ -297,7 +270,7 @@
     "thumbnail": "https://i.ytimg.com/vi/NorCFRwGiWE/hqdefault.jpg"
   },
   {
-    "id": "song_34",
+    "id": "song_31",
     "title": "Espresso",
     "artist": "Sabrina Carpenter",
     "mood": "Relaxed",
@@ -306,7 +279,7 @@
     "thumbnail": "https://i.ytimg.com/vi/eleP7yc9dSY/hqdefault.jpg"
   },
   {
-    "id": "song_35",
+    "id": "song_32",
     "title": "[Deleted video]",
     "artist": "Unknown Artist",
     "mood": "Focus",
@@ -315,7 +288,7 @@
     "thumbnail": "https://i.ytimg.com/vi/G4cAMRggoNw/hqdefault.jpg"
   },
   {
-    "id": "song_36",
+    "id": "song_33",
     "title": "Teenage Dirtbag",
     "artist": "WheatusOfficial",
     "mood": "Angry",
@@ -324,7 +297,7 @@
     "thumbnail": "https://i.ytimg.com/vi/dSlYFtXENPo/hqdefault.jpg"
   },
   {
-    "id": "song_37",
+    "id": "song_34",
     "title": "Breathe",
     "artist": "Olly Alexander",
     "mood": "Chill",
@@ -333,7 +306,7 @@
     "thumbnail": "https://i.ytimg.com/vi/6Qd2JbaWUBU/hqdefault.jpg"
   },
   {
-    "id": "song_38",
+    "id": "song_35",
     "title": "MGD - 2 PHUT HON FUNK (BLAZEXVI Slowed Edit) [TIK TOK] 🔥",
     "artist": "BLAZEXVI",
     "mood": "Chill",
@@ -342,7 +315,7 @@
     "thumbnail": "https://i.ytimg.com/vi/u4lj8RYKWS4/hqdefault.jpg"
   },
   {
-    "id": "song_39",
+    "id": "song_36",
     "title": "Ransom (Remix)",
     "artist": "Lil Tecca",
     "mood": "Energetic",
@@ -351,7 +324,7 @@
     "thumbnail": "https://i.ytimg.com/vi/FUBy7SrQ1PE/hqdefault.jpg"
   },
   {
-    "id": "song_40",
+    "id": "song_37",
     "title": "Locked out of Heaven",
     "artist": "Bruno Mars",
     "mood": "Happy",
@@ -360,7 +333,7 @@
     "thumbnail": "https://i.ytimg.com/vi/zuaBRqUBhyw/hqdefault.jpg"
   },
   {
-    "id": "song_41",
+    "id": "song_38",
     "title": "Judas",
     "artist": "Lady Gaga",
     "mood": "Happy",
@@ -369,7 +342,7 @@
     "thumbnail": "https://i.ytimg.com/vi/9WfWnkVLwao/hqdefault.jpg"
   },
   {
-    "id": "song_42",
+    "id": "song_39",
     "title": "Don Romantiko",
     "artist": "Vhong Navarro",
     "mood": "Sad",
@@ -378,7 +351,7 @@
     "thumbnail": "https://i.ytimg.com/vi/3LSIzSAARMo/hqdefault.jpg"
   },
   {
-    "id": "song_43",
+    "id": "song_40",
     "title": "jar of hearts",
     "artist": "Christina Perri",
     "mood": "Sad",
@@ -387,7 +360,7 @@
     "thumbnail": "https://i.ytimg.com/vi/xjJeo79x1tQ/hqdefault.jpg"
   },
   {
-    "id": "song_44",
+    "id": "song_41",
     "title": "Kaba",
     "artist": "Tootsie Guevara",
     "mood": "Relaxed",
@@ -396,16 +369,7 @@
     "thumbnail": "https://i.ytimg.com/vi/AhEX2yQnI4A/hqdefault.jpg"
   },
   {
-    "id": "song_45",
-    "title": "Bakit - Kung Liligaya Ka Sa Piling Ng Iba",
-    "artist": "Imelda Papin",
-    "mood": "Focus",
-    "duration": "4:27",
-    "youtubeUrl": "https://youtube.com/watch?v=aeYptmW4DwU",
-    "thumbnail": "https://i.ytimg.com/vi/aeYptmW4DwU/hqdefault.jpg"
-  },
-  {
-    "id": "song_46",
+    "id": "song_42",
     "title": "This Is War",
     "artist": "GAWNE",
     "mood": "Angry",
@@ -414,7 +378,7 @@
     "thumbnail": "https://i.ytimg.com/vi/DGqmsDtuCqU/hqdefault.jpg"
   },
   {
-    "id": "song_47",
+    "id": "song_43",
     "title": "Runaway",
     "artist": "AURORA",
     "mood": "Energetic",
@@ -423,7 +387,7 @@
     "thumbnail": "https://i.ytimg.com/vi/BRpS93I8_Jk/hqdefault.jpg"
   },
   {
-    "id": "song_48",
+    "id": "song_44",
     "title": "hypnotic (super slowed)",
     "artist": "isq",
     "mood": "Chill",
@@ -432,7 +396,7 @@
     "thumbnail": "https://i.ytimg.com/vi/nTxI91twGqE/hqdefault.jpg"
   },
   {
-    "id": "song_49",
+    "id": "song_45",
     "title": "2Pac - Time Back (Remix)",
     "artist": "palmtherapysounds.com",
     "mood": "Angry",
@@ -441,7 +405,7 @@
     "thumbnail": "https://i.ytimg.com/vi/PFsegpqbiFg/hqdefault.jpg"
   },
   {
-    "id": "song_50",
+    "id": "song_46",
     "title": "blue",
     "artist": "yung kai",
     "mood": "Chill",
@@ -450,7 +414,7 @@
     "thumbnail": "https://i.ytimg.com/vi/MHCsrKA9gh8/hqdefault.jpg"
   },
   {
-    "id": "song_51",
+    "id": "song_47",
     "title": "Give It To Me",
     "artist": "Timbaland",
     "mood": "Energetic",
@@ -459,7 +423,7 @@
     "thumbnail": "https://i.ytimg.com/vi/IeNJaKyBRVY/hqdefault.jpg"
   },
   {
-    "id": "song_52",
+    "id": "song_48",
     "title": "Not Like Us",
     "artist": "Kendrick Lamar",
     "mood": "Happy",
@@ -468,7 +432,7 @@
     "thumbnail": "https://i.ytimg.com/vi/phLb_SoPBlA/hqdefault.jpg"
   },
   {
-    "id": "song_53",
+    "id": "song_49",
     "title": "Dirty",
     "artist": "KSI Music",
     "mood": "Energetic",
@@ -477,7 +441,7 @@
     "thumbnail": "https://i.ytimg.com/vi/y3BWIWLl24U/hqdefault.jpg"
   },
   {
-    "id": "song_54",
+    "id": "song_50",
     "title": "Ransom",
     "artist": "Lil Tecca",
     "mood": "Sad",
@@ -486,7 +450,7 @@
     "thumbnail": "https://i.ytimg.com/vi/BX27kva5HlA/hqdefault.jpg"
   },
   {
-    "id": "song_55",
+    "id": "song_51",
     "title": "APT.",
     "artist": "ROSÉ",
     "mood": "Relaxed",
@@ -495,7 +459,7 @@
     "thumbnail": "https://i.ytimg.com/vi/58-AKkNMZNQ/hqdefault.jpg"
   },
   {
-    "id": "song_56",
+    "id": "song_52",
     "title": "Die With A Smile",
     "artist": "Lady Gaga",
     "mood": "Happy",
@@ -504,7 +468,7 @@
     "thumbnail": "https://i.ytimg.com/vi/RVDCeVG90Rg/hqdefault.jpg"
   },
   {
-    "id": "song_57",
+    "id": "song_53",
     "title": "Say What You Need To Say - The Karate Kid Movie Full Song /Jaden Smith/Jackie Chan",
     "artist": "Hardik Soni",
     "mood": "Focus",
@@ -513,7 +477,7 @@
     "thumbnail": "https://i.ytimg.com/vi/gqoL-quYrFI/hqdefault.jpg"
   },
   {
-    "id": "song_58",
+    "id": "song_54",
     "title": "Mortal Kombat (2021) Official Trailer Theme Song",
     "artist": "DevilMusic",
     "mood": "Angry",
@@ -522,7 +486,7 @@
     "thumbnail": "https://i.ytimg.com/vi/EmMG3OQCsNE/hqdefault.jpg"
   },
   {
-    "id": "song_59",
+    "id": "song_55",
     "title": "YMCA (Original Version 1978)",
     "artist": "Village People",
     "mood": "Chill",
@@ -531,16 +495,7 @@
     "thumbnail": "https://i.ytimg.com/vi/RN8Li7kYNnw/hqdefault.jpg"
   },
   {
-    "id": "song_60",
-    "title": "Makita Kang Muli",
-    "artist": "Sugarfree Official",
-    "mood": "Energetic",
-    "duration": "3:26",
-    "youtubeUrl": "https://youtube.com/watch?v=4Udl0gqcZyo",
-    "thumbnail": "https://i.ytimg.com/vi/4Udl0gqcZyo/hqdefault.jpg"
-  },
-  {
-    "id": "song_61",
+    "id": "song_56",
     "title": "Kiss You",
     "artist": "One Direction",
     "mood": "Happy",
@@ -549,7 +504,7 @@
     "thumbnail": "https://i.ytimg.com/vi/JRKapXmiQlk/hqdefault.jpg"
   },
   {
-    "id": "song_62",
+    "id": "song_57",
     "title": "Forever Young (2019 Remaster)",
     "artist": "Alphaville (official)",
     "mood": "Sad",
@@ -558,7 +513,7 @@
     "thumbnail": "https://i.ytimg.com/vi/9OUurVdRGsc/hqdefault.jpg"
   },
   {
-    "id": "song_63",
+    "id": "song_58",
     "title": "킬잇",
     "artist": "Kim Jun Seok",
     "mood": "Relaxed",
@@ -567,7 +522,7 @@
     "thumbnail": "https://i.ytimg.com/vi/CMAKUw9a9D0/hqdefault.jpg"
   },
   {
-    "id": "song_64",
+    "id": "song_59",
     "title": "Forever Love",
     "artist": "Min Kyung Hoon",
     "mood": "Happy",
@@ -576,7 +531,7 @@
     "thumbnail": "https://i.ytimg.com/vi/WtAnhATG_Eg/hqdefault.jpg"
   },
   {
-    "id": "song_65",
+    "id": "song_60",
     "title": "Thick Of It (feat. Trippie Redd)",
     "artist": "KSI Music",
     "mood": "Energetic",
@@ -585,7 +540,7 @@
     "thumbnail": "https://i.ytimg.com/vi/M1xBYPSsDA0/hqdefault.jpg"
   },
   {
-    "id": "song_66",
+    "id": "song_61",
     "title": "If We Being Rëal",
     "artist": "Yeat",
     "mood": "Focus",
@@ -594,7 +549,7 @@
     "thumbnail": "https://i.ytimg.com/vi/0CxacijBc8s/hqdefault.jpg"
   },
   {
-    "id": "song_67",
+    "id": "song_62",
     "title": "Brother Louie",
     "artist": "Modern Talking Offiziell",
     "mood": "Angry",
@@ -603,7 +558,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Ba6dVLI9b88/hqdefault.jpg"
   },
   {
-    "id": "song_68",
+    "id": "song_63",
     "title": "She Make It Clap Freestyle",
     "artist": "Tory Lanez",
     "mood": "Chill",
@@ -612,7 +567,7 @@
     "thumbnail": "https://i.ytimg.com/vi/K7-WjRGo2_0/hqdefault.jpg"
   },
   {
-    "id": "song_69",
+    "id": "song_64",
     "title": "Right Round",
     "artist": "Flo Rida",
     "mood": "Energetic",
@@ -621,7 +576,7 @@
     "thumbnail": "https://i.ytimg.com/vi/laOducdIkY8/hqdefault.jpg"
   },
   {
-    "id": "song_70",
+    "id": "song_65",
     "title": "Mr. Saxobeat (Radio Edit)",
     "artist": "Alexandra Stan",
     "mood": "Energetic",
@@ -630,7 +585,7 @@
     "thumbnail": "https://i.ytimg.com/vi/uYN0VbbQTP8/hqdefault.jpg"
   },
   {
-    "id": "song_71",
+    "id": "song_66",
     "title": "Love Story",
     "artist": "Indila",
     "mood": "Happy",
@@ -639,7 +594,7 @@
     "thumbnail": "https://i.ytimg.com/vi/4TIGwaBHuzg/hqdefault.jpg"
   },
   {
-    "id": "song_72",
+    "id": "song_67",
     "title": "Boom Boom Pow",
     "artist": "Black Eyed Peas",
     "mood": "Happy",
@@ -648,7 +603,7 @@
     "thumbnail": "https://i.ytimg.com/vi/QFi_LUksNX4/hqdefault.jpg"
   },
   {
-    "id": "song_73",
+    "id": "song_68",
     "title": "I Love You Baby",
     "artist": "Paul Anka",
     "mood": "Happy",
@@ -657,7 +612,7 @@
     "thumbnail": "https://i.ytimg.com/vi/RFLyozPOeVQ/hqdefault.jpg"
   },
   {
-    "id": "song_74",
+    "id": "song_69",
     "title": "ily (i love you baby)",
     "artist": "Surf Mesa",
     "mood": "Happy",
@@ -666,7 +621,7 @@
     "thumbnail": "https://i.ytimg.com/vi/U5AfCwh1J9Y/hqdefault.jpg"
   },
   {
-    "id": "song_75",
+    "id": "song_70",
     "title": "Only Love Can Hurt Like This",
     "artist": "Paloma Faith",
     "mood": "Happy",
@@ -675,7 +630,7 @@
     "thumbnail": "https://i.ytimg.com/vi/whBJ7h_tjdc/hqdefault.jpg"
   },
   {
-    "id": "song_76",
+    "id": "song_71",
     "title": "Superheroes",
     "artist": "The Script",
     "mood": "Sad",
@@ -684,7 +639,7 @@
     "thumbnail": "https://i.ytimg.com/vi/tmbEePmIFkI/hqdefault.jpg"
   },
   {
-    "id": "song_77",
+    "id": "song_72",
     "title": "Bloody Mary",
     "artist": "Lady Gaga",
     "mood": "Relaxed",
@@ -693,7 +648,7 @@
     "thumbnail": "https://i.ytimg.com/vi/1e32cgJrbBo/hqdefault.jpg"
   },
   {
-    "id": "song_78",
+    "id": "song_73",
     "title": "Iris",
     "artist": "Goo Goo Dolls",
     "mood": "Focus",
@@ -702,7 +657,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Dy_eP-mqWow/hqdefault.jpg"
   },
   {
-    "id": "song_79",
+    "id": "song_74",
     "title": "Even the Nights Are Better",
     "artist": "Air Supply",
     "mood": "Chill",
@@ -711,7 +666,7 @@
     "thumbnail": "https://i.ytimg.com/vi/2fSBjXnhwSw/hqdefault.jpg"
   },
   {
-    "id": "song_80",
+    "id": "song_75",
     "title": "Sumayaw Sumunod",
     "artist": "The Boyfriends",
     "mood": "Angry",
@@ -720,7 +675,7 @@
     "thumbnail": "https://i.ytimg.com/vi/1k2zMbA1eC8/hqdefault.jpg"
   },
   {
-    "id": "song_81",
+    "id": "song_76",
     "title": "Through The Years",
     "artist": "Kenny Rogers",
     "mood": "Chill",
@@ -729,7 +684,7 @@
     "thumbnail": "https://i.ytimg.com/vi/RJhkCl8EX-A/hqdefault.jpg"
   },
   {
-    "id": "song_82",
+    "id": "song_77",
     "title": "Awitin Mo, Isasayaw ko",
     "artist": "VST & Company",
     "mood": "Energetic",
@@ -738,7 +693,7 @@
     "thumbnail": "https://i.ytimg.com/vi/9GqE11C7qB4/hqdefault.jpg"
   },
   {
-    "id": "song_83",
+    "id": "song_78",
     "title": "Big Dawgs",
     "artist": "Hanumankind",
     "mood": "Happy",
@@ -747,7 +702,7 @@
     "thumbnail": "https://i.ytimg.com/vi/JCf7lKL1UQ4/hqdefault.jpg"
   },
   {
-    "id": "song_84",
+    "id": "song_79",
     "title": "Past Lives",
     "artist": "sapientdream",
     "mood": "Sad",
@@ -756,7 +711,7 @@
     "thumbnail": "https://i.ytimg.com/vi/hK59OMfBN8E/hqdefault.jpg"
   },
   {
-    "id": "song_85",
+    "id": "song_80",
     "title": "SUPERPOWER",
     "artist": "VALORANT",
     "mood": "Energetic",
@@ -765,7 +720,7 @@
     "thumbnail": "https://i.ytimg.com/vi/HKPOASIpAws/hqdefault.jpg"
   },
   {
-    "id": "song_86",
+    "id": "song_81",
     "title": "As Long as You Love Me",
     "artist": "Backstreet Boys",
     "mood": "Happy",
@@ -774,7 +729,7 @@
     "thumbnail": "https://i.ytimg.com/vi/960wzRtcl-Y/hqdefault.jpg"
   },
   {
-    "id": "song_87",
+    "id": "song_82",
     "title": "It's Gonna Be Me",
     "artist": "*NSYNC",
     "mood": "Relaxed",
@@ -783,7 +738,7 @@
     "thumbnail": "https://i.ytimg.com/vi/dyDBxOiR4dc/hqdefault.jpg"
   },
   {
-    "id": "song_88",
+    "id": "song_83",
     "title": "Bye Bye Bye",
     "artist": "*NSYNC",
     "mood": "Focus",
@@ -792,7 +747,7 @@
     "thumbnail": "https://i.ytimg.com/vi/VsUrajziFRc/hqdefault.jpg"
   },
   {
-    "id": "song_89",
+    "id": "song_84",
     "title": "Wake Up in the Sky",
     "artist": "Gucci Mane",
     "mood": "Angry",
@@ -801,7 +756,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Mb_GmBX5QvI/hqdefault.jpg"
   },
   {
-    "id": "song_90",
+    "id": "song_85",
     "title": "Dancing On My Own",
     "artist": "Calum Scott",
     "mood": "Chill",
@@ -810,7 +765,7 @@
     "thumbnail": "https://i.ytimg.com/vi/pZs86eJOICg/hqdefault.jpg"
   },
   {
-    "id": "song_91",
+    "id": "song_86",
     "title": "F**kin' Problems",
     "artist": "ASAPROCKYUPTOWN",
     "mood": "Energetic",
@@ -819,7 +774,7 @@
     "thumbnail": "https://i.ytimg.com/vi/QdKIrntD6jg/hqdefault.jpg"
   },
   {
-    "id": "song_92",
+    "id": "song_87",
     "title": "Just Dance",
     "artist": "Lady Gaga",
     "mood": "Energetic",
@@ -828,7 +783,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ACNwMzZejQQ/hqdefault.jpg"
   },
   {
-    "id": "song_93",
+    "id": "song_88",
     "title": "Wild Ones (feat. Sia)",
     "artist": "Flo Rida",
     "mood": "Energetic",
@@ -837,7 +792,7 @@
     "thumbnail": "https://i.ytimg.com/vi/c2S1x2kTYJM/hqdefault.jpg"
   },
   {
-    "id": "song_94",
+    "id": "song_89",
     "title": "Everyday Normal Guy 2",
     "artist": "Jon Lajoie",
     "mood": "Happy",
@@ -846,7 +801,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Xx9V0fTDJY0/hqdefault.jpg"
   },
   {
-    "id": "song_95",
+    "id": "song_90",
     "title": "Gone, Gone, Gone",
     "artist": "Phillip Phillips",
     "mood": "Sad",
@@ -855,7 +810,7 @@
     "thumbnail": "https://i.ytimg.com/vi/L4FZjlxtNtE/hqdefault.jpg"
   },
   {
-    "id": "song_96",
+    "id": "song_91",
     "title": "The Show",
     "artist": "lenkatv",
     "mood": "Sad",
@@ -864,7 +819,7 @@
     "thumbnail": "https://i.ytimg.com/vi/kU0P2P5dtjE/hqdefault.jpg"
   },
   {
-    "id": "song_97",
+    "id": "song_92",
     "title": "FE!N",
     "artist": "Travis Scott",
     "mood": "Energetic",
@@ -873,7 +828,7 @@
     "thumbnail": "https://i.ytimg.com/vi/2nR1zrNzgcY/hqdefault.jpg"
   },
   {
-    "id": "song_98",
+    "id": "song_93",
     "title": "Sahara",
     "artist": "Hensonn",
     "mood": "Relaxed",
@@ -882,7 +837,7 @@
     "thumbnail": "https://i.ytimg.com/vi/kvHvxKHYMBA/hqdefault.jpg"
   },
   {
-    "id": "song_99",
+    "id": "song_94",
     "title": "Hips Don't Lie",
     "artist": "Shakira",
     "mood": "Focus",
@@ -891,7 +846,7 @@
     "thumbnail": "https://i.ytimg.com/vi/gnUDvKEdke8/hqdefault.jpg"
   },
   {
-    "id": "song_100",
+    "id": "song_95",
     "title": "Shakira - Hips don't lie (Mr. Chris Edit) from TikTok",
     "artist": "Mr. Chris",
     "mood": "Angry",
@@ -900,7 +855,7 @@
     "thumbnail": "https://i.ytimg.com/vi/8PMlSlxNcHg/hqdefault.jpg"
   },
   {
-    "id": "song_101",
+    "id": "song_96",
     "title": "Bang Bang",
     "artist": "Ariana Grande",
     "mood": "Happy",
@@ -909,7 +864,7 @@
     "thumbnail": "https://i.ytimg.com/vi/b0U-NcIWz1M/hqdefault.jpg"
   },
   {
-    "id": "song_102",
+    "id": "song_97",
     "title": "From the Islands (kompa pasión)",
     "artist": "Tomo",
     "mood": "Chill",
@@ -918,7 +873,7 @@
     "thumbnail": "https://i.ytimg.com/vi/TtM_uwUjSBQ/hqdefault.jpg"
   },
   {
-    "id": "song_103",
+    "id": "song_98",
     "title": "We Don't Talk Anymore (feat. Selena Gomez)",
     "artist": "Charlie Puth",
     "mood": "Happy",
@@ -927,7 +882,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ffqliB42Nh4/hqdefault.jpg"
   },
   {
-    "id": "song_104",
+    "id": "song_99",
     "title": "I Don't Want to Miss a Thing (From \"Armageddon\" Soundtrack)",
     "artist": "Aerosmith",
     "mood": "Sad",
@@ -936,7 +891,7 @@
     "thumbnail": "https://i.ytimg.com/vi/GLFp_C0Zi3M/hqdefault.jpg"
   },
   {
-    "id": "song_105",
+    "id": "song_100",
     "title": "I Like You So Much, You'll Know It",
     "artist": "Aviwkila",
     "mood": "Energetic",
@@ -945,7 +900,7 @@
     "thumbnail": "https://i.ytimg.com/vi/8gR2P_iBOB4/hqdefault.jpg"
   },
   {
-    "id": "song_106",
+    "id": "song_101",
     "title": "In The End (Mellen Gi Remix)",
     "artist": "Tommee Profitt",
     "mood": "Angry",
@@ -954,7 +909,7 @@
     "thumbnail": "https://i.ytimg.com/vi/EwlKNMpPRGY/hqdefault.jpg"
   },
   {
-    "id": "song_107",
+    "id": "song_102",
     "title": "Put Your Head On My Shoulder (Streets) x Mask Off (Tiktok Song)",
     "artist": "ROYAL LYRICS",
     "mood": "Happy",
@@ -963,7 +918,7 @@
     "thumbnail": "https://i.ytimg.com/vi/8EAmrIMW7WA/hqdefault.jpg"
   },
   {
-    "id": "song_108",
+    "id": "song_103",
     "title": "After Dark x Sweater Weather",
     "artist": "mikeeysmind",
     "mood": "Sad",
@@ -972,7 +927,7 @@
     "thumbnail": "https://i.ytimg.com/vi/AiFv4u9ZhBI/hqdefault.jpg"
   },
   {
-    "id": "song_109",
+    "id": "song_104",
     "title": "Gorgeous",
     "artist": "Taylor Swift",
     "mood": "Happy",
@@ -981,7 +936,7 @@
     "thumbnail": "https://i.ytimg.com/vi/2VeekpO-JQM/hqdefault.jpg"
   },
   {
-    "id": "song_110",
+    "id": "song_105",
     "title": "Bad Things",
     "artist": "mgk",
     "mood": "Relaxed",
@@ -990,7 +945,7 @@
     "thumbnail": "https://i.ytimg.com/vi/E49T3rdx2Bc/hqdefault.jpg"
   },
   {
-    "id": "song_111",
+    "id": "song_106",
     "title": "Linger",
     "artist": "TheCranberriesTV",
     "mood": "Focus",
@@ -999,7 +954,7 @@
     "thumbnail": "https://i.ytimg.com/vi/PXDlU0YDQ6U/hqdefault.jpg"
   },
   {
-    "id": "song_112",
+    "id": "song_107",
     "title": "Way down We Go",
     "artist": "KALEO",
     "mood": "Angry",
@@ -1008,7 +963,7 @@
     "thumbnail": "https://i.ytimg.com/vi/YTCS7IWUJu8/hqdefault.jpg"
   },
   {
-    "id": "song_113",
+    "id": "song_108",
     "title": "On The Floor (CCW Radio Mix)",
     "artist": "Jennifer Lopez",
     "mood": "Chill",
@@ -1017,7 +972,7 @@
     "thumbnail": "https://i.ytimg.com/vi/wk5VhkuIpK0/hqdefault.jpg"
   },
   {
-    "id": "song_114",
+    "id": "song_109",
     "title": "In The Stars",
     "artist": "Benson Boone",
     "mood": "Energetic",
@@ -1026,16 +981,7 @@
     "thumbnail": "https://i.ytimg.com/vi/IESmnavb5wY/hqdefault.jpg"
   },
   {
-    "id": "song_115",
-    "title": "Kahit Maputi Na Ang Buhok ko",
-    "artist": "Rey Valera",
-    "mood": "Happy",
-    "duration": "3:25",
-    "youtubeUrl": "https://youtube.com/watch?v=rdCF7_n6UYM",
-    "thumbnail": "https://i.ytimg.com/vi/rdCF7_n6UYM/hqdefault.jpg"
-  },
-  {
-    "id": "song_116",
+    "id": "song_110",
     "title": "Ve Haaniyaan",
     "artist": "DANNY",
     "mood": "Sad",
@@ -1044,7 +990,7 @@
     "thumbnail": "https://i.ytimg.com/vi/g3LThx6Rftw/hqdefault.jpg"
   },
   {
-    "id": "song_117",
+    "id": "song_111",
     "title": "angeleyes - abba ( sped up )",
     "artist": "kazooha",
     "mood": "Relaxed",
@@ -1053,7 +999,7 @@
     "thumbnail": "https://i.ytimg.com/vi/419f3pbiYwY/hqdefault.jpg"
   },
   {
-    "id": "song_118",
+    "id": "song_112",
     "title": "You Are My Everything",
     "artist": "Julie Anne San Jose",
     "mood": "Focus",
@@ -1062,7 +1008,7 @@
     "thumbnail": "https://i.ytimg.com/vi/FzdHDohVtF0/hqdefault.jpg"
   },
   {
-    "id": "song_119",
+    "id": "song_113",
     "title": "You Are My Everything English Version",
     "artist": "GUMMY - 거미",
     "mood": "Angry",
@@ -1071,7 +1017,7 @@
     "thumbnail": "https://i.ytimg.com/vi/3DX2y2k2P-s/hqdefault.jpg"
   },
   {
-    "id": "song_120",
+    "id": "song_114",
     "title": "ALWAYS",
     "artist": "Yoonmirae",
     "mood": "Chill",
@@ -1080,7 +1026,7 @@
     "thumbnail": "https://i.ytimg.com/vi/mgFVZfGBEpM/hqdefault.jpg"
   },
   {
-    "id": "song_121",
+    "id": "song_115",
     "title": "Someone To You",
     "artist": "BANNERS",
     "mood": "Energetic",
@@ -1089,7 +1035,7 @@
     "thumbnail": "https://i.ytimg.com/vi/YsZVZU-98TY/hqdefault.jpg"
   },
   {
-    "id": "song_122",
+    "id": "song_116",
     "title": "Oosupodu",
     "artist": "Shakthikanth Karthick",
     "mood": "Happy",
@@ -1098,7 +1044,7 @@
     "thumbnail": "https://i.ytimg.com/vi/DlkM81kSsVA/hqdefault.jpg"
   },
   {
-    "id": "song_123",
+    "id": "song_117",
     "title": "Cheri Cheri Lady",
     "artist": "Modern Talking Offiziell",
     "mood": "Sad",
@@ -1107,7 +1053,7 @@
     "thumbnail": "https://i.ytimg.com/vi/lyWqQ4KzlzQ/hqdefault.jpg"
   },
   {
-    "id": "song_124",
+    "id": "song_118",
     "title": "off the leash!",
     "artist": "tana",
     "mood": "Relaxed",
@@ -1116,7 +1062,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Qjq6GGFU22c/hqdefault.jpg"
   },
   {
-    "id": "song_125",
+    "id": "song_119",
     "title": "I Wanna Be Yours",
     "artist": "Official Arctic Monkeys",
     "mood": "Focus",
@@ -1125,7 +1071,7 @@
     "thumbnail": "https://i.ytimg.com/vi/nyuo9-OjNNg/hqdefault.jpg"
   },
   {
-    "id": "song_126",
+    "id": "song_120",
     "title": "Billionaire (feat. Bruno Mars)",
     "artist": "Travie McCoy",
     "mood": "Energetic",
@@ -1134,7 +1080,7 @@
     "thumbnail": "https://i.ytimg.com/vi/VBEif1lMdZM/hqdefault.jpg"
   },
   {
-    "id": "song_127",
+    "id": "song_121",
     "title": "SAD!",
     "artist": "XXXTENTACION",
     "mood": "Sad",
@@ -1143,7 +1089,7 @@
     "thumbnail": "https://i.ytimg.com/vi/yQFBKx6eq8s/hqdefault.jpg"
   },
   {
-    "id": "song_128",
+    "id": "song_122",
     "title": "Top Of The World",
     "artist": "Carpenters",
     "mood": "Angry",
@@ -1152,7 +1098,7 @@
     "thumbnail": "https://i.ytimg.com/vi/vupwAFMXLkA/hqdefault.jpg"
   },
   {
-    "id": "song_129",
+    "id": "song_123",
     "title": "On Top Of The World",
     "artist": "ImagineDragons",
     "mood": "Happy",
@@ -1161,7 +1107,7 @@
     "thumbnail": "https://i.ytimg.com/vi/dj86haGuI8w/hqdefault.jpg"
   },
   {
-    "id": "song_130",
+    "id": "song_124",
     "title": "Am I Dreaming",
     "artist": "Metro Boomin",
     "mood": "Chill",
@@ -1170,16 +1116,7 @@
     "thumbnail": "https://i.ytimg.com/vi/P-X-iHTe5PI/hqdefault.jpg"
   },
   {
-    "id": "song_131",
-    "title": "Han's Kung Fu",
-    "artist": "James Horner",
-    "mood": "Chill",
-    "duration": "1:40",
-    "youtubeUrl": "https://youtube.com/watch?v=b6R-Rh-bacg",
-    "thumbnail": "https://i.ytimg.com/vi/b6R-Rh-bacg/hqdefault.jpg"
-  },
-  {
-    "id": "song_132",
+    "id": "song_125",
     "title": "Cornfield Chase",
     "artist": "Hans Zimmer",
     "mood": "Energetic",
@@ -1188,7 +1125,7 @@
     "thumbnail": "https://i.ytimg.com/vi/7GlsxNI4LVI/hqdefault.jpg"
   },
   {
-    "id": "song_133",
+    "id": "song_126",
     "title": "On My Way",
     "artist": "Sabrina Carpenter",
     "mood": "Happy",
@@ -1197,7 +1134,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ZM8rAsTT7yE/hqdefault.jpg"
   },
   {
-    "id": "song_134",
+    "id": "song_127",
     "title": "Faded",
     "artist": "Alan Walker",
     "mood": "Chill",
@@ -1206,7 +1143,7 @@
     "thumbnail": "https://i.ytimg.com/vi/pIWaVJPl0-c/hqdefault.jpg"
   },
   {
-    "id": "song_135",
+    "id": "song_128",
     "title": "Send It (feat. Rich Homie Quan)",
     "artist": "Austin Mahone",
     "mood": "Sad",
@@ -1215,7 +1152,7 @@
     "thumbnail": "https://i.ytimg.com/vi/6V2OJ7rDrsk/hqdefault.jpg"
   },
   {
-    "id": "song_136",
+    "id": "song_129",
     "title": "Cupid's Chokehold / Breakfast in America",
     "artist": "Gym Class Heroes",
     "mood": "Energetic",
@@ -1224,7 +1161,7 @@
     "thumbnail": "https://i.ytimg.com/vi/cRqTvWWX70Y/hqdefault.jpg"
   },
   {
-    "id": "song_137",
+    "id": "song_130",
     "title": "People of Kotha (From \"King of Kotha\")",
     "artist": "Jakes Bejoy",
     "mood": "Relaxed",
@@ -1233,7 +1170,7 @@
     "thumbnail": "https://i.ytimg.com/vi/EC0uv8VJ1qY/hqdefault.jpg"
   },
   {
-    "id": "song_138",
+    "id": "song_131",
     "title": "Because Of You",
     "artist": "NE-YO",
     "mood": "Focus",
@@ -1242,7 +1179,7 @@
     "thumbnail": "https://i.ytimg.com/vi/-r85WmKI9Uo/hqdefault.jpg"
   },
   {
-    "id": "song_139",
+    "id": "song_132",
     "title": "Memories",
     "artist": "Maroon 5",
     "mood": "Happy",
@@ -1251,7 +1188,7 @@
     "thumbnail": "https://i.ytimg.com/vi/UXw44kmLtSU/hqdefault.jpg"
   },
   {
-    "id": "song_140",
+    "id": "song_133",
     "title": "Stuck On You",
     "artist": "lionelrichie",
     "mood": "Angry",
@@ -1260,7 +1197,7 @@
     "thumbnail": "https://i.ytimg.com/vi/PozM4bs-g7s/hqdefault.jpg"
   },
   {
-    "id": "song_141",
+    "id": "song_134",
     "title": "Domino",
     "artist": "Jessie J",
     "mood": "Chill",
@@ -1269,7 +1206,7 @@
     "thumbnail": "https://i.ytimg.com/vi/FMtgC9lYt2w/hqdefault.jpg"
   },
   {
-    "id": "song_142",
+    "id": "song_135",
     "title": "Careless Whisper",
     "artist": "georgemichael",
     "mood": "Energetic",
@@ -1278,7 +1215,7 @@
     "thumbnail": "https://i.ytimg.com/vi/g9VWhh8r5Vs/hqdefault.jpg"
   },
   {
-    "id": "song_143",
+    "id": "song_136",
     "title": "Dhundhala",
     "artist": "Yashraj",
     "mood": "Happy",
@@ -1287,7 +1224,7 @@
     "thumbnail": "https://i.ytimg.com/vi/AnAs45V8CEg/hqdefault.jpg"
   },
   {
-    "id": "song_144",
+    "id": "song_137",
     "title": "redrum",
     "artist": "21 Savage",
     "mood": "Sad",
@@ -1296,7 +1233,7 @@
     "thumbnail": "https://i.ytimg.com/vi/OCY9vN4QzqY/hqdefault.jpg"
   },
   {
-    "id": "song_145",
+    "id": "song_138",
     "title": "Safe And Sound",
     "artist": "Capital Cities",
     "mood": "Relaxed",
@@ -1305,7 +1242,7 @@
     "thumbnail": "https://i.ytimg.com/vi/njvA03rMHx4/hqdefault.jpg"
   },
   {
-    "id": "song_146",
+    "id": "song_139",
     "title": "My Ordinary Life",
     "artist": "The Living Tombstone",
     "mood": "Focus",
@@ -1314,7 +1251,7 @@
     "thumbnail": "https://i.ytimg.com/vi/MURua52_YPg/hqdefault.jpg"
   },
   {
-    "id": "song_147",
+    "id": "song_140",
     "title": "Take Me Home, Country Roads",
     "artist": "John Denver",
     "mood": "Angry",
@@ -1323,7 +1260,7 @@
     "thumbnail": "https://i.ytimg.com/vi/6Jf_GsFZDfI/hqdefault.jpg"
   },
   {
-    "id": "song_148",
+    "id": "song_141",
     "title": "Skyfall",
     "artist": "Adele",
     "mood": "Sad",
@@ -1332,7 +1269,7 @@
     "thumbnail": "https://i.ytimg.com/vi/LJzp_mDxaT0/hqdefault.jpg"
   },
   {
-    "id": "song_149",
+    "id": "song_142",
     "title": "MY EYES",
     "artist": "Travis Scott",
     "mood": "Energetic",
@@ -1341,7 +1278,7 @@
     "thumbnail": "https://i.ytimg.com/vi/yhohHPdPczQ/hqdefault.jpg"
   },
   {
-    "id": "song_150",
+    "id": "song_143",
     "title": "In the House - In a Heartbeat",
     "artist": "John Murphy",
     "mood": "Sad",
@@ -1350,7 +1287,7 @@
     "thumbnail": "https://i.ytimg.com/vi/aF10I72tsio/hqdefault.jpg"
   },
   {
-    "id": "song_151",
+    "id": "song_144",
     "title": "Die Very Rough",
     "artist": "Mario Judah",
     "mood": "Chill",
@@ -1359,7 +1296,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Crxo1kiNJBE/hqdefault.jpg"
   },
   {
-    "id": "song_152",
+    "id": "song_145",
     "title": "Ip Man Soundtrack - Battle For Righteousness Theme",
     "artist": "Flash Music",
     "mood": "Energetic",
@@ -1368,7 +1305,7 @@
     "thumbnail": "https://i.ytimg.com/vi/cfI9Z2ZH1Gw/hqdefault.jpg"
   },
   {
-    "id": "song_153",
+    "id": "song_146",
     "title": "Kordhell, Benjamin Sem, Ravens rock - Murder in My Mind (Official Audio)",
     "artist": "Benjamin Sem",
     "mood": "Energetic",
@@ -1377,7 +1314,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ETGZkJLeCEs/hqdefault.jpg"
   },
   {
-    "id": "song_154",
+    "id": "song_147",
     "title": "Galway Girl",
     "artist": "Ed Sheeran",
     "mood": "Happy",
@@ -1386,7 +1323,7 @@
     "thumbnail": "https://i.ytimg.com/vi/K0WAS1pyocY/hqdefault.jpg"
   },
   {
-    "id": "song_155",
+    "id": "song_148",
     "title": "Banyo Queen lyrics-Andrew E",
     "artist": "Joel Otchia",
     "mood": "Happy",
@@ -1395,7 +1332,7 @@
     "thumbnail": "https://i.ytimg.com/vi/8qWG84tu9ME/hqdefault.jpg"
   },
   {
-    "id": "song_156",
+    "id": "song_149",
     "title": "Snowman",
     "artist": "Sia",
     "mood": "Energetic",
@@ -1404,7 +1341,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ZSRzCbpIxZo/hqdefault.jpg"
   },
   {
-    "id": "song_157",
+    "id": "song_150",
     "title": "Nothin' on You (feat. Bruno Mars)",
     "artist": "B.o.B",
     "mood": "Energetic",
@@ -1413,7 +1350,7 @@
     "thumbnail": "https://i.ytimg.com/vi/SpJlEXKd034/hqdefault.jpg"
   },
   {
-    "id": "song_158",
+    "id": "song_151",
     "title": "Aamol Acharya - Mafia || GTR ShowTime",
     "artist": "König",
     "mood": "Sad",
@@ -1422,7 +1359,7 @@
     "thumbnail": "https://i.ytimg.com/vi/am9IEBJwhwU/hqdefault.jpg"
   },
   {
-    "id": "song_159",
+    "id": "song_152",
     "title": "What It Is (Solo Version)",
     "artist": "Doechii",
     "mood": "Relaxed",
@@ -1431,16 +1368,7 @@
     "thumbnail": "https://i.ytimg.com/vi/B8KWxTR6jhM/hqdefault.jpg"
   },
   {
-    "id": "song_160",
-    "title": "Bakit Pa",
-    "artist": "Jessa Zaragoza",
-    "mood": "Focus",
-    "duration": "4:27",
-    "youtubeUrl": "https://youtube.com/watch?v=7NSCoNzTYCA",
-    "thumbnail": "https://i.ytimg.com/vi/7NSCoNzTYCA/hqdefault.jpg"
-  },
-  {
-    "id": "song_161",
+    "id": "song_153",
     "title": "How Did You Know",
     "artist": "Chiqui Pineda",
     "mood": "Angry",
@@ -1449,16 +1377,7 @@
     "thumbnail": "https://i.ytimg.com/vi/PvnE8I2DRkg/hqdefault.jpg"
   },
   {
-    "id": "song_162",
-    "title": "Bakit 'Di Totohanin",
-    "artist": "Carol Banawa",
-    "mood": "Chill",
-    "duration": "4:06",
-    "youtubeUrl": "https://youtube.com/watch?v=1YYY8C5W_68",
-    "thumbnail": "https://i.ytimg.com/vi/1YYY8C5W_68/hqdefault.jpg"
-  },
-  {
-    "id": "song_163",
+    "id": "song_154",
     "title": "Spider-Man 2 Main Title",
     "artist": "Danny Elfman",
     "mood": "Energetic",
@@ -1467,16 +1386,7 @@
     "thumbnail": "https://i.ytimg.com/vi/DNti8jHPOG0/hqdefault.jpg"
   },
   {
-    "id": "song_164",
-    "title": "On the Wings of Love",
-    "artist": "Kyla Official",
-    "mood": "Happy",
-    "duration": "4:35",
-    "youtubeUrl": "https://youtube.com/watch?v=ilbwpNU3Zhg",
-    "thumbnail": "https://i.ytimg.com/vi/ilbwpNU3Zhg/hqdefault.jpg"
-  },
-  {
-    "id": "song_165",
+    "id": "song_155",
     "title": "Dyosa",
     "artist": "Yumi Lacsamana",
     "mood": "Happy",
@@ -1485,7 +1395,7 @@
     "thumbnail": "https://i.ytimg.com/vi/O9uxZyn_p0M/hqdefault.jpg"
   },
   {
-    "id": "song_166",
+    "id": "song_156",
     "title": "Viva La Vida",
     "artist": "Coldplay",
     "mood": "Sad",
@@ -1494,16 +1404,7 @@
     "thumbnail": "https://i.ytimg.com/vi/3a-q7vPa-UU/hqdefault.jpg"
   },
   {
-    "id": "song_167",
-    "title": "Kung Di Magkatagpo",
-    "artist": "Enrique Gil",
-    "mood": "Sad",
-    "duration": "3:58",
-    "youtubeUrl": "https://youtube.com/watch?v=_DbgWHW2OAs",
-    "thumbnail": "https://i.ytimg.com/vi/_DbgWHW2OAs/hqdefault.jpg"
-  },
-  {
-    "id": "song_168",
+    "id": "song_157",
     "title": "Your Love (Dolce Amore Teleserye Theme)",
     "artist": "Juris",
     "mood": "Happy",
@@ -1512,7 +1413,7 @@
     "thumbnail": "https://i.ytimg.com/vi/jO1HcyZ6ijE/hqdefault.jpg"
   },
   {
-    "id": "song_169",
+    "id": "song_158",
     "title": "Forevermore",
     "artist": "Juris",
     "mood": "Relaxed",
@@ -1521,7 +1422,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Q8FGXvhIJ78/hqdefault.jpg"
   },
   {
-    "id": "song_170",
+    "id": "song_159",
     "title": "Sirena",
     "artist": "Gloc -9",
     "mood": "Focus",
@@ -1530,7 +1431,7 @@
     "thumbnail": "https://i.ytimg.com/vi/5KmqMZ11xM4/hqdefault.jpg"
   },
   {
-    "id": "song_171",
+    "id": "song_160",
     "title": "She Knows",
     "artist": "J. Cole",
     "mood": "Angry",
@@ -1539,7 +1440,7 @@
     "thumbnail": "https://i.ytimg.com/vi/X6Kma_HdVHk/hqdefault.jpg"
   },
   {
-    "id": "song_172",
+    "id": "song_161",
     "title": "Loki - Glorious Purpose Finale (Epic Version)",
     "artist": "L'Orchestra Cinématique",
     "mood": "Chill",
@@ -1548,7 +1449,7 @@
     "thumbnail": "https://i.ytimg.com/vi/jD2oADgKMPM/hqdefault.jpg"
   },
   {
-    "id": "song_173",
+    "id": "song_162",
     "title": "Wrecking Ball",
     "artist": "Miley Cyrus",
     "mood": "Energetic",
@@ -1557,7 +1458,7 @@
     "thumbnail": "https://i.ytimg.com/vi/iqXxfOnk-Z4/hqdefault.jpg"
   },
   {
-    "id": "song_174",
+    "id": "song_163",
     "title": "FRIENDS",
     "artist": "Marshmello",
     "mood": "Happy",
@@ -1566,7 +1467,7 @@
     "thumbnail": "https://i.ytimg.com/vi/lPaFesZWRug/hqdefault.jpg"
   },
   {
-    "id": "song_175",
+    "id": "song_164",
     "title": "Feel This Moment",
     "artist": "Pitbull",
     "mood": "Energetic",
@@ -1575,7 +1476,7 @@
     "thumbnail": "https://i.ytimg.com/vi/0YYWgKTgAQw/hqdefault.jpg"
   },
   {
-    "id": "song_176",
+    "id": "song_165",
     "title": "Tu hai kahan",
     "artist": "AUR",
     "mood": "Happy",
@@ -1584,7 +1485,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Y5m3FAxatX4/hqdefault.jpg"
   },
   {
-    "id": "song_177",
+    "id": "song_166",
     "title": "Bubbly",
     "artist": "Colbie Caillat",
     "mood": "Sad",
@@ -1593,7 +1494,7 @@
     "thumbnail": "https://i.ytimg.com/vi/GL-ayN9xpgQ/hqdefault.jpg"
   },
   {
-    "id": "song_178",
+    "id": "song_167",
     "title": "Tory Lanez - She Make It Clap [Official Video]",
     "artist": "Rapstreetjuice",
     "mood": "Relaxed",
@@ -1602,7 +1503,7 @@
     "thumbnail": "https://i.ytimg.com/vi/uuJThOEm7Qs/hqdefault.jpg"
   },
   {
-    "id": "song_179",
+    "id": "song_168",
     "title": "Low (feat. T-Pain)",
     "artist": "Flo Rida",
     "mood": "Energetic",
@@ -1611,7 +1512,7 @@
     "thumbnail": "https://i.ytimg.com/vi/uUL8a7eJCk8/hqdefault.jpg"
   },
   {
-    "id": "song_180",
+    "id": "song_169",
     "title": "Chapstick",
     "artist": "Jacob Sartorius",
     "mood": "Focus",
@@ -1620,7 +1521,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ksOgFjjKdmQ/hqdefault.jpg"
   },
   {
-    "id": "song_181",
+    "id": "song_170",
     "title": "Lucky",
     "artist": "Jason Mraz",
     "mood": "Happy",
@@ -1629,7 +1530,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ezVbN7e-L7Y/hqdefault.jpg"
   },
   {
-    "id": "song_182",
+    "id": "song_171",
     "title": "Moves Like Jagger",
     "artist": "Maroon 5",
     "mood": "Happy",
@@ -1638,7 +1539,7 @@
     "thumbnail": "https://i.ytimg.com/vi/viTjSjdetU0/hqdefault.jpg"
   },
   {
-    "id": "song_183",
+    "id": "song_172",
     "title": "Buko",
     "artist": "Jireh Lim",
     "mood": "Angry",
@@ -1647,7 +1548,7 @@
     "thumbnail": "https://i.ytimg.com/vi/URR3FKn8NvU/hqdefault.jpg"
   },
   {
-    "id": "song_184",
+    "id": "song_173",
     "title": "Club Can't Handle Me (feat. David Guetta) (From the Step Up 3D Soundtrack)",
     "artist": "Flo Rida",
     "mood": "Energetic",
@@ -1656,7 +1557,7 @@
     "thumbnail": "https://i.ytimg.com/vi/88gZ5bw7GU4/hqdefault.jpg"
   },
   {
-    "id": "song_185",
+    "id": "song_174",
     "title": "Surround Sound",
     "artist": "JID",
     "mood": "Chill",
@@ -1665,7 +1566,7 @@
     "thumbnail": "https://i.ytimg.com/vi/TnV7lwNXahI/hqdefault.jpg"
   },
   {
-    "id": "song_186",
+    "id": "song_175",
     "title": "Heeriye X Chaleya X Tu Aake Dekhle",
     "artist": "Deepika Sharma",
     "mood": "Energetic",
@@ -1674,7 +1575,7 @@
     "thumbnail": "https://i.ytimg.com/vi/7PUSVQEdpFY/hqdefault.jpg"
   },
   {
-    "id": "song_187",
+    "id": "song_176",
     "title": "Total Eclipse of the Heart (Radio Version)",
     "artist": "Bonnie Tyler",
     "mood": "Sad",
@@ -1683,7 +1584,7 @@
     "thumbnail": "https://i.ytimg.com/vi/KqBZAxCfWHA/hqdefault.jpg"
   },
   {
-    "id": "song_188",
+    "id": "song_177",
     "title": "Touch By Touch (Extended Maxi Version)",
     "artist": "Joy",
     "mood": "Happy",
@@ -1692,7 +1593,7 @@
     "thumbnail": "https://i.ytimg.com/vi/OoXp35rmb8Y/hqdefault.jpg"
   },
   {
-    "id": "song_189",
+    "id": "song_178",
     "title": "Champesaave Nannu",
     "artist": "Release",
     "mood": "Sad",
@@ -1701,7 +1602,7 @@
     "thumbnail": "https://i.ytimg.com/vi/rCT744JoyF8/hqdefault.jpg"
   },
   {
-    "id": "song_190",
+    "id": "song_179",
     "title": "Mr.Kitty - After Dark ( @dontwakemeupme & @EUFONI7  guitar cover)",
     "artist": "Novelcarrot",
     "mood": "Relaxed",
@@ -1710,7 +1611,7 @@
     "thumbnail": "https://i.ytimg.com/vi/xfSq6LPrjQo/hqdefault.jpg"
   },
   {
-    "id": "song_191",
+    "id": "song_180",
     "title": "Jericho",
     "artist": "Iniko",
     "mood": "Focus",
@@ -1719,7 +1620,7 @@
     "thumbnail": "https://i.ytimg.com/vi/lJcO6gh-wzg/hqdefault.jpg"
   },
   {
-    "id": "song_192",
+    "id": "song_181",
     "title": "Another Love",
     "artist": "Tom Odell",
     "mood": "Happy",
@@ -1728,7 +1629,7 @@
     "thumbnail": "https://i.ytimg.com/vi/YRkWZO4iLYk/hqdefault.jpg"
   },
   {
-    "id": "song_193",
+    "id": "song_182",
     "title": "Lover (Remix)",
     "artist": "Taylor Swift",
     "mood": "Happy",
@@ -1737,7 +1638,7 @@
     "thumbnail": "https://i.ytimg.com/vi/GCEljC8gZbU/hqdefault.jpg"
   },
   {
-    "id": "song_194",
+    "id": "song_183",
     "title": "Without Me",
     "artist": "Halsey",
     "mood": "Sad",
@@ -1746,7 +1647,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Tk7WFyHUr1E/hqdefault.jpg"
   },
   {
-    "id": "song_195",
+    "id": "song_184",
     "title": "MURDER IN MY MIND - KORDHELL [Raven Rock Guitar Remix]",
     "artist": "dylannnnn",
     "mood": "Energetic",
@@ -1755,7 +1656,7 @@
     "thumbnail": "https://i.ytimg.com/vi/KZJDKwERFFU/hqdefault.jpg"
   },
   {
-    "id": "song_196",
+    "id": "song_185",
     "title": "Boombastic",
     "artist": "shaggymedia",
     "mood": "Angry",
@@ -1764,7 +1665,7 @@
     "thumbnail": "https://i.ytimg.com/vi/TeNjhglXm6w/hqdefault.jpg"
   },
   {
-    "id": "song_197",
+    "id": "song_186",
     "title": "Kaley Sheshe",
     "artist": "Addy Nagar",
     "mood": "Chill",
@@ -1773,7 +1674,7 @@
     "thumbnail": "https://i.ytimg.com/vi/AVG9Ck5m7Iw/hqdefault.jpg"
   },
   {
-    "id": "song_198",
+    "id": "song_187",
     "title": "The Nine Tailed Fox",
     "artist": "Hong Dae Sung",
     "mood": "Energetic",
@@ -1782,7 +1683,7 @@
     "thumbnail": "https://i.ytimg.com/vi/3aVeuUQsj1g/hqdefault.jpg"
   },
   {
-    "id": "song_199",
+    "id": "song_188",
     "title": "The Uninvited",
     "artist": "Hong Dae Sung",
     "mood": "Happy",
@@ -1791,7 +1692,7 @@
     "thumbnail": "https://i.ytimg.com/vi/S8zeJ1j8Kyo/hqdefault.jpg"
   },
   {
-    "id": "song_200",
+    "id": "song_189",
     "title": "Parting at the River of Three Crossings",
     "artist": "Hong Dae Sung",
     "mood": "Sad",
@@ -1800,7 +1701,7 @@
     "thumbnail": "https://i.ytimg.com/vi/HCXTE3Hqcos/hqdefault.jpg"
   },
   {
-    "id": "song_201",
+    "id": "song_190",
     "title": "The Legend of the Fox (Tale of the Nine Tailed Opening Title)",
     "artist": "Hong Dae Sung",
     "mood": "Relaxed",
@@ -1809,7 +1710,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Gf59HYQXKgs/hqdefault.jpg"
   },
   {
-    "id": "song_202",
+    "id": "song_191",
     "title": "Sure Thing",
     "artist": "Miguel",
     "mood": "Focus",
@@ -1818,7 +1719,7 @@
     "thumbnail": "https://i.ytimg.com/vi/esKJ8BbauGk/hqdefault.jpg"
   },
   {
-    "id": "song_203",
+    "id": "song_192",
     "title": "Super Bass",
     "artist": "Nicki Minaj",
     "mood": "Energetic",
@@ -1827,7 +1728,7 @@
     "thumbnail": "https://i.ytimg.com/vi/dzuQ5ustJVM/hqdefault.jpg"
   },
   {
-    "id": "song_204",
+    "id": "song_193",
     "title": "UNDERWORLD",
     "artist": "UNAVERAGE GANG",
     "mood": "Angry",
@@ -1836,7 +1737,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ptwP24siIRk/hqdefault.jpg"
   },
   {
-    "id": "song_205",
+    "id": "song_194",
     "title": "Party Rock Anthem",
     "artist": "LMFAO",
     "mood": "Energetic",
@@ -1845,7 +1746,7 @@
     "thumbnail": "https://i.ytimg.com/vi/kmioyMNkgx4/hqdefault.jpg"
   },
   {
-    "id": "song_206",
+    "id": "song_195",
     "title": "Menace (Slowed + Reverb)",
     "artist": "visioner.",
     "mood": "Chill",
@@ -1854,7 +1755,7 @@
     "thumbnail": "https://i.ytimg.com/vi/9o8d2HZE0Yc/hqdefault.jpg"
   },
   {
-    "id": "song_207",
+    "id": "song_196",
     "title": "HUMBLE.",
     "artist": "Kendrick Lamar",
     "mood": "Chill",
@@ -1863,7 +1764,7 @@
     "thumbnail": "https://i.ytimg.com/vi/H4RELGc9su8/hqdefault.jpg"
   },
   {
-    "id": "song_208",
+    "id": "song_197",
     "title": "Flow G ft. Skusta Clee - Panda (Remix)( Lyrics )",
     "artist": "JeelBee",
     "mood": "Energetic",
@@ -1872,7 +1773,7 @@
     "thumbnail": "https://i.ytimg.com/vi/E4ecmJU9_zw/hqdefault.jpg"
   },
   {
-    "id": "song_209",
+    "id": "song_198",
     "title": "Words (Original 1982)",
     "artist": "F.R. David",
     "mood": "Happy",
@@ -1881,7 +1782,7 @@
     "thumbnail": "https://i.ytimg.com/vi/uBC3whoCz2Y/hqdefault.jpg"
   },
   {
-    "id": "song_210",
+    "id": "song_199",
     "title": "Paint The Town Red",
     "artist": "Doja Cat",
     "mood": "Energetic",
@@ -1890,7 +1791,7 @@
     "thumbnail": "https://i.ytimg.com/vi/CeWLSQSe6B8/hqdefault.jpg"
   },
   {
-    "id": "song_211",
+    "id": "song_200",
     "title": "Pillaa Raa",
     "artist": "Anurag Kulkarni",
     "mood": "Sad",
@@ -1899,7 +1800,7 @@
     "thumbnail": "https://i.ytimg.com/vi/k-3RVmy9ZJc/hqdefault.jpg"
   },
   {
-    "id": "song_212",
+    "id": "song_201",
     "title": "Le Monde",
     "artist": "Richard Carter",
     "mood": "Relaxed",
@@ -1908,7 +1809,7 @@
     "thumbnail": "https://i.ytimg.com/vi/HwPBEgY79Xw/hqdefault.jpg"
   },
   {
-    "id": "song_213",
+    "id": "song_202",
     "title": "The Weeknd, Madonna, Playboi Carti & Cozi Jigga- Popular (Sped Up +Reverb)",
     "artist": "Cozi Jigga",
     "mood": "Focus",
@@ -1917,7 +1818,7 @@
     "thumbnail": "https://i.ytimg.com/vi/TJ2gNWV5Egg/hqdefault.jpg"
   },
   {
-    "id": "song_214",
+    "id": "song_203",
     "title": "Lover",
     "artist": "Taylor Swift",
     "mood": "Happy",
@@ -1926,7 +1827,7 @@
     "thumbnail": "https://i.ytimg.com/vi/uLL2xTK35Qc/hqdefault.jpg"
   },
   {
-    "id": "song_215",
+    "id": "song_204",
     "title": "snowfall",
     "artist": "Øneheart",
     "mood": "Angry",
@@ -1935,7 +1836,7 @@
     "thumbnail": "https://i.ytimg.com/vi/OtLcqr3RQJY/hqdefault.jpg"
   },
   {
-    "id": "song_216",
+    "id": "song_205",
     "title": "Fighting Mood",
     "artist": "Jeff Lew",
     "mood": "Angry",
@@ -1944,7 +1845,7 @@
     "thumbnail": "https://i.ytimg.com/vi/OIzN3iFB49M/hqdefault.jpg"
   },
   {
-    "id": "song_217",
+    "id": "song_206",
     "title": "Don't Matter",
     "artist": "Akon",
     "mood": "Chill",
@@ -1953,7 +1854,7 @@
     "thumbnail": "https://i.ytimg.com/vi/oadfmOPGjOY/hqdefault.jpg"
   },
   {
-    "id": "song_218",
+    "id": "song_207",
     "title": "hot girl bummer",
     "artist": "blackbear",
     "mood": "Energetic",
@@ -1962,7 +1863,7 @@
     "thumbnail": "https://i.ytimg.com/vi/jcnV2cGzmC4/hqdefault.jpg"
   },
   {
-    "id": "song_219",
+    "id": "song_208",
     "title": "Bad Day",
     "artist": "Daniel Powter",
     "mood": "Happy",
@@ -1971,7 +1872,7 @@
     "thumbnail": "https://i.ytimg.com/vi/-reIEyYxgxA/hqdefault.jpg"
   },
   {
-    "id": "song_220",
+    "id": "song_209",
     "title": "Call Me Maybe",
     "artist": "Carly Rae Jepsen",
     "mood": "Sad",
@@ -1980,7 +1881,7 @@
     "thumbnail": "https://i.ytimg.com/vi/dlObDivWgx8/hqdefault.jpg"
   },
   {
-    "id": "song_221",
+    "id": "song_210",
     "title": "murder in my mind (ravens rock version) 「kordhell」 | edit audio",
     "artist": "andrian.",
     "mood": "Energetic",
@@ -1989,7 +1890,7 @@
     "thumbnail": "https://i.ytimg.com/vi/quQNI8b1JD4/hqdefault.jpg"
   },
   {
-    "id": "song_222",
+    "id": "song_211",
     "title": "You're Still The One",
     "artist": "Teddy Swims",
     "mood": "Relaxed",
@@ -1998,7 +1899,7 @@
     "thumbnail": "https://i.ytimg.com/vi/jEylXhpABMs/hqdefault.jpg"
   },
   {
-    "id": "song_223",
+    "id": "song_212",
     "title": "Go Stupid",
     "artist": "Polo G",
     "mood": "Focus",
@@ -2007,7 +1908,7 @@
     "thumbnail": "https://i.ytimg.com/vi/pg72ICmoqbo/hqdefault.jpg"
   },
   {
-    "id": "song_224",
+    "id": "song_213",
     "title": "Panda",
     "artist": "Desiigner LOD",
     "mood": "Angry",
@@ -2016,16 +1917,7 @@
     "thumbnail": "https://i.ytimg.com/vi/LK8PnDS2Wy8/hqdefault.jpg"
   },
   {
-    "id": "song_225",
-    "title": "Bagsakan",
-    "artist": "Parokya ni Edgar",
-    "mood": "Chill",
-    "duration": "3:28",
-    "youtubeUrl": "https://youtube.com/watch?v=7O1sd_FOGbI",
-    "thumbnail": "https://i.ytimg.com/vi/7O1sd_FOGbI/hqdefault.jpg"
-  },
-  {
-    "id": "song_226",
+    "id": "song_214",
     "title": "IN ESSENCE",
     "artist": "SCXR SOUL",
     "mood": "Chill",
@@ -2034,7 +1926,7 @@
     "thumbnail": "https://i.ytimg.com/vi/m9U0Z_m39LE/hqdefault.jpg"
   },
   {
-    "id": "song_227",
+    "id": "song_215",
     "title": "All Out of Love",
     "artist": "Air Supply",
     "mood": "Happy",
@@ -2043,7 +1935,7 @@
     "thumbnail": "https://i.ytimg.com/vi/GRQl9k71EBg/hqdefault.jpg"
   },
   {
-    "id": "song_228",
+    "id": "song_216",
     "title": "Bumpy Ride",
     "artist": "Mohombi",
     "mood": "Energetic",
@@ -2052,7 +1944,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Ff7pRcJ_Aqc/hqdefault.jpg"
   },
   {
-    "id": "song_229",
+    "id": "song_217",
     "title": "THIS YEAR (Blessings)",
     "artist": "Victor Thompson Music",
     "mood": "Happy",
@@ -2061,7 +1953,7 @@
     "thumbnail": "https://i.ytimg.com/vi/k_OjFHy53J0/hqdefault.jpg"
   },
   {
-    "id": "song_230",
+    "id": "song_218",
     "title": "Heartbreak Anniversary",
     "artist": "GIVĒON",
     "mood": "Sad",
@@ -2070,7 +1962,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ZkyUJZ5cYsE/hqdefault.jpg"
   },
   {
-    "id": "song_231",
+    "id": "song_219",
     "title": "Stand By Me",
     "artist": "Ben E. King",
     "mood": "Sad",
@@ -2079,7 +1971,7 @@
     "thumbnail": "https://i.ytimg.com/vi/b-D5yAAXYng/hqdefault.jpg"
   },
   {
-    "id": "song_232",
+    "id": "song_220",
     "title": "Goodbye",
     "artist": "Air Supply",
     "mood": "Happy",
@@ -2088,7 +1980,7 @@
     "thumbnail": "https://i.ytimg.com/vi/h_pF0my1GP4/hqdefault.jpg"
   },
   {
-    "id": "song_233",
+    "id": "song_221",
     "title": "Nothing's Gonna Change My Love for You",
     "artist": "George Benson",
     "mood": "Happy",
@@ -2097,7 +1989,7 @@
     "thumbnail": "https://i.ytimg.com/vi/f1De87ETXwo/hqdefault.jpg"
   },
   {
-    "id": "song_234",
+    "id": "song_222",
     "title": "Hero (feat. Josey Scott)",
     "artist": "Chad Kroeger",
     "mood": "Relaxed",
@@ -2106,7 +1998,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ZjhkSjb41VQ/hqdefault.jpg"
   },
   {
-    "id": "song_235",
+    "id": "song_223",
     "title": "Til Kingdom Come",
     "artist": "Coldplay",
     "mood": "Sad",
@@ -2115,7 +2007,7 @@
     "thumbnail": "https://i.ytimg.com/vi/E0UN-pVTLf4/hqdefault.jpg"
   },
   {
-    "id": "song_236",
+    "id": "song_224",
     "title": "Blitzkrieg Bop (2016 Remaster)",
     "artist": "The Ramones",
     "mood": "Energetic",
@@ -2124,7 +2016,7 @@
     "thumbnail": "https://i.ytimg.com/vi/skdE0KAFCEA/hqdefault.jpg"
   },
   {
-    "id": "song_237",
+    "id": "song_225",
     "title": "Come and Get Your Love",
     "artist": "Redbone",
     "mood": "Happy",
@@ -2133,7 +2025,7 @@
     "thumbnail": "https://i.ytimg.com/vi/rsf_gTZG4cI/hqdefault.jpg"
   },
   {
-    "id": "song_238",
+    "id": "song_226",
     "title": "Plain Jane",
     "artist": "FERG",
     "mood": "Focus",
@@ -2142,7 +2034,7 @@
     "thumbnail": "https://i.ytimg.com/vi/5ZNiP0heCQI/hqdefault.jpg"
   },
   {
-    "id": "song_239",
+    "id": "song_227",
     "title": "Bumble Bee",
     "artist": "Bambee",
     "mood": "Angry",
@@ -2151,7 +2043,7 @@
     "thumbnail": "https://i.ytimg.com/vi/IYT4Hzgmgm4/hqdefault.jpg"
   },
   {
-    "id": "song_240",
+    "id": "song_228",
     "title": "Mary On A Cross",
     "artist": "Ghost",
     "mood": "Chill",
@@ -2160,7 +2052,7 @@
     "thumbnail": "https://i.ytimg.com/vi/CJe2qhAJjWM/hqdefault.jpg"
   },
   {
-    "id": "song_241",
+    "id": "song_229",
     "title": "Holding Out for a Hero (From \"Footloose\" Soundtrack)",
     "artist": "Bonnie Tyler",
     "mood": "Energetic",
@@ -2169,7 +2061,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Ls9yC_KE1nI/hqdefault.jpg"
   },
   {
-    "id": "song_242",
+    "id": "song_230",
     "title": "What's Up Danger",
     "artist": "Blackway Music",
     "mood": "Happy",
@@ -2178,7 +2070,7 @@
     "thumbnail": "https://i.ytimg.com/vi/zEVzgqga3lo/hqdefault.jpg"
   },
   {
-    "id": "song_243",
+    "id": "song_231",
     "title": "Sunflower (Remix)",
     "artist": "Post Malone",
     "mood": "Chill",
@@ -2187,7 +2079,7 @@
     "thumbnail": "https://i.ytimg.com/vi/58dyibIUscg/hqdefault.jpg"
   },
   {
-    "id": "song_244",
+    "id": "song_232",
     "title": "Sunflower (Spider-Man: Into the Spider-Verse)",
     "artist": "Post Malone",
     "mood": "Chill",
@@ -2196,7 +2088,7 @@
     "thumbnail": "https://i.ytimg.com/vi/r7Rn4ryE_w8/hqdefault.jpg"
   },
   {
-    "id": "song_245",
+    "id": "song_233",
     "title": "Sunday Morning",
     "artist": "Maroon 5",
     "mood": "Happy",
@@ -2205,7 +2097,7 @@
     "thumbnail": "https://i.ytimg.com/vi/U9-f4Mosb_A/hqdefault.jpg"
   },
   {
-    "id": "song_246",
+    "id": "song_234",
     "title": "Treasure",
     "artist": "Bruno Mars",
     "mood": "Happy",
@@ -2214,7 +2106,7 @@
     "thumbnail": "https://i.ytimg.com/vi/cy6Arnjp-hQ/hqdefault.jpg"
   },
   {
-    "id": "song_247",
+    "id": "song_235",
     "title": "JVSTIN - CLANDESTINA (TikTok Remix) LYRICS",
     "artist": "The Vibe Guide",
     "mood": "Sad",
@@ -2223,7 +2115,7 @@
     "thumbnail": "https://i.ytimg.com/vi/lYcSc57pc2U/hqdefault.jpg"
   },
   {
-    "id": "song_248",
+    "id": "song_236",
     "title": "Love Me",
     "artist": "Justin Bieber",
     "mood": "Happy",
@@ -2232,7 +2124,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Pd5OC6agFbg/hqdefault.jpg"
   },
   {
-    "id": "song_249",
+    "id": "song_237",
     "title": "She Make It Clap",
     "artist": "Release",
     "mood": "Relaxed",
@@ -2241,7 +2133,7 @@
     "thumbnail": "https://i.ytimg.com/vi/cyHrODkR_w4/hqdefault.jpg"
   },
   {
-    "id": "song_250",
+    "id": "song_238",
     "title": "Chill Bill",
     "artist": "Rob Stone",
     "mood": "Chill",
@@ -2250,7 +2142,7 @@
     "thumbnail": "https://i.ytimg.com/vi/U7soh5-EjGY/hqdefault.jpg"
   },
   {
-    "id": "song_251",
+    "id": "song_239",
     "title": "Matira, Matibay (Lyrics) - From FPJ's Batang Quiapo OST",
     "artist": "Dre Guil",
     "mood": "Focus",
@@ -2259,7 +2151,7 @@
     "thumbnail": "https://i.ytimg.com/vi/uuAFRinSC4U/hqdefault.jpg"
   },
   {
-    "id": "song_252",
+    "id": "song_240",
     "title": "12-Subhana Allah",
     "artist": "Maher Zain",
     "mood": "Angry",
@@ -2268,7 +2160,7 @@
     "thumbnail": "https://i.ytimg.com/vi/tNrxXbXcpkU/hqdefault.jpg"
   },
   {
-    "id": "song_253",
+    "id": "song_241",
     "title": "Maher Zain - Ya Nabi Salam Alayka (International Version) | Vocals Only - Official Music Video",
     "artist": "Awakening Music",
     "mood": "Chill",
@@ -2277,7 +2169,7 @@
     "thumbnail": "https://i.ytimg.com/vi/D5vsICvAA8U/hqdefault.jpg"
   },
   {
-    "id": "song_254",
+    "id": "song_242",
     "title": "WWE: Next Big Thing (Brock Lesnar)",
     "artist": "WWE",
     "mood": "Energetic",
@@ -2286,7 +2178,7 @@
     "thumbnail": "https://i.ytimg.com/vi/8_qL7JUokq4/hqdefault.jpg"
   },
   {
-    "id": "song_255",
+    "id": "song_243",
     "title": "Lonely",
     "artist": "Akon",
     "mood": "Happy",
@@ -2295,7 +2187,7 @@
     "thumbnail": "https://i.ytimg.com/vi/2CgESv5CYUw/hqdefault.jpg"
   },
   {
-    "id": "song_256",
+    "id": "song_244",
     "title": "Old Town Road (Remix)",
     "artist": "Lil Nas X",
     "mood": "Energetic",
@@ -2304,7 +2196,7 @@
     "thumbnail": "https://i.ytimg.com/vi/TxcmdhjmnEE/hqdefault.jpg"
   },
   {
-    "id": "song_257",
+    "id": "song_245",
     "title": "Sh-Boom",
     "artist": "The Chords",
     "mood": "Sad",
@@ -2313,7 +2205,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ESLa421KQaM/hqdefault.jpg"
   },
   {
-    "id": "song_258",
+    "id": "song_246",
     "title": "She Make It Clap (Freestyle) Tory",
     "artist": "Levis Remix",
     "mood": "Relaxed",
@@ -2322,7 +2214,7 @@
     "thumbnail": "https://i.ytimg.com/vi/mFInFfRB2Q0/hqdefault.jpg"
   },
   {
-    "id": "song_259",
+    "id": "song_247",
     "title": "Your Eyes",
     "artist": "Barney Sku",
     "mood": "Focus",
@@ -2331,7 +2223,7 @@
     "thumbnail": "https://i.ytimg.com/vi/bSbmY4NJ4iw/hqdefault.jpg"
   },
   {
-    "id": "song_260",
+    "id": "song_248",
     "title": "NF - The Search (Slowed)",
     "artist": "BÆ",
     "mood": "Chill",
@@ -2340,7 +2232,7 @@
     "thumbnail": "https://i.ytimg.com/vi/DWLRNfQDro4/hqdefault.jpg"
   },
   {
-    "id": "song_261",
+    "id": "song_249",
     "title": "Perfect",
     "artist": "SimplePlan",
     "mood": "Relaxed",
@@ -2349,7 +2241,7 @@
     "thumbnail": "https://i.ytimg.com/vi/PMMqfnRx2IA/hqdefault.jpg"
   },
   {
-    "id": "song_262",
+    "id": "song_250",
     "title": "Mortals",
     "artist": "Warriyo",
     "mood": "Angry",
@@ -2358,7 +2250,7 @@
     "thumbnail": "https://i.ytimg.com/vi/jTfT_TeDNeA/hqdefault.jpg"
   },
   {
-    "id": "song_263",
+    "id": "song_251",
     "title": "Bassilyo, Smugglaz, Crazy Mix, Flict-G, Kial, Masta Feat, Jonas and Pistolero perform Batang Quiapo",
     "artist": "ABS-CBN Entertainment",
     "mood": "Energetic",
@@ -2367,7 +2259,7 @@
     "thumbnail": "https://i.ytimg.com/vi/wzxFk1vYWvY/hqdefault.jpg"
   },
   {
-    "id": "song_264",
+    "id": "song_252",
     "title": "Until I Found You (Em Beihold Version)",
     "artist": "Stephen Sanchez",
     "mood": "Chill",
@@ -2376,7 +2268,7 @@
     "thumbnail": "https://i.ytimg.com/vi/kPlSyYtE63M/hqdefault.jpg"
   },
   {
-    "id": "song_265",
+    "id": "song_253",
     "title": "14-Ya Nabi Salam Alayka (international vesion-Bonus Track)",
     "artist": "Maher Zain",
     "mood": "Energetic",
@@ -2385,7 +2277,7 @@
     "thumbnail": "https://i.ytimg.com/vi/cWXCF8qhGes/hqdefault.jpg"
   },
   {
-    "id": "song_266",
+    "id": "song_254",
     "title": "Don't Look Back in Anger",
     "artist": "Boyce Avenue",
     "mood": "Happy",
@@ -2394,7 +2286,7 @@
     "thumbnail": "https://i.ytimg.com/vi/OSz2epHMc2U/hqdefault.jpg"
   },
   {
-    "id": "song_267",
+    "id": "song_255",
     "title": "5-Thank You Allah",
     "artist": "Maher Zain",
     "mood": "Sad",
@@ -2403,7 +2295,7 @@
     "thumbnail": "https://i.ytimg.com/vi/4hRkHNpalnQ/hqdefault.jpg"
   },
   {
-    "id": "song_268",
+    "id": "song_256",
     "title": "Insha Allah Feat. Fadly (Padi)",
     "artist": "Maher Zain",
     "mood": "Relaxed",
@@ -2412,7 +2304,7 @@
     "thumbnail": "https://i.ytimg.com/vi/cnEeb3VvMvI/hqdefault.jpg"
   },
   {
-    "id": "song_269",
+    "id": "song_257",
     "title": "8-Baraka Allahu Lakuma",
     "artist": "Maher Zain",
     "mood": "Focus",
@@ -2421,7 +2313,7 @@
     "thumbnail": "https://i.ytimg.com/vi/OzV5mvbNXYs/hqdefault.jpg"
   },
   {
-    "id": "song_270",
+    "id": "song_258",
     "title": "Ya Nabi Salam Alayka (Turkish Version)",
     "artist": "Maher Zain",
     "mood": "Angry",
@@ -2430,7 +2322,7 @@
     "thumbnail": "https://i.ytimg.com/vi/C_OXOTch57Q/hqdefault.jpg"
   },
   {
-    "id": "song_271",
+    "id": "song_259",
     "title": "Coastline",
     "artist": "Hollow Coves",
     "mood": "Chill",
@@ -2439,7 +2331,7 @@
     "thumbnail": "https://i.ytimg.com/vi/f5ydCBPLT4Y/hqdefault.jpg"
   },
   {
-    "id": "song_272",
+    "id": "song_260",
     "title": "Mafia",
     "artist": "König",
     "mood": "Energetic",
@@ -2448,7 +2340,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Q8VYkV-rQfg/hqdefault.jpg"
   },
   {
-    "id": "song_273",
+    "id": "song_261",
     "title": "It's Not So Bad - My Tea's Gone Cold, I'm Wondering Why",
     "artist": "Fariz Rizki",
     "mood": "Sad",
@@ -2457,7 +2349,7 @@
     "thumbnail": "https://i.ytimg.com/vi/oM1U0Qmor4w/hqdefault.jpg"
   },
   {
-    "id": "song_274",
+    "id": "song_262",
     "title": "Superhero (Heroes & Villains)",
     "artist": "Metro Boomin",
     "mood": "Happy",
@@ -2466,7 +2358,7 @@
     "thumbnail": "https://i.ytimg.com/vi/074r1TFfo0M/hqdefault.jpg"
   },
   {
-    "id": "song_275",
+    "id": "song_263",
     "title": "Arcade",
     "artist": "Duncan Laurence",
     "mood": "Sad",
@@ -2475,7 +2367,7 @@
     "thumbnail": "https://i.ytimg.com/vi/TcSAv2kFNJ0/hqdefault.jpg"
   },
   {
-    "id": "song_276",
+    "id": "song_264",
     "title": "Limbo",
     "artist": "Freddie Dredd",
     "mood": "Sad",
@@ -2484,7 +2376,7 @@
     "thumbnail": "https://i.ytimg.com/vi/uZX8IX81kF8/hqdefault.jpg"
   },
   {
-    "id": "song_277",
+    "id": "song_265",
     "title": "Spinnin",
     "artist": "Connor Price",
     "mood": "Relaxed",
@@ -2493,7 +2385,7 @@
     "thumbnail": "https://i.ytimg.com/vi/pAMhtfNXTpo/hqdefault.jpg"
   },
   {
-    "id": "song_278",
+    "id": "song_266",
     "title": "Voices (feat. Oliver Tree)",
     "artist": "KSI Music",
     "mood": "Energetic",
@@ -2502,7 +2394,7 @@
     "thumbnail": "https://i.ytimg.com/vi/0VGcivPKsg8/hqdefault.jpg"
   },
   {
-    "id": "song_279",
+    "id": "song_267",
     "title": "MONTAGEM - ORQUESTRA SINFONICA (sped up)",
     "artist": "Kaio",
     "mood": "Focus",
@@ -2511,7 +2403,7 @@
     "thumbnail": "https://i.ytimg.com/vi/f6MBrNwktcQ/hqdefault.jpg"
   },
   {
-    "id": "song_280",
+    "id": "song_268",
     "title": "Money so big (feat. Yeatt) (slowed)",
     "artist": "Lil maker",
     "mood": "Chill",
@@ -2520,7 +2412,7 @@
     "thumbnail": "https://i.ytimg.com/vi/68il_DLX8wI/hqdefault.jpg"
   },
   {
-    "id": "song_281",
+    "id": "song_269",
     "title": "Only Time",
     "artist": "enyatv",
     "mood": "Angry",
@@ -2529,7 +2421,7 @@
     "thumbnail": "https://i.ytimg.com/vi/YArQ641o8V8/hqdefault.jpg"
   },
   {
-    "id": "song_282",
+    "id": "song_270",
     "title": "Not Afraid",
     "artist": "EminemMusic",
     "mood": "Energetic",
@@ -2538,7 +2430,7 @@
     "thumbnail": "https://i.ytimg.com/vi/-grPV-Fae6I/hqdefault.jpg"
   },
   {
-    "id": "song_283",
+    "id": "song_271",
     "title": "Eminem - Lose Yourself (Day Trading Motivation)",
     "artist": "SCALP NOW",
     "mood": "Energetic",
@@ -2547,7 +2439,7 @@
     "thumbnail": "https://i.ytimg.com/vi/-j1Udjwh8ro/hqdefault.jpg"
   },
   {
-    "id": "song_284",
+    "id": "song_272",
     "title": "The Apology Song (from \"The Book of Life\" Soundtrack)",
     "artist": "Diego Luna",
     "mood": "Chill",
@@ -2556,7 +2448,7 @@
     "thumbnail": "https://i.ytimg.com/vi/TLyzqbZM5K8/hqdefault.jpg"
   },
   {
-    "id": "song_285",
+    "id": "song_273",
     "title": "Low Life",
     "artist": "Future",
     "mood": "Energetic",
@@ -2565,7 +2457,7 @@
     "thumbnail": "https://i.ytimg.com/vi/j3OzH8URrng/hqdefault.jpg"
   },
   {
-    "id": "song_286",
+    "id": "song_274",
     "title": "Drip Like ME",
     "artist": "KENN DOG",
     "mood": "Happy",
@@ -2574,7 +2466,7 @@
     "thumbnail": "https://i.ytimg.com/vi/G9j05uCoP04/hqdefault.jpg"
   },
   {
-    "id": "song_287",
+    "id": "song_275",
     "title": "Everything at Once",
     "artist": "lenkatv",
     "mood": "Sad",
@@ -2583,7 +2475,7 @@
     "thumbnail": "https://i.ytimg.com/vi/47rMmPZPI3s/hqdefault.jpg"
   },
   {
-    "id": "song_288",
+    "id": "song_276",
     "title": "Living Life, In The Night",
     "artist": "Cheriimoya",
     "mood": "Chill",
@@ -2592,7 +2484,7 @@
     "thumbnail": "https://i.ytimg.com/vi/HHCBP66iiDQ/hqdefault.jpg"
   },
   {
-    "id": "song_289",
+    "id": "song_277",
     "title": "La Câlin",
     "artist": "Serhat Durmus Music",
     "mood": "Relaxed",
@@ -2601,7 +2493,7 @@
     "thumbnail": "https://i.ytimg.com/vi/E8m8sYs8Rlc/hqdefault.jpg"
   },
   {
-    "id": "song_290",
+    "id": "song_278",
     "title": "葉問 (instrumental) - Kenji Kawai - Ip Man 4 Soundtrack",
     "artist": "MusicScore",
     "mood": "Focus",
@@ -2610,7 +2502,7 @@
     "thumbnail": "https://i.ytimg.com/vi/5--LD-uP2Ko/hqdefault.jpg"
   },
   {
-    "id": "song_291",
+    "id": "song_279",
     "title": "Shang CHi - Run It Instrumental Extended Edit Fight theme song (Brian Theme)",
     "artist": "Stannis the Mannis",
     "mood": "Energetic",
@@ -2619,7 +2511,7 @@
     "thumbnail": "https://i.ytimg.com/vi/S3sliYvXQ8Y/hqdefault.jpg"
   },
   {
-    "id": "song_292",
+    "id": "song_280",
     "title": "ZAYDE WOLF - \"RULE THE WORLD\" [CLEAN INSTRUMENTAL]",
     "artist": "촘비 C O M B I",
     "mood": "Focus",
@@ -2628,7 +2520,7 @@
     "thumbnail": "https://i.ytimg.com/vi/v0c_AwFu9W8/hqdefault.jpg"
   },
   {
-    "id": "song_293",
+    "id": "song_281",
     "title": "Terrified",
     "artist": "Katharine McPhee",
     "mood": "Focus",
@@ -2637,7 +2529,7 @@
     "thumbnail": "https://i.ytimg.com/vi/zJLPwajC_RM/hqdefault.jpg"
   },
   {
-    "id": "song_294",
+    "id": "song_282",
     "title": "Bones",
     "artist": "ImagineDragons",
     "mood": "Angry",
@@ -2646,7 +2538,7 @@
     "thumbnail": "https://i.ytimg.com/vi/V2SVRJ6dcE4/hqdefault.jpg"
   },
   {
-    "id": "song_295",
+    "id": "song_283",
     "title": "vendetta! (sped up)",
     "artist": "MUPP",
     "mood": "Chill",
@@ -2655,7 +2547,7 @@
     "thumbnail": "https://i.ytimg.com/vi/yt5Xd1MoQDc/hqdefault.jpg"
   },
   {
-    "id": "song_296",
+    "id": "song_284",
     "title": "Mockingbird",
     "artist": "EminemMusic",
     "mood": "Energetic",
@@ -2664,7 +2556,7 @@
     "thumbnail": "https://i.ytimg.com/vi/9kznlAwE-8o/hqdefault.jpg"
   },
   {
-    "id": "song_297",
+    "id": "song_285",
     "title": "Black and Yellow (feat. Juicy J, Snoop Dogg & T-Pain) (G-Mix)",
     "artist": "Wiz Khalifa",
     "mood": "Sad",
@@ -2673,7 +2565,7 @@
     "thumbnail": "https://i.ytimg.com/vi/i2xVmkuBdYE/hqdefault.jpg"
   },
   {
-    "id": "song_298",
+    "id": "song_286",
     "title": "Pinoy Ako",
     "artist": "Release",
     "mood": "Energetic",
@@ -2682,7 +2574,7 @@
     "thumbnail": "https://i.ytimg.com/vi/CI2nWFSXuTs/hqdefault.jpg"
   },
   {
-    "id": "song_299",
+    "id": "song_287",
     "title": "Mask Off (Marshmello Remix)",
     "artist": "Future",
     "mood": "Happy",
@@ -2691,7 +2583,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Cqt2PFLOQyo/hqdefault.jpg"
   },
   {
-    "id": "song_300",
+    "id": "song_288",
     "title": "I Don’t Wanna Live Forever (Fifty Shades Darker)",
     "artist": "zayn",
     "mood": "Sad",
@@ -2700,7 +2592,7 @@
     "thumbnail": "https://i.ytimg.com/vi/J2dqEK7pdBQ/hqdefault.jpg"
   },
   {
-    "id": "song_301",
+    "id": "song_289",
     "title": "Hometown",
     "artist": "twenty one pilots",
     "mood": "Focus",
@@ -2709,7 +2601,7 @@
     "thumbnail": "https://i.ytimg.com/vi/wS8otCVxpkw/hqdefault.jpg"
   },
   {
-    "id": "song_302",
+    "id": "song_290",
     "title": "Carol of the Bells",
     "artist": "Lindsey Stirling",
     "mood": "Relaxed",
@@ -2718,7 +2610,7 @@
     "thumbnail": "https://i.ytimg.com/vi/HZeECxlYVnY/hqdefault.jpg"
   },
   {
-    "id": "song_303",
+    "id": "song_291",
     "title": "Epic Audio Edit: Heathens x Centuries [REMIX]",
     "artist": "Damaged Bass",
     "mood": "Energetic",
@@ -2727,7 +2619,7 @@
     "thumbnail": "https://i.ytimg.com/vi/9N1b0VphRKk/hqdefault.jpg"
   },
   {
-    "id": "song_304",
+    "id": "song_292",
     "title": "Fall Out Boy - Centuries ( Edit Audio )",
     "artist": "DRK editz",
     "mood": "Energetic",
@@ -2736,7 +2628,7 @@
     "thumbnail": "https://i.ytimg.com/vi/xnfAmIkgOuM/hqdefault.jpg"
   },
   {
-    "id": "song_305",
+    "id": "song_293",
     "title": "Fall Out Boy - Centuries (Slowed + Reverb)",
     "artist": "Milli",
     "mood": "Chill",
@@ -2745,7 +2637,7 @@
     "thumbnail": "https://i.ytimg.com/vi/KrkAtC4l2PI/hqdefault.jpg"
   },
   {
-    "id": "song_306",
+    "id": "song_294",
     "title": "Sweet Dreams (Are Made of This)",
     "artist": "Eurythmics",
     "mood": "Happy",
@@ -2754,7 +2646,7 @@
     "thumbnail": "https://i.ytimg.com/vi/i5_asj1BGFs/hqdefault.jpg"
   },
   {
-    "id": "song_307",
+    "id": "song_295",
     "title": "Un Poco Loco",
     "artist": "Anthony Gonzalez",
     "mood": "Focus",
@@ -2763,7 +2655,7 @@
     "thumbnail": "https://i.ytimg.com/vi/MalsRkzmnWU/hqdefault.jpg"
   },
   {
-    "id": "song_308",
+    "id": "song_296",
     "title": "Dream On",
     "artist": "Aerosmith",
     "mood": "Relaxed",
@@ -2772,7 +2664,7 @@
     "thumbnail": "https://i.ytimg.com/vi/cvCFRGn7EEQ/hqdefault.jpg"
   },
   {
-    "id": "song_309",
+    "id": "song_297",
     "title": "Won't Go Home Without You",
     "artist": "Maroon 5",
     "mood": "Happy",
@@ -2781,7 +2673,7 @@
     "thumbnail": "https://i.ytimg.com/vi/uGYrhFYE_mc/hqdefault.jpg"
   },
   {
-    "id": "song_310",
+    "id": "song_298",
     "title": "On My Own",
     "artist": "Darci",
     "mood": "Angry",
@@ -2790,7 +2682,7 @@
     "thumbnail": "https://i.ytimg.com/vi/GHzSGpWKmA0/hqdefault.jpg"
   },
   {
-    "id": "song_311",
+    "id": "song_299",
     "title": "Down",
     "artist": "jayseanworldwide",
     "mood": "Chill",
@@ -2799,7 +2691,7 @@
     "thumbnail": "https://i.ytimg.com/vi/DQ514qIthSc/hqdefault.jpg"
   },
   {
-    "id": "song_312",
+    "id": "song_300",
     "title": "Baazigar",
     "artist": "DIVINE",
     "mood": "Energetic",
@@ -2808,7 +2700,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Afh-9qQYDEk/hqdefault.jpg"
   },
   {
-    "id": "song_313",
+    "id": "song_301",
     "title": "Till I Collapse",
     "artist": "EminemMusic",
     "mood": "Energetic",
@@ -2817,7 +2709,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Obim8BYGnOE/hqdefault.jpg"
   },
   {
-    "id": "song_314",
+    "id": "song_302",
     "title": "Space Cadet",
     "artist": "Metro Boomin",
     "mood": "Relaxed",
@@ -2826,7 +2718,7 @@
     "thumbnail": "https://i.ytimg.com/vi/z65Flj8PBq8/hqdefault.jpg"
   },
   {
-    "id": "song_315",
+    "id": "song_303",
     "title": "Metro Boomin - Space Cadet (TikTok Remix) Lyrics ft. Gunna | bought a spaceship now imma space cadet",
     "artist": "TikTokTunes",
     "mood": "Relaxed",
@@ -2835,7 +2727,7 @@
     "thumbnail": "https://i.ytimg.com/vi/SDUsgV_JW2I/hqdefault.jpg"
   },
   {
-    "id": "song_316",
+    "id": "song_304",
     "title": "After Dark x Sweater Weather (nightcore + slowed)",
     "artist": "The Oysters",
     "mood": "Chill",
@@ -2844,7 +2736,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Jsxtz9qqXlw/hqdefault.jpg"
   },
   {
-    "id": "song_317",
+    "id": "song_305",
     "title": "golden hour",
     "artist": "JVKE",
     "mood": "Happy",
@@ -2853,7 +2745,7 @@
     "thumbnail": "https://i.ytimg.com/vi/pAnDeVpj6BE/hqdefault.jpg"
   },
   {
-    "id": "song_318",
+    "id": "song_306",
     "title": "death bed (coffee for your head)",
     "artist": "Powfu",
     "mood": "Angry",
@@ -2862,7 +2754,7 @@
     "thumbnail": "https://i.ytimg.com/vi/JApegyYlvyY/hqdefault.jpg"
   },
   {
-    "id": "song_319",
+    "id": "song_307",
     "title": "Nightcore ↬ Thunder ✗ Radioactive ✗ Believer ✗ Whatever It Takes and MORE [Switching Vocals]",
     "artist": "A D R I E N",
     "mood": "Chill",
@@ -2871,7 +2763,7 @@
     "thumbnail": "https://i.ytimg.com/vi/RdCGTFZdCUs/hqdefault.jpg"
   },
   {
-    "id": "song_320",
+    "id": "song_308",
     "title": "Middle Of The Night Ft. Superman | Middle Of The Night X Superman | Superman Edit Status",
     "artist": "Virat Edits",
     "mood": "Chill",
@@ -2880,7 +2772,7 @@
     "thumbnail": "https://i.ytimg.com/vi/kY26NTLcAd4/hqdefault.jpg"
   },
   {
-    "id": "song_321",
+    "id": "song_309",
     "title": "Betty (Get Money)",
     "artist": "Yung Gravy",
     "mood": "Happy",
@@ -2889,7 +2781,7 @@
     "thumbnail": "https://i.ytimg.com/vi/e2T_MvOVapI/hqdefault.jpg"
   },
   {
-    "id": "song_322",
+    "id": "song_310",
     "title": "Cardiac Arrest",
     "artist": "GAWNE",
     "mood": "Relaxed",
@@ -2898,7 +2790,7 @@
     "thumbnail": "https://i.ytimg.com/vi/tT4O4iKQo8I/hqdefault.jpg"
   },
   {
-    "id": "song_323",
+    "id": "song_311",
     "title": "Smugglaz Rap Songs",
     "artist": "DAN NY",
     "mood": "Sad",
@@ -2907,7 +2799,7 @@
     "thumbnail": "https://i.ytimg.com/vi/5H9i849MB0g/hqdefault.jpg"
   },
   {
-    "id": "song_324",
+    "id": "song_312",
     "title": "Astronomia",
     "artist": "Vicetone",
     "mood": "Relaxed",
@@ -2916,7 +2808,7 @@
     "thumbnail": "https://i.ytimg.com/vi/A5wBk9946Ew/hqdefault.jpg"
   },
   {
-    "id": "song_325",
+    "id": "song_313",
     "title": "All I Want",
     "artist": "Olivia Rodrigo",
     "mood": "Sad",
@@ -2925,7 +2817,7 @@
     "thumbnail": "https://i.ytimg.com/vi/lAkNr61yRC4/hqdefault.jpg"
   },
   {
-    "id": "song_326",
+    "id": "song_314",
     "title": "abcdefu",
     "artist": "GAYLE",
     "mood": "Focus",
@@ -2934,7 +2826,7 @@
     "thumbnail": "https://i.ytimg.com/vi/xn0-IZZ6YO4/hqdefault.jpg"
   },
   {
-    "id": "song_327",
+    "id": "song_315",
     "title": "Watch Me (Whip / Nae Nae)",
     "artist": "Silentó",
     "mood": "Angry",
@@ -2943,7 +2835,7 @@
     "thumbnail": "https://i.ytimg.com/vi/UpFGSkJ_Hg4/hqdefault.jpg"
   },
   {
-    "id": "song_328",
+    "id": "song_316",
     "title": "Swalla (feat. Nicki Minaj & Ty Dolla $ign)",
     "artist": "Jason Derulo",
     "mood": "Energetic",
@@ -2952,7 +2844,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ycQqiLpEbZI/hqdefault.jpg"
   },
   {
-    "id": "song_329",
+    "id": "song_317",
     "title": "Angel",
     "artist": "shaggymedia",
     "mood": "Chill",
@@ -2961,7 +2853,7 @@
     "thumbnail": "https://i.ytimg.com/vi/_APQB2-Um-I/hqdefault.jpg"
   },
   {
-    "id": "song_330",
+    "id": "song_318",
     "title": "Я буду ебать",
     "artist": "Moreart",
     "mood": "Energetic",
@@ -2970,7 +2862,7 @@
     "thumbnail": "https://i.ytimg.com/vi/eGr8-cHXmMo/hqdefault.jpg"
   },
   {
-    "id": "song_331",
+    "id": "song_319",
     "title": "Title",
     "artist": "Meghan Trainor",
     "mood": "Happy",
@@ -2979,7 +2871,7 @@
     "thumbnail": "https://i.ytimg.com/vi/AYcWoEjyD0U/hqdefault.jpg"
   },
   {
-    "id": "song_332",
+    "id": "song_320",
     "title": "They Don't Know About Us",
     "artist": "One Direction",
     "mood": "Sad",
@@ -2988,7 +2880,7 @@
     "thumbnail": "https://i.ytimg.com/vi/y42kqR-9Z5U/hqdefault.jpg"
   },
   {
-    "id": "song_333",
+    "id": "song_321",
     "title": "THATS WHAT I WANT",
     "artist": "Lil Nas X",
     "mood": "Energetic",
@@ -2997,25 +2889,7 @@
     "thumbnail": "https://i.ytimg.com/vi/qP1KUarf4VM/hqdefault.jpg"
   },
   {
-    "id": "song_334",
-    "title": "Take It To The Head",
-    "artist": "DJ Khaled",
-    "mood": "Relaxed",
-    "duration": "4:28",
-    "youtubeUrl": "https://youtube.com/watch?v=cc-xpuxHLm0",
-    "thumbnail": "https://i.ytimg.com/vi/cc-xpuxHLm0/hqdefault.jpg"
-  },
-  {
-    "id": "song_335",
-    "title": "Spoliarium",
-    "artist": "Eraserheads Official Channel",
-    "mood": "Focus",
-    "duration": "5:27",
-    "youtubeUrl": "https://youtube.com/watch?v=V5VwXT6dFtE",
-    "thumbnail": "https://i.ytimg.com/vi/V5VwXT6dFtE/hqdefault.jpg"
-  },
-  {
-    "id": "song_336",
+    "id": "song_322",
     "title": "Single Ladies (Put a Ring on It)",
     "artist": "Beyoncé",
     "mood": "Angry",
@@ -3024,7 +2898,7 @@
     "thumbnail": "https://i.ytimg.com/vi/UyUjgeYrvdo/hqdefault.jpg"
   },
   {
-    "id": "song_337",
+    "id": "song_323",
     "title": "See Me Fall (Y2K Remix)",
     "artist": "Ro Ransom",
     "mood": "Chill",
@@ -3033,16 +2907,7 @@
     "thumbnail": "https://i.ytimg.com/vi/awnvotCuzto/hqdefault.jpg"
   },
   {
-    "id": "song_338",
-    "title": "Resbakkk",
-    "artist": "Smugglaz TV",
-    "mood": "Energetic",
-    "duration": "4:09",
-    "youtubeUrl": "https://youtube.com/watch?v=Y3baCGgJDDk",
-    "thumbnail": "https://i.ytimg.com/vi/Y3baCGgJDDk/hqdefault.jpg"
-  },
-  {
-    "id": "song_339",
+    "id": "song_324",
     "title": "The Reason",
     "artist": "Boyce Avenue",
     "mood": "Happy",
@@ -3051,7 +2916,7 @@
     "thumbnail": "https://i.ytimg.com/vi/hMfn5EdqNf4/hqdefault.jpg"
   },
   {
-    "id": "song_340",
+    "id": "song_325",
     "title": "The Reason (Acoustic)",
     "artist": "Hoobastank",
     "mood": "Chill",
@@ -3060,7 +2925,7 @@
     "thumbnail": "https://i.ytimg.com/vi/S0aaxXlsqFk/hqdefault.jpg"
   },
   {
-    "id": "song_341",
+    "id": "song_326",
     "title": "Really Love (feat. Craig David & Digital Farm Animals)",
     "artist": "KSI Music",
     "mood": "Energetic",
@@ -3069,7 +2934,7 @@
     "thumbnail": "https://i.ytimg.com/vi/oh2AwceIGBo/hqdefault.jpg"
   },
   {
-    "id": "song_342",
+    "id": "song_327",
     "title": "Prinsesa",
     "artist": "6cyclemind",
     "mood": "Sad",
@@ -3078,7 +2943,7 @@
     "thumbnail": "https://i.ytimg.com/vi/d8ij23fcuss/hqdefault.jpg"
   },
   {
-    "id": "song_343",
+    "id": "song_328",
     "title": "Party In The U.S.A.",
     "artist": "Miley Cyrus",
     "mood": "Energetic",
@@ -3087,7 +2952,7 @@
     "thumbnail": "https://i.ytimg.com/vi/7ARXrfGbQaI/hqdefault.jpg"
   },
   {
-    "id": "song_344",
+    "id": "song_329",
     "title": "Own Brand Freestyle",
     "artist": "FelixThe1st",
     "mood": "Relaxed",
@@ -3096,7 +2961,7 @@
     "thumbnail": "https://i.ytimg.com/vi/s5lGwteZRnU/hqdefault.jpg"
   },
   {
-    "id": "song_345",
+    "id": "song_330",
     "title": "One Call Away",
     "artist": "Charlie Puth",
     "mood": "Happy",
@@ -3105,7 +2970,7 @@
     "thumbnail": "https://i.ytimg.com/vi/7pFXFu59iNw/hqdefault.jpg"
   },
   {
-    "id": "song_346",
+    "id": "song_331",
     "title": "No Roots",
     "artist": "Alice Merton",
     "mood": "Focus",
@@ -3114,7 +2979,7 @@
     "thumbnail": "https://i.ytimg.com/vi/MsGfE7qg4CI/hqdefault.jpg"
   },
   {
-    "id": "song_347",
+    "id": "song_332",
     "title": "The Next Episode",
     "artist": "Dr. Dre",
     "mood": "Angry",
@@ -3123,16 +2988,7 @@
     "thumbnail": "https://i.ytimg.com/vi/nL2HPPHdPAA/hqdefault.jpg"
   },
   {
-    "id": "song_348",
-    "title": "Nakakamiss",
-    "artist": "Smugglaz TV",
-    "mood": "Sad",
-    "duration": "5:08",
-    "youtubeUrl": "https://youtube.com/watch?v=sTrIgGVFtdU",
-    "thumbnail": "https://i.ytimg.com/vi/sTrIgGVFtdU/hqdefault.jpg"
-  },
-  {
-    "id": "song_349",
+    "id": "song_333",
     "title": "MONTERO (Call Me By Your Name)",
     "artist": "Lil Nas X",
     "mood": "Energetic",
@@ -3141,7 +2997,7 @@
     "thumbnail": "https://i.ytimg.com/vi/oz0Oz5tBOg8/hqdefault.jpg"
   },
   {
-    "id": "song_350",
+    "id": "song_334",
     "title": "Monster (Robin Schulz Remix)",
     "artist": "LUM!X",
     "mood": "Angry",
@@ -3150,7 +3006,7 @@
     "thumbnail": "https://i.ytimg.com/vi/74jft75Jy-M/hqdefault.jpg"
   },
   {
-    "id": "song_351",
+    "id": "song_335",
     "title": "The Moment",
     "artist": "KSI Music",
     "mood": "Energetic",
@@ -3159,16 +3015,7 @@
     "thumbnail": "https://i.ytimg.com/vi/SYq_xj-jM4Q/hqdefault.jpg"
   },
   {
-    "id": "song_352",
-    "title": "Minsan",
-    "artist": "Eraserheads Official Channel",
-    "mood": "Chill",
-    "duration": "4:15",
-    "youtubeUrl": "https://youtube.com/watch?v=l95iiZi--9s",
-    "thumbnail": "https://i.ytimg.com/vi/l95iiZi--9s/hqdefault.jpg"
-  },
-  {
-    "id": "song_353",
+    "id": "song_336",
     "title": "Medal (Kurt Angle)",
     "artist": "Jim Johnston",
     "mood": "Energetic",
@@ -3177,25 +3024,7 @@
     "thumbnail": "https://i.ytimg.com/vi/testlLpZrDo/hqdefault.jpg"
   },
   {
-    "id": "song_354",
-    "title": "Maging Sino Ka Man (Inspirational Version)",
-    "artist": "Martin Nievera",
-    "mood": "Happy",
-    "duration": "3:59",
-    "youtubeUrl": "https://youtube.com/watch?v=w9B1Ckhhyuw",
-    "thumbnail": "https://i.ytimg.com/vi/w9B1Ckhhyuw/hqdefault.jpg"
-  },
-  {
-    "id": "song_355",
-    "title": "Magasin",
-    "artist": "Eraserheads Official Channel",
-    "mood": "Sad",
-    "duration": "4:09",
-    "youtubeUrl": "https://youtube.com/watch?v=LYtAEgCbxJ4",
-    "thumbnail": "https://i.ytimg.com/vi/LYtAEgCbxJ4/hqdefault.jpg"
-  },
-  {
-    "id": "song_356",
+    "id": "song_337",
     "title": "Madness",
     "artist": "KSI Music",
     "mood": "Energetic",
@@ -3204,7 +3033,7 @@
     "thumbnail": "https://i.ytimg.com/vi/g3h8-wyytQY/hqdefault.jpg"
   },
   {
-    "id": "song_357",
+    "id": "song_338",
     "title": "love nwantiti (ah ah ah)",
     "artist": "CKay",
     "mood": "Happy",
@@ -3213,7 +3042,7 @@
     "thumbnail": "https://i.ytimg.com/vi/tQ2l9zKInDY/hqdefault.jpg"
   },
   {
-    "id": "song_358",
+    "id": "song_339",
     "title": "Locked Away",
     "artist": "Rock City",
     "mood": "Relaxed",
@@ -3222,7 +3051,7 @@
     "thumbnail": "https://i.ytimg.com/vi/wTR_tymnbac/hqdefault.jpg"
   },
   {
-    "id": "song_359",
+    "id": "song_340",
     "title": "Lily",
     "artist": "Alan Walker",
     "mood": "Chill",
@@ -3231,16 +3060,7 @@
     "thumbnail": "https://i.ytimg.com/vi/C2Uconj2F1g/hqdefault.jpg"
   },
   {
-    "id": "song_360",
-    "title": "Ligaya",
-    "artist": "Eraserheads Official Channel",
-    "mood": "Focus",
-    "duration": "4:30",
-    "youtubeUrl": "https://youtube.com/watch?v=XI_H2wY9VHo",
-    "thumbnail": "https://i.ytimg.com/vi/XI_H2wY9VHo/hqdefault.jpg"
-  },
-  {
-    "id": "song_361",
+    "id": "song_341",
     "title": "Let Me Down Slowly (feat. Alessia Cara)",
     "artist": "Alec Benjamin",
     "mood": "Chill",
@@ -3249,7 +3069,7 @@
     "thumbnail": "https://i.ytimg.com/vi/YL_iwN4dlT4/hqdefault.jpg"
   },
   {
-    "id": "song_362",
+    "id": "song_342",
     "title": "Let Me Love You",
     "artist": "DJ Snake",
     "mood": "Energetic",
@@ -3258,7 +3078,7 @@
     "thumbnail": "https://i.ytimg.com/vi/rJ0D1GbDq1Q/hqdefault.jpg"
   },
   {
-    "id": "song_363",
+    "id": "song_343",
     "title": "Lemon Tree",
     "artist": "Fools Garden",
     "mood": "Angry",
@@ -3267,7 +3087,7 @@
     "thumbnail": "https://i.ytimg.com/vi/49zga3j91i8/hqdefault.jpg"
   },
   {
-    "id": "song_364",
+    "id": "song_344",
     "title": "The Lazy Song",
     "artist": "Bruno Mars",
     "mood": "Happy",
@@ -3276,7 +3096,7 @@
     "thumbnail": "https://i.ytimg.com/vi/sLRtf41L12A/hqdefault.jpg"
   },
   {
-    "id": "song_365",
+    "id": "song_345",
     "title": "Last Friday Night (T.G.I.F.)",
     "artist": "Katy Perry",
     "mood": "Chill",
@@ -3285,7 +3105,7 @@
     "thumbnail": "https://i.ytimg.com/vi/h3e1wYxipHg/hqdefault.jpg"
   },
   {
-    "id": "song_366",
+    "id": "song_346",
     "title": "Kings & Queens",
     "artist": "Ava Max",
     "mood": "Chill",
@@ -3294,7 +3114,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Gy_ExjhjA-4/hqdefault.jpg"
   },
   {
-    "id": "song_367",
+    "id": "song_347",
     "title": "Kasalanan",
     "artist": "6cyclemind",
     "mood": "Energetic",
@@ -3303,7 +3123,7 @@
     "thumbnail": "https://i.ytimg.com/vi/-xRtgYli5xw/hqdefault.jpg"
   },
   {
-    "id": "song_368",
+    "id": "song_348",
     "title": "Kala Chashma",
     "artist": "Amar Arshi",
     "mood": "Happy",
@@ -3312,7 +3132,7 @@
     "thumbnail": "https://i.ytimg.com/vi/CK5dtbG19mo/hqdefault.jpg"
   },
   {
-    "id": "song_369",
+    "id": "song_349",
     "title": "I Want It That Way",
     "artist": "Backstreet Boys",
     "mood": "Sad",
@@ -3321,7 +3141,7 @@
     "thumbnail": "https://i.ytimg.com/vi/LwkrXybZ1uo/hqdefault.jpg"
   },
   {
-    "id": "song_370",
+    "id": "song_350",
     "title": "It's Tricky",
     "artist": "Run DMC",
     "mood": "Relaxed",
@@ -3330,7 +3150,7 @@
     "thumbnail": "https://i.ytimg.com/vi/KB6SILem5Xs/hqdefault.jpg"
   },
   {
-    "id": "song_371",
+    "id": "song_351",
     "title": "It's Not So Bad",
     "artist": "Dybbukk",
     "mood": "Focus",
@@ -3339,7 +3159,7 @@
     "thumbnail": "https://i.ytimg.com/vi/x0z1Q8Lareg/hqdefault.jpg"
   },
   {
-    "id": "song_372",
+    "id": "song_352",
     "title": "Irreplaceable",
     "artist": "Beyoncé",
     "mood": "Angry",
@@ -3348,7 +3168,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Npdl-J68A00/hqdefault.jpg"
   },
   {
-    "id": "song_373",
+    "id": "song_353",
     "title": "Into Your Arms (feat. Ava Max)",
     "artist": "Witt Lowry",
     "mood": "Chill",
@@ -3357,7 +3177,7 @@
     "thumbnail": "https://i.ytimg.com/vi/zgG9-fQXl0k/hqdefault.jpg"
   },
   {
-    "id": "song_374",
+    "id": "song_354",
     "title": "I Love You Too Much (from \"The Book of Life\" Soundtrack)",
     "artist": "Diego Luna",
     "mood": "Happy",
@@ -3366,7 +3186,7 @@
     "thumbnail": "https://i.ytimg.com/vi/uyS7KKF6I3Y/hqdefault.jpg"
   },
   {
-    "id": "song_375",
+    "id": "song_355",
     "title": "Iko Iko (My Bestie)",
     "artist": "Justin Wellington",
     "mood": "Happy",
@@ -3375,7 +3195,7 @@
     "thumbnail": "https://i.ytimg.com/vi/K7dmbMmzf9Q/hqdefault.jpg"
   },
   {
-    "id": "song_376",
+    "id": "song_356",
     "title": "Ignite",
     "artist": "K-391",
     "mood": "Energetic",
@@ -3384,7 +3204,7 @@
     "thumbnail": "https://i.ytimg.com/vi/I-CMtScCtc8/hqdefault.jpg"
   },
   {
-    "id": "song_377",
+    "id": "song_357",
     "title": "I Don't Care",
     "artist": "Ed Sheeran",
     "mood": "Happy",
@@ -3393,7 +3213,7 @@
     "thumbnail": "https://i.ytimg.com/vi/7hDam9i-Aps/hqdefault.jpg"
   },
   {
-    "id": "song_378",
+    "id": "song_358",
     "title": "Hold On",
     "artist": "Chord Overstreet",
     "mood": "Happy",
@@ -3402,7 +3222,7 @@
     "thumbnail": "https://i.ytimg.com/vi/6XRZF7bvs9U/hqdefault.jpg"
   },
   {
-    "id": "song_379",
+    "id": "song_359",
     "title": "Heal the World",
     "artist": "Michael Jackson",
     "mood": "Sad",
@@ -3411,7 +3231,7 @@
     "thumbnail": "https://i.ytimg.com/vi/cyCMuCFCkdk/hqdefault.jpg"
   },
   {
-    "id": "song_380",
+    "id": "song_360",
     "title": "Havana",
     "artist": "Camila Cabello",
     "mood": "Relaxed",
@@ -3420,7 +3240,7 @@
     "thumbnail": "https://i.ytimg.com/vi/mJLDjIWuPXU/hqdefault.jpg"
   },
   {
-    "id": "song_381",
+    "id": "song_361",
     "title": "Happier",
     "artist": "Marshmello",
     "mood": "Happy",
@@ -3429,7 +3249,7 @@
     "thumbnail": "https://i.ytimg.com/vi/QgKYZWRH4DA/hqdefault.jpg"
   },
   {
-    "id": "song_382",
+    "id": "song_362",
     "title": "Got To Believe In Magic",
     "artist": "David Pomeranz",
     "mood": "Focus",
@@ -3438,7 +3258,7 @@
     "thumbnail": "https://i.ytimg.com/vi/3ugMVkvjUk4/hqdefault.jpg"
   },
   {
-    "id": "song_383",
+    "id": "song_363",
     "title": "Got To Believe In Magic (from the TV series “G2B”)",
     "artist": "Juris",
     "mood": "Angry",
@@ -3447,7 +3267,7 @@
     "thumbnail": "https://i.ytimg.com/vi/RkcwNeVg9dg/hqdefault.jpg"
   },
   {
-    "id": "song_384",
+    "id": "song_364",
     "title": "Good Feeling",
     "artist": "Flo Rida",
     "mood": "Energetic",
@@ -3456,7 +3276,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Q_mQxKviRJM/hqdefault.jpg"
   },
   {
-    "id": "song_385",
+    "id": "song_365",
     "title": "good 4 u",
     "artist": "Olivia Rodrigo",
     "mood": "Sad",
@@ -3465,7 +3285,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Bc9ijogGmtU/hqdefault.jpg"
   },
   {
-    "id": "song_386",
+    "id": "song_366",
     "title": "God Gave Me You (Single)",
     "artist": "BryanWhiteOfficial",
     "mood": "Chill",
@@ -3474,7 +3294,7 @@
     "thumbnail": "https://i.ytimg.com/vi/6n19OQRE7Z4/hqdefault.jpg"
   },
   {
-    "id": "song_387",
+    "id": "song_367",
     "title": "Flashlight (From \"Pitch Perfect 2\" Soundtrack)",
     "artist": "Jessie J",
     "mood": "Relaxed",
@@ -3483,7 +3303,7 @@
     "thumbnail": "https://i.ytimg.com/vi/pJxuD9fiibM/hqdefault.jpg"
   },
   {
-    "id": "song_388",
+    "id": "song_368",
     "title": "Fireball",
     "artist": "Pitbull",
     "mood": "Energetic",
@@ -3492,7 +3312,7 @@
     "thumbnail": "https://i.ytimg.com/vi/AN2-czGsblw/hqdefault.jpg"
   },
   {
-    "id": "song_389",
+    "id": "song_369",
     "title": "Fight Song",
     "artist": "Rachel Platten",
     "mood": "Angry",
@@ -3501,7 +3321,7 @@
     "thumbnail": "https://i.ytimg.com/vi/FLSqMv9VDBc/hqdefault.jpg"
   },
   {
-    "id": "song_390",
+    "id": "song_370",
     "title": "Fed Up",
     "artist": "Bazanji",
     "mood": "Energetic",
@@ -3510,7 +3330,7 @@
     "thumbnail": "https://i.ytimg.com/vi/qKVanefX7uE/hqdefault.jpg"
   },
   {
-    "id": "song_391",
+    "id": "song_371",
     "title": "Falling",
     "artist": "Trevor Daniel",
     "mood": "Sad",
@@ -3519,16 +3339,7 @@
     "thumbnail": "https://i.ytimg.com/vi/P9L_ZWVPX4g/hqdefault.jpg"
   },
   {
-    "id": "song_392",
-    "title": "Harana",
-    "artist": "Eraserheads Official Channel",
-    "mood": "Happy",
-    "duration": "6:06",
-    "youtubeUrl": "https://youtube.com/watch?v=mkSLZGNCp58",
-    "thumbnail": "https://i.ytimg.com/vi/mkSLZGNCp58/hqdefault.jpg"
-  },
-  {
-    "id": "song_393",
+    "id": "song_372",
     "title": "Fall for You",
     "artist": "Secondhand Serenade",
     "mood": "Sad",
@@ -3537,7 +3348,7 @@
     "thumbnail": "https://i.ytimg.com/vi/X_I6F2TZOw4/hqdefault.jpg"
   },
   {
-    "id": "song_394",
+    "id": "song_373",
     "title": "Everything I Own",
     "artist": "Bread",
     "mood": "Relaxed",
@@ -3546,7 +3357,7 @@
     "thumbnail": "https://i.ytimg.com/vi/LTImGXKUbyU/hqdefault.jpg"
   },
   {
-    "id": "song_395",
+    "id": "song_374",
     "title": "E.T.",
     "artist": "Katy Perry",
     "mood": "Focus",
@@ -3555,7 +3366,7 @@
     "thumbnail": "https://i.ytimg.com/vi/7XI4B2ckhog/hqdefault.jpg"
   },
   {
-    "id": "song_396",
+    "id": "song_375",
     "title": "The Edge Of Glory",
     "artist": "Lady Gaga",
     "mood": "Angry",
@@ -3564,7 +3375,7 @@
     "thumbnail": "https://i.ytimg.com/vi/qigPzqghPkw/hqdefault.jpg"
   },
   {
-    "id": "song_397",
+    "id": "song_376",
     "title": "Down Like That (feat. Rick Ross, Lil Baby & S-X)",
     "artist": "KSI Music",
     "mood": "Energetic",
@@ -3573,7 +3384,7 @@
     "thumbnail": "https://i.ytimg.com/vi/0e7JaqjEBnw/hqdefault.jpg"
   },
   {
-    "id": "song_398",
+    "id": "song_377",
     "title": "Do It To It",
     "artist": "ACRAZE",
     "mood": "Chill",
@@ -3582,7 +3393,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ZY8YGHG1bII/hqdefault.jpg"
   },
   {
-    "id": "song_399",
+    "id": "song_378",
     "title": "Diamonds",
     "artist": "Rihanna",
     "mood": "Energetic",
@@ -3591,7 +3402,7 @@
     "thumbnail": "https://i.ytimg.com/vi/4mVo93E9wpU/hqdefault.jpg"
   },
   {
-    "id": "song_400",
+    "id": "song_379",
     "title": "Dandelions",
     "artist": "Ruth B.",
     "mood": "Energetic",
@@ -3600,7 +3411,7 @@
     "thumbnail": "https://i.ytimg.com/vi/HZbsLxL7GeM/hqdefault.jpg"
   },
   {
-    "id": "song_401",
+    "id": "song_380",
     "title": "Copines",
     "artist": "Aya Nakamura",
     "mood": "Happy",
@@ -3609,7 +3420,7 @@
     "thumbnail": "https://i.ytimg.com/vi/aykb9pGfTR4/hqdefault.jpg"
   },
   {
-    "id": "song_402",
+    "id": "song_381",
     "title": "Welcome to My Life",
     "artist": "SimplePlan",
     "mood": "Sad",
@@ -3618,7 +3429,7 @@
     "thumbnail": "https://i.ytimg.com/vi/SC5zbR2E3Vs/hqdefault.jpg"
   },
   {
-    "id": "song_403",
+    "id": "song_382",
     "title": "Simple Plan - Summer Paradise ft. Sean Paul (Cover) by Janick Thibault",
     "artist": "Janick",
     "mood": "Relaxed",
@@ -3627,7 +3438,7 @@
     "thumbnail": "https://i.ytimg.com/vi/cfUwgP81_2U/hqdefault.jpg"
   },
   {
-    "id": "song_404",
+    "id": "song_383",
     "title": "All Star",
     "artist": "SMASH MOUTH",
     "mood": "Focus",
@@ -3636,7 +3447,7 @@
     "thumbnail": "https://i.ytimg.com/vi/8ay_BkRuv-o/hqdefault.jpg"
   },
   {
-    "id": "song_405",
+    "id": "song_384",
     "title": "ROXANNE",
     "artist": "Arizona Zervas",
     "mood": "Angry",
@@ -3645,7 +3456,7 @@
     "thumbnail": "https://i.ytimg.com/vi/2EYHZ2zUqTg/hqdefault.jpg"
   },
   {
-    "id": "song_406",
+    "id": "song_385",
     "title": "Counting Stars",
     "artist": "OneRepublic",
     "mood": "Happy",
@@ -3654,7 +3465,7 @@
     "thumbnail": "https://i.ytimg.com/vi/4QOkcGwjVow/hqdefault.jpg"
   },
   {
-    "id": "song_407",
+    "id": "song_386",
     "title": "Darkside",
     "artist": "Alan Walker",
     "mood": "Chill",
@@ -3663,7 +3474,7 @@
     "thumbnail": "https://i.ytimg.com/vi/CXU7Xlf8wTI/hqdefault.jpg"
   },
   {
-    "id": "song_408",
+    "id": "song_387",
     "title": "Summer Paradise (feat. K'naan)",
     "artist": "SimplePlan",
     "mood": "Chill",
@@ -3672,7 +3483,7 @@
     "thumbnail": "https://i.ytimg.com/vi/3hNoLtiOB3I/hqdefault.jpg"
   },
   {
-    "id": "song_409",
+    "id": "song_388",
     "title": "Summer Paradise (feat. Sean Paul)",
     "artist": "SimplePlan",
     "mood": "Energetic",
@@ -3681,7 +3492,7 @@
     "thumbnail": "https://i.ytimg.com/vi/E_zFGviIMHU/hqdefault.jpg"
   },
   {
-    "id": "song_410",
+    "id": "song_389",
     "title": "Aj na nani Nina o Taj na nani Nina O (Arabic) song || background song || gaming background song",
     "artist": "Joker Nation",
     "mood": "Happy",
@@ -3690,7 +3501,7 @@
     "thumbnail": "https://i.ytimg.com/vi/OMO1Y1ACmM0/hqdefault.jpg"
   },
   {
-    "id": "song_411",
+    "id": "song_390",
     "title": "Sorry",
     "artist": "Justin Bieber",
     "mood": "Happy",
@@ -3699,7 +3510,7 @@
     "thumbnail": "https://i.ytimg.com/vi/v16qZcBllUU/hqdefault.jpg"
   },
   {
-    "id": "song_412",
+    "id": "song_391",
     "title": "Kiss Me",
     "artist": "Sixpence None The Richer",
     "mood": "Sad",
@@ -3708,7 +3519,7 @@
     "thumbnail": "https://i.ytimg.com/vi/K2tbQ_g2VbQ/hqdefault.jpg"
   },
   {
-    "id": "song_413",
+    "id": "song_392",
     "title": "Zack Snyder's Justice League Soundtrack | Superman Rising, Pt. 2 / Immovable - Tom Holkenborg",
     "artist": "WaterTower Music",
     "mood": "Relaxed",
@@ -3717,7 +3528,7 @@
     "thumbnail": "https://i.ytimg.com/vi/MXUDP6HP4qk/hqdefault.jpg"
   },
   {
-    "id": "song_414",
+    "id": "song_393",
     "title": "Heat Waves",
     "artist": "Glass Animals",
     "mood": "Chill",
@@ -3726,7 +3537,7 @@
     "thumbnail": "https://i.ytimg.com/vi/XDjB9E3YtUE/hqdefault.jpg"
   },
   {
-    "id": "song_415",
+    "id": "song_394",
     "title": "Umbrella (Radio Edit)",
     "artist": "Rihanna",
     "mood": "Energetic",
@@ -3735,7 +3546,7 @@
     "thumbnail": "https://i.ytimg.com/vi/5ApuGPBPXMs/hqdefault.jpg"
   },
   {
-    "id": "song_416",
+    "id": "song_395",
     "title": "Girl on Fire",
     "artist": "Alicia Keys",
     "mood": "Energetic",
@@ -3744,7 +3555,7 @@
     "thumbnail": "https://i.ytimg.com/vi/mVuSfxqpZa4/hqdefault.jpg"
   },
   {
-    "id": "song_417",
+    "id": "song_396",
     "title": "Halo",
     "artist": "Beyoncé",
     "mood": "Focus",
@@ -3753,7 +3564,7 @@
     "thumbnail": "https://i.ytimg.com/vi/VqQeT7wKqvs/hqdefault.jpg"
   },
   {
-    "id": "song_418",
+    "id": "song_397",
     "title": "Happy (From \"Despicable Me 2\")",
     "artist": "Pharrell Williams",
     "mood": "Happy",
@@ -3762,7 +3573,7 @@
     "thumbnail": "https://i.ytimg.com/vi/dJqxQzxLbHM/hqdefault.jpg"
   },
   {
-    "id": "song_419",
+    "id": "song_398",
     "title": "Toxic",
     "artist": "Britney Spears",
     "mood": "Angry",
@@ -3771,7 +3582,7 @@
     "thumbnail": "https://i.ytimg.com/vi/tVdr_JWmnsA/hqdefault.jpg"
   },
   {
-    "id": "song_420",
+    "id": "song_399",
     "title": "Bad Romance",
     "artist": "Lady Gaga",
     "mood": "Chill",
@@ -3780,7 +3591,7 @@
     "thumbnail": "https://i.ytimg.com/vi/J2kPH11Z4cM/hqdefault.jpg"
   },
   {
-    "id": "song_421",
+    "id": "song_400",
     "title": "Love You Like A Love Song",
     "artist": "Selena Gomez",
     "mood": "Sad",
@@ -3789,7 +3600,7 @@
     "thumbnail": "https://i.ytimg.com/vi/XhGior4O2eM/hqdefault.jpg"
   },
   {
-    "id": "song_422",
+    "id": "song_401",
     "title": "Hot N Cold",
     "artist": "Katy Perry",
     "mood": "Energetic",
@@ -3798,7 +3609,7 @@
     "thumbnail": "https://i.ytimg.com/vi/C-jAPrdc3PI/hqdefault.jpg"
   },
   {
-    "id": "song_423",
+    "id": "song_402",
     "title": "Don't Let Me Down",
     "artist": "The Chainsmokers",
     "mood": "Happy",
@@ -3807,7 +3618,7 @@
     "thumbnail": "https://i.ytimg.com/vi/CpTr4USXjQw/hqdefault.jpg"
   },
   {
-    "id": "song_424",
+    "id": "song_403",
     "title": "Kings & Queens - Slowed Down",
     "artist": "Chill out Music",
     "mood": "Chill",
@@ -3816,7 +3627,7 @@
     "thumbnail": "https://i.ytimg.com/vi/FBHueAqjUC0/hqdefault.jpg"
   },
   {
-    "id": "song_425",
+    "id": "song_404",
     "title": "Left and Right (Feat. Jung Kook of BTS)",
     "artist": "Charlie Puth",
     "mood": "Happy",
@@ -3825,7 +3636,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Z2z1TbTJpdQ/hqdefault.jpg"
   },
   {
-    "id": "song_426",
+    "id": "song_405",
     "title": "Apologize",
     "artist": "OneRepublic",
     "mood": "Happy",
@@ -3834,7 +3645,7 @@
     "thumbnail": "https://i.ytimg.com/vi/BbvRjLPCzJk/hqdefault.jpg"
   },
   {
-    "id": "song_427",
+    "id": "song_406",
     "title": "Firework",
     "artist": "Katy Perry",
     "mood": "Energetic",
@@ -3843,7 +3654,7 @@
     "thumbnail": "https://i.ytimg.com/vi/M51-spaR4qk/hqdefault.jpg"
   },
   {
-    "id": "song_428",
+    "id": "song_407",
     "title": "Sweet but Psycho",
     "artist": "Ava Max",
     "mood": "Happy",
@@ -3852,7 +3663,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ttznokjeSnw/hqdefault.jpg"
   },
   {
-    "id": "song_429",
+    "id": "song_408",
     "title": "House of Memories { s l o w e d + r e v e r b }",
     "artist": "Serenity",
     "mood": "Sad",
@@ -3861,7 +3672,7 @@
     "thumbnail": "https://i.ytimg.com/vi/94Q10yjOgNs/hqdefault.jpg"
   },
   {
-    "id": "song_430",
+    "id": "song_409",
     "title": "One Last Time",
     "artist": "Ariana Grande",
     "mood": "Happy",
@@ -3870,7 +3681,7 @@
     "thumbnail": "https://i.ytimg.com/vi/KEGZVv6KXL0/hqdefault.jpg"
   },
   {
-    "id": "song_431",
+    "id": "song_410",
     "title": "Symphony (feat. Zara Larsson)",
     "artist": "Clean Bandit",
     "mood": "Relaxed",
@@ -3879,7 +3690,7 @@
     "thumbnail": "https://i.ytimg.com/vi/-SttFgyRNCI/hqdefault.jpg"
   },
   {
-    "id": "song_432",
+    "id": "song_411",
     "title": "This Love",
     "artist": "Maroon 5",
     "mood": "Happy",
@@ -3888,7 +3699,7 @@
     "thumbnail": "https://i.ytimg.com/vi/AqQuRw0S6b4/hqdefault.jpg"
   },
   {
-    "id": "song_433",
+    "id": "song_412",
     "title": "Spirits",
     "artist": "The Strumbellas",
     "mood": "Focus",
@@ -3897,7 +3708,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Sa_2DqIGp6o/hqdefault.jpg"
   },
   {
-    "id": "song_434",
+    "id": "song_413",
     "title": "Something Just Like This",
     "artist": "The Chainsmokers",
     "mood": "Angry",
@@ -3906,7 +3717,7 @@
     "thumbnail": "https://i.ytimg.com/vi/owTWCbq_nSk/hqdefault.jpg"
   },
   {
-    "id": "song_435",
+    "id": "song_414",
     "title": "Marvin Gaye (feat. Meghan Trainor)",
     "artist": "Charlie Puth",
     "mood": "Happy",
@@ -3915,7 +3726,7 @@
     "thumbnail": "https://i.ytimg.com/vi/SA3ZaJaW98w/hqdefault.jpg"
   },
   {
-    "id": "song_436",
+    "id": "song_415",
     "title": "Roar",
     "artist": "Katy Perry",
     "mood": "Chill",
@@ -3924,7 +3735,7 @@
     "thumbnail": "https://i.ytimg.com/vi/6nJuUdc2qNg/hqdefault.jpg"
   },
   {
-    "id": "song_437",
+    "id": "song_416",
     "title": "Play Date",
     "artist": "melanie martinez",
     "mood": "Energetic",
@@ -3933,7 +3744,7 @@
     "thumbnail": "https://i.ytimg.com/vi/9g6F1D70cEM/hqdefault.jpg"
   },
   {
-    "id": "song_438",
+    "id": "song_417",
     "title": "Bad Blood",
     "artist": "Taylor Swift",
     "mood": "Happy",
@@ -3942,7 +3753,7 @@
     "thumbnail": "https://i.ytimg.com/vi/d2_FwIIQvWQ/hqdefault.jpg"
   },
   {
-    "id": "song_439",
+    "id": "song_418",
     "title": "Demons",
     "artist": "ImagineDragons",
     "mood": "Happy",
@@ -3951,7 +3762,7 @@
     "thumbnail": "https://i.ytimg.com/vi/y4FiCl-tUJc/hqdefault.jpg"
   },
   {
-    "id": "song_440",
+    "id": "song_419",
     "title": "Shut Up and Dance",
     "artist": "WALK THE MOON",
     "mood": "Energetic",
@@ -3960,7 +3771,7 @@
     "thumbnail": "https://i.ytimg.com/vi/GGsuLVlLObc/hqdefault.jpg"
   },
   {
-    "id": "song_441",
+    "id": "song_420",
     "title": "A Thousand Miles",
     "artist": "Vanessa Carlton",
     "mood": "Sad",
@@ -3969,7 +3780,7 @@
     "thumbnail": "https://i.ytimg.com/vi/PNoIn1WKiEc/hqdefault.jpg"
   },
   {
-    "id": "song_442",
+    "id": "song_421",
     "title": "Infinity",
     "artist": "Jaymes Young",
     "mood": "Relaxed",
@@ -3978,7 +3789,7 @@
     "thumbnail": "https://i.ytimg.com/vi/WMK3JXG3Fx0/hqdefault.jpg"
   },
   {
-    "id": "song_443",
+    "id": "song_422",
     "title": "Levitating",
     "artist": "Dua Lipa",
     "mood": "Energetic",
@@ -3987,7 +3798,7 @@
     "thumbnail": "https://i.ytimg.com/vi/OsfAnsMY21M/hqdefault.jpg"
   },
   {
-    "id": "song_444",
+    "id": "song_423",
     "title": "Price Tag",
     "artist": "Jessie J",
     "mood": "Focus",
@@ -3996,7 +3807,7 @@
     "thumbnail": "https://i.ytimg.com/vi/xE6NE-N0Pdk/hqdefault.jpg"
   },
   {
-    "id": "song_445",
+    "id": "song_424",
     "title": "Die Young",
     "artist": "kesha",
     "mood": "Angry",
@@ -4005,7 +3816,7 @@
     "thumbnail": "https://i.ytimg.com/vi/FyZWr2wm8B0/hqdefault.jpg"
   },
   {
-    "id": "song_446",
+    "id": "song_425",
     "title": "Pumped Up Kicks",
     "artist": "FosterThePeople",
     "mood": "Energetic",
@@ -4014,7 +3825,7 @@
     "thumbnail": "https://i.ytimg.com/vi/rnO-MflYxCw/hqdefault.jpg"
   },
   {
-    "id": "song_447",
+    "id": "song_426",
     "title": "Me And My Broken Heart",
     "artist": "Push Baby",
     "mood": "Sad",
@@ -4023,7 +3834,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ooE8Og_tWgk/hqdefault.jpg"
   },
   {
-    "id": "song_448",
+    "id": "song_427",
     "title": "Until I Found You",
     "artist": "Stephen Sanchez",
     "mood": "Chill",
@@ -4032,7 +3843,7 @@
     "thumbnail": "https://i.ytimg.com/vi/znvky0Uq8qc/hqdefault.jpg"
   },
   {
-    "id": "song_449",
+    "id": "song_428",
     "title": "Hey, Soul Sister",
     "artist": "Train",
     "mood": "Energetic",
@@ -4041,7 +3852,7 @@
     "thumbnail": "https://i.ytimg.com/vi/_2qJy5r-WAY/hqdefault.jpg"
   },
   {
-    "id": "song_450",
+    "id": "song_429",
     "title": "Cheap Thrills",
     "artist": "Sia",
     "mood": "Energetic",
@@ -4050,7 +3861,7 @@
     "thumbnail": "https://i.ytimg.com/vi/AUfALRGInd4/hqdefault.jpg"
   },
   {
-    "id": "song_451",
+    "id": "song_430",
     "title": "Cheerleader (Felix Jaehn Remix Radio Edit)",
     "artist": "OMI",
     "mood": "Happy",
@@ -4059,7 +3870,7 @@
     "thumbnail": "https://i.ytimg.com/vi/HxSuYH7IS2s/hqdefault.jpg"
   },
   {
-    "id": "song_452",
+    "id": "song_431",
     "title": "Dancin (Krono Remix)",
     "artist": "Aaron Smith",
     "mood": "Sad",
@@ -4068,7 +3879,7 @@
     "thumbnail": "https://i.ytimg.com/vi/LjtvF_UuRIU/hqdefault.jpg"
   },
   {
-    "id": "song_453",
+    "id": "song_432",
     "title": "Somebody That I Used To Know",
     "artist": "gotyemusic",
     "mood": "Energetic",
@@ -4077,7 +3888,7 @@
     "thumbnail": "https://i.ytimg.com/vi/xOazTYPrt64/hqdefault.jpg"
   },
   {
-    "id": "song_454",
+    "id": "song_433",
     "title": "Mirrors",
     "artist": "Justin Timberlake",
     "mood": "Relaxed",
@@ -4086,7 +3897,7 @@
     "thumbnail": "https://i.ytimg.com/vi/59nAgJZ5IoE/hqdefault.jpg"
   },
   {
-    "id": "song_455",
+    "id": "song_434",
     "title": "Dynamite",
     "artist": "Taio Cruz",
     "mood": "Happy",
@@ -4095,7 +3906,7 @@
     "thumbnail": "https://i.ytimg.com/vi/3MrY_BwLChk/hqdefault.jpg"
   },
   {
-    "id": "song_456",
+    "id": "song_435",
     "title": "On The Floor (Radio Edit)",
     "artist": "Jennifer Lopez",
     "mood": "Focus",
@@ -4104,7 +3915,7 @@
     "thumbnail": "https://i.ytimg.com/vi/gDRL47NzG5o/hqdefault.jpg"
   },
   {
-    "id": "song_457",
+    "id": "song_436",
     "title": "Do You Remember",
     "artist": "jayseanworldwide",
     "mood": "Angry",
@@ -4113,7 +3924,7 @@
     "thumbnail": "https://i.ytimg.com/vi/9LvgomJNXkg/hqdefault.jpg"
   },
   {
-    "id": "song_458",
+    "id": "song_437",
     "title": "Mad",
     "artist": "NE-YO",
     "mood": "Chill",
@@ -4122,7 +3933,7 @@
     "thumbnail": "https://i.ytimg.com/vi/eoTh9nsjgeU/hqdefault.jpg"
   },
   {
-    "id": "song_459",
+    "id": "song_438",
     "title": "Animals",
     "artist": "Maroon 5",
     "mood": "Happy",
@@ -4131,7 +3942,7 @@
     "thumbnail": "https://i.ytimg.com/vi/5DF9aRuiOZo/hqdefault.jpg"
   },
   {
-    "id": "song_460",
+    "id": "song_439",
     "title": "Poker Face",
     "artist": "Lady Gaga",
     "mood": "Energetic",
@@ -4140,7 +3951,7 @@
     "thumbnail": "https://i.ytimg.com/vi/GMAVUvb8Obs/hqdefault.jpg"
   },
   {
-    "id": "song_461",
+    "id": "song_440",
     "title": "Fire Burning",
     "artist": "seankingston",
     "mood": "Energetic",
@@ -4149,7 +3960,7 @@
     "thumbnail": "https://i.ytimg.com/vi/kFx3X3dLwls/hqdefault.jpg"
   },
   {
-    "id": "song_462",
+    "id": "song_441",
     "title": "Whistle",
     "artist": "Flo Rida",
     "mood": "Energetic",
@@ -4158,7 +3969,7 @@
     "thumbnail": "https://i.ytimg.com/vi/6Y24X4oTQLA/hqdefault.jpg"
   },
   {
-    "id": "song_463",
+    "id": "song_442",
     "title": "DJ Got Us Fallin' In Love",
     "artist": "Usher",
     "mood": "Happy",
@@ -4167,7 +3978,7 @@
     "thumbnail": "https://i.ytimg.com/vi/yqsJsO8H-oA/hqdefault.jpg"
   },
   {
-    "id": "song_464",
+    "id": "song_443",
     "title": "Just the Way You Are",
     "artist": "Bruno Mars",
     "mood": "Happy",
@@ -4176,7 +3987,7 @@
     "thumbnail": "https://i.ytimg.com/vi/wGUKBXpfU1o/hqdefault.jpg"
   },
   {
-    "id": "song_465",
+    "id": "song_444",
     "title": "Insomnia",
     "artist": "Craig David",
     "mood": "Happy",
@@ -4185,7 +3996,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ziip1oB52vo/hqdefault.jpg"
   },
   {
-    "id": "song_466",
+    "id": "song_445",
     "title": "Nicki Minaj - Starships (ProdRed & Tuarin REMIX)",
     "artist": "ProdRed & Tuarin",
     "mood": "Sad",
@@ -4194,7 +4005,7 @@
     "thumbnail": "https://i.ytimg.com/vi/4y6NrYb8MGk/hqdefault.jpg"
   },
   {
-    "id": "song_467",
+    "id": "song_446",
     "title": "Nothing's Gonna Stop Us Now",
     "artist": "Starship",
     "mood": "Relaxed",
@@ -4203,7 +4014,7 @@
     "thumbnail": "https://i.ytimg.com/vi/SZ_I0KZvezw/hqdefault.jpg"
   },
   {
-    "id": "song_468",
+    "id": "song_447",
     "title": "Can’t Help Falling in Love",
     "artist": "Boyce Avenue",
     "mood": "Happy",
@@ -4212,7 +4023,7 @@
     "thumbnail": "https://i.ytimg.com/vi/lVGaMi_t6oo/hqdefault.jpg"
   },
   {
-    "id": "song_469",
+    "id": "song_448",
     "title": "S&M",
     "artist": "Rihanna",
     "mood": "Energetic",
@@ -4221,7 +4032,7 @@
     "thumbnail": "https://i.ytimg.com/vi/q_MtePol92o/hqdefault.jpg"
   },
   {
-    "id": "song_470",
+    "id": "song_449",
     "title": "California King Bed (Album Version)",
     "artist": "Rihanna",
     "mood": "Energetic",
@@ -4230,7 +4041,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Q23KGaXq-ms/hqdefault.jpg"
   },
   {
-    "id": "song_471",
+    "id": "song_450",
     "title": "California Gurls",
     "artist": "Katy Perry",
     "mood": "Focus",
@@ -4239,16 +4050,7 @@
     "thumbnail": "https://i.ytimg.com/vi/NFODb2JRXBI/hqdefault.jpg"
   },
   {
-    "id": "song_472",
-    "title": "Bulag, Pipi at Bingi",
-    "artist": "Freddie Aguilar",
-    "mood": "Angry",
-    "duration": "3:49",
-    "youtubeUrl": "https://youtube.com/watch?v=2Uz_qwkB3Ns",
-    "thumbnail": "https://i.ytimg.com/vi/2Uz_qwkB3Ns/hqdefault.jpg"
-  },
-  {
-    "id": "song_473",
+    "id": "song_451",
     "title": "Born This Way",
     "artist": "Lady Gaga",
     "mood": "Chill",
@@ -4257,7 +4059,7 @@
     "thumbnail": "https://i.ytimg.com/vi/fn8JP4rUP2I/hqdefault.jpg"
   },
   {
-    "id": "song_474",
+    "id": "song_452",
     "title": "Bingo",
     "artist": "Jacob Sartorius",
     "mood": "Energetic",
@@ -4266,7 +4068,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ATuYUjwfnWk/hqdefault.jpg"
   },
   {
-    "id": "song_475",
+    "id": "song_453",
     "title": "Best Day Of My Life",
     "artist": "American Authors",
     "mood": "Happy",
@@ -4275,16 +4077,7 @@
     "thumbnail": "https://i.ytimg.com/vi/BeOa6kRA6aw/hqdefault.jpg"
   },
   {
-    "id": "song_476",
-    "title": "Beer",
-    "artist": "The Itchyworms",
-    "mood": "Happy",
-    "duration": "6:05",
-    "youtubeUrl": "https://youtube.com/watch?v=VrqHmRaGH3M",
-    "thumbnail": "https://i.ytimg.com/vi/VrqHmRaGH3M/hqdefault.jpg"
-  },
-  {
-    "id": "song_477",
+    "id": "song_454",
     "title": "Beauty And A Beat",
     "artist": "Justin Bieber",
     "mood": "Happy",
@@ -4293,16 +4086,7 @@
     "thumbnail": "https://i.ytimg.com/vi/aWkPBCF8rFU/hqdefault.jpg"
   },
   {
-    "id": "song_478",
-    "title": "Ang Probinsyano",
-    "artist": "Gloc -9",
-    "mood": "Sad",
-    "duration": "3:04",
-    "youtubeUrl": "https://youtube.com/watch?v=xosH616hWYM",
-    "thumbnail": "https://i.ytimg.com/vi/xosH616hWYM/hqdefault.jpg"
-  },
-  {
-    "id": "song_479",
+    "id": "song_455",
     "title": "Satisfya",
     "artist": "imrankhanworld",
     "mood": "Relaxed",
@@ -4311,7 +4095,7 @@
     "thumbnail": "https://i.ytimg.com/vi/OfGtIdG09HA/hqdefault.jpg"
   },
   {
-    "id": "song_480",
+    "id": "song_456",
     "title": "Death to Mumble Rap",
     "artist": "GAWNE",
     "mood": "Angry",
@@ -4320,7 +4104,7 @@
     "thumbnail": "https://i.ytimg.com/vi/g7TU7BwJoFU/hqdefault.jpg"
   },
   {
-    "id": "song_481",
+    "id": "song_457",
     "title": "Stupid Love",
     "artist": "SALBAKUTA",
     "mood": "Happy",
@@ -4329,7 +4113,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ZumoWsUu-98/hqdefault.jpg"
   },
   {
-    "id": "song_482",
+    "id": "song_458",
     "title": "X Gon' Give It To Ya (Int'l Bonus track)",
     "artist": "DMX",
     "mood": "Focus",
@@ -4338,7 +4122,7 @@
     "thumbnail": "https://i.ytimg.com/vi/zHftCNi6VHI/hqdefault.jpg"
   },
   {
-    "id": "song_483",
+    "id": "song_459",
     "title": "In Da Club",
     "artist": "50 Cent",
     "mood": "Energetic",
@@ -4347,7 +4131,7 @@
     "thumbnail": "https://i.ytimg.com/vi/_VXUiAJi5KY/hqdefault.jpg"
   },
   {
-    "id": "song_484",
+    "id": "song_460",
     "title": "Remember the Name (feat. Styles of Beyond)",
     "artist": "Fort Minor",
     "mood": "Angry",
@@ -4356,7 +4140,7 @@
     "thumbnail": "https://i.ytimg.com/vi/MJD39Aja1Is/hqdefault.jpg"
   },
   {
-    "id": "song_485",
+    "id": "song_461",
     "title": "Thank You ((Acoustic) [Live])",
     "artist": "Dido",
     "mood": "Chill",
@@ -4365,7 +4149,7 @@
     "thumbnail": "https://i.ytimg.com/vi/cY9JE5t6pOs/hqdefault.jpg"
   },
   {
-    "id": "song_486",
+    "id": "song_462",
     "title": "Superman",
     "artist": "EminemMusic",
     "mood": "Energetic",
@@ -4374,7 +4158,7 @@
     "thumbnail": "https://i.ytimg.com/vi/K_8yRH2KPVo/hqdefault.jpg"
   },
   {
-    "id": "song_487",
+    "id": "song_463",
     "title": "Enemy (Skrybe x Crumpy Remix)",
     "artist": "Tommee Profitt",
     "mood": "Chill",
@@ -4383,7 +4167,7 @@
     "thumbnail": "https://i.ytimg.com/vi/8pxMlgshUi0/hqdefault.jpg"
   },
   {
-    "id": "song_488",
+    "id": "song_464",
     "title": "Enemy",
     "artist": "Tommee Profitt",
     "mood": "Energetic",
@@ -4392,7 +4176,7 @@
     "thumbnail": "https://i.ytimg.com/vi/NXCK85F_7Gk/hqdefault.jpg"
   },
   {
-    "id": "song_489",
+    "id": "song_465",
     "title": "Babe",
     "artist": "STYX",
     "mood": "Happy",
@@ -4401,7 +4185,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ogicte-_dwA/hqdefault.jpg"
   },
   {
-    "id": "song_490",
+    "id": "song_466",
     "title": "Torn",
     "artist": "Natalie Imbruglia",
     "mood": "Sad",
@@ -4410,7 +4194,7 @@
     "thumbnail": "https://i.ytimg.com/vi/rIGAt5yvfmw/hqdefault.jpg"
   },
   {
-    "id": "song_491",
+    "id": "song_467",
     "title": "Heaven (Classic Version)",
     "artist": "Bryan Adams",
     "mood": "Relaxed",
@@ -4419,7 +4203,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Q2DOv1JX6VY/hqdefault.jpg"
   },
   {
-    "id": "song_492",
+    "id": "song_468",
     "title": "Dreamers [Music from the FIFA World Cup Qatar 2022 Official Soundtrack]",
     "artist": "Jung Kook",
     "mood": "Relaxed",
@@ -4428,7 +4212,7 @@
     "thumbnail": "https://i.ytimg.com/vi/6qI-va1F5ck/hqdefault.jpg"
   },
   {
-    "id": "song_493",
+    "id": "song_469",
     "title": "Survivor",
     "artist": "2WEI",
     "mood": "Focus",
@@ -4437,7 +4221,7 @@
     "thumbnail": "https://i.ytimg.com/vi/AQ2INW7PVwE/hqdefault.jpg"
   },
   {
-    "id": "song_494",
+    "id": "song_470",
     "title": "PILLOWTALK",
     "artist": "zayn",
     "mood": "Angry",
@@ -4446,7 +4230,7 @@
     "thumbnail": "https://i.ytimg.com/vi/fSKtPBRV1gE/hqdefault.jpg"
   },
   {
-    "id": "song_495",
+    "id": "song_471",
     "title": "Until Death Do Us Part :)",
     "artist": "Chris Andrian",
     "mood": "Angry",
@@ -4455,7 +4239,7 @@
     "thumbnail": "https://i.ytimg.com/vi/lG3Mllwuq6g/hqdefault.jpg"
   },
   {
-    "id": "song_496",
+    "id": "song_472",
     "title": "I Live My Life for You",
     "artist": "Firehouse",
     "mood": "Chill",
@@ -4464,7 +4248,7 @@
     "thumbnail": "https://i.ytimg.com/vi/gUI3rQTTPAY/hqdefault.jpg"
   },
   {
-    "id": "song_497",
+    "id": "song_473",
     "title": "Thank You",
     "artist": "Dido",
     "mood": "Energetic",
@@ -4473,7 +4257,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Yj8ZufvGfvk/hqdefault.jpg"
   },
   {
-    "id": "song_498",
+    "id": "song_474",
     "title": "Unghetto - PLASTIC (Lyric Video)",
     "artist": "Unghetto",
     "mood": "Happy",
@@ -4482,7 +4266,7 @@
     "thumbnail": "https://i.ytimg.com/vi/8FK4XtfpTHc/hqdefault.jpg"
   },
   {
-    "id": "song_499",
+    "id": "song_475",
     "title": "Beast Unleashed 3",
     "artist": "Vin Jay",
     "mood": "Sad",
@@ -4491,7 +4275,7 @@
     "thumbnail": "https://i.ytimg.com/vi/9Pv_KcEZb8Q/hqdefault.jpg"
   },
   {
-    "id": "song_500",
+    "id": "song_476",
     "title": "Lamborghini (feat. P. Money)",
     "artist": "KSI Music",
     "mood": "Energetic",
@@ -4500,7 +4284,7 @@
     "thumbnail": "https://i.ytimg.com/vi/OvtIPIVdseo/hqdefault.jpg"
   },
   {
-    "id": "song_501",
+    "id": "song_477",
     "title": "Number 2 (feat. Future & 21 Savage)",
     "artist": "KSI Music",
     "mood": "Energetic",
@@ -4509,7 +4293,7 @@
     "thumbnail": "https://i.ytimg.com/vi/IV0IRTUJp0M/hqdefault.jpg"
   },
   {
-    "id": "song_502",
+    "id": "song_478",
     "title": "PLASTIC",
     "artist": "Unghetto",
     "mood": "Relaxed",
@@ -4518,7 +4302,7 @@
     "thumbnail": "https://i.ytimg.com/vi/YCIDXNp4Gsc/hqdefault.jpg"
   },
   {
-    "id": "song_503",
+    "id": "song_479",
     "title": "Right Round (feat. Ke$ha)",
     "artist": "Flo Rida",
     "mood": "Energetic",
@@ -4527,7 +4311,7 @@
     "thumbnail": "https://i.ytimg.com/vi/WUu0YvPX69E/hqdefault.jpg"
   },
   {
-    "id": "song_504",
+    "id": "song_480",
     "title": "Sorry, Blame It On Me",
     "artist": "Akon",
     "mood": "Sad",
@@ -4536,7 +4320,7 @@
     "thumbnail": "https://i.ytimg.com/vi/km1dvRb6sZs/hqdefault.jpg"
   },
   {
-    "id": "song_505",
+    "id": "song_481",
     "title": "jvla - Such a Whore with Mortal Kombat Guy",
     "artist": "Seagull Audio",
     "mood": "Focus",
@@ -4545,7 +4329,7 @@
     "thumbnail": "https://i.ytimg.com/vi/kpSOa8DhvjU/hqdefault.jpg"
   },
   {
-    "id": "song_506",
+    "id": "song_482",
     "title": "such a whore x mortal kombat mash up",
     "artist": "Soushii",
     "mood": "Angry",
@@ -4554,7 +4338,7 @@
     "thumbnail": "https://i.ytimg.com/vi/fEsDg2N5mdk/hqdefault.jpg"
   },
   {
-    "id": "song_507",
+    "id": "song_483",
     "title": "Dark Horse",
     "artist": "Katy Perry",
     "mood": "Chill",
@@ -4563,7 +4347,7 @@
     "thumbnail": "https://i.ytimg.com/vi/gxTRx4uurxs/hqdefault.jpg"
   },
   {
-    "id": "song_508",
+    "id": "song_484",
     "title": "Hari Ng Tondo (feat. Denise Barbacena)",
     "artist": "Gloc -9",
     "mood": "Energetic",
@@ -4572,7 +4356,7 @@
     "thumbnail": "https://i.ytimg.com/vi/f4HGmBkdkM8/hqdefault.jpg"
   },
   {
-    "id": "song_509",
+    "id": "song_485",
     "title": "Dusk Till Dawn (Radio Edit)",
     "artist": "zayn",
     "mood": "Relaxed",
@@ -4581,7 +4365,7 @@
     "thumbnail": "https://i.ytimg.com/vi/j-0kLu3O7qU/hqdefault.jpg"
   },
   {
-    "id": "song_510",
+    "id": "song_486",
     "title": "Danza Kuduro",
     "artist": "Don Omar",
     "mood": "Happy",
@@ -4590,7 +4374,7 @@
     "thumbnail": "https://i.ytimg.com/vi/FqmVq4TrvxY/hqdefault.jpg"
   },
   {
-    "id": "song_511",
+    "id": "song_487",
     "title": "After Dark",
     "artist": "Mr.Kitty Official",
     "mood": "Sad",
@@ -4599,7 +4383,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Cl5Vkd4N03Q/hqdefault.jpg"
   },
   {
-    "id": "song_512",
+    "id": "song_488",
     "title": "Lil Nas X, Katy Perry - Industry Baby vs. E.T. (Mashup)",
     "artist": "Adamusic",
     "mood": "Energetic",
@@ -4608,7 +4392,7 @@
     "thumbnail": "https://i.ytimg.com/vi/VSapCTmw31g/hqdefault.jpg"
   },
   {
-    "id": "song_513",
+    "id": "song_489",
     "title": "Wavin'  Flag (Coca-Cola® Celebration Mix)",
     "artist": "Keinan A",
     "mood": "Happy",
@@ -4617,7 +4401,7 @@
     "thumbnail": "https://i.ytimg.com/vi/cc4og_BpscM/hqdefault.jpg"
   },
   {
-    "id": "song_514",
+    "id": "song_490",
     "title": "Wildest Dreams",
     "artist": "Taylor Swift",
     "mood": "Happy",
@@ -4626,7 +4410,7 @@
     "thumbnail": "https://i.ytimg.com/vi/M6Qo43zkDeE/hqdefault.jpg"
   },
   {
-    "id": "song_515",
+    "id": "song_491",
     "title": "22",
     "artist": "Taylor Swift",
     "mood": "Happy",
@@ -4635,7 +4419,7 @@
     "thumbnail": "https://i.ytimg.com/vi/QQXZyf0OJpI/hqdefault.jpg"
   },
   {
-    "id": "song_516",
+    "id": "song_492",
     "title": "X Gon' Give It To Ya",
     "artist": "DMX",
     "mood": "Relaxed",
@@ -4644,7 +4428,7 @@
     "thumbnail": "https://i.ytimg.com/vi/_FHGghEs1Ts/hqdefault.jpg"
   },
   {
-    "id": "song_517",
+    "id": "song_493",
     "title": "Get Lucky (feat. Pharrell Williams and Nile Rodgers)",
     "artist": "Daft Punk",
     "mood": "Happy",
@@ -4653,7 +4437,7 @@
     "thumbnail": "https://i.ytimg.com/vi/4D7u5KF7SP8/hqdefault.jpg"
   },
   {
-    "id": "song_518",
+    "id": "song_494",
     "title": "Airplanes (feat. Hayley Williams of Paramore)",
     "artist": "B.o.B",
     "mood": "Focus",
@@ -4662,25 +4446,7 @@
     "thumbnail": "https://i.ytimg.com/vi/-MxTcyDfKBc/hqdefault.jpg"
   },
   {
-    "id": "song_519",
-    "title": "Alapaap",
-    "artist": "Eraserheads Official Channel",
-    "mood": "Angry",
-    "duration": "4:23",
-    "youtubeUrl": "https://youtube.com/watch?v=-CJyexGXKK0",
-    "thumbnail": "https://i.ytimg.com/vi/-CJyexGXKK0/hqdefault.jpg"
-  },
-  {
-    "id": "song_520",
-    "title": "Tuwing Umuulan At Kapiling Ka",
-    "artist": "Eraserheads Official Channel",
-    "mood": "Chill",
-    "duration": "4:44",
-    "youtubeUrl": "https://youtube.com/watch?v=vDxPghU4UBU",
-    "thumbnail": "https://i.ytimg.com/vi/vDxPghU4UBU/hqdefault.jpg"
-  },
-  {
-    "id": "song_521",
+    "id": "song_495",
     "title": "Not Over Yet (feat. Tom Grennan)",
     "artist": "KSI Music",
     "mood": "Energetic",
@@ -4689,7 +4455,7 @@
     "thumbnail": "https://i.ytimg.com/vi/h5zFpKscAj0/hqdefault.jpg"
   },
   {
-    "id": "song_522",
+    "id": "song_496",
     "title": "Houdini (feat. Swarmz & Tion Wayne)",
     "artist": "KSI Music",
     "mood": "Energetic",
@@ -4698,7 +4464,7 @@
     "thumbnail": "https://i.ytimg.com/vi/JLdkIT2r_T0/hqdefault.jpg"
   },
   {
-    "id": "song_523",
+    "id": "song_497",
     "title": "Holiday",
     "artist": "KSI Music",
     "mood": "Energetic",
@@ -4707,7 +4473,7 @@
     "thumbnail": "https://i.ytimg.com/vi/uHvnvAnGYho/hqdefault.jpg"
   },
   {
-    "id": "song_524",
+    "id": "song_498",
     "title": "Good Time",
     "artist": "Owl City",
     "mood": "Happy",
@@ -4716,7 +4482,7 @@
     "thumbnail": "https://i.ytimg.com/vi/zGipbUYrUCQ/hqdefault.jpg"
   },
   {
-    "id": "song_525",
+    "id": "song_499",
     "title": "You & I",
     "artist": "One Direction",
     "mood": "Energetic",
@@ -4725,7 +4491,7 @@
     "thumbnail": "https://i.ytimg.com/vi/uWRwLfWwZe0/hqdefault.jpg"
   },
   {
-    "id": "song_526",
+    "id": "song_500",
     "title": "Rasputin",
     "artist": "Boney M.",
     "mood": "Happy",
@@ -4734,7 +4500,7 @@
     "thumbnail": "https://i.ytimg.com/vi/-JT8Y_Lbe98/hqdefault.jpg"
   },
   {
-    "id": "song_527",
+    "id": "song_501",
     "title": "Ainsi bas la vida",
     "artist": "Indila",
     "mood": "Sad",
@@ -4743,7 +4509,7 @@
     "thumbnail": "https://i.ytimg.com/vi/rBR1nwYIFck/hqdefault.jpg"
   },
   {
-    "id": "song_528",
+    "id": "song_502",
     "title": "Ride",
     "artist": "twenty one pilots",
     "mood": "Focus",
@@ -4752,7 +4518,7 @@
     "thumbnail": "https://i.ytimg.com/vi/w1Smzzw_w7Q/hqdefault.jpg"
   },
   {
-    "id": "song_529",
+    "id": "song_503",
     "title": "Rude",
     "artist": "MAGIC!",
     "mood": "Relaxed",
@@ -4761,7 +4527,7 @@
     "thumbnail": "https://i.ytimg.com/vi/3WzamI8QD2s/hqdefault.jpg"
   },
   {
-    "id": "song_530",
+    "id": "song_504",
     "title": "TiK ToK",
     "artist": "kesha",
     "mood": "Focus",
@@ -4770,7 +4536,7 @@
     "thumbnail": "https://i.ytimg.com/vi/u5uSlUKBEDc/hqdefault.jpg"
   },
   {
-    "id": "song_531",
+    "id": "song_505",
     "title": "Girls Like You (Cardi B Version)",
     "artist": "Maroon 5",
     "mood": "Happy",
@@ -4779,7 +4545,7 @@
     "thumbnail": "https://i.ytimg.com/vi/XDbW5bXrm7I/hqdefault.jpg"
   },
   {
-    "id": "song_532",
+    "id": "song_506",
     "title": "Avengers: Endgame - Trailer Music",
     "artist": "L'Orchestra Cinématique",
     "mood": "Angry",
@@ -4788,7 +4554,7 @@
     "thumbnail": "https://i.ytimg.com/vi/xtsI4zaTNAI/hqdefault.jpg"
   },
   {
-    "id": "song_533",
+    "id": "song_507",
     "title": "Never Say Never (Single Version)",
     "artist": "Justin Bieber",
     "mood": "Happy",
@@ -4797,34 +4563,7 @@
     "thumbnail": "https://i.ytimg.com/vi/elJTCqH_x0A/hqdefault.jpg"
   },
   {
-    "id": "song_534",
-    "title": "Sa Isang Sulyap Mo",
-    "artist": "BRYAN TERMULO OFFICIAL",
-    "mood": "Chill",
-    "duration": "3:56",
-    "youtubeUrl": "https://youtube.com/watch?v=v8Gs90oyjrs",
-    "thumbnail": "https://i.ytimg.com/vi/v8Gs90oyjrs/hqdefault.jpg"
-  },
-  {
-    "id": "song_535",
-    "title": "Gusto Kita",
-    "artist": "matthew lee",
-    "mood": "Energetic",
-    "duration": "3:16",
-    "youtubeUrl": "https://youtube.com/watch?v=Nbh5B63aEgc",
-    "thumbnail": "https://i.ytimg.com/vi/Nbh5B63aEgc/hqdefault.jpg"
-  },
-  {
-    "id": "song_536",
-    "title": "Hallelujah",
-    "artist": "Bamboo",
-    "mood": "Happy",
-    "duration": "4:52",
-    "youtubeUrl": "https://youtube.com/watch?v=yNUattNU45M",
-    "thumbnail": "https://i.ytimg.com/vi/yNUattNU45M/hqdefault.jpg"
-  },
-  {
-    "id": "song_537",
+    "id": "song_508",
     "title": "Maghintay Ka Lamang",
     "artist": "Roel Manlangit",
     "mood": "Sad",
@@ -4833,7 +4572,7 @@
     "thumbnail": "https://i.ytimg.com/vi/0ysBmw6jaZ4/hqdefault.jpg"
   },
   {
-    "id": "song_538",
+    "id": "song_509",
     "title": "Simpleng Tao",
     "artist": "Gloc -9",
     "mood": "Relaxed",
@@ -4842,7 +4581,7 @@
     "thumbnail": "https://i.ytimg.com/vi/nnup2vZ3eCs/hqdefault.jpg"
   },
   {
-    "id": "song_539",
+    "id": "song_510",
     "title": "Dati",
     "artist": "Sam Concepcion",
     "mood": "Focus",
@@ -4851,7 +4590,7 @@
     "thumbnail": "https://i.ytimg.com/vi/FkIg69dLqKM/hqdefault.jpg"
   },
   {
-    "id": "song_540",
+    "id": "song_511",
     "title": "Peksman",
     "artist": "Siakol",
     "mood": "Energetic",
@@ -4860,7 +4599,7 @@
     "thumbnail": "https://i.ytimg.com/vi/sMaU9d9xGjQ/hqdefault.jpg"
   },
   {
-    "id": "song_541",
+    "id": "song_512",
     "title": "Cant Help Fallin (Tagalog Adaptation)",
     "artist": "Josh Santana",
     "mood": "Angry",
@@ -4869,25 +4608,7 @@
     "thumbnail": "https://i.ytimg.com/vi/_jmt0MKKzFc/hqdefault.jpg"
   },
   {
-    "id": "song_542",
-    "title": "Bakit Ba?",
-    "artist": "Siakol",
-    "mood": "Energetic",
-    "duration": "4:48",
-    "youtubeUrl": "https://youtube.com/watch?v=bEWeMAsIFYA",
-    "thumbnail": "https://i.ytimg.com/vi/bEWeMAsIFYA/hqdefault.jpg"
-  },
-  {
-    "id": "song_543",
-    "title": "With A Smile",
-    "artist": "Eraserheads Official Channel",
-    "mood": "Happy",
-    "duration": "4:39",
-    "youtubeUrl": "https://youtube.com/watch?v=PFQqdhp1vH0",
-    "thumbnail": "https://i.ytimg.com/vi/PFQqdhp1vH0/hqdefault.jpg"
-  },
-  {
-    "id": "song_544",
+    "id": "song_513",
     "title": "My Universe",
     "artist": "Coldplay",
     "mood": "Sad",
@@ -4896,7 +4617,7 @@
     "thumbnail": "https://i.ytimg.com/vi/TaZkqPK0sbw/hqdefault.jpg"
   },
   {
-    "id": "song_545",
+    "id": "song_514",
     "title": "All of Me",
     "artist": "Boyce Avenue",
     "mood": "Sad",
@@ -4905,7 +4626,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Kh3b8ZTetys/hqdefault.jpg"
   },
   {
-    "id": "song_546",
+    "id": "song_515",
     "title": "Attention",
     "artist": "Charlie Puth",
     "mood": "Happy",
@@ -4914,7 +4635,7 @@
     "thumbnail": "https://i.ytimg.com/vi/f7HwUtZUYbE/hqdefault.jpg"
   },
   {
-    "id": "song_547",
+    "id": "song_516",
     "title": "Criminal",
     "artist": "Britney Spears",
     "mood": "Chill",
@@ -4923,7 +4644,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ux9-_2SN1h0/hqdefault.jpg"
   },
   {
-    "id": "song_548",
+    "id": "song_517",
     "title": "STAY",
     "artist": "The Kid LAROI.",
     "mood": "Chill",
@@ -4932,7 +4653,7 @@
     "thumbnail": "https://i.ytimg.com/vi/XfEMj-z3TtA/hqdefault.jpg"
   },
   {
-    "id": "song_549",
+    "id": "song_518",
     "title": "Best Song Ever",
     "artist": "One Direction",
     "mood": "Happy",
@@ -4941,7 +4662,7 @@
     "thumbnail": "https://i.ytimg.com/vi/JXk_rNZ3gl4/hqdefault.jpg"
   },
   {
-    "id": "song_550",
+    "id": "song_519",
     "title": "Hymn for the Weekend",
     "artist": "Coldplay",
     "mood": "Sad",
@@ -4950,7 +4671,7 @@
     "thumbnail": "https://i.ytimg.com/vi/H3Kzh6RrnMc/hqdefault.jpg"
   },
   {
-    "id": "song_551",
+    "id": "song_520",
     "title": "Centuries",
     "artist": "Fall Out Boy",
     "mood": "Energetic",
@@ -4959,7 +4680,7 @@
     "thumbnail": "https://i.ytimg.com/vi/dfk6i41GCNo/hqdefault.jpg"
   },
   {
-    "id": "song_552",
+    "id": "song_521",
     "title": "Photograph",
     "artist": "Boyce Avenue",
     "mood": "Relaxed",
@@ -4968,7 +4689,7 @@
     "thumbnail": "https://i.ytimg.com/vi/C60-zOz6ngY/hqdefault.jpg"
   },
   {
-    "id": "song_553",
+    "id": "song_522",
     "title": "Blank Space",
     "artist": "Taylor Swift",
     "mood": "Happy",
@@ -4977,7 +4698,7 @@
     "thumbnail": "https://i.ytimg.com/vi/dC9QIUKviJU/hqdefault.jpg"
   },
   {
-    "id": "song_554",
+    "id": "song_523",
     "title": "The Beginning of the End",
     "artist": "Klergy",
     "mood": "Energetic",
@@ -4986,7 +4707,7 @@
     "thumbnail": "https://i.ytimg.com/vi/4No4j3doUxQ/hqdefault.jpg"
   },
   {
-    "id": "song_555",
+    "id": "song_524",
     "title": "Thinking out Loud",
     "artist": "Ed Sheeran",
     "mood": "Happy",
@@ -4995,7 +4716,7 @@
     "thumbnail": "https://i.ytimg.com/vi/fdz_cabS9BU/hqdefault.jpg"
   },
   {
-    "id": "song_556",
+    "id": "song_525",
     "title": "My Heart Will Go On (Love Theme from \"Titanic\")",
     "artist": "Celine Dion",
     "mood": "Happy",
@@ -5004,7 +4725,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Siz-xBfIqpg/hqdefault.jpg"
   },
   {
-    "id": "song_557",
+    "id": "song_526",
     "title": "Sugar",
     "artist": "Maroon 5",
     "mood": "Happy",
@@ -5013,7 +4734,7 @@
     "thumbnail": "https://i.ytimg.com/vi/wSOc5jmvF-k/hqdefault.jpg"
   },
   {
-    "id": "song_558",
+    "id": "song_527",
     "title": "Count on Me",
     "artist": "Bruno Mars",
     "mood": "Happy",
@@ -5022,7 +4743,7 @@
     "thumbnail": "https://i.ytimg.com/vi/hN5WMvtzaD8/hqdefault.jpg"
   },
   {
-    "id": "song_559",
+    "id": "song_528",
     "title": "Heaven",
     "artist": "Boyce Avenue",
     "mood": "Happy",
@@ -5031,7 +4752,7 @@
     "thumbnail": "https://i.ytimg.com/vi/08FXihZskrM/hqdefault.jpg"
   },
   {
-    "id": "song_560",
+    "id": "song_529",
     "title": "Stop Crying Your Heart Out",
     "artist": "Oasis",
     "mood": "Sad",
@@ -5040,7 +4761,7 @@
     "thumbnail": "https://i.ytimg.com/vi/mxUaqrHHisk/hqdefault.jpg"
   },
   {
-    "id": "song_561",
+    "id": "song_530",
     "title": "Fairytale",
     "artist": "AlexanderRybakVideo",
     "mood": "Sad",
@@ -5049,7 +4770,7 @@
     "thumbnail": "https://i.ytimg.com/vi/3zYCYpbVzHk/hqdefault.jpg"
   },
   {
-    "id": "song_562",
+    "id": "song_531",
     "title": "One Thing",
     "artist": "One Direction",
     "mood": "Relaxed",
@@ -5058,7 +4779,7 @@
     "thumbnail": "https://i.ytimg.com/vi/mpdIaUzG1RQ/hqdefault.jpg"
   },
   {
-    "id": "song_563",
+    "id": "song_532",
     "title": "Drag Me Down",
     "artist": "One Direction",
     "mood": "Focus",
@@ -5067,7 +4788,7 @@
     "thumbnail": "https://i.ytimg.com/vi/TN5Ye9pQhlM/hqdefault.jpg"
   },
   {
-    "id": "song_564",
+    "id": "song_533",
     "title": "Story of My Life",
     "artist": "One Direction",
     "mood": "Angry",
@@ -5076,7 +4797,7 @@
     "thumbnail": "https://i.ytimg.com/vi/8M3Vlnu_i3c/hqdefault.jpg"
   },
   {
-    "id": "song_565",
+    "id": "song_534",
     "title": "Steal My Girl",
     "artist": "One Direction",
     "mood": "Chill",
@@ -5085,7 +4806,7 @@
     "thumbnail": "https://i.ytimg.com/vi/gnN_jiesIkM/hqdefault.jpg"
   },
   {
-    "id": "song_566",
+    "id": "song_535",
     "title": "You Belong With Me (Taylor’s Version)",
     "artist": "Taylor Swift",
     "mood": "Happy",
@@ -5094,7 +4815,7 @@
     "thumbnail": "https://i.ytimg.com/vi/uD8d1KrDQcY/hqdefault.jpg"
   },
   {
-    "id": "song_567",
+    "id": "song_536",
     "title": "Wildest Dreams (Taylor's Version)",
     "artist": "Taylor Swift",
     "mood": "Happy",
@@ -5103,7 +4824,7 @@
     "thumbnail": "https://i.ytimg.com/vi/bhnaPBK9nOQ/hqdefault.jpg"
   },
   {
-    "id": "song_568",
+    "id": "song_537",
     "title": "Love Story (Taylor’s Version)",
     "artist": "Taylor Swift",
     "mood": "Happy",
@@ -5112,7 +4833,7 @@
     "thumbnail": "https://i.ytimg.com/vi/e7yg0A-PCTI/hqdefault.jpg"
   },
   {
-    "id": "song_569",
+    "id": "song_538",
     "title": "Back To December",
     "artist": "Taylor Swift",
     "mood": "Happy",
@@ -5121,7 +4842,7 @@
     "thumbnail": "https://i.ytimg.com/vi/nzQKL8XJOx8/hqdefault.jpg"
   },
   {
-    "id": "song_570",
+    "id": "song_539",
     "title": "Shake It Off",
     "artist": "Taylor Swift",
     "mood": "Happy",
@@ -5130,7 +4851,7 @@
     "thumbnail": "https://i.ytimg.com/vi/sWMk8dwljFU/hqdefault.jpg"
   },
   {
-    "id": "song_571",
+    "id": "song_540",
     "title": "Eenie Meenie",
     "artist": "seankingston",
     "mood": "Energetic",
@@ -5139,7 +4860,7 @@
     "thumbnail": "https://i.ytimg.com/vi/7n1pMfm-n8A/hqdefault.jpg"
   },
   {
-    "id": "song_572",
+    "id": "song_541",
     "title": "You Belong With Me",
     "artist": "Taylor Swift",
     "mood": "Happy",
@@ -5148,7 +4869,7 @@
     "thumbnail": "https://i.ytimg.com/vi/LYyUr75fs_o/hqdefault.jpg"
   },
   {
-    "id": "song_573",
+    "id": "song_542",
     "title": "Take It Off",
     "artist": "kesha",
     "mood": "Happy",
@@ -5157,7 +4878,7 @@
     "thumbnail": "https://i.ytimg.com/vi/GgGPuuGNPAE/hqdefault.jpg"
   },
   {
-    "id": "song_574",
+    "id": "song_543",
     "title": "Right Now (Na Na Na)",
     "artist": "Akon",
     "mood": "Sad",
@@ -5166,7 +4887,7 @@
     "thumbnail": "https://i.ytimg.com/vi/FDyWuL6lq6w/hqdefault.jpg"
   },
   {
-    "id": "song_575",
+    "id": "song_544",
     "title": "The Scientist",
     "artist": "Boyce Avenue",
     "mood": "Relaxed",
@@ -5175,7 +4896,7 @@
     "thumbnail": "https://i.ytimg.com/vi/KhKHmMxW-1k/hqdefault.jpg"
   },
   {
-    "id": "song_576",
+    "id": "song_545",
     "title": "Die For You",
     "artist": "The Weeknd",
     "mood": "Chill",
@@ -5184,7 +4905,7 @@
     "thumbnail": "https://i.ytimg.com/vi/mTLQhPFx2nM/hqdefault.jpg"
   },
   {
-    "id": "song_577",
+    "id": "song_546",
     "title": "Put Your Head On My Shoulder",
     "artist": "Paul Anka",
     "mood": "Focus",
@@ -5193,7 +4914,7 @@
     "thumbnail": "https://i.ytimg.com/vi/kvazBqAlx58/hqdefault.jpg"
   },
   {
-    "id": "song_578",
+    "id": "song_547",
     "title": "You Are The Reason",
     "artist": "Calum Scott",
     "mood": "Angry",
@@ -5202,7 +4923,7 @@
     "thumbnail": "https://i.ytimg.com/vi/2Kiob5f9A1g/hqdefault.jpg"
   },
   {
-    "id": "song_579",
+    "id": "song_548",
     "title": "In the End",
     "artist": "Linkin Park",
     "mood": "Angry",
@@ -5211,7 +4932,7 @@
     "thumbnail": "https://i.ytimg.com/vi/BLZWkjBXfN8/hqdefault.jpg"
   },
   {
-    "id": "song_580",
+    "id": "song_549",
     "title": "Grenade",
     "artist": "Bruno Mars",
     "mood": "Happy",
@@ -5220,7 +4941,7 @@
     "thumbnail": "https://i.ytimg.com/vi/1EKgh8X6k_c/hqdefault.jpg"
   },
   {
-    "id": "song_581",
+    "id": "song_550",
     "title": "21 Guns",
     "artist": "Green Day",
     "mood": "Energetic",
@@ -5229,7 +4950,7 @@
     "thumbnail": "https://i.ytimg.com/vi/DZnVGVG4T0Q/hqdefault.jpg"
   },
   {
-    "id": "song_582",
+    "id": "song_551",
     "title": "Fix You",
     "artist": "Coldplay",
     "mood": "Sad",
@@ -5238,7 +4959,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Oncu0bgdcXU/hqdefault.jpg"
   },
   {
-    "id": "song_583",
+    "id": "song_552",
     "title": "Yellow",
     "artist": "Boyce Avenue",
     "mood": "Chill",
@@ -5247,7 +4968,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Rv7UnClD5A8/hqdefault.jpg"
   },
   {
-    "id": "song_584",
+    "id": "song_553",
     "title": "Wonderwall",
     "artist": "Boyce Avenue",
     "mood": "Energetic",
@@ -5256,7 +4977,7 @@
     "thumbnail": "https://i.ytimg.com/vi/nLCW7otjdvk/hqdefault.jpg"
   },
   {
-    "id": "song_585",
+    "id": "song_554",
     "title": "See You Again",
     "artist": "Boyce Avenue",
     "mood": "Sad",
@@ -5265,7 +4986,7 @@
     "thumbnail": "https://i.ytimg.com/vi/zB6QGRKcyDU/hqdefault.jpg"
   },
   {
-    "id": "song_586",
+    "id": "song_555",
     "title": "We Are Young",
     "artist": "Boyce Avenue",
     "mood": "Happy",
@@ -5274,7 +4995,7 @@
     "thumbnail": "https://i.ytimg.com/vi/mbR6MhghMA8/hqdefault.jpg"
   },
   {
-    "id": "song_587",
+    "id": "song_556",
     "title": "One More Night",
     "artist": "Boyce Avenue",
     "mood": "Chill",
@@ -5283,7 +5004,7 @@
     "thumbnail": "https://i.ytimg.com/vi/SHJJl2588qE/hqdefault.jpg"
   },
   {
-    "id": "song_588",
+    "id": "song_557",
     "title": "A Thousand Years",
     "artist": "Boyce Avenue",
     "mood": "Relaxed",
@@ -5292,7 +5013,7 @@
     "thumbnail": "https://i.ytimg.com/vi/lMjun4v1UIE/hqdefault.jpg"
   },
   {
-    "id": "song_589",
+    "id": "song_558",
     "title": "We Can't Stop",
     "artist": "Boyce Avenue",
     "mood": "Sad",
@@ -5301,7 +5022,7 @@
     "thumbnail": "https://i.ytimg.com/vi/3d87H6u6_G8/hqdefault.jpg"
   },
   {
-    "id": "song_590",
+    "id": "song_559",
     "title": "[Everything I Do] I Do It For You",
     "artist": "Bryan Adams",
     "mood": "Relaxed",
@@ -5310,7 +5031,7 @@
     "thumbnail": "https://i.ytimg.com/vi/DkolczyIc2Q/hqdefault.jpg"
   },
   {
-    "id": "song_591",
+    "id": "song_560",
     "title": "Someone Like You",
     "artist": "Adele",
     "mood": "Sad",
@@ -5319,7 +5040,7 @@
     "thumbnail": "https://i.ytimg.com/vi/XqoanTj5pNY/hqdefault.jpg"
   },
   {
-    "id": "song_592",
+    "id": "song_561",
     "title": "Stan",
     "artist": "EminemMusic",
     "mood": "Energetic",
@@ -5328,7 +5049,7 @@
     "thumbnail": "https://i.ytimg.com/vi/HIqQ0PfuPo8/hqdefault.jpg"
   },
   {
-    "id": "song_593",
+    "id": "song_562",
     "title": "Just the Two of Us",
     "artist": "Grover Washington, Jr.",
     "mood": "Focus",
@@ -5337,7 +5058,7 @@
     "thumbnail": "https://i.ytimg.com/vi/gelwwYuYGn0/hqdefault.jpg"
   },
   {
-    "id": "song_594",
+    "id": "song_563",
     "title": "Payphone",
     "artist": "Maroon 5",
     "mood": "Happy",
@@ -5346,7 +5067,7 @@
     "thumbnail": "https://i.ytimg.com/vi/smKgVuSB18k/hqdefault.jpg"
   },
   {
-    "id": "song_595",
+    "id": "song_564",
     "title": "Baby",
     "artist": "Justin Bieber",
     "mood": "Happy",
@@ -5355,7 +5076,7 @@
     "thumbnail": "https://i.ytimg.com/vi/GqWYJT-iMTw/hqdefault.jpg"
   },
   {
-    "id": "song_596",
+    "id": "song_565",
     "title": "Beautiful Girls",
     "artist": "seankingston",
     "mood": "Happy",
@@ -5364,7 +5085,7 @@
     "thumbnail": "https://i.ytimg.com/vi/_Wxfu7Th2S8/hqdefault.jpg"
   },
   {
-    "id": "song_597",
+    "id": "song_566",
     "title": "Zombie",
     "artist": "TheCranberriesTV",
     "mood": "Angry",
@@ -5373,7 +5094,7 @@
     "thumbnail": "https://i.ytimg.com/vi/yGxHDmHoqXc/hqdefault.jpg"
   },
   {
-    "id": "song_598",
+    "id": "song_567",
     "title": "Empire State Of Mind",
     "artist": "JAŸ-Z",
     "mood": "Chill",
@@ -5382,7 +5103,7 @@
     "thumbnail": "https://i.ytimg.com/vi/_ydMlTassYc/hqdefault.jpg"
   },
   {
-    "id": "song_599",
+    "id": "song_568",
     "title": "We Are Young (feat. Janelle Monáe)",
     "artist": "Fun.",
     "mood": "Energetic",
@@ -5391,7 +5112,7 @@
     "thumbnail": "https://i.ytimg.com/vi/f_K_0SNaRk0/hqdefault.jpg"
   },
   {
-    "id": "song_600",
+    "id": "song_569",
     "title": "Numb",
     "artist": "Linkin Park",
     "mood": "Angry",
@@ -5400,7 +5121,7 @@
     "thumbnail": "https://i.ytimg.com/vi/5qZQEq_C3vc/hqdefault.jpg"
   },
   {
-    "id": "song_601",
+    "id": "song_570",
     "title": "She Will Be Loved",
     "artist": "Maroon 5",
     "mood": "Happy",
@@ -5409,7 +5130,7 @@
     "thumbnail": "https://i.ytimg.com/vi/LHBbWBX_azA/hqdefault.jpg"
   },
   {
-    "id": "song_602",
+    "id": "song_571",
     "title": "Glad You Came",
     "artist": "The Wanted",
     "mood": "Happy",
@@ -5418,7 +5139,7 @@
     "thumbnail": "https://i.ytimg.com/vi/XsMvL1uvl_o/hqdefault.jpg"
   },
   {
-    "id": "song_603",
+    "id": "song_572",
     "title": "Hall of Fame",
     "artist": "The Script",
     "mood": "Sad",
@@ -5427,7 +5148,7 @@
     "thumbnail": "https://i.ytimg.com/vi/snx5qGUtVi8/hqdefault.jpg"
   },
   {
-    "id": "song_604",
+    "id": "song_573",
     "title": "I'm Yours",
     "artist": "Jason Mraz",
     "mood": "Relaxed",
@@ -5436,7 +5157,7 @@
     "thumbnail": "https://i.ytimg.com/vi/A93OQy81TYs/hqdefault.jpg"
   },
   {
-    "id": "song_605",
+    "id": "song_574",
     "title": "Closer",
     "artist": "The Chainsmokers",
     "mood": "Focus",
@@ -5445,7 +5166,7 @@
     "thumbnail": "https://i.ytimg.com/vi/r7zTKRonHXM/hqdefault.jpg"
   },
   {
-    "id": "song_606",
+    "id": "song_575",
     "title": "Hotel California (2013 Remaster)",
     "artist": "Eagles",
     "mood": "Angry",
@@ -5454,7 +5175,7 @@
     "thumbnail": "https://i.ytimg.com/vi/BciS5krYL80/hqdefault.jpg"
   },
   {
-    "id": "song_607",
+    "id": "song_576",
     "title": "Fireflies",
     "artist": "Owl City",
     "mood": "Energetic",
@@ -5463,7 +5184,7 @@
     "thumbnail": "https://i.ytimg.com/vi/KWLGyeg74es/hqdefault.jpg"
   },
   {
-    "id": "song_608",
+    "id": "song_577",
     "title": "Earth",
     "artist": "Lil Dicky",
     "mood": "Chill",
@@ -5472,7 +5193,7 @@
     "thumbnail": "https://i.ytimg.com/vi/G1LW0p9h_Fk/hqdefault.jpg"
   },
   {
-    "id": "song_609",
+    "id": "song_578",
     "title": "Beggin'",
     "artist": "Måneskin Official",
     "mood": "Energetic",
@@ -5481,7 +5202,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ZWKpPDI1M-o/hqdefault.jpg"
   },
   {
-    "id": "song_610",
+    "id": "song_579",
     "title": "When I Was Your Man",
     "artist": "Bruno Mars",
     "mood": "Happy",
@@ -5490,7 +5211,7 @@
     "thumbnail": "https://i.ytimg.com/vi/th92jw2CFOA/hqdefault.jpg"
   },
   {
-    "id": "song_611",
+    "id": "song_580",
     "title": "Venom (Remix)",
     "artist": "EminemMusic",
     "mood": "Energetic",
@@ -5499,7 +5220,7 @@
     "thumbnail": "https://i.ytimg.com/vi/z8Xgp8LJjLo/hqdefault.jpg"
   },
   {
-    "id": "song_612",
+    "id": "song_581",
     "title": "Venom (Music From The Motion Picture)",
     "artist": "EminemMusic",
     "mood": "Energetic",
@@ -5508,7 +5229,7 @@
     "thumbnail": "https://i.ytimg.com/vi/pB-B6DUY0OY/hqdefault.jpg"
   },
   {
-    "id": "song_613",
+    "id": "song_582",
     "title": "Umbrella",
     "artist": "Ember Island",
     "mood": "Happy",
@@ -5517,7 +5238,7 @@
     "thumbnail": "https://i.ytimg.com/vi/oVCL2Z9-r8A/hqdefault.jpg"
   },
   {
-    "id": "song_614",
+    "id": "song_583",
     "title": "Treat You Better",
     "artist": "Shawn Mendes",
     "mood": "Happy",
@@ -5526,7 +5247,7 @@
     "thumbnail": "https://i.ytimg.com/vi/qSay_8xzijg/hqdefault.jpg"
   },
   {
-    "id": "song_615",
+    "id": "song_584",
     "title": "Torsion",
     "artist": "Mark Petrie",
     "mood": "Sad",
@@ -5535,7 +5256,7 @@
     "thumbnail": "https://i.ytimg.com/vi/bmlpk7OIwz8/hqdefault.jpg"
   },
   {
-    "id": "song_616",
+    "id": "song_585",
     "title": "The Search",
     "artist": "NFrealmusic",
     "mood": "Relaxed",
@@ -5544,7 +5265,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Zh9p-6JfrSo/hqdefault.jpg"
   },
   {
-    "id": "song_617",
+    "id": "song_586",
     "title": "The One That Got Away",
     "artist": "Brielle Von Hugel",
     "mood": "Focus",
@@ -5553,7 +5274,7 @@
     "thumbnail": "https://i.ytimg.com/vi/xv85o6_XPWg/hqdefault.jpg"
   },
   {
-    "id": "song_618",
+    "id": "song_587",
     "title": "Sweet Child O' Mine",
     "artist": "Guns N' Roses",
     "mood": "Happy",
@@ -5562,7 +5283,7 @@
     "thumbnail": "https://i.ytimg.com/vi/oMfMUfgjiLg/hqdefault.jpg"
   },
   {
-    "id": "song_619",
+    "id": "song_588",
     "title": "Surrender",
     "artist": "NatalieTaylorMusic",
     "mood": "Angry",
@@ -5571,7 +5292,7 @@
     "thumbnail": "https://i.ytimg.com/vi/gF5f3FW9mQk/hqdefault.jpg"
   },
   {
-    "id": "song_620",
+    "id": "song_589",
     "title": "SugarCrash!",
     "artist": "ElyOtto",
     "mood": "Happy",
@@ -5580,7 +5301,7 @@
     "thumbnail": "https://i.ytimg.com/vi/BJxudKhtd9c/hqdefault.jpg"
   },
   {
-    "id": "song_621",
+    "id": "song_590",
     "title": "Such a Whore (Stellular Remix)",
     "artist": "JVLA",
     "mood": "Chill",
@@ -5589,7 +5310,7 @@
     "thumbnail": "https://i.ytimg.com/vi/8fFOtGETlrU/hqdefault.jpg"
   },
   {
-    "id": "song_622",
+    "id": "song_591",
     "title": "Starboy",
     "artist": "The Weeknd",
     "mood": "Chill",
@@ -5598,7 +5319,7 @@
     "thumbnail": "https://i.ytimg.com/vi/3_g2un5M350/hqdefault.jpg"
   },
   {
-    "id": "song_623",
+    "id": "song_592",
     "title": "Someone You Loved",
     "artist": "Lewis Capaldi",
     "mood": "Sad",
@@ -5607,7 +5328,7 @@
     "thumbnail": "https://i.ytimg.com/vi/pRIZohFFOMo/hqdefault.jpg"
   },
   {
-    "id": "song_624",
+    "id": "song_593",
     "title": "Shell Shocked (feat. Kill the Noise & Madsonik) (From \"Teenage Mutant Ninja Turtles\")",
     "artist": "Juicy J",
     "mood": "Angry",
@@ -5616,7 +5337,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Z7LYXExn10o/hqdefault.jpg"
   },
   {
-    "id": "song_625",
+    "id": "song_594",
     "title": "Shape of You",
     "artist": "Ed Sheeran",
     "mood": "Happy",
@@ -5625,7 +5346,7 @@
     "thumbnail": "https://i.ytimg.com/vi/xTvyyoF_LZY/hqdefault.jpg"
   },
   {
-    "id": "song_626",
+    "id": "song_595",
     "title": "See You Again (feat. Charlie Puth)",
     "artist": "Wiz Khalifa",
     "mood": "Sad",
@@ -5634,7 +5355,7 @@
     "thumbnail": "https://i.ytimg.com/vi/4YNaaX0-nbI/hqdefault.jpg"
   },
   {
-    "id": "song_627",
+    "id": "song_596",
     "title": "Run It",
     "artist": "DJ Snake",
     "mood": "Energetic",
@@ -5643,7 +5364,7 @@
     "thumbnail": "https://i.ytimg.com/vi/PnXLDwFSQ2Y/hqdefault.jpg"
   },
   {
-    "id": "song_628",
+    "id": "song_597",
     "title": "rockstar",
     "artist": "Post Malone",
     "mood": "Chill",
@@ -5652,7 +5373,7 @@
     "thumbnail": "https://i.ytimg.com/vi/AaxFIY-cWH0/hqdefault.jpg"
   },
   {
-    "id": "song_629",
+    "id": "song_598",
     "title": "Rap God",
     "artist": "EminemMusic",
     "mood": "Energetic",
@@ -5661,7 +5382,7 @@
     "thumbnail": "https://i.ytimg.com/vi/MBJFPq2Llps/hqdefault.jpg"
   },
   {
-    "id": "song_630",
+    "id": "song_599",
     "title": "Raindrops Keep Falling on my Head",
     "artist": "TheBJThomas",
     "mood": "Chill",
@@ -5670,7 +5391,7 @@
     "thumbnail": "https://i.ytimg.com/vi/sySlY1XKlhM/hqdefault.jpg"
   },
   {
-    "id": "song_631",
+    "id": "song_600",
     "title": "Radioactive",
     "artist": "ImagineDragons",
     "mood": "Energetic",
@@ -5679,7 +5400,7 @@
     "thumbnail": "https://i.ytimg.com/vi/R_BO8C05XLA/hqdefault.jpg"
   },
   {
-    "id": "song_632",
+    "id": "song_601",
     "title": "Purple Lamborghini",
     "artist": "Skrillex",
     "mood": "Energetic",
@@ -5688,7 +5409,7 @@
     "thumbnail": "https://i.ytimg.com/vi/BdpVM4hlTGk/hqdefault.jpg"
   },
   {
-    "id": "song_633",
+    "id": "song_602",
     "title": "Night Changes",
     "artist": "One Direction",
     "mood": "Chill",
@@ -5697,7 +5418,7 @@
     "thumbnail": "https://i.ytimg.com/vi/8BiLurrzFRw/hqdefault.jpg"
   },
   {
-    "id": "song_634",
+    "id": "song_603",
     "title": "Mirror",
     "artist": "Lil Wayne",
     "mood": "Energetic",
@@ -5706,7 +5427,7 @@
     "thumbnail": "https://i.ytimg.com/vi/efpOA91HaS0/hqdefault.jpg"
   },
   {
-    "id": "song_635",
+    "id": "song_604",
     "title": "Marry You",
     "artist": "Bruno Mars",
     "mood": "Happy",
@@ -5715,7 +5436,7 @@
     "thumbnail": "https://i.ytimg.com/vi/nkz0M4TS7oA/hqdefault.jpg"
   },
   {
-    "id": "song_636",
+    "id": "song_605",
     "title": "lovely",
     "artist": "Billie Eilish",
     "mood": "Sad",
@@ -5724,7 +5445,7 @@
     "thumbnail": "https://i.ytimg.com/vi/MMfpp0-lnw4/hqdefault.jpg"
   },
   {
-    "id": "song_637",
+    "id": "song_606",
     "title": "Love Yourself",
     "artist": "Justin Bieber",
     "mood": "Happy",
@@ -5733,7 +5454,7 @@
     "thumbnail": "https://i.ytimg.com/vi/p-IXgwqhfmg/hqdefault.jpg"
   },
   {
-    "id": "song_638",
+    "id": "song_607",
     "title": "Love Is Gone (Acoustic)",
     "artist": "SLANDER",
     "mood": "Chill",
@@ -5742,7 +5463,7 @@
     "thumbnail": "https://i.ytimg.com/vi/HiXx5JFRxb4/hqdefault.jpg"
   },
   {
-    "id": "song_639",
+    "id": "song_608",
     "title": "Lose",
     "artist": "KSI Music",
     "mood": "Energetic",
@@ -5751,7 +5472,7 @@
     "thumbnail": "https://i.ytimg.com/vi/BYjjPjR_VxA/hqdefault.jpg"
   },
   {
-    "id": "song_640",
+    "id": "song_609",
     "title": "Look At Me!",
     "artist": "XXXTENTACION",
     "mood": "Sad",
@@ -5760,7 +5481,7 @@
     "thumbnail": "https://i.ytimg.com/vi/I0FKqmoK56I/hqdefault.jpg"
   },
   {
-    "id": "song_641",
+    "id": "song_610",
     "title": "Little Do You Know",
     "artist": "Alex & Sierra",
     "mood": "Energetic",
@@ -5769,7 +5490,7 @@
     "thumbnail": "https://i.ytimg.com/vi/68-LByyHfpc/hqdefault.jpg"
   },
   {
-    "id": "song_642",
+    "id": "song_611",
     "title": "Lighters",
     "artist": "Bad Meets Evil",
     "mood": "Happy",
@@ -5778,7 +5499,7 @@
     "thumbnail": "https://i.ytimg.com/vi/qJHiMGomJ_A/hqdefault.jpg"
   },
   {
-    "id": "song_643",
+    "id": "song_612",
     "title": "Let Me Down Slowly",
     "artist": "Alec Benjamin",
     "mood": "Chill",
@@ -5787,7 +5508,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Kcj5-jWxgKs/hqdefault.jpg"
   },
   {
-    "id": "song_644",
+    "id": "song_613",
     "title": "Legends Never Die",
     "artist": "League of Legends",
     "mood": "Sad",
@@ -5796,7 +5517,7 @@
     "thumbnail": "https://i.ytimg.com/vi/R4hDcd9fzRk/hqdefault.jpg"
   },
   {
-    "id": "song_645",
+    "id": "song_614",
     "title": "Jordan",
     "artist": "COMPLETE",
     "mood": "Relaxed",
@@ -5805,7 +5526,7 @@
     "thumbnail": "https://i.ytimg.com/vi/z4gc4IPlPcU/hqdefault.jpg"
   },
   {
-    "id": "song_646",
+    "id": "song_615",
     "title": "INDUSTRY BABY",
     "artist": "Lil Nas X",
     "mood": "Energetic",
@@ -5814,7 +5535,7 @@
     "thumbnail": "https://i.ytimg.com/vi/jPe0bX_GtBo/hqdefault.jpg"
   },
   {
-    "id": "song_647",
+    "id": "song_616",
     "title": "Heathens",
     "artist": "twenty one pilots",
     "mood": "Focus",
@@ -5823,7 +5544,7 @@
     "thumbnail": "https://i.ytimg.com/vi/oLeROuCMwj8/hqdefault.jpg"
   },
   {
-    "id": "song_648",
+    "id": "song_617",
     "title": "Feeling Good",
     "artist": "Michael Bublé",
     "mood": "Happy",
@@ -5832,7 +5553,7 @@
     "thumbnail": "https://i.ytimg.com/vi/CY-wNacX-PM/hqdefault.jpg"
   },
   {
-    "id": "song_649",
+    "id": "song_618",
     "title": "Dusk Till Dawn",
     "artist": "Release",
     "mood": "Relaxed",
@@ -5841,7 +5562,7 @@
     "thumbnail": "https://i.ytimg.com/vi/dtkD9QPydJE/hqdefault.jpg"
   },
   {
-    "id": "song_650",
+    "id": "song_619",
     "title": "Believer",
     "artist": "ImagineDragons",
     "mood": "Focus",
@@ -5850,7 +5571,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Kx7B-XvmFtE/hqdefault.jpg"
   },
   {
-    "id": "song_651",
+    "id": "song_620",
     "title": "comethru",
     "artist": "Jeremy Zucker",
     "mood": "Angry",
@@ -5859,7 +5580,7 @@
     "thumbnail": "https://i.ytimg.com/vi/X1R7SrjI_o8/hqdefault.jpg"
   },
   {
-    "id": "song_652",
+    "id": "song_621",
     "title": "Dancing With Your Ghost",
     "artist": "Sasha Alex Sloan",
     "mood": "Sad",
@@ -5868,7 +5589,7 @@
     "thumbnail": "https://i.ytimg.com/vi/lAJazaLrHfQ/hqdefault.jpg"
   },
   {
-    "id": "song_653",
+    "id": "song_622",
     "title": "Astronaut In The Ocean",
     "artist": "Masked Wolf",
     "mood": "Chill",
@@ -5877,7 +5598,7 @@
     "thumbnail": "https://i.ytimg.com/vi/5-FGxUINL-Q/hqdefault.jpg"
   },
   {
-    "id": "song_654",
+    "id": "song_623",
     "title": "2002",
     "artist": "Anne-Marie",
     "mood": "Chill",
@@ -5886,7 +5607,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ee2mcqcGL_c/hqdefault.jpg"
   },
   {
-    "id": "song_655",
+    "id": "song_624",
     "title": "Murder In My Mind",
     "artist": "KORDHELL",
     "mood": "Energetic",
@@ -5895,7 +5616,7 @@
     "thumbnail": "https://i.ytimg.com/vi/RXRWE_XQ8aE/hqdefault.jpg"
   },
   {
-    "id": "song_656",
+    "id": "song_625",
     "title": "Unholy",
     "artist": "SAM SMITH",
     "mood": "Sad",
@@ -5904,7 +5625,7 @@
     "thumbnail": "https://i.ytimg.com/vi/8VKD-IlvibI/hqdefault.jpg"
   },
   {
-    "id": "song_657",
+    "id": "song_626",
     "title": "Welcome to the Party",
     "artist": "Diplo",
     "mood": "Energetic",
@@ -5913,7 +5634,7 @@
     "thumbnail": "https://i.ytimg.com/vi/0GZ_cpL0-sE/hqdefault.jpg"
   },
   {
-    "id": "song_658",
+    "id": "song_627",
     "title": "Avengers: Infinity War Trailer Music #2",
     "artist": "L'Orchestra Cinématique",
     "mood": "Angry",
@@ -5922,7 +5643,7 @@
     "thumbnail": "https://i.ytimg.com/vi/K48wOUe2_Ns/hqdefault.jpg"
   },
   {
-    "id": "song_659",
+    "id": "song_628",
     "title": "Live While We're Young",
     "artist": "One Direction",
     "mood": "Happy",
@@ -5931,7 +5652,7 @@
     "thumbnail": "https://i.ytimg.com/vi/blCNvso3UDU/hqdefault.jpg"
   },
   {
-    "id": "song_660",
+    "id": "song_629",
     "title": "Solo (feat. Demi Lovato)",
     "artist": "Clean Bandit",
     "mood": "Sad",
@@ -5940,7 +5661,7 @@
     "thumbnail": "https://i.ytimg.com/vi/GvdKeZO8IzM/hqdefault.jpg"
   },
   {
-    "id": "song_661",
+    "id": "song_630",
     "title": "Smack That",
     "artist": "Akon",
     "mood": "Relaxed",
@@ -5949,7 +5670,7 @@
     "thumbnail": "https://i.ytimg.com/vi/5HZ7QBnMX34/hqdefault.jpg"
   },
   {
-    "id": "song_662",
+    "id": "song_631",
     "title": "Still D.R.E.",
     "artist": "Dr. Dre",
     "mood": "Focus",
@@ -5958,7 +5679,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Qeem6ZVr8Ic/hqdefault.jpg"
   },
   {
-    "id": "song_663",
+    "id": "song_632",
     "title": "What Makes You Beautiful",
     "artist": "One Direction",
     "mood": "Happy",
@@ -5967,7 +5688,7 @@
     "thumbnail": "https://i.ytimg.com/vi/d57qSDCxVA4/hqdefault.jpg"
   },
   {
-    "id": "song_664",
+    "id": "song_633",
     "title": "Moves Like Jagger (Studio Recording From \"The Voice\" Performance)",
     "artist": "Maroon 5",
     "mood": "Happy",
@@ -5976,7 +5697,7 @@
     "thumbnail": "https://i.ytimg.com/vi/lGOF_Zh0t58/hqdefault.jpg"
   },
   {
-    "id": "song_665",
+    "id": "song_634",
     "title": "Usher - Yeah! ft. Lil Jon, Ludacris (Madness Trap Remix)",
     "artist": "TrapMusicHDTV",
     "mood": "Angry",
@@ -5985,7 +5706,7 @@
     "thumbnail": "https://i.ytimg.com/vi/yrP_5esY0rs/hqdefault.jpg"
   },
   {
-    "id": "song_666",
+    "id": "song_635",
     "title": "Titanium (feat. Sia)",
     "artist": "David Guetta",
     "mood": "Energetic",
@@ -5994,7 +5715,7 @@
     "thumbnail": "https://i.ytimg.com/vi/LRPGqNeav_M/hqdefault.jpg"
   },
   {
-    "id": "song_667",
+    "id": "song_636",
     "title": "Whatever It Takes",
     "artist": "ImagineDragons",
     "mood": "Angry",
@@ -6003,7 +5724,7 @@
     "thumbnail": "https://i.ytimg.com/vi/cnRB2CgUpSw/hqdefault.jpg"
   },
   {
-    "id": "song_668",
+    "id": "song_637",
     "title": "Timber",
     "artist": "Pitbull",
     "mood": "Energetic",
@@ -6012,7 +5733,7 @@
     "thumbnail": "https://i.ytimg.com/vi/GcYF1xnmZTI/hqdefault.jpg"
   },
   {
-    "id": "song_669",
+    "id": "song_638",
     "title": "Waka Waka (This Time for Africa) ( [The Official 2010 FIFA World Cup (TM) Song] (Single)",
     "artist": "Shakira",
     "mood": "Chill",
@@ -6021,7 +5742,7 @@
     "thumbnail": "https://i.ytimg.com/vi/hVOsHG9XTw0/hqdefault.jpg"
   },
   {
-    "id": "song_670",
+    "id": "song_639",
     "title": "I Gotta Feeling",
     "artist": "Black Eyed Peas",
     "mood": "Happy",
@@ -6030,7 +5751,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Wnn6M1nNiKQ/hqdefault.jpg"
   },
   {
-    "id": "song_671",
+    "id": "song_640",
     "title": "강남스타일 (Gangnam Style)",
     "artist": "officialpsy",
     "mood": "Energetic",
@@ -6039,7 +5760,7 @@
     "thumbnail": "https://i.ytimg.com/vi/4AgDYTuZWOw/hqdefault.jpg"
   },
   {
-    "id": "song_672",
+    "id": "song_641",
     "title": "Gentleman",
     "artist": "officialpsy",
     "mood": "Relaxed",
@@ -6048,7 +5769,7 @@
     "thumbnail": "https://i.ytimg.com/vi/tEgo5LsI4LY/hqdefault.jpg"
   },
   {
-    "id": "song_673",
+    "id": "song_642",
     "title": "Thunder",
     "artist": "ImagineDragons",
     "mood": "Happy",
@@ -6057,7 +5778,7 @@
     "thumbnail": "https://i.ytimg.com/vi/9ssQKlLxBdQ/hqdefault.jpg"
   },
   {
-    "id": "song_674",
+    "id": "song_643",
     "title": "No Time (feat. Lil Durk)",
     "artist": "KSI Music",
     "mood": "Energetic",
@@ -6066,7 +5787,7 @@
     "thumbnail": "https://i.ytimg.com/vi/cXgXxe-l0EI/hqdefault.jpg"
   },
   {
-    "id": "song_675",
+    "id": "song_644",
     "title": "God's Plan",
     "artist": "Drake",
     "mood": "Chill",
@@ -6075,7 +5796,7 @@
     "thumbnail": "https://i.ytimg.com/vi/FrsOnNxIrg8/hqdefault.jpg"
   },
   {
-    "id": "song_676",
+    "id": "song_645",
     "title": "Señorita",
     "artist": "Shawn Mendes",
     "mood": "Happy",
@@ -6084,7 +5805,7 @@
     "thumbnail": "https://i.ytimg.com/vi/VKC_hzJ3jzg/hqdefault.jpg"
   },
   {
-    "id": "song_677",
+    "id": "song_646",
     "title": "Young, Wild & Free (feat. Bruno Mars)",
     "artist": "SnoopDoggTV",
     "mood": "Energetic",
@@ -6093,7 +5814,7 @@
     "thumbnail": "https://i.ytimg.com/vi/tdwDYpWsktc/hqdefault.jpg"
   },
   {
-    "id": "song_678",
+    "id": "song_647",
     "title": "The Real Slim Shady",
     "artist": "EminemMusic",
     "mood": "Energetic",
@@ -6102,7 +5823,7 @@
     "thumbnail": "https://i.ytimg.com/vi/r5MR7_INQwg/hqdefault.jpg"
   },
   {
-    "id": "song_679",
+    "id": "song_648",
     "title": "bad guy",
     "artist": "Billie Eilish",
     "mood": "Sad",
@@ -6111,7 +5832,7 @@
     "thumbnail": "https://i.ytimg.com/vi/ZD6rXLXZOEI/hqdefault.jpg"
   },
   {
-    "id": "song_680",
+    "id": "song_649",
     "title": "Love The Way You Lie",
     "artist": "EminemMusic",
     "mood": "Energetic",
@@ -6120,7 +5841,7 @@
     "thumbnail": "https://i.ytimg.com/vi/RnkShwdXfyc/hqdefault.jpg"
   },
   {
-    "id": "song_681",
+    "id": "song_650",
     "title": "Set Fire to the Rain",
     "artist": "Adele",
     "mood": "Sad",
@@ -6129,7 +5850,7 @@
     "thumbnail": "https://i.ytimg.com/vi/a2giXO6eyuI/hqdefault.jpg"
   },
   {
-    "id": "song_682",
+    "id": "song_651",
     "title": "Mo Bamba",
     "artist": "Sheck Wes",
     "mood": "Sad",
@@ -6138,7 +5859,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Osvg7Ofd5d0/hqdefault.jpg"
   },
   {
-    "id": "song_683",
+    "id": "song_652",
     "title": "Crown",
     "artist": "NEFFEX",
     "mood": "Relaxed",
@@ -6147,7 +5868,7 @@
     "thumbnail": "https://i.ytimg.com/vi/gZ3rjkkXp3E/hqdefault.jpg"
   },
   {
-    "id": "song_684",
+    "id": "song_653",
     "title": "Godzilla",
     "artist": "EminemMusic",
     "mood": "Energetic",
@@ -6156,7 +5877,7 @@
     "thumbnail": "https://i.ytimg.com/vi/nbqMIBYJlvk/hqdefault.jpg"
   },
   {
-    "id": "song_685",
+    "id": "song_654",
     "title": "Eye of the Tiger",
     "artist": "Survivor Band",
     "mood": "Focus",
@@ -6165,7 +5886,7 @@
     "thumbnail": "https://i.ytimg.com/vi/S-LO6dctBms/hqdefault.jpg"
   },
   {
-    "id": "song_686",
+    "id": "song_655",
     "title": "Flo Rida - Low (DBLM x FRXSTY Remix)",
     "artist": "TrapMusicHDTV",
     "mood": "Angry",
@@ -6174,7 +5895,7 @@
     "thumbnail": "https://i.ytimg.com/vi/saf2SiKt76g/hqdefault.jpg"
   },
   {
-    "id": "song_687",
+    "id": "song_656",
     "title": "The Spectre",
     "artist": "Alan Walker",
     "mood": "Chill",
@@ -6183,7 +5904,7 @@
     "thumbnail": "https://i.ytimg.com/vi/lNM9HlEK4q4/hqdefault.jpg"
   },
   {
-    "id": "song_688",
+    "id": "song_657",
     "title": "Soldier",
     "artist": "NEFFEX",
     "mood": "Chill",
@@ -6192,7 +5913,7 @@
     "thumbnail": "https://i.ytimg.com/vi/aRmyWILbfYE/hqdefault.jpg"
   },
   {
-    "id": "song_689",
+    "id": "song_658",
     "title": "The Nights",
     "artist": "Avicii",
     "mood": "Energetic",
@@ -6201,7 +5922,7 @@
     "thumbnail": "https://i.ytimg.com/vi/W4C-NEWrnSQ/hqdefault.jpg"
   },
   {
-    "id": "song_690",
+    "id": "song_659",
     "title": "Don’t Play",
     "artist": "Anne-Marie",
     "mood": "Energetic",
@@ -6210,7 +5931,7 @@
     "thumbnail": "https://i.ytimg.com/vi/NRElgOW1OWg/hqdefault.jpg"
   },
   {
-    "id": "song_691",
+    "id": "song_660",
     "title": "someone you loved - Lewis Capaldi (slowed down)",
     "artist": "Nvem Rain",
     "mood": "Chill",
@@ -6219,7 +5940,7 @@
     "thumbnail": "https://i.ytimg.com/vi/y-_Sauco2YA/hqdefault.jpg"
   },
   {
-    "id": "song_692",
+    "id": "song_661",
     "title": "Stressed Out",
     "artist": "twenty one pilots",
     "mood": "Focus",
@@ -6228,7 +5949,7 @@
     "thumbnail": "https://i.ytimg.com/vi/K1FlAphL2p8/hqdefault.jpg"
   },
   {
-    "id": "song_693",
+    "id": "song_662",
     "title": "Murder In My Mind (Slowed + Reverb)",
     "artist": "KORDHELL",
     "mood": "Chill",
@@ -6237,7 +5958,7 @@
     "thumbnail": "https://i.ytimg.com/vi/1o3oHXOip04/hqdefault.jpg"
   },
   {
-    "id": "song_694",
+    "id": "song_663",
     "title": "When I Grow Up",
     "artist": "NFrealmusic",
     "mood": "Happy",
@@ -6246,7 +5967,7 @@
     "thumbnail": "https://i.ytimg.com/vi/nBS1LR0S8ks/hqdefault.jpg"
   },
   {
-    "id": "song_695",
+    "id": "song_664",
     "title": "Careless",
     "artist": "NEFFEX",
     "mood": "Sad",
@@ -6255,7 +5976,7 @@
     "thumbnail": "https://i.ytimg.com/vi/o-qfle2_w4Y/hqdefault.jpg"
   },
   {
-    "id": "song_696",
+    "id": "song_665",
     "title": "Under The Influence",
     "artist": "Chris Brown",
     "mood": "Energetic",
@@ -6264,7 +5985,7 @@
     "thumbnail": "https://i.ytimg.com/vi/BLFGsxijRHg/hqdefault.jpg"
   },
   {
-    "id": "song_697",
+    "id": "song_666",
     "title": "MIDDLE OF THE NIGHT",
     "artist": "Elley Duhé",
     "mood": "Chill",
@@ -6273,7 +5994,7 @@
     "thumbnail": "https://i.ytimg.com/vi/4zsVKROnQfY/hqdefault.jpg"
   },
   {
-    "id": "song_698",
+    "id": "song_667",
     "title": "The Box",
     "artist": "Roddy Ricch",
     "mood": "Relaxed",
@@ -6282,7 +6003,7 @@
     "thumbnail": "https://i.ytimg.com/vi/IxJjY5T9yag/hqdefault.jpg"
   },
   {
-    "id": "song_699",
+    "id": "song_668",
     "title": "Shang-Chi - Official Trailer Song Music (Full Epic Trailer Version)",
     "artist": "The Wizard",
     "mood": "Focus",
@@ -6291,7 +6012,7 @@
     "thumbnail": "https://i.ytimg.com/vi/kMoWwAH24tE/hqdefault.jpg"
   },
   {
-    "id": "song_700",
+    "id": "song_669",
     "title": "Grateful",
     "artist": "NEFFEX",
     "mood": "Angry",
@@ -6300,7 +6021,7 @@
     "thumbnail": "https://i.ytimg.com/vi/dAgNwavNAHQ/hqdefault.jpg"
   },
   {
-    "id": "song_701",
+    "id": "song_670",
     "title": "Smooth Criminal (Radio Edit)",
     "artist": "Michael Jackson",
     "mood": "Chill",
@@ -6309,7 +6030,7 @@
     "thumbnail": "https://i.ytimg.com/vi/_mMyPJSx8RU/hqdefault.jpg"
   },
   {
-    "id": "song_702",
+    "id": "song_671",
     "title": "Nightcore - Dusk Till Dawn ✗ Faded ✗ Airplanes ✗ Hello & MORE (Switching Vocals/Mashup)",
     "artist": "Nightcore Daisuki",
     "mood": "Sad",
@@ -6318,7 +6039,7 @@
     "thumbnail": "https://i.ytimg.com/vi/8Cm6l01H82k/hqdefault.jpg"
   },
   {
-    "id": "song_703",
+    "id": "song_672",
     "title": "Uptown Funk",
     "artist": "Mark Ronson",
     "mood": "Energetic",
@@ -6327,7 +6048,7 @@
     "thumbnail": "https://i.ytimg.com/vi/tYvFa2ARD24/hqdefault.jpg"
   },
   {
-    "id": "song_704",
+    "id": "song_673",
     "title": "Mood (Remix)",
     "artist": "Justin Bieber",
     "mood": "Happy",
@@ -6336,7 +6057,7 @@
     "thumbnail": "https://i.ytimg.com/vi/MLIwrQXd6MA/hqdefault.jpg"
   },
   {
-    "id": "song_705",
+    "id": "song_674",
     "title": "Fly Away",
     "artist": "TheFatRat",
     "mood": "Energetic",
@@ -6345,7 +6066,7 @@
     "thumbnail": "https://i.ytimg.com/vi/HdNnJdd9ljY/hqdefault.jpg"
   },
   {
-    "id": "song_706",
+    "id": "song_675",
     "title": "Blinding Lights",
     "artist": "The Weeknd",
     "mood": "Chill",
@@ -6354,7 +6075,7 @@
     "thumbnail": "https://i.ytimg.com/vi/J7p4bzqLvCw/hqdefault.jpg"
   },
   {
-    "id": "song_707",
+    "id": "song_676",
     "title": "Fight Back",
     "artist": "NEFFEX",
     "mood": "Angry",
@@ -6363,7 +6084,7 @@
     "thumbnail": "https://i.ytimg.com/vi/FYKjBJ7RD3g/hqdefault.jpg"
   },
   {
-    "id": "song_708",
+    "id": "song_677",
     "title": "Easy On Me",
     "artist": "Adele",
     "mood": "Sad",
@@ -6372,7 +6093,7 @@
     "thumbnail": "https://i.ytimg.com/vi/H9NJenpBV2I/hqdefault.jpg"
   },
   {
-    "id": "song_709",
+    "id": "song_678",
     "title": "MONEY",
     "artist": "LLOUD Official",
     "mood": "Happy",
@@ -6381,7 +6102,7 @@
     "thumbnail": "https://i.ytimg.com/vi/4YSHPGn9-LM/hqdefault.jpg"
   },
   {
-    "id": "song_710",
+    "id": "song_679",
     "title": "Let Her Go",
     "artist": "Passenger",
     "mood": "Sad",
@@ -6390,7 +6111,7 @@
     "thumbnail": "https://i.ytimg.com/vi/B3EN7Ewwwvs/hqdefault.jpg"
   },
   {
-    "id": "song_711",
+    "id": "song_680",
     "title": "Talking to the Moon",
     "artist": "Bruno Mars",
     "mood": "Happy",
@@ -6399,7 +6120,7 @@
     "thumbnail": "https://i.ytimg.com/vi/lIaDtfplmyQ/hqdefault.jpg"
   },
   {
-    "id": "song_712",
+    "id": "song_681",
     "title": "NEON BLADE",
     "artist": "MoonDeity",
     "mood": "Energetic",
@@ -6408,7 +6129,7 @@
     "thumbnail": "https://i.ytimg.com/vi/gfIb3nMjXgg/hqdefault.jpg"
   },
   {
-    "id": "song_713",
+    "id": "song_682",
     "title": "Billie Jean",
     "artist": "Michael Jackson",
     "mood": "Sad",
@@ -6417,7 +6138,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Kr4EQDVETuA/hqdefault.jpg"
   },
   {
-    "id": "song_714",
+    "id": "song_683",
     "title": "Chandelier",
     "artist": "Sia",
     "mood": "Energetic",
@@ -6426,7 +6147,7 @@
     "thumbnail": "https://i.ytimg.com/vi/uzaYLK3k0DQ/hqdefault.jpg"
   },
   {
-    "id": "song_715",
+    "id": "song_684",
     "title": "No Lie",
     "artist": "Sean Paul",
     "mood": "Relaxed",
@@ -6435,7 +6156,7 @@
     "thumbnail": "https://i.ytimg.com/vi/jOF8gqpoPgs/hqdefault.jpg"
   },
   {
-    "id": "song_716",
+    "id": "song_685",
     "title": "Rolling in the Deep",
     "artist": "Adele",
     "mood": "Sad",
@@ -6444,7 +6165,7 @@
     "thumbnail": "https://i.ytimg.com/vi/4ujBQOzs6Lw/hqdefault.jpg"
   },
   {
-    "id": "song_717",
+    "id": "song_686",
     "title": "Bangarang (feat. Sirah)",
     "artist": "Skrillex",
     "mood": "Energetic",
@@ -6453,7 +6174,7 @@
     "thumbnail": "https://i.ytimg.com/vi/V7hbIzqxhaE/hqdefault.jpg"
   },
   {
-    "id": "song_718",
+    "id": "song_687",
     "title": "Mask Off",
     "artist": "Future",
     "mood": "Focus",
@@ -6462,7 +6183,7 @@
     "thumbnail": "https://i.ytimg.com/vi/AMCwYdTJ_PE/hqdefault.jpg"
   },
   {
-    "id": "song_719",
+    "id": "song_688",
     "title": "Unforgettable",
     "artist": "French Montana",
     "mood": "Angry",
@@ -6471,7 +6192,7 @@
     "thumbnail": "https://i.ytimg.com/vi/48ydDUQ16RE/hqdefault.jpg"
   },
   {
-    "id": "song_720",
+    "id": "song_689",
     "title": "Dance Monkey",
     "artist": "Tones And I",
     "mood": "Energetic",
@@ -6480,7 +6201,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Hx4nWW9z0ig/hqdefault.jpg"
   },
   {
-    "id": "song_721",
+    "id": "song_690",
     "title": "Hey Mama (feat. Nicki Minaj, Bebe Rexha & Afrojack)",
     "artist": "David Guetta",
     "mood": "Energetic",
@@ -6489,7 +6210,7 @@
     "thumbnail": "https://i.ytimg.com/vi/Hsz6hL_a69Q/hqdefault.jpg"
   },
   {
-    "id": "song_722",
+    "id": "song_691",
     "title": "Hmmm",
     "artist": "Hott Headzz",
     "mood": "Chill",
@@ -6498,7 +6219,7 @@
     "thumbnail": "https://i.ytimg.com/vi/XMFXEyQtwEI/hqdefault.jpg"
   },
   {
-    "id": "song_723",
+    "id": "song_692",
     "title": "Face Off",
     "artist": "Tech N9ne",
     "mood": "Energetic",
@@ -6507,7 +6228,7 @@
     "thumbnail": "https://i.ytimg.com/vi/bDlEN5tDMtg/hqdefault.jpg"
   },
   {
-    "id": "song_724",
+    "id": "song_693",
     "title": "Xenogenesis",
     "artist": "TheFatRat",
     "mood": "Energetic",
@@ -6516,7 +6237,7 @@
     "thumbnail": "https://i.ytimg.com/vi/1aQ4HSheJhk/hqdefault.jpg"
   },
   {
-    "id": "song_725",
+    "id": "song_694",
     "title": "Can We Kiss Forever?",
     "artist": "Kina",
     "mood": "Happy",
@@ -6525,16 +6246,7 @@
     "thumbnail": "https://i.ytimg.com/vi/-AdptiRTx6o/hqdefault.jpg"
   },
   {
-    "id": "song_726",
-    "title": "RAVE",
-    "artist": "Dxrk ダーク",
-    "mood": "Energetic",
-    "duration": "2:50",
-    "youtubeUrl": "https://youtube.com/watch?v=AqHlQL3PoD8",
-    "thumbnail": "https://i.ytimg.com/vi/AqHlQL3PoD8/hqdefault.jpg"
-  },
-  {
-    "id": "song_727",
+    "id": "song_695",
     "title": "Take Me To Church",
     "artist": "Hozier",
     "mood": "Relaxed",
@@ -6543,7 +6255,7 @@
     "thumbnail": "https://i.ytimg.com/vi/JKlYOUfviXM/hqdefault.jpg"
   },
   {
-    "id": "song_728",
+    "id": "song_696",
     "title": "Turn Down for What",
     "artist": "DJ Snake",
     "mood": "Energetic",
@@ -6552,7 +6264,7 @@
     "thumbnail": "https://i.ytimg.com/vi/MGuM2SlZBJ4/hqdefault.jpg"
   },
   {
-    "id": "song_729",
+    "id": "song_697",
     "title": "Summer Is Over",
     "artist": "KSI Music",
     "mood": "Energetic",
@@ -6561,7 +6273,7 @@
     "thumbnail": "https://i.ytimg.com/vi/mfysx6cfGuk/hqdefault.jpg"
   },
   {
-    "id": "song_730",
+    "id": "song_698",
     "title": "Gangsta's Paradise",
     "artist": "Coolio",
     "mood": "Energetic",
