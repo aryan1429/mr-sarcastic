@@ -83,7 +83,7 @@ const Songs = () => {
       const result = await songsService.getAllSongs(currentPage, songsPerPage, searchTerm || undefined, selectedMood);
       setSongs(result.songs);
       setPagination(result.pagination);
-      console.log(`✅ Loaded ${result.songs.length} songs from backend (Page ${currentPage})`);
+      console.log(`✅ Loaded ${result.songs.length} songs (Page ${currentPage}, Mood: ${selectedMood}, Search: "${searchTerm || 'none'}")`);
     } catch (err) {
       console.error('Failed to load songs:', err);
       setError(err instanceof Error ? err.message : 'Failed to load songs');
