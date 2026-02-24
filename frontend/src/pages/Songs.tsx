@@ -360,7 +360,7 @@ const Songs = () => {
                   <div className="relative max-w-md mx-auto">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                     <Input
-                      placeholder="Search songs or artists..."
+                      placeholder="Search 698 songs by title or artist..."
                       value={searchInput}
                       onChange={(e) => handleSearchChange(e.target.value)}
                       className="pl-10 h-11 text-base touch-manipulation"
