@@ -142,7 +142,7 @@ const Songs = () => {
   const handleAddToQueue = (song: Song, e: React.MouseEvent) => {
     e.stopPropagation();
     addToQueue(song);
-    toast({ title: "Added to queue", description: `${song.title} by ${song.artist}` });
+    toast({ title: "➕ Added to queue", description: `${song.title} by ${song.artist}` });
   };
 
   const isCurrentlyPlaying = (song: Song) => {
