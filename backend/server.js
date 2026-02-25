@@ -28,13 +28,22 @@ app.use(limiter);
 
 // CORS configuration
 const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
-console.log(`CORS configured for frontend URL: ${frontendUrl}`);
+// Build list of allowed origins including www variant
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:5174',
+  frontendUrl,
+  'https://mr-sarcastic.vercel.app',
+];
+// If frontend URL doesn't have www, add www variant and vice versa
+if (frontendUrl.includes('://www.')) {
+  allowedOrigins.push(frontendUrl.replace('://www.', '://'));
+} else if (frontendUrl.includes('://') && !frontendUrl.includes('://localhost')) {
+  allowedOrigins.push(frontendUrl.replace('://', '://www.'));
+}
+console.log('CORS configured for origins:', allowedOrigins);
 app.use(cors({
-  origin: [
-    'http://localhost:5173',
-    'http://localhost:5174',
-    frontendUrl
-  ],
+  origin: allowedOrigins,
   credentials: true
 }));
 
@@ -66,7 +75,7 @@ app.get('/health', (req, res) => {
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error('Error:', err);
-  res.status(500).json({ 
+  res.status(500).json({
     error: 'Internal server error',
     message: process.env.NODE_ENV === 'development' ? err.message : 'Something went wrong'
   });
