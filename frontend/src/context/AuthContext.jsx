@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { firebaseAuthService } from '../services/firebaseAuth.js';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8001/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
 
 const AuthContext = createContext(null);
 
@@ -23,15 +23,15 @@ export const AuthProvider = ({ children }) => {
   // Initialize Firebase Auth and listen for auth state changes
   useEffect(() => {
     console.log("AuthContext useEffect - Initializing Firebase Auth");
-    
+
     const initializeAuth = async () => {
       try {
         console.log("Starting Firebase auth initialization...");
-        
+
         // Set up auth state listener directly without init wrapper
         const unsubscribe = firebaseAuthService.onAuthStateChanged((user) => {
           console.log("Firebase auth state changed:", user ? user.email : "No user");
-          
+
           if (user) {
             const userData = {
               uid: user.uid,
@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
             };
             setUser(userData);
             setIsAuthenticated(true);
-            
+
             // Store user data in localStorage for consistency
             localStorage.setItem('userData', JSON.stringify(userData));
           } else {
@@ -84,26 +84,26 @@ export const AuthProvider = ({ children }) => {
   const login = async (credentials) => {
     try {
       let result;
-      
+
       if (credentials.googleCredential) {
         // Google login using Firebase
         result = await firebaseAuthService.signInWithGoogle();
-        
+
         // Send Firebase ID token to our backend
         const backendResponse = await fetch(`${API_BASE_URL}/auth/firebase`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ idToken: result.idToken })
         });
-        
+
         if (!backendResponse.ok) {
           const error = await backendResponse.json();
           throw new Error(error.error || 'Backend authentication failed');
         }
-        
+
         const backendData = await backendResponse.json();
         // Firebase auth state listener will handle setting user state
-        
+
         return result.user;
       } else {
         // Email/password login - use backend directly
@@ -112,20 +112,20 @@ export const AuthProvider = ({ children }) => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: credentials.email, password: credentials.password })
         });
-        
+
         if (!response.ok) {
           const error = await response.json();
           throw new Error(error.error || 'Login failed');
         }
-        
+
         const data = await response.json();
-        
+
         // For email/password, manually set user state since Firebase isn't involved
         setUser(data.user);
         setIsAuthenticated(true);
         localStorage.setItem('authToken', data.token);
         localStorage.setItem('userData', JSON.stringify(data.user));
-        
+
         return data.user;
       }
     } catch (error) {
@@ -147,52 +147,52 @@ export const AuthProvider = ({ children }) => {
   const signup = async (userData) => {
     try {
       let result;
-      
+
       if (userData.googleCredential) {
         // Google signup - same as login for Google
         result = await firebaseAuthService.signInWithGoogle();
-        
+
         // Send Firebase ID token to our backend
-        const backendResponse = await fetch('/api/auth/firebase', {
+        const backendResponse = await fetch(`${API_BASE_URL}/auth/firebase`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ idToken: result.idToken })
         });
-        
+
         if (!backendResponse.ok) {
           const error = await backendResponse.json();
           throw new Error(error.error || 'Backend authentication failed');
         }
-        
+
         const backendData = await backendResponse.json();
         // Firebase auth state listener will handle setting user state
-        
+
         return result.user;
       } else {
         // Email/password signup - use backend directly
-        const response = await fetch('/api/auth/register', {
+        const response = await fetch(`${API_BASE_URL}/auth/register`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ 
+          body: JSON.stringify({
             username: userData.username,
-            email: userData.email, 
-            password: userData.password 
+            email: userData.email,
+            password: userData.password
           })
         });
-        
+
         if (!response.ok) {
           const error = await response.json();
           throw new Error(error.error || 'Registration failed');
         }
-        
+
         const data = await response.json();
-        
+
         // For email/password, manually set user state since Firebase isn't involved
         setUser(data.user);
         setIsAuthenticated(true);
         localStorage.setItem('authToken', data.token);
         localStorage.setItem('userData', JSON.stringify(data.user));
-        
+
         return data.user;
       }
     } catch (error) {
