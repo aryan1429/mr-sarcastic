@@ -413,10 +413,7 @@ const Chat = () => {
                     </div>
                     <Badge
                       variant="secondary"
-                      className={`${detectedMood.toLowerCase() === 'toxic'
-                        ? 'bg-red-500 text-white'
-                        : 'bg-accent/20 text-accent-foreground'
-                        } cursor-pointer`}
+                      className="bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 border border-green-400 dark:border-green-600 hover:bg-green-200 dark:hover:bg-green-800/60 cursor-pointer transition-colors shadow-sm shadow-green-200/50 dark:shadow-green-900/30"
                       onClick={() => setMoodSelectorOpen(true)}
                     >
                       Change Mood
@@ -572,10 +569,10 @@ const Chat = () => {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="w-full justify-start gap-2"
+                    className="w-full justify-start gap-2 bg-green-100 dark:bg-green-900/40 border-green-400 dark:border-green-600 text-green-700 dark:text-green-300 hover:bg-green-200 dark:hover:bg-green-800/50 shadow-sm shadow-green-200/50 dark:shadow-green-900/30"
                     onClick={() => setMoodSelectorOpen(true)}
                   >
-                    <Smile className="w-4 h-4" />
+                    <Smile className="w-4 h-4 text-green-600 dark:text-green-400" />
                     Change Mood
                   </Button>
                 </div>
