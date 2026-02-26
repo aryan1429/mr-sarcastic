@@ -16,8 +16,37 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Security middleware
-app.use(helmet());
+// CORS configuration — MUST come before Helmet
+const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
+const allowedOrigins = [
+  'http://localhost:5173',
+  'http://localhost:5174',
+  frontendUrl,
+  'https://mr-sarcastic.vercel.app',
+];
+if (frontendUrl.includes('://www.')) {
+  allowedOrigins.push(frontendUrl.replace('://www.', '://'));
+} else if (frontendUrl.includes('://') && !frontendUrl.includes('://localhost')) {
+  allowedOrigins.push(frontendUrl.replace('://', '://www.'));
+}
+console.log('CORS configured for origins:', allowedOrigins);
+
+const corsOptions = {
+  origin: allowedOrigins,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+};
+app.use(cors(corsOptions));
+
+// Handle preflight requests explicitly
+app.options('*', cors(corsOptions));
+
+// Security middleware — after CORS so preflight isn't blocked
+app.use(helmet({
+  crossOriginResourcePolicy: { policy: 'cross-origin' },
+  crossOriginOpenerPolicy: { policy: 'unsafe-none' },
+}));
 
 // Rate limiting
 const limiter = rateLimit({
@@ -25,27 +54,6 @@ const limiter = rateLimit({
   max: 100 // limit each IP to 100 requests per windowMs
 });
 app.use(limiter);
-
-// CORS configuration
-const frontendUrl = process.env.FRONTEND_URL || 'http://localhost:5173';
-// Build list of allowed origins including www variant
-const allowedOrigins = [
-  'http://localhost:5173',
-  'http://localhost:5174',
-  frontendUrl,
-  'https://mr-sarcastic.vercel.app',
-];
-// If frontend URL doesn't have www, add www variant and vice versa
-if (frontendUrl.includes('://www.')) {
-  allowedOrigins.push(frontendUrl.replace('://www.', '://'));
-} else if (frontendUrl.includes('://') && !frontendUrl.includes('://localhost')) {
-  allowedOrigins.push(frontendUrl.replace('://', '://www.'));
-}
-console.log('CORS configured for origins:', allowedOrigins);
-app.use(cors({
-  origin: allowedOrigins,
-  credentials: true
-}));
 
 // Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
