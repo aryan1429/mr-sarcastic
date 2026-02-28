@@ -18,19 +18,15 @@ export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  console.log("AuthProvider rendering, loading:", loading, "isAuthenticated:", isAuthenticated);
 
   // Initialize Firebase Auth and listen for auth state changes
   useEffect(() => {
-    console.log("AuthContext useEffect - Initializing Firebase Auth");
 
     const initializeAuth = async () => {
       try {
-        console.log("Starting Firebase auth initialization...");
 
         // Set up auth state listener directly without init wrapper
         const unsubscribe = firebaseAuthService.onAuthStateChanged(async (user) => {
-          console.log("Firebase auth state changed:", user ? user.email : "No user");
 
           if (user) {
             const userData = {
@@ -60,12 +56,10 @@ export const AuthProvider = ({ children }) => {
             localStorage.removeItem('authToken');
           }
           setLoading(false);
-          console.log("Loading state set to false");
         });
 
         // Set timeout to ensure loading is set to false even if Firebase doesn't respond
         const timeout = setTimeout(() => {
-          console.log("Firebase auth timeout reached, setting loading to false");
           setLoading(false);
         }, 3000);
 
