@@ -2,10 +2,6 @@ import axios from 'axios';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
 
-console.log('Environment variables:', import.meta.env);
-console.log('VITE_API_BASE_URL from env:', import.meta.env.VITE_API_BASE_URL);
-console.log('API_BASE_URL configured as:', API_BASE_URL);
-
 // Create axios instance with default config
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -19,13 +15,8 @@ const api = axios.create({
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('authToken');
-    console.log('API Request:', config.method?.toUpperCase(), config.url);
-    console.log('Token in localStorage:', token ? 'Present' : 'Missing');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
-      console.log('Authorization header set');
-    } else {
-      console.log('No token, skipping authorization header');
     }
     return config;
   },
