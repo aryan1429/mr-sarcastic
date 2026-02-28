@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }) => {
         console.log("Starting Firebase auth initialization...");
 
         // Set up auth state listener directly without init wrapper
-        const unsubscribe = firebaseAuthService.onAuthStateChanged((user) => {
+        const unsubscribe = firebaseAuthService.onAuthStateChanged(async (user) => {
           console.log("Firebase auth state changed:", user ? user.email : "No user");
 
           if (user) {
@@ -42,6 +42,14 @@ export const AuthProvider = ({ children }) => {
             };
             setUser(userData);
             setIsAuthenticated(true);
+
+            // Store Firebase ID token for API authentication
+            try {
+              const idToken = await user.getIdToken();
+              localStorage.setItem('authToken', idToken);
+            } catch (tokenError) {
+              console.error('Failed to get Firebase ID token:', tokenError);
+            }
 
             // Store user data in localStorage for consistency
             localStorage.setItem('userData', JSON.stringify(userData));
