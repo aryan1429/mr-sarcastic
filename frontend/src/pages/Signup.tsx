@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Bot, Check, Eye, EyeOff, X } from "lucide-react";
+import { Flame, Check, Eye, EyeOff, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -108,7 +108,7 @@ const Signup = () => {
   };
 
   const passwordStrength = getPasswordStrength(watchedPassword);
-  
+
   const getStrengthLabel = (strength: number) => {
     if (strength < 25) return "Weak";
     if (strength < 50) return "Fair";
@@ -139,9 +139,9 @@ const Signup = () => {
         email: data.email,
         password: data.password
       });
-      
+
       toast.success("Account created successfully! Welcome to Mr Sarcastic!");
-      
+
       // Navigate to chat page after successful signup
       navigate('/chat');
     } catch (error) {
@@ -156,7 +156,7 @@ const Signup = () => {
     try {
       // Use AuthContext login method for Google sign-in
       await signup({ googleCredential: credential });
-      
+
       toast.success("Successfully signed up with Google!");
       navigate('/chat');
     } catch (error: any) {
@@ -171,7 +171,7 @@ const Signup = () => {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-full mb-4">
-            <Bot className="w-8 h-8 text-primary" />
+            <Flame className="w-8 h-8 text-primary" />
           </div>
           <h1 className="text-3xl font-bold text-primary mb-2">Join Mr Sarcastic!</h1>
           <p className="text-muted-foreground">Create your account to start chatting</p>
@@ -180,8 +180,8 @@ const Signup = () => {
         <Card className="p-6 border-primary/20">
           {/* Google Sign-Up Button */}
           <div className="mb-6">
-            <GoogleSignInButton 
-              onGoogleSignIn={handleGoogleSignIn} 
+            <GoogleSignInButton
+              onGoogleSignIn={handleGoogleSignIn}
               isLoading={googleLoading}
             />
           </div>
@@ -250,7 +250,7 @@ const Signup = () => {
                   )}
                 </Button>
               </div>
-              
+
               {watchedPassword && (
                 <div className="space-y-2">
                   <div className="flex items-center justify-between text-sm">
@@ -260,7 +260,7 @@ const Signup = () => {
                     </span>
                   </div>
                   <Progress value={passwordStrength} className="h-2" />
-                  
+
                   <div className="grid grid-cols-2 gap-1 text-xs">
                     {passwordCriteria.map((criterion, index) => (
                       <div key={index} className="flex items-center gap-1">
@@ -277,7 +277,7 @@ const Signup = () => {
                   </div>
                 </div>
               )}
-              
+
               {errors.password && (
                 <p className="text-sm text-destructive">{errors.password.message}</p>
               )}
@@ -312,9 +312,9 @@ const Signup = () => {
               )}
             </div>
 
-            <Button 
-              type="submit" 
-              className="w-full" 
+            <Button
+              type="submit"
+              className="w-full"
               disabled={isLoading}
             >
               {isLoading ? "Creating account..." : "Create Account"}
@@ -324,8 +324,8 @@ const Signup = () => {
           <div className="mt-6 text-center">
             <p className="text-sm text-muted-foreground">
               Already have an account?{" "}
-              <Link 
-                to="/login" 
+              <Link
+                to="/login"
                 className="text-primary hover:text-primary/80 font-medium transition-colors"
               >
                 Sign in
@@ -335,8 +335,8 @@ const Signup = () => {
         </Card>
 
         <div className="mt-6 text-center">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             ← Back to Home

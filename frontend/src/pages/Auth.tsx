@@ -6,7 +6,7 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/context/AuthContext";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Bot, Check, Eye, EyeOff, X } from "lucide-react";
+import { Flame, Check, Eye, EyeOff, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -37,17 +37,17 @@ type LoginForm = z.infer<typeof loginSchema>;
 type SignupForm = z.infer<typeof signupSchema>;
 
 // Simple Google Sign-In button component using Firebase
-const GoogleSignInButton = ({ 
-  onGoogleSignIn, 
-  isLoading, 
-  text = "Continue with Google" 
-}: { 
+const GoogleSignInButton = ({
+  onGoogleSignIn,
+  isLoading,
+  text = "Continue with Google"
+}: {
   onGoogleSignIn: () => void;
   isLoading: boolean;
   text?: string;
 }) => {
   return (
-    <div className="w-full space-y-3">      
+    <div className="w-full space-y-3">
       <Button
         type="button"
         variant="outline"
@@ -68,7 +68,7 @@ const GoogleSignInButton = ({
 const PasswordStrength = ({ password }: { password: string }) => {
   const getStrength = (pass: string) => {
     if (!pass) return { score: 0, label: "" };
-    
+
     let score = 0;
     const checks = [
       { regex: /.{8,}/, label: "8+ characters" },
@@ -76,46 +76,44 @@ const PasswordStrength = ({ password }: { password: string }) => {
       { regex: /[a-z]/, label: "Lowercase letter" },
       { regex: /[0-9]/, label: "Number" },
     ];
-    
+
     checks.forEach(check => {
       if (check.regex.test(pass)) score++;
     });
-    
+
     return {
       score,
       checks,
       label: score < 2 ? "Weak" : score < 3 ? "Fair" : score < 4 ? "Good" : "Strong"
     };
   };
-  
+
   const strength = getStrength(password);
-  
+
   return (
     <div className="space-y-2">
       <div className="flex justify-between items-center">
         <span className="text-sm text-muted-foreground">Password strength</span>
-        <span className={`text-xs font-medium ${
-          strength.score < 2 ? "text-red-500" : 
-          strength.score < 3 ? "text-yellow-500" : 
-          strength.score < 4 ? "text-blue-500" : "text-green-500"
-        }`}>
+        <span className={`text-xs font-medium ${strength.score < 2 ? "text-red-500" :
+          strength.score < 3 ? "text-yellow-500" :
+            strength.score < 4 ? "text-blue-500" : "text-green-500"
+          }`}>
           {strength.label}
         </span>
       </div>
-      <Progress 
-        value={(strength.score / 4) * 100} 
+      <Progress
+        value={(strength.score / 4) * 100}
         className="h-1"
       />
       <div className="grid grid-cols-2 gap-2 text-xs">
         {strength.checks?.map((check, index) => (
-          <div 
-            key={index} 
-            className={`flex items-center gap-1 ${
-              check.regex.test(password) ? "text-green-600" : "text-muted-foreground"
-            }`}
+          <div
+            key={index}
+            className={`flex items-center gap-1 ${check.regex.test(password) ? "text-green-600" : "text-muted-foreground"
+              }`}
           >
-            {check.regex.test(password) ? 
-              <Check className="w-3 h-3" /> : 
+            {check.regex.test(password) ?
+              <Check className="w-3 h-3" /> :
               <X className="w-3 h-3" />
             }
             {check.label}
@@ -132,7 +130,7 @@ export default function Auth() {
   const [googleLoading, setGoogleLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  
+
   const navigate = useNavigate();
   const { login, signup, isAuthenticated } = useAuth();
 
@@ -181,12 +179,12 @@ export default function Auth() {
   const handleSignup = async (data: SignupForm) => {
     setIsLoading(true);
     try {
-      await signup({ 
+      await signup({
         username: data.username,
-        email: data.email, 
-        password: data.password 
+        email: data.email,
+        password: data.password
       });
-      
+
       toast.success("Account created successfully! Welcome to Mr Sarcastic!");
       navigate('/');
     } catch (error) {
@@ -221,7 +219,7 @@ export default function Auth() {
         {/* Logo and title */}
         <div className="text-center space-y-2">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-2">
-            <Bot className="w-8 h-8 text-primary" />
+            <Flame className="w-8 h-8 text-primary" />
           </div>
           <h1 className="text-2xl font-bold text-primary">Mr. Sarcastic</h1>
           <p className="text-muted-foreground">
@@ -279,9 +277,9 @@ export default function Auth() {
                 )}
               </div>
 
-              <Button 
-                type="submit" 
-                className="w-full" 
+              <Button
+                type="submit"
+                className="w-full"
                 disabled={isLoading}
               >
                 {isLoading ? "Signing In..." : "Sign In"}
@@ -297,7 +295,7 @@ export default function Auth() {
               </div>
             </div>
 
-            <GoogleSignInButton 
+            <GoogleSignInButton
               onGoogleSignIn={handleGoogleAuth}
               isLoading={googleLoading}
               text="Sign in with Google"
@@ -392,9 +390,9 @@ export default function Auth() {
                 )}
               </div>
 
-              <Button 
-                type="submit" 
-                className="w-full" 
+              <Button
+                type="submit"
+                className="w-full"
                 disabled={isLoading}
               >
                 {isLoading ? "Creating Account..." : "Create Account"}
@@ -410,7 +408,7 @@ export default function Auth() {
               </div>
             </div>
 
-            <GoogleSignInButton 
+            <GoogleSignInButton
               onGoogleSignIn={handleGoogleAuth}
               isLoading={googleLoading}
               text="Sign up with Google"

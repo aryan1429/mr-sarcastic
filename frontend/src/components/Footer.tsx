@@ -1,4 +1,4 @@
-import { ArrowUp, Bot, Github, Heart, Music, Twitter } from "lucide-react";
+import { ArrowUp, Flame, Github, Heart, Music, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect, useState, useCallback, memo } from "react";
 
@@ -31,8 +31,8 @@ const Footer = memo(() => {
       <button
         onClick={scrollToTop}
         className={`fixed bottom-6 right-6 z-40 p-3 rounded-full bg-primary text-primary-foreground shadow-lg shadow-primary/25 active:scale-95 ${showScrollTop
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 translate-y-10 pointer-events-none"
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-10 pointer-events-none"
           }`}
         style={{
           transitionProperty: "transform, opacity, box-shadow",
@@ -60,7 +60,7 @@ const Footer = memo(() => {
                     transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
                   }}
                 >
-                  <Bot className="h-6 w-6 text-white" />
+                  <Flame className="h-6 w-6 text-white" />
                 </div>
                 <span className="text-xl font-bold gradient-text">Mr Sarcastic</span>
               </div>

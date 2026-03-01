@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/AuthContext";
 import {
-  Bot,
+  Flame,
   Home,
   LogOut,
   Menu,
@@ -80,11 +80,10 @@ const Navigation = memo(() => {
 
   return (
     <nav
-      className={`sticky top-0 z-50 border-b contain-layout ${
-        scrolled
-          ? "border-border bg-card/90 backdrop-blur-xl shadow-lg shadow-background/50"
-          : "border-transparent bg-card/60 backdrop-blur-md"
-      } supports-[backdrop-filter]:bg-card/60`}
+      className={`sticky top-0 z-50 border-b contain-layout ${scrolled
+        ? "border-border bg-card/90 backdrop-blur-xl shadow-lg shadow-background/50"
+        : "border-transparent bg-card/60 backdrop-blur-md"
+        } supports-[backdrop-filter]:bg-card/60`}
       style={{
         transitionProperty: "background-color, border-color, box-shadow, backdrop-filter",
         transitionDuration: "400ms",
@@ -102,7 +101,7 @@ const Navigation = memo(() => {
                 transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
               }}
             >
-              <Bot className="h-6 w-6 text-white group-hover:rotate-12 transition-transform duration-300" style={{ transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)" }} />
+              <Flame className="h-6 w-6 text-white group-hover:rotate-12 transition-transform duration-300" style={{ transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)" }} />
             </div>
             <span className="text-xl font-bold gradient-text group-hover:tracking-wide transition-all duration-300">Mr Sarcastic</span>
           </Link>
@@ -116,11 +115,10 @@ const Navigation = memo(() => {
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`relative px-4 py-2 rounded-lg font-medium flex items-center space-x-2 group ${
-                    active
-                      ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                  }`}
+                  className={`relative px-4 py-2 rounded-lg font-medium flex items-center space-x-2 group ${active
+                    ? "bg-primary text-primary-foreground shadow-lg shadow-primary/25"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                    }`}
                   style={{
                     transitionProperty: "background-color, color, box-shadow, transform",
                     transitionDuration: "250ms",
@@ -137,7 +135,7 @@ const Navigation = memo(() => {
                 </Link>
               );
             })}
-            
+
             {/* Authentication Button */}
             <div className="ml-4 flex items-center space-x-2">
               <Button variant="outline" size="sm" onClick={handleLogout} className="group">
@@ -196,11 +194,10 @@ const Navigation = memo(() => {
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`flex items-center space-x-3 px-4 py-3 rounded-xl font-medium touch-manipulation active:scale-[0.98] ${
-                    isActive(item.path)
-                      ? "bg-primary text-primary-foreground shadow-md"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted active:bg-muted"
-                  }`}
+                  className={`flex items-center space-x-3 px-4 py-3 rounded-xl font-medium touch-manipulation active:scale-[0.98] ${isActive(item.path)
+                    ? "bg-primary text-primary-foreground shadow-md"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted active:bg-muted"
+                    }`}
                   style={{
                     transitionProperty: "background-color, color, transform",
                     transitionDuration: "200ms",
@@ -216,7 +213,7 @@ const Navigation = memo(() => {
                 </Link>
               );
             })}
-            
+
             {/* Mobile Logout */}
             <div className="pt-2 mt-2 border-t border-border">
               <Button variant="outline" size="sm" className="w-full" onClick={handleLogout}>

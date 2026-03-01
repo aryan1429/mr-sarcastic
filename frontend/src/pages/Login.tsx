@@ -3,7 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Bot, Eye, EyeOff } from "lucide-react";
+import { Flame, Eye, EyeOff } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -91,7 +91,7 @@ const Login = () => {
         email: data.email,
         password: data.password
       });
-      
+
       toast.success("Welcome back! Logged in successfully!");
       navigate('/chat');
     } catch (error) {
@@ -106,7 +106,7 @@ const Login = () => {
     try {
       // Use AuthContext login method for Google sign-in
       await login({ googleCredential: credential });
-      
+
       toast.success("Successfully signed in with Google!");
       navigate('/chat');
     } catch (error: any) {
@@ -121,7 +121,7 @@ const Login = () => {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-full mb-4">
-            <Bot className="w-8 h-8 text-primary" />
+            <Flame className="w-8 h-8 text-primary" />
           </div>
           <h1 className="text-3xl font-bold text-primary mb-2">Welcome Back!</h1>
           <p className="text-muted-foreground">Sign in to continue chatting with Mr Sarcastic</p>
@@ -130,8 +130,8 @@ const Login = () => {
         <Card className="p-6 border-primary/20">
           {/* Google Sign-In Button */}
           <div className="mb-6">
-            <GoogleSignInButton 
-              onGoogleSignIn={handleGoogleSignIn} 
+            <GoogleSignInButton
+              onGoogleSignIn={handleGoogleSignIn}
               isLoading={googleLoading}
             />
           </div>
@@ -192,17 +192,17 @@ const Login = () => {
             </div>
 
             <div className="flex items-center justify-between text-sm">
-              <Link 
-                to="/forgot-password" 
+              <Link
+                to="/forgot-password"
                 className="text-primary hover:text-primary/80 transition-colors"
               >
                 Forgot password?
               </Link>
             </div>
 
-            <Button 
-              type="submit" 
-              className="w-full" 
+            <Button
+              type="submit"
+              className="w-full"
               disabled={isLoading}
               variant="outline"
             >
@@ -213,8 +213,8 @@ const Login = () => {
           <div className="mt-6 text-center">
             <p className="text-sm text-muted-foreground">
               Don't have an account?{" "}
-              <Link 
-                to="/signup" 
+              <Link
+                to="/signup"
                 className="text-primary hover:text-primary/80 font-medium transition-colors"
               >
                 Sign up
@@ -224,8 +224,8 @@ const Login = () => {
         </Card>
 
         <div className="mt-6 text-center">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             ← Back to Home

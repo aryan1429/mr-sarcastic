@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Send, Bot, User, Loader2, Music, ExternalLink, Trash2, Smile, Play, Pause, ListPlus, Zap } from "lucide-react";
+import { Send, Flame, User, Loader2, Music, ExternalLink, Trash2, Smile, Play, Pause, ListPlus, Zap } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useAuth } from "@/context/AuthContext";
@@ -93,7 +93,7 @@ const ChatMessage = memo(({
             transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
           }}
         >
-          <Bot className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
+          <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
         </div>
       )}
       <div
