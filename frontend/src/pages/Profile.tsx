@@ -794,6 +794,19 @@ const Profile = () => {
                     Achievements
                     <Badge variant="secondary" className="ml-auto text-xs">{earnedCount}/{achievements.length}</Badge>
                   </h3>
+                  {/* Progress Bar */}
+                  <div className="mb-3">
+                    <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
+                      <span>Progress</span>
+                      <span>{Math.round((earnedCount / achievements.length) * 100)}%</span>
+                    </div>
+                    <div className="h-2 bg-muted rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-gradient-to-r from-yellow-500 to-amber-500 rounded-full transition-all duration-1000 ease-out"
+                        style={{ width: `${(earnedCount / achievements.length) * 100}%` }}
+                      />
+                    </div>
+                  </div>
                   <div className="space-y-2">
                     {achievements.map((achievement) => (
                       <div
