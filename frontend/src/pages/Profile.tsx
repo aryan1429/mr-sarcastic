@@ -575,6 +575,9 @@ const Profile = () => {
                         <h3 className="text-lg font-semibold flex items-center gap-2">
                           <Upload className="w-5 h-5 text-primary" />
                           Your Files
+                          {userFiles.length > 0 && (
+                            <Badge variant="secondary" className="text-xs">{userFiles.length} files</Badge>
+                          )}
                         </h3>
                         <div>
                           <input type="file" id="file-upload" className="hidden" onChange={handleFileUpload} accept="image/*,text/*,application/pdf" />
@@ -611,8 +614,23 @@ const Profile = () => {
                                   </p>
                                 </div>
                               </div>
-                              <div className="text-right text-xs text-muted-foreground">
-                                {new Date(file.created).toLocaleDateString()}
+                              <div className="flex items-center gap-2">
+                                <span className="text-xs text-muted-foreground">
+                                  {new Date(file.created).toLocaleDateString()}
+                                </span>
+                                <Button
+                                  size="sm" variant="ghost"
+                                  className="h-7 w-7 p-0 text-red-400 opacity-0 group-hover:opacity-100 transition-opacity"
+                                  onClick={async () => {
+                                    try {
+                                      await storageService.deleteFile(file.name);
+                                      setUserFiles(prev => prev.filter((_, i) => i !== index));
+                                      toast.success("File deleted");
+                                    } catch { toast.error("Failed to delete file"); }
+                                  }}
+                                >
+                                  <Trash2 className="w-3.5 h-3.5" />
+                                </Button>
                               </div>
                             </div>
                           ))
