@@ -35,6 +35,7 @@ const Profile = () => {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
+    bio: "",
     preferences: {
       favoriteGenre: "",
       preferredMood: ""
@@ -60,6 +61,7 @@ const Profile = () => {
       setUserProfile(response.user);
       setFormData({
         name: response.user.name || "",
+        bio: response.user.bio || "",
         preferences: response.user.preferences || { favoriteGenre: "", preferredMood: "" }
       });
     } catch (error) {
@@ -251,11 +253,26 @@ const Profile = () => {
   if (isLoading) {
     return (
       <ProtectedRoute>
-        <div className="min-h-screen bg-gradient-to-br from-background via-card to-background flex items-center justify-center">
-          <Card className="p-8 text-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-            <p>Loading profile...</p>
-          </Card>
+        <div className="min-h-screen bg-gradient-to-br from-background via-card to-background">
+          <Navigation />
+          <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-8 max-w-6xl animate-pulse">
+            {/* Skeleton Cover */}
+            <div className="h-40 sm:h-52 rounded-2xl bg-muted mb-6" />
+            {/* Skeleton Stats */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className="h-20 rounded-xl bg-muted" />
+              ))}
+            </div>
+            {/* Skeleton Content */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+              <div className="lg:col-span-2 h-96 rounded-xl bg-muted" />
+              <div className="space-y-4">
+                <div className="h-40 rounded-xl bg-muted" />
+                <div className="h-64 rounded-xl bg-muted" />
+              </div>
+            </div>
+          </div>
         </div>
       </ProtectedRoute>
     );
@@ -322,6 +339,9 @@ const Profile = () => {
                       <span className="text-lg" title="Verified">✅</span>
                     </div>
                     <p className="text-sm text-muted-foreground">{displayUser?.email}</p>
+                    {(formData.bio || displayUser?.bio) && (
+                      <p className="text-sm text-muted-foreground/80 italic">"{formData.bio || displayUser?.bio}"</p>
+                    )}
                     <div className="flex flex-wrap gap-2 justify-center sm:justify-start mt-2">
                       <Badge variant="outline" className="text-xs border-primary/30 text-primary">
                         {formData.preferences.preferredMood || "Chill"} Mood
@@ -631,6 +651,16 @@ const Profile = () => {
                           />
                         </div>
                         <div>
+                          <Label htmlFor="bio">Bio / Status</Label>
+                          <Input
+                            id="bio" value={formData.bio}
+                            onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
+                            placeholder="e.g., Sarcasm enthusiast 🔥" className="mt-1"
+                            maxLength={100}
+                          />
+                          <p className="text-xs text-muted-foreground mt-1">{formData.bio.length}/100 characters</p>
+                        </div>
+                        <div>
                           <Label htmlFor="favorite-genre">Favorite Music Genre</Label>
                           <Input
                             id="favorite-genre" value={formData.preferences.favoriteGenre}
@@ -751,8 +781,8 @@ const Profile = () => {
                       <div
                         key={achievement.id}
                         className={`flex items-center gap-3 p-2.5 rounded-lg border transition-all duration-200 ${achievement.earned
-                            ? 'bg-gradient-to-r ' + achievement.color + '/10 border-transparent hover:scale-[1.02]'
-                            : 'bg-muted/30 border-dashed border-muted-foreground/20 opacity-50'
+                          ? 'bg-gradient-to-r ' + achievement.color + '/10 border-transparent hover:scale-[1.02]'
+                          : 'bg-muted/30 border-dashed border-muted-foreground/20 opacity-50'
                           }`}
                       >
                         <span className="text-lg">{achievement.icon}</span>
