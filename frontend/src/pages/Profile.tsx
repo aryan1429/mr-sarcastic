@@ -445,7 +445,17 @@ const Profile = () => {
                           <TrendingUp className="w-5 h-5 text-primary" />
                           Chat Activity
                         </h3>
-                        <Badge variant="secondary">{chatHistory.totalMessages} messages</Badge>
+                        <div className="flex gap-2">
+                          {chatHistory.totalMessages > 1 && (
+                            <Button size="sm" variant="ghost" className="text-xs text-muted-foreground" onClick={() => {
+                              localStorage.removeItem('mr-sarcastic-chat-history');
+                              window.location.reload();
+                            }}>
+                              <Trash2 className="w-3 h-3 mr-1" /> Clear
+                            </Button>
+                          )}
+                          <Badge variant="secondary">{chatHistory.totalMessages} messages</Badge>
+                        </div>
                       </div>
 
                       {chatHistory.totalMessages <= 1 ? (
