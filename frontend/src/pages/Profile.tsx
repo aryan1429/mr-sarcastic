@@ -748,6 +748,49 @@ const Profile = () => {
                       </div>
                     </Card>
 
+                    {/* Local Data Management */}
+                    <Card className="p-6">
+                      <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+                        <Download className="w-5 h-5 text-primary" />
+                        Local Data
+                      </h3>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        Manage data stored in your browser. This includes chat history and preferences.
+                      </p>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between p-3 border rounded-lg">
+                          <div>
+                            <p className="text-sm font-medium">Chat History</p>
+                            <p className="text-xs text-muted-foreground">{chatHistory.totalMessages} messages stored locally</p>
+                          </div>
+                          <Button size="sm" variant="outline" onClick={() => {
+                            localStorage.removeItem('mr-sarcastic-chat-history');
+                            toast.success("Chat history cleared");
+                            window.location.reload();
+                          }} disabled={chatHistory.totalMessages <= 1}>
+                            <Trash2 className="w-3.5 h-3.5 mr-1.5" /> Clear
+                          </Button>
+                        </div>
+                        <div className="flex items-center justify-between p-3 border rounded-lg">
+                          <div>
+                            <p className="text-sm font-medium">Export Profile Data</p>
+                            <p className="text-xs text-muted-foreground">Download all your profile data as JSON</p>
+                          </div>
+                          <Button size="sm" variant="outline" onClick={() => {
+                            const data = JSON.stringify({ profile: displayUser, stats: userStats, chatHistory: chatHistory.totalMessages, favorites: favoriteSongs.length }, null, 2);
+                            const blob = new Blob([data], { type: "application/json" });
+                            const url = URL.createObjectURL(blob);
+                            const a = document.createElement("a");
+                            a.href = url; a.download = "mr-sarcastic-export.json"; a.click();
+                            URL.revokeObjectURL(url);
+                            toast.success("Data exported!");
+                          }}>
+                            <Download className="w-3.5 h-3.5 mr-1.5" /> Export
+                          </Button>
+                        </div>
+                      </div>
+                    </Card>
+
                     {/* Danger Zone */}
                     <Card className="p-6 border-red-500/20">
                       <h3 className="text-lg font-semibold mb-2 text-red-500 flex items-center gap-2">
