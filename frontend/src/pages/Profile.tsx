@@ -517,10 +517,18 @@ const Profile = () => {
                         <h3 className="text-lg font-semibold flex items-center gap-2">
                           <Heart className="w-5 h-5 text-accent" />
                           Favorite Songs
+                          {favoriteSongs.length > 0 && (
+                            <Badge variant="secondary" className="ml-1 text-xs">{favoriteSongs.length}</Badge>
+                          )}
                         </h3>
-                        <Button size="sm" variant="outline" onClick={() => navigate('/songs')}>
-                          <Music className="w-3.5 h-3.5 mr-1.5" /> Browse Songs
-                        </Button>
+                        <div className="flex gap-2">
+                          <Button size="sm" variant="ghost" onClick={fetchFavoriteSongs} title="Refresh favorites">
+                            <TrendingUp className="w-3.5 h-3.5" />
+                          </Button>
+                          <Button size="sm" variant="outline" onClick={() => navigate('/songs')}>
+                            <Music className="w-3.5 h-3.5 mr-1.5" /> Browse Songs
+                          </Button>
+                        </div>
                       </div>
                       <div className="space-y-3">
                         {favoriteSongs.length === 0 ? (
