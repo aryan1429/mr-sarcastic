@@ -3,6 +3,8 @@ import jwt from 'jsonwebtoken';
 import chatService from '../services/chatService.js';
 import { authenticateToken } from '../middleware/auth.js';
 import User from '../models/User.js';
+import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from '../config/languages.js';
+import { getAllUIStrings } from '../services/translationService.js';
 
 const router = express.Router();
 
@@ -94,6 +96,8 @@ router.post('/test', async (req, res) => {
 router.post('/send', async (req, res) => {
     try {
         const { message, conversationHistory = [], userMood = null } = req.body;
+        // Accept language from request body (auto, en, tl, te, hi)
+        const userLanguage = req.body.language || 'auto';
 
         // Try to get user ID from token, but don't require it
         let userId = 'anonymous-user';
@@ -129,14 +133,14 @@ router.post('/send', async (req, res) => {
             });
         }
 
-        console.log('📨 Received message from user:', userId, '- Message:', sanitizedMessage.substring(0, 100) + (sanitizedMessage.length > 100 ? '...' : ''), '- User Mood:', userMood || 'auto-detect');
+        console.log('📨 Received message from user:', userId, '- Message:', sanitizedMessage.substring(0, 100) + (sanitizedMessage.length > 100 ? '...' : ''), '- User Mood:', userMood || 'auto-detect', '- Language:', userLanguage);
 
-        // Generate AI response with user's selected mood
+        // Generate AI response with user's selected mood and language
         const response = await chatService.generateResponse(
             sanitizedMessage,
             userId,
             conversationHistory,
-            { forceMood: userMood } // Pass user's selected mood
+            { forceMood: userMood, language: userLanguage } // Pass user's selected mood and language
         );
 
         console.log('🤖 Generated response source:', response.source, '| mood:', response.mood);
@@ -171,6 +175,7 @@ router.post('/send', async (req, res) => {
                 mood: response.mood,
                 confidence: response.confidence,
                 source: response.source,
+                language: response.language || DEFAULT_LANGUAGE,
                 songData: response.songData || null,
                 timestamp: new Date().toISOString()
             }
@@ -257,6 +262,34 @@ router.get('/moods', (req, res) => {
     } catch (error) {
         console.error('Moods error:', error);
         res.status(500).json({ error: 'Failed to get moods' });
+    }
+});
+
+// Get supported languages and UI strings
+router.get('/languages', (req, res) => {
+    try {
+        const languages = Object.entries(SUPPORTED_LANGUAGES).map(([code, config]) => ({
+            code: config.code,
+            name: config.name,
+            nativeName: config.nativeName,
+            flag: config.flag,
+        }));
+
+        // Optionally get UI strings for a specific language
+        const langCode = req.query.lang || DEFAULT_LANGUAGE;
+        const uiStrings = getAllUIStrings(langCode);
+
+        res.json({
+            success: true,
+            data: {
+                supported_languages: languages,
+                default_language: DEFAULT_LANGUAGE,
+                ui_strings: uiStrings,
+            }
+        });
+    } catch (error) {
+        console.error('Languages error:', error);
+        res.status(500).json({ error: 'Failed to get languages' });
     }
 });
 
