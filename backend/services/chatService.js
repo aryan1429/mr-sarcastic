@@ -2,6 +2,9 @@ import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
+import { detectLanguage } from './languageDetector.js';
+import { buildLanguagePrompt, formatSongRecommendationInLanguage, getUIString } from './translationService.js';
+import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from '../config/languages.js';
 
 // Load environment variables
 dotenv.config();
@@ -72,6 +75,16 @@ You MUST adapt your entire tone and approach based on the user's mood:
 4. If you don't know something, be honest but funny about it
 5. Each response should feel unique and tailored to that specific conversation
 6. Use context from conversation history to make callbacks and references
+
+🌐 MULTILINGUAL CAPABILITY:
+- You can understand and respond in English, Tagalog (Filipino), Telugu, and Hindi
+- If the user writes in Tagalog, respond in natural Tagalog with Filipino slang (bes, mare, grabe, charot)
+- If the user writes in Telugu, respond in natural Telugu (బ్రో, మస్తు, సూపర్)
+- If the user writes in Hindi, respond in natural Hindi with casual slang (यार, भाई, मस्त)
+- If the user code-switches (mixes languages), feel free to do the same naturally
+- ALWAYS detect and match the user's language — don't force English
+- When responding in another language, keep your sarcastic personality intact
+- Adapt cultural references to match the language/culture
 
 Remember: You're not just any chatbot — you're their FAVORITE chatbot. Make every interaction memorable! 💅`;
 
