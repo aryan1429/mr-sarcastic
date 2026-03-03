@@ -3,17 +3,19 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Send, Flame, User, Loader2, Music, ExternalLink, Trash2, Smile, Play, Pause, ListPlus, Zap } from "lucide-react";
+import { Send, Flame, User, Loader2, Music, ExternalLink, Trash2, Smile, Play, Pause, ListPlus, Zap, Globe } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useAuth } from "@/context/AuthContext";
 import { useMusicPlayer } from "@/context/MusicPlayerContext";
+import { useLanguage } from "@/context/LanguageContext";
 import { api } from "@/services/api";
 import { useNavigate } from "react-router-dom";
 import { TypingAnimation } from "@/components/TypingAnimation";
 import { ClearChatDialog } from "@/components/ClearChatDialog";
 import { ExportDropdown } from "@/components/ExportDropdown";
 import { MoodSelectorModal } from "@/components/MoodSelectorModal";
+import { LanguageSelectorModal } from "@/components/LanguageSelectorModal";
 import PageTransition from "@/components/PageTransition";
 import { songsService } from "@/services/songsService";
 import { useToast } from "@/hooks/use-toast";
@@ -208,6 +210,7 @@ const Chat = () => {
   const { token } = useAuth();
   const navigate = useNavigate();
   const { playSong: playMusicSong, addToQueue } = useMusicPlayer();
+  const { language, currentLanguage, t } = useLanguage();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const [messages, setMessages] = useState<Message[]>(loadMessagesFromStorage);
   const [inputText, setInputText] = useState("");
@@ -216,6 +219,7 @@ const Chat = () => {
   const [conversationHistory, setConversationHistory] = useState<Array<{ message: string, response: string }>>([]);
   const [clearChatDialogOpen, setClearChatDialogOpen] = useState(false);
   const [moodSelectorOpen, setMoodSelectorOpen] = useState(false);
+  const [languageSelectorOpen, setLanguageSelectorOpen] = useState(false);
   const { toast } = useToast();
   const isInitialLoad = useRef(true);
   const prevMessageCount = useRef(messages.length);
@@ -315,7 +319,8 @@ const Chat = () => {
       const response = await api.post('/chat/send', {
         message: currentInput,
         conversationHistory: conversationHistory,
-        userMood: detectedMood.toLowerCase() // Send user's selected mood to backend
+        userMood: detectedMood.toLowerCase(), // Send user's selected mood to backend
+        language: language, // Send user's selected language (auto, en, tl, te, hi)
       });
 
       const data = response.data;
@@ -374,7 +379,17 @@ const Chat = () => {
             <div className="lg:col-span-2">
               <Card className="h-[calc(100dvh-12rem)] sm:h-[600px] flex flex-col border-primary/20 shadow-lg">
                 <div className="p-3 sm:p-4 border-b border-primary/20">
-                  <h2 className="text-lg sm:text-xl font-bold text-primary">Chat with Mr Sarcastic</h2>
+                  <div className="flex items-center justify-between">
+                    <h2 className="text-lg sm:text-xl font-bold text-primary">{t("chatTitle")}</h2>
+                    <Badge
+                      variant="secondary"
+                      className="bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 border border-blue-400 dark:border-blue-600 hover:bg-blue-200 dark:hover:bg-blue-800/60 cursor-pointer transition-colors shadow-sm"
+                      onClick={() => setLanguageSelectorOpen(true)}
+                    >
+                      <Globe className="w-3 h-3 mr-1" />
+                      {currentLanguage.flag} {currentLanguage.name}
+                    </Badge>
+                  </div>
 
                   {/* Prominent Mood Indicator Card */}
                   <div className={`mt-3 p-3 rounded-lg border-2 flex items-center justify-between ${detectedMood.toLowerCase() === 'toxic'
@@ -401,7 +416,7 @@ const Chat = () => {
                                   detectedMood.toLowerCase() === 'focused' ? '🎯' : '😐'}
                       </span>
                       <div>
-                        <p className="text-xs text-muted-foreground">Current Mood</p>
+                        <p className="text-xs text-muted-foreground">{t("currentMood")}</p>
                         <p className={`font-bold text-lg ${detectedMood.toLowerCase() === 'toxic' ? 'text-red-600' :
                           detectedMood.toLowerCase() === 'happy' ? 'text-yellow-600' :
                             detectedMood.toLowerCase() === 'sad' ? 'text-blue-600' :
@@ -416,7 +431,7 @@ const Chat = () => {
                       className="bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-300 border border-green-400 dark:border-green-600 hover:bg-green-200 dark:hover:bg-green-800/60 cursor-pointer transition-colors shadow-sm shadow-green-200/50 dark:shadow-green-900/30"
                       onClick={() => setMoodSelectorOpen(true)}
                     >
-                      Change Mood
+                      {t("changeMood")}
                     </Badge>
                   </div>
                 </div>
@@ -450,7 +465,7 @@ const Chat = () => {
                               detectedMood.toLowerCase() === 'calm' || detectedMood.toLowerCase() === 'chill' ? "Feeling chill? Tell me about it... ☁️" :
                                 detectedMood.toLowerCase() === 'focused' ? "Stay focused! What do you need? 🎯" :
                                   detectedMood.toLowerCase() === 'toxic' ? "Bring it on, I can handle it... 😈" :
-                                    "Type your message here..."
+                                    t("typeMessage")
                       }
                       onKeyPress={(e) => e.key === "Enter" && !isLoading && handleSendMessage()}
                       className="flex-1"
@@ -495,7 +510,7 @@ const Chat = () => {
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary via-accent to-primary" />
                 <div className="flex items-center gap-2 mb-3">
                   <Music className="w-4 h-4 text-primary" />
-                  <h3 className="font-semibold text-primary">Quick Play by Mood</h3>
+                  <h3 className="font-semibold text-primary">{t("quickPlay")}</h3>
                 </div>
                 <div className="space-y-2">
                   {[
@@ -539,7 +554,7 @@ const Chat = () => {
                 <div className="flex items-center justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <Zap className="w-4 h-4 text-primary" />
-                    <h3 className="font-semibold text-primary">Quick Actions</h3>
+                    <h3 className="font-semibold text-primary">{t("quickActions")}</h3>
                   </div>
                   <Badge variant="secondary" className="text-xs">
                     {messages.length} {messages.length === 1 ? 'message' : 'messages'}
@@ -554,7 +569,7 @@ const Chat = () => {
                     disabled={messages.length <= 1}
                   >
                     <Trash2 className="w-4 h-4" />
-                    Clear Chat History
+                    {t("clearChat")}
                   </Button>
                   <ExportDropdown messages={messages} disabled={messages.length <= 1} />
                   <Button
@@ -564,7 +579,16 @@ const Chat = () => {
                     onClick={() => navigate('/songs')}
                   >
                     <Music className="w-4 h-4" />
-                    Browse Songs
+                    {t("browseSongs")}
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full justify-start gap-2 bg-blue-100 dark:bg-blue-900/40 border-blue-400 dark:border-blue-600 text-blue-700 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-800/50 shadow-sm shadow-blue-200/50 dark:shadow-blue-900/30"
+                    onClick={() => setLanguageSelectorOpen(true)}
+                  >
+                    <Globe className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                    {t("changeLanguage")} ({currentLanguage.flag})
                   </Button>
                   <Button
                     variant="outline"
@@ -573,7 +597,7 @@ const Chat = () => {
                     onClick={() => setMoodSelectorOpen(true)}
                   >
                     <Smile className="w-4 h-4 text-green-600 dark:text-green-400" />
-                    Change Mood
+                    {t("changeMood")}
                   </Button>
                 </div>
               </Card>
@@ -592,6 +616,10 @@ const Chat = () => {
         onOpenChange={setMoodSelectorOpen}
         currentMood={detectedMood}
         onMoodChange={handleMoodChange}
+      />
+      <LanguageSelectorModal
+        open={languageSelectorOpen}
+        onOpenChange={setLanguageSelectorOpen}
       />
     </div>
   );

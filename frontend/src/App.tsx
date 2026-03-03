@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { MusicPlayerProvider } from "./context/MusicPlayerContext";
+import { LanguageProvider } from "./context/LanguageContext";
 import { lazy, Suspense } from "react";
 import { Loader2 } from "lucide-react";
 
@@ -61,6 +62,7 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <MusicPlayerProvider>
+        <LanguageProvider>
         <TooltipProvider>
           <Toaster />
           <Sonner />
@@ -105,6 +107,7 @@ const App = () => {
             <MusicShortcuts />
           </BrowserRouter>
         </TooltipProvider>
+        </LanguageProvider>
         </MusicPlayerProvider>
       </AuthProvider>
     </QueryClientProvider>
