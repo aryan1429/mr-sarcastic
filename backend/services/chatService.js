@@ -5,6 +5,7 @@ import dotenv from 'dotenv';
 import { detectLanguage } from './languageDetector.js';
 import { buildLanguagePrompt, formatSongRecommendationInLanguage, getUIString } from './translationService.js';
 import { SUPPORTED_LANGUAGES, DEFAULT_LANGUAGE } from '../config/languages.js';
+import { getMultilingualFallbackResponse, getMultilingualGreeting } from '../data/multilingualResponses.js';
 
 // Load environment variables
 dotenv.config();
@@ -483,7 +484,7 @@ NOW RESPOND AS ${detectedMood.toUpperCase()} MOOD:`;
                 };
             } else {
                 // Use improved contextual sarcastic response generation as fallback
-                return this.generateContextualSarcasticResponse(message, userId, conversationHistory);
+                return this.generateContextualSarcasticResponse(message, userId, conversationHistory, options);
             }
         } catch (error) {
             console.error('Error generating ML response:', error.message);
@@ -495,16 +496,39 @@ NOW RESPOND AS ${detectedMood.toUpperCase()} MOOD:`;
             }
 
             // Fallback to contextual sarcastic responses on error
-            return this.generateContextualSarcasticResponse(message, userId, conversationHistory);
+            return this.generateContextualSarcasticResponse(message, userId, conversationHistory, options);
         }
     }
 
-    generateContextualSarcasticResponse(message, userId = null, conversationHistory = []) {
+    generateContextualSarcasticResponse(message, userId = null, conversationHistory = [], options = {}) {
         const messageLower = message.toLowerCase().trim();
         const mood = this.detectMood(messageLower);
         let response = null;
 
-        // Context-aware sarcastic responses based on user input
+        // Check language for multilingual fallback
+        let targetLanguage = options.language || DEFAULT_LANGUAGE;
+        if (!options.language || options.language === 'auto') {
+            const langDetection = detectLanguage(message);
+            if (langDetection.language !== DEFAULT_LANGUAGE && langDetection.confidence >= 0.4) {
+                targetLanguage = langDetection.language;
+            }
+        }
+
+        // If non-English, try multilingual fallback responses first
+        if (targetLanguage !== DEFAULT_LANGUAGE) {
+            const multilingualResponse = getMultilingualFallbackResponse(targetLanguage, mood);
+            if (multilingualResponse) {
+                return {
+                    text: multilingualResponse,
+                    mood: mood,
+                    confidence: 0.85,
+                    source: 'multilingual_fallback',
+                    language: targetLanguage,
+                };
+            }
+        }
+
+        // Context-aware sarcastic responses based on user input (English)
         if (messageLower.includes('hi') || messageLower.includes('hello') || messageLower.includes('hey')) {
             const responses = [
                 `Hey there! I'm Mr Sarcastic, your friendly neighborhood AI with a sense of humor and a love for good music. What's on your mind today?`,
