@@ -268,6 +268,25 @@ This is straight from our Songs page playlist - only the finest curated track fo
 
             console.log('🎭 Using mood:', detectedMood, options.forceMood ? '(user selected)' : '(auto-detected)');
 
+            // Detect or use user-selected language
+            let targetLanguage = options.language || DEFAULT_LANGUAGE;
+            let languageAutoDetected = false;
+
+            if (!options.language || options.language === 'auto') {
+                // Auto-detect language from user message
+                const langDetection = detectLanguage(message);
+                if (langDetection.language !== DEFAULT_LANGUAGE && langDetection.confidence >= 0.4) {
+                    targetLanguage = langDetection.language;
+                    languageAutoDetected = true;
+                    console.log(`🌐 Auto-detected language: ${targetLanguage} (confidence: ${langDetection.confidence})`);
+                }
+            } else {
+                console.log(`🌐 Using user-selected language: ${targetLanguage}`);
+            }
+
+            // Build language-specific prompt injection
+            const languagePrompt = buildLanguagePrompt(targetLanguage, languageAutoDetected);
+
             // Create a mood-enhanced system prompt
             const moodContext = this.getMoodContext(detectedMood);
 
@@ -292,9 +311,9 @@ ${detectedMood === 'toxic' ? `
 
 NOW RESPOND AS ${detectedMood.toUpperCase()} MOOD:`;
 
-            // Build conversation messages for Groq with mood context
+            // Build conversation messages for Groq with mood + language context
             const messages = [
-                { role: 'system', content: this.sarcasticSystemPrompt + moodEnforcement }
+                { role: 'system', content: this.sarcasticSystemPrompt + moodEnforcement + languagePrompt }
             ];
 
             // Add conversation history (last 15 messages for richer context)
@@ -378,19 +397,24 @@ NOW RESPOND AS ${detectedMood.toUpperCase()} MOOD:`;
             const messageLower = message.toLowerCase();
             const musicTriggers = ['music', 'song', 'recommend', 'suggest', 'listen', 'playlist',
                 'vibe', 'tune', 'banger', 'beat', 'track', 'jam', 'album', 'artist',
-                'what should i play', 'play something', 'sing'];
+                'what should i play', 'play something', 'sing',
+                'kanta', 'musika', 'tugtugin', // Tagalog music triggers
+                'పాట', 'సంగీతం', 'పాడు', // Telugu music triggers
+                'गाना', 'संगीत', 'गाओ', 'बजाओ', // Hindi music triggers
+            ];
             if (musicTriggers.some(trigger => messageLower.includes(trigger))) {
 
                 const songs = this.getSongsByMood(detectedMood, 1);
                 if (songs.length > 0) {
                     const song = songs[0];
-                    const songRecommendation = `\n\n🎵 **Song Pick for you:** "${song.title}" by ${song.artist}\n⏱️ Duration: ${song.duration} | 🎭 Mood: ${song.mood}`;
+                    const songRecommendation = '\n\n' + formatSongRecommendationInLanguage(song, detectedMood, targetLanguage);
 
                     return {
                         text: aiResponse + songRecommendation,
                         mood: detectedMood,
                         confidence: 0.95,
                         source: 'groq-llama',
+                        language: targetLanguage,
                         songData: {
                             id: song.id,
                             title: song.title,
@@ -408,7 +432,8 @@ NOW RESPOND AS ${detectedMood.toUpperCase()} MOOD:`;
                 text: aiResponse,
                 mood: detectedMood,
                 confidence: 0.95,
-                source: 'groq-llama'
+                source: 'groq-llama',
+                language: targetLanguage
             };
 
         } catch (error) {
