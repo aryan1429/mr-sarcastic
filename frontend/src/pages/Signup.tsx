@@ -4,7 +4,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Flame, Check, Eye, EyeOff, X } from "lucide-react";
+import { Check, Eye, EyeOff, X } from "lucide-react";
+import chatbotLogo from "@/assets/new-chatbot.png";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -171,7 +172,7 @@ const Signup = () => {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/20 rounded-full mb-4">
-            <Flame className="w-8 h-8 text-primary" />
+            <img src={chatbotLogo} alt="Mr Sarcastic" className="w-8 h-8" />
           </div>
           <h1 className="text-3xl font-bold text-primary mb-2">Join Mr Sarcastic!</h1>
           <p className="text-muted-foreground">Create your account to start chatting</p>
