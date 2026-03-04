@@ -1,4 +1,5 @@
-import { ArrowUp, Flame, Github, Heart, Music, Twitter } from "lucide-react";
+import { ArrowUp, Github, Heart, Music, Twitter } from "lucide-react";
+import chatbotLogo from "@/assets/new-chatbot.png";
 import { Link } from "react-router-dom";
 import { useEffect, useState, useCallback, memo } from "react";
 
@@ -60,7 +61,7 @@ const Footer = memo(() => {
                     transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
                   }}
                 >
-                  <Flame className="h-6 w-6 text-white" />
+                  <img src={chatbotLogo} alt="Mr Sarcastic" className="h-6 w-6" />
                 </div>
                 <span className="text-xl font-bold gradient-text">Mr Sarcastic</span>
               </div>

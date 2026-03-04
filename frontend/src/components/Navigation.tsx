@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/context/AuthContext";
+import chatbotLogo from "@/assets/new-chatbot.png";
 import {
-  Flame,
   Home,
   LogOut,
   Menu,
@@ -101,7 +101,7 @@ const Navigation = memo(() => {
                 transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
               }}
             >
-              <Flame className="h-6 w-6 text-white group-hover:rotate-12 transition-transform duration-300" style={{ transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)" }} />
+              <img src={chatbotLogo} alt="Mr Sarcastic" className="h-6 w-6 group-hover:rotate-12 transition-transform duration-300" style={{ transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)" }} />
             </div>
             <span className="text-xl font-bold gradient-text group-hover:tracking-wide transition-all duration-300">Mr Sarcastic</span>
           </Link>
