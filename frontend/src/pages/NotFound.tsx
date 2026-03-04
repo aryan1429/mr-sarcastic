@@ -1,7 +1,8 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Home, ArrowLeft, Flame } from "lucide-react";
+import { Home, ArrowLeft } from "lucide-react";
+import chatbotLogo from "@/assets/new-chatbot.png";
 import { Link, useNavigate } from "react-router-dom";
 import PageTransition from "@/components/PageTransition";
 
@@ -21,7 +22,7 @@ const NotFound = () => {
           <div className="relative mx-auto w-24 h-24">
             <div className="absolute inset-0 bg-primary/20 rounded-full blur-2xl animate-pulse-glow" />
             <div className="relative w-24 h-24 rounded-full bg-card border-2 border-primary/30 flex items-center justify-center animate-float">
-              <Flame className="w-12 h-12 text-primary" />
+              <img src={chatbotLogo} alt="Mr Sarcastic" className="w-12 h-12" />
             </div>
           </div>
 

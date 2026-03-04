@@ -14,8 +14,9 @@ import {
   Heart, LogOut, MessageCircle, Music, Settings, Upload, Camera,
   Trophy, Star, Zap, Target, Award, Crown, TrendingUp,
   Calendar, Mail, Shield, Trash2, Download, ExternalLink,
-  Flame, Clock
+  Clock
 } from "lucide-react";
+import chatbotLogo from "@/assets/new-chatbot.png";
 import { useEffect, useState, useMemo } from "react";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
@@ -491,7 +492,7 @@ const Profile = () => {
                             {chatHistory.recentMessages.map((msg: any, i: number) => (
                               <div key={i} className={`flex items-start gap-3 p-3 rounded-lg border ${msg.isUser ? 'bg-primary/5 border-primary/20' : 'bg-muted/50 border-transparent'} transition-colors`}>
                                 <div className={`p-1.5 rounded-full ${msg.isUser ? 'bg-accent/20' : 'bg-primary/20'} shrink-0`}>
-                                  {msg.isUser ? <Flame className="w-3 h-3 text-accent" /> : <Flame className="w-3 h-3 text-primary" />}
+                                  {msg.isUser ? <img src={chatbotLogo} alt="User" className="w-3 h-3" /> : <img src={chatbotLogo} alt="Mr Sarcastic" className="w-3 h-3" />}
                                 </div>
                                 <div className="flex-1 min-w-0">
                                   <p className="text-sm truncate">{msg.text}</p>
