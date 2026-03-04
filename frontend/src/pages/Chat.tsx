@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Send, Flame, User, Loader2, Music, ExternalLink, Trash2, Smile, Play, Pause, ListPlus, Zap, Globe } from "lucide-react";
+import { Send, User, Loader2, Music, ExternalLink, Trash2, Smile, Play, Pause, ListPlus, Zap, Globe } from "lucide-react";
+import chatbotLogo from "@/assets/new-chatbot.png";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useAuth } from "@/context/AuthContext";
@@ -95,7 +96,7 @@ const ChatMessage = memo(({
             transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
           }}
         >
-          <Flame className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
+          <img src={chatbotLogo} alt="Mr Sarcastic" className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
         </div>
       )}
       <div
