@@ -6,7 +6,8 @@ import { Progress } from "@/components/ui/progress";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuth } from "@/context/AuthContext";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Flame, Check, Eye, EyeOff, X } from "lucide-react";
+import { Check, Eye, EyeOff, X } from "lucide-react";
+import chatbotLogo from "@/assets/new-chatbot.png";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -219,7 +220,7 @@ export default function Auth() {
         {/* Logo and title */}
         <div className="text-center space-y-2">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-2">
-            <Flame className="w-8 h-8 text-primary" />
+            <img src={chatbotLogo} alt="Mr Sarcastic" className="w-8 h-8" />
           </div>
           <h1 className="text-2xl font-bold text-primary">Mr. Sarcastic</h1>
           <p className="text-muted-foreground">
