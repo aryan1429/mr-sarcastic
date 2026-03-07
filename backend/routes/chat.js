@@ -96,7 +96,7 @@ router.post('/test', async (req, res) => {
 router.post('/send', async (req, res) => {
     try {
         const { message, conversationHistory = [], userMood = null } = req.body;
-        // Accept language from request body (auto, en, tl, te, hi)
+        // Accept language from request body (auto, en, tl, te, hi, es, fr, de, pt, ja, ko, ar, ru, zh, it)
         const userLanguage = req.body.language || 'auto';
 
         // Try to get user ID from token, but don't require it
