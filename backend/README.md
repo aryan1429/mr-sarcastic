@@ -33,6 +33,26 @@ This project now includes Google Cloud authentication and storage integration wi
 6. **Protected Routes** - Authentication required pages
 7. **Graceful Degradation** - Works without Google Cloud config
 
+### 🌐 Multilingual Support
+Mr. Sarcastic supports **14 languages** with sarcastic personality in each:
+
+| Language | Code | Flag |
+|----------|------|------|
+| English | en | 🇺🇸 |
+| Spanish | es | 🇪🇸 |
+| French | fr | 🇫🇷 |
+| German | de | 🇩🇪 |
+| Portuguese | pt | 🇧🇷 |
+| Italian | it | 🇮🇹 |
+| Japanese | ja | 🇯🇵 |
+| Korean | ko | 🇰🇷 |
+| Chinese | zh | 🇨🇳 |
+| Arabic | ar | 🇸🇦 |
+| Russian | ru | 🇷🇺 |
+| Hindi | hi | 🇮🇳 |
+| Tagalog | tl | 🇵🇭 |
+| Telugu | te | 🇮🇳 |
+
 ### 🔧 Setup Required
 To fully activate all features, you need to:
 
