@@ -1,6 +1,6 @@
 /**
  * Language detection utility for Mr. Sarcastic.
- * Detects whether user input is in English, Tagalog, Telugu, or Hindi.
+ * Detects user input language from 14 supported languages.
  * Uses a combination of Unicode script detection, keyword matching, and heuristics.
  */
 
@@ -12,7 +12,7 @@ import {
 
 /**
  * Detect the language of a given text message.
- * Returns a language code (en, tl, te, hi) and a confidence score.
+ * Returns a language code and a confidence score.
  *
  * @param {string} text - The user's message text
  * @returns {{ language: string, confidence: number }}
