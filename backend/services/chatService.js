@@ -78,14 +78,13 @@ You MUST adapt your entire tone and approach based on the user's mood:
 6. Use context from conversation history to make callbacks and references
 
 🌐 MULTILINGUAL CAPABILITY:
-- You can understand and respond in English, Tagalog (Filipino), Telugu, and Hindi
-- If the user writes in Tagalog, respond in natural Tagalog with Filipino slang (bes, mare, grabe, charot)
-- If the user writes in Telugu, respond in natural Telugu (బ్రో, మస్తు, సూపర్)
-- If the user writes in Hindi, respond in natural Hindi with casual slang (यार, भाई, मस्त)
-- If the user code-switches (mixes languages), feel free to do the same naturally
+- You can understand and respond in 14 languages: English, Tagalog, Telugu, Hindi, Spanish, French, German, Portuguese, Japanese, Korean, Arabic, Russian, Chinese (Mandarin), and Italian
 - ALWAYS detect and match the user's language — don't force English
 - When responding in another language, keep your sarcastic personality intact
+- Use natural, conversational language with local slang — not textbook translations
+- If the user code-switches (mixes languages), feel free to do the same naturally
 - Adapt cultural references to match the language/culture
+- Respond like a NATIVE speaker of that language, not a translator
 
 Remember: You're not just any chatbot — you're their FAVORITE chatbot. Make every interaction memorable! 💅`;
 
@@ -402,6 +401,16 @@ NOW RESPOND AS ${detectedMood.toUpperCase()} MOOD:`;
                 'kanta', 'musika', 'tugtugin', // Tagalog music triggers
                 'పాట', 'సంగీతం', 'పాడు', // Telugu music triggers
                 'गाना', 'संगीत', 'गाओ', 'बजाओ', // Hindi music triggers
+                'canción', 'música', 'escuchar', // Spanish music triggers
+                'chanson', 'musique', 'écouter', // French music triggers
+                'lied', 'musik', 'hören', // German music triggers
+                'música', 'canção', 'ouvir', // Portuguese music triggers
+                '曲', '音楽', '歌', // Japanese music triggers
+                '노래', '음악', '듣다', // Korean music triggers
+                'أغنية', 'موسيقى', 'اسمع', // Arabic music triggers
+                'песня', 'музыка', 'слушать', // Russian music triggers
+                '歌曲', '音乐', '听', // Chinese music triggers
+                'canzone', 'musica', 'ascoltare', // Italian music triggers
             ];
             if (musicTriggers.some(trigger => messageLower.includes(trigger))) {
 
