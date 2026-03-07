@@ -9,6 +9,7 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
+- 🌐 **14 Languages Supported** — English, Spanish, French, German, Portuguese, Italian, Japanese, Korean, Chinese, Arabic, Russian, Hindi, Tagalog, Telugu
 
 ## How can I edit this code?
 
