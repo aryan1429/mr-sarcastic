@@ -275,10 +275,12 @@ This is straight from our Songs page playlist - only the finest curated track fo
             if (!options.language || options.language === 'auto') {
                 // Auto-detect language from user message
                 const langDetection = detectLanguage(message);
-                if (langDetection.language !== DEFAULT_LANGUAGE && langDetection.confidence >= 0.4) {
+                if (langDetection.language !== DEFAULT_LANGUAGE && langDetection.confidence >= 0.6) {
                     targetLanguage = langDetection.language;
                     languageAutoDetected = true;
                     console.log(`🌐 Auto-detected language: ${targetLanguage} (confidence: ${langDetection.confidence})`);
+                } else if (langDetection.language !== DEFAULT_LANGUAGE) {
+                    console.log(`🌐 Low-confidence detection ignored: ${langDetection.language} (confidence: ${langDetection.confidence}) — defaulting to English`);
                 }
             } else {
                 console.log(`🌐 Using user-selected language: ${targetLanguage}`);
@@ -518,8 +520,9 @@ NOW RESPOND AS ${detectedMood.toUpperCase()} MOOD:`;
         let targetLanguage = options.language || DEFAULT_LANGUAGE;
         if (!options.language || options.language === 'auto') {
             const langDetection = detectLanguage(message);
-            if (langDetection.language !== DEFAULT_LANGUAGE && langDetection.confidence >= 0.4) {
+            if (langDetection.language !== DEFAULT_LANGUAGE && langDetection.confidence >= 0.6) {
                 targetLanguage = langDetection.language;
+                console.log(`🌐 Fallback auto-detected language: ${targetLanguage} (confidence: ${langDetection.confidence})`);
             }
         }
 
