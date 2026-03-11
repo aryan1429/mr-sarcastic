@@ -288,6 +288,7 @@ This is straight from our Songs page playlist - only the finest curated track fo
 
             // Build language-specific prompt injection
             const languagePrompt = buildLanguagePrompt(targetLanguage, languageAutoDetected);
+            console.log(`🌐 Final language for response: ${targetLanguage} (auto=${languageAutoDetected}, userSent=${options.language || 'none'})`);
 
             // Create a mood-enhanced system prompt
             const moodContext = this.getMoodContext(detectedMood);
