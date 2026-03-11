@@ -201,6 +201,24 @@ export const LANGUAGE_PERSONALITIES = {
  * Common phrases/keywords in each language used for language detection.
  */
 export const LANGUAGE_DETECTION_HINTS = {
+  en: {
+    keywords: [
+      'the', 'is', 'are', 'was', 'were', 'have', 'has', 'had', 'will', 'would',
+      'could', 'should', 'can', 'may', 'might', 'shall', 'must', 'need',
+      'hello', 'hi', 'hey', 'how', 'what', 'where', 'when', 'why', 'who',
+      'which', 'this', 'that', 'these', 'those', 'there', 'here',
+      'yes', 'no', 'not', 'and', 'but', 'or', 'because', 'if', 'then',
+      'about', 'with', 'from', 'into', 'just', 'like', 'know', 'think',
+      'want', 'going', 'your', 'my', 'his', 'her', 'our', 'their',
+      'good', 'bad', 'great', 'nice', 'cool', 'awesome', 'amazing',
+      'please', 'thanks', 'thank', 'sorry', 'okay', 'sure', 'right',
+      'really', 'very', 'much', 'many', 'some', 'any', 'every', 'all',
+      'well', 'also', 'too', 'still', 'already', 'never', 'always',
+      'today', 'tomorrow', 'yesterday', 'now', 'then', 'here', 'there',
+    ],
+    scripts: [], // English uses Latin script (shared with many languages)
+    patterns: [/\b(the|is|are|was|were|I'm|I've|don't|can't|won't|it's|he's|she's|we're|they're|you're)\b/i],
+  },
   tl: {
     keywords: [
       'kumusta', 'ako', 'ikaw', 'siya', 'kami', 'tayo', 'nila', 'ano', 'bakit',
@@ -237,39 +255,41 @@ export const LANGUAGE_DETECTION_HINTS = {
   es: {
     keywords: [
       'hola', 'gracias', 'por favor', 'cómo', 'qué', 'dónde', 'cuándo', 'quién',
-      'bueno', 'malo', 'bien', 'estoy', 'tengo', 'quiero', 'puedo', 'necesito',
-      'amigo', 'hermano', 'también', 'pero', 'porque', 'entonces', 'siempre',
-      'nunca', 'mucho', 'poco', 'todo', 'nada', 'algo', 'alguien',
+      'bueno', 'malo', 'estoy', 'tengo', 'quiero', 'puedo', 'necesito',
+      'hermano', 'también', 'porque', 'entonces', 'siempre',
+      'nunca', 'mucho', 'nada', 'alguien', 'buenos días', 'buenas noches',
     ],
     scripts: [],
     patterns: [/¿/, /¡/, /\bño\b/, /\bción\b/],
   },
   fr: {
     keywords: [
-      'bonjour', 'salut', 'merci', 'comment', 'pourquoi', 'quoi', 'je suis',
-      'oui', 'non', 'très', 'bien', 'mal', 'avec', 'sans', 'dans',
+      'bonjour', 'salut', 'merci', 'pourquoi', 'quoi', 'je suis',
+      'oui', 'très', 'avec', 'sans', 'dans',
       'aussi', 'mais', 'parce que', 'alors', 'toujours', 'jamais', 'beaucoup',
-      'peu', 'tout', 'rien', 'quelque', "c'est", "j'ai", 'est-ce que',
+      'rien', 'quelque', "c'est", "j'ai", 'est-ce que', 's\'il vous plaît',
     ],
     scripts: [],
     patterns: [/\bqu'/, /\bl'/, /\bd'/, /\bje\s/, /\bne\s.*\bpas\b/],
   },
   de: {
     keywords: [
-      'hallo', 'danke', 'bitte', 'wie', 'was', 'wo', 'wann', 'warum',
-      'gut', 'schlecht', 'ich', 'bin', 'habe', 'kann', 'muss', 'will',
+      'hallo', 'danke', 'bitte', 'warum', 'wann',
+      'schlecht', 'ich', 'habe', 'kann', 'muss',
       'auch', 'aber', 'weil', 'dann', 'immer', 'nie', 'viel', 'wenig',
-      'alles', 'nichts', 'jemand', 'niemand', 'nein', 'ja', 'doch',
+      'alles', 'nichts', 'jemand', 'niemand', 'nein', 'doch',
+      'guten morgen', 'gute nacht', 'auf wiedersehen',
     ],
     scripts: [],
     patterns: [/\bich\b/, /\bein\b/, /\bdie\b/, /\bder\b/, /\bdas\b/, /ß/],
   },
   pt: {
     keywords: [
-      'olá', 'obrigado', 'obrigada', 'por favor', 'como', 'que', 'onde', 'quando',
-      'bom', 'mau', 'bem', 'estou', 'tenho', 'quero', 'posso', 'preciso',
-      'amigo', 'irmão', 'também', 'mas', 'porque', 'então', 'sempre',
+      'olá', 'obrigado', 'obrigada', 'por favor', 'onde', 'quando',
+      'estou', 'tenho', 'quero', 'posso', 'preciso',
+      'irmão', 'também', 'porque', 'então', 'sempre',
       'nunca', 'muito', 'pouco', 'tudo', 'nada', 'alguém', 'ninguém',
+      'bom dia', 'boa noite',
     ],
     scripts: [],
     patterns: [/\bção\b/, /\bões\b/, /ã/, /õ/, /\beu\s/],
@@ -320,13 +340,13 @@ export const LANGUAGE_DETECTION_HINTS = {
   },
   it: {
     keywords: [
-      'ciao', 'grazie', 'per favore', 'come', 'cosa', 'dove', 'quando', 'perché',
-      'buono', 'cattivo', 'bene', 'sono', 'ho', 'voglio', 'posso', 'devo',
-      'amico', 'fratello', 'anche', 'ma', 'perché', 'allora', 'sempre',
-      'mai', 'molto', 'poco', 'tutto', 'niente', 'qualcuno', 'nessuno',
+      'ciao', 'grazie', 'per favore', 'cosa', 'dove', 'quando', 'perché',
+      'buono', 'cattivo', 'voglio', 'posso', 'devo',
+      'fratello', 'anche', 'perché', 'allora', 'sempre',
+      'niente', 'qualcuno', 'nessuno', 'buongiorno', 'buonasera',
     ],
     scripts: [],
-    patterns: [/\bche\b/, /\bnon\b/, /\bè\b/, /\bdel\b/, /\bdella\b/],
+    patterns: [/\bdella\b/, /\bdello\b/, /\bperché\b/, /\bnon\s+è\b/],
   },
 };
 
