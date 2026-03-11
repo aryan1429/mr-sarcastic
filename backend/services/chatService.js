@@ -270,6 +270,7 @@ This is straight from our Songs page playlist - only the finest curated track fo
             console.log('🎭 Using mood:', detectedMood, options.forceMood ? '(user selected)' : '(auto-detected)');
 
             // Detect or use user-selected language
+            // Priority: explicit language selection > auto-detection (confidence >= 0.6) > English default
             let targetLanguage = options.language || DEFAULT_LANGUAGE;
             let languageAutoDetected = false;
 
