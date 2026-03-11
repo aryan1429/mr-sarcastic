@@ -787,7 +787,8 @@ NOW RESPOND AS ${detectedMood.toUpperCase()} MOOD:`;
             text: response,
             mood: mood,
             confidence: 0.9,
-            source: 'enhanced_sarcastic_fallback'
+            source: 'enhanced_sarcastic_fallback',
+            language: targetLanguage || DEFAULT_LANGUAGE
         };
     }
 
