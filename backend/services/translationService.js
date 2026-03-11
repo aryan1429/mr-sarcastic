@@ -275,7 +275,7 @@ export function buildLanguagePrompt(langCode, autoDetected = false) {
   return `
 
 🌐 LANGUAGE INSTRUCTION — CRITICAL:
-The user is communicating in **${langConfig.name} (${langConfig.nativeName})**.
+The user ${autoDetected ? 'appears to be' : 'is'} communicating in **${langConfig.name} (${langConfig.nativeName})**.
 You MUST respond ENTIRELY in **${langConfig.name}**.
 
 LANGUAGE RULES:
@@ -287,7 +287,7 @@ LANGUAGE RULES:
 - If the user mixes ${langConfig.name} with English (code-switching), you can do the same naturally
 - Do NOT translate word-by-word from English — speak like a NATIVE ${langConfig.name} speaker
 - ${personality.filler} — that's who you are in ${langConfig.name}!
-${autoDetected ? `- The language was auto-detected from the user's message, so match their language style` : `- The user has explicitly chosen ${langConfig.name}, so respond in it consistently`}
+${autoDetected ? `- IMPORTANT: The language was auto-detected. If the user's message is actually in English, respond in ENGLISH instead — do not force ${langConfig.name}` : `- The user has explicitly chosen ${langConfig.name}, so respond in it consistently`}
 
 NOW RESPOND IN ${langConfig.name.toUpperCase()}:`;
 }
