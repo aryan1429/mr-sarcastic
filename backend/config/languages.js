@@ -2,6 +2,12 @@
  * Language configuration for Mr. Sarcastic multilingual support.
  * Supports: English, Tagalog, Telugu, Hindi, Spanish, French, German, Portuguese,
  * Japanese, Korean, Arabic, Russian, Chinese (Mandarin), and Italian.
+ *
+ * DETECTION DESIGN NOTES:
+ * - English is scored alongside other languages (not just a fallback)
+ * - Latin-script language keywords are curated to avoid overlap with English
+ * - Short/generic words (e.g., 'come', 'bien', 'mal', 'no') are excluded
+ * - Non-Latin scripts (Devanagari, Hangul, etc.) provide definitive detection
  */
 
 export const SUPPORTED_LANGUAGES = {
@@ -223,9 +229,9 @@ export const LANGUAGE_DETECTION_HINTS = {
     keywords: [
       'kumusta', 'ako', 'ikaw', 'siya', 'kami', 'tayo', 'nila', 'ano', 'bakit',
       'paano', 'nasaan', 'maganda', 'masaya', 'malungkot', 'galit', 'salamat',
-      'oo', 'hindi', 'opo', 'po', 'naman', 'talaga', 'grabe', 'sana',
+      'oo', 'opo', 'naman', 'talaga', 'grabe', 'sana',
       'gusto', 'ayaw', 'pwede', 'kasi', 'pero', 'pag', 'kung', 'nga',
-      'nang', 'lang', 'din', 'rin', 'daw', 'raw', 'ba', 'ha',
+      'nang', 'lang', 'din', 'rin', 'daw', 'raw',
       'sige', 'tara', 'hoy', 'bes', 'mare', 'pre', 'lodi', 'charot',
       'mahal', 'buhay', 'araw', 'gabi', 'umaga', 'tanghalian',
     ],
