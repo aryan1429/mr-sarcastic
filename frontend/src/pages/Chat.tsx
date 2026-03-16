@@ -225,6 +225,16 @@ const Chat = () => {
   const { toast } = useToast();
   const isInitialLoad = useRef(true);
   const prevMessageCount = useRef(messages.length);
+  const abortControllerRef = useRef<AbortController | null>(null);
+
+  // Cleanup abort controller on unmount
+  useEffect(() => {
+    return () => {
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+    };
+  }, []);
 
   // Handle mood change from modal
   const handleMoodChange = useCallback((mood: string) => {
@@ -317,12 +327,22 @@ const Chat = () => {
     setIsLoading(true);
 
     try {
+      // Abort any previous in-flight request
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+      // Create new abort controller for this request
+      const controller = new AbortController();
+      abortControllerRef.current = controller;
+
       // Call the backend chat API using the API service
       const response = await api.post('/chat/send', {
         message: currentInput,
         conversationHistory: conversationHistory,
         userMood: detectedMood.toLowerCase(), // Send user's selected mood to backend
         language: language, // Send user's selected language (auto, en, tl, te, hi)
+      }, {
+        signal: controller.signal,
       });
 
       const data = response.data;
