@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Send, User, Loader2, Music, ExternalLink, Trash2, Smile, Play, Pause, ListPlus, Zap, Globe } from "lucide-react";
+import { Send, User, Loader2, Music, ExternalLink, Trash2, Smile, Play, Pause, ListPlus, Zap, Globe, RotateCcw } from "lucide-react";
 import chatbotLogo from "@/assets/new-chatbot.png";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -77,12 +77,20 @@ const ChatMessage = memo(({
   onTypingComplete,
   onGoToSong,
   onPlaySong,
+  onRetry,
 }: {
   message: Message;
   onTypingComplete: (id: string) => void;
   onGoToSong: (songId: string) => void;
   onPlaySong: (songData: NonNullable<Message['songData']>) => void;
+  onRetry?: () => void;
 }) => {
+  // Detect if this is an error message (bot message with error indicators)
+  const isErrorMessage = !message.isUser && message.confidence === 0.5 && (
+    message.text.includes('⏱️') || message.text.includes('🔧') ||
+    message.text.includes('🐢') || message.text.includes('📡') ||
+    message.text.includes('sarcasm circuits')
+  );
   return (
     <div
       className={`flex gap-2 sm:gap-3 ${message.isUser ? "justify-end" : "justify-start"}`}
@@ -186,6 +194,17 @@ const ChatMessage = memo(({
             </div>
           )}
         </div>
+
+        {/* Retry button for error messages */}
+        {isErrorMessage && onRetry && (
+          <button
+            onClick={onRetry}
+            className="mt-2 flex items-center gap-1.5 text-xs font-medium text-primary hover:text-primary/80 transition-colors px-2 py-1 rounded-md bg-primary/10 hover:bg-primary/20"
+          >
+            <RotateCcw className="w-3 h-3" />
+            Retry
+          </button>
+        )}
       </div>
       {message.isUser && (
         <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-accent/20 flex items-center justify-center shrink-0 ring-2 ring-accent/10"
@@ -228,6 +247,7 @@ const Chat = () => {
   const isInitialLoad = useRef(true);
   const prevMessageCount = useRef(messages.length);
   const abortControllerRef = useRef<AbortController | null>(null);
+  const lastUserInputRef = useRef<string>("");
   const { isOnline, isServerReachable } = useConnectionStatus();
   const isConnected = isOnline && isServerReachable;
 
@@ -395,6 +415,7 @@ const Chat = () => {
 
     setMessages((prev) => [...prev, newMessage]);
     const currentInput = inputText;
+    lastUserInputRef.current = currentInput;
     setInputText("");
 
     // If offline, queue the message instead of sending
@@ -467,6 +488,28 @@ const Chat = () => {
       setIsLoading(false);
     }
   };
+
+  // Retry the last failed message
+  const handleRetryLastMessage = useCallback(() => {
+    if (lastUserInputRef.current && !isLoading) {
+      setInputText(lastUserInputRef.current);
+      // Remove the error message from the list
+      setMessages(prev => {
+        const lastMsg = prev[prev.length - 1];
+        if (lastMsg && !lastMsg.isUser && lastMsg.confidence === 0.5) {
+          return prev.slice(0, -1);
+        }
+        return prev;
+      });
+      // Trigger send after state update
+      setTimeout(() => {
+        const input = document.querySelector<HTMLInputElement>('input[enterkeyhint="send"]');
+        if (input) {
+          input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+        }
+      }, 100);
+    }
+  }, [isLoading]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-card to-background flex flex-col">
@@ -547,6 +590,7 @@ const Chat = () => {
                       onTypingComplete={handleTypingComplete}
                       onGoToSong={handleGoToSong}
                       onPlaySong={handlePlaySongFromChat}
+                      onRetry={handleRetryLastMessage}
                     />
                   ))}
                   <div ref={messagesEndRef} />
