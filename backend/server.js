@@ -95,8 +95,16 @@ app.use('/api/storage', storageRoutes);
 app.use('/api/chat', chatLimiter, chatRoutes);
 app.use('/api/songs', songsRoutes);
 
+// Lightweight ping endpoint for frontend connection checks (no rate limit)
+app.get('/api/ping', (req, res) => {
+  res.set('Connection', 'keep-alive');
+  res.set('Keep-Alive', 'timeout=30');
+  res.status(200).json({ pong: true, timestamp: Date.now() });
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
+  res.set('Connection', 'keep-alive');
   res.status(200).json({ status: 'OK', message: 'Server is running' });
 });
 

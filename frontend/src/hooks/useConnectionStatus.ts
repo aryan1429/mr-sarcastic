@@ -39,7 +39,7 @@ export function useConnectionStatus(): ConnectionStatus {
     const timeoutId = setTimeout(() => controller.abort(), PING_TIMEOUT);
 
     try {
-      const response = await fetch(`${API_BASE_URL.replace('/api', '')}/health`, {
+      const response = await fetch(`${API_BASE_URL.replace('/api', '')}/api/ping`, {
         method: 'GET',
         signal: controller.signal,
         cache: 'no-store',
