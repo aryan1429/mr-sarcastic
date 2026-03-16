@@ -2,21 +2,59 @@ import axios from 'axios';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
 
+// Retry configuration
+const RETRY_CONFIG = {
+  maxRetries: 3,
+  baseDelay: 1000, // 1 second
+  maxDelay: 8000,  // 8 seconds cap
+  retryableStatuses: [408, 429, 500, 502, 503, 504],
+};
+
+// Sleep utility for retry delays
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+// Calculate exponential backoff delay with jitter
+const getRetryDelay = (attempt) => {
+  const delay = Math.min(
+    RETRY_CONFIG.baseDelay * Math.pow(2, attempt),
+    RETRY_CONFIG.maxDelay
+  );
+  // Add random jitter (±25%) to prevent thundering herd
+  const jitter = delay * 0.25 * (Math.random() * 2 - 1);
+  return Math.round(delay + jitter);
+};
+
+// Check if a request should be retried
+const shouldRetry = (error) => {
+  // Don't retry if request was explicitly aborted
+  if (axios.isCancel(error)) return false;
+
+  // Retry on network errors (no response received)
+  if (!error.response) return true;
+
+  // Retry on specific status codes
+  return RETRY_CONFIG.retryableStatuses.includes(error.response.status);
+};
+
 // Create axios instance with default config
 const api = axios.create({
   baseURL: API_BASE_URL,
-  timeout: 60000,
+  timeout: 90000, // 90 seconds for mobile reliability
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// Add request interceptor to include auth token
+// Add request interceptor to include auth token and track retry count
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('authToken');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
+    }
+    // Initialize retry metadata
+    if (config._retryCount === undefined) {
+      config._retryCount = 0;
     }
     return config;
   },
@@ -25,18 +63,37 @@ api.interceptors.request.use(
   }
 );
 
-// Add response interceptor to handle auth errors
+// Add response interceptor with retry logic and auth error handling
 api.interceptors.response.use(
   (response) => {
     return response;
   },
-  (error) => {
+  async (error) => {
+    const config = error.config;
+
+    // Handle auth errors (no retry)
     if (error.response?.status === 401) {
-      // Token expired or invalid
       localStorage.removeItem('authToken');
       localStorage.removeItem('userData');
-      // Don't auto-redirect here, let the auth context handle it
+      return Promise.reject(error);
     }
+
+    // Retry logic
+    if (config && shouldRetry(error) && config._retryCount < RETRY_CONFIG.maxRetries) {
+      config._retryCount += 1;
+      const delay = getRetryDelay(config._retryCount - 1);
+
+      console.log(
+        `🔄 Retry ${config._retryCount}/${RETRY_CONFIG.maxRetries} for ${config.url} in ${delay}ms` +
+        (error.response ? ` (status: ${error.response.status})` : ' (network error)')
+      );
+
+      await sleep(delay);
+
+      // Return a new request with the same config
+      return api(config);
+    }
+
     return Promise.reject(error);
   }
 );
