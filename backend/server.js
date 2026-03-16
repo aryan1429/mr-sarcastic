@@ -48,12 +48,32 @@ app.use(helmet({
   crossOriginOpenerPolicy: { policy: 'unsafe-none' },
 }));
 
-// Rate limiting
-const limiter = rateLimit({
+// Rate limiting - global (generous for mobile users)
+const globalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100 // limit each IP to 100 requests per windowMs
+  max: 200, // 200 requests per 15 minutes
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    error: 'Too many requests',
+    message: 'Slow down a bit! Please wait a moment before trying again.',
+    retryable: true,
+  },
 });
-app.use(limiter);
+app.use(globalLimiter);
+
+// Chat-specific rate limit (more generous for active chatting)
+const chatLimiter = rateLimit({
+  windowMs: 5 * 60 * 1000, // 5 minutes
+  max: 60, // 60 chat messages per 5 minutes
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    error: 'Chat rate limit exceeded',
+    message: "You're chatting too fast! Give me a moment to catch my breath 😅",
+    retryable: true,
+  },
+});
 
 // Body parsing middleware
 app.use(express.json({ limit: '10mb' }));
@@ -72,7 +92,7 @@ app.use((req, res, next) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/storage', storageRoutes);
-app.use('/api/chat', chatRoutes);
+app.use('/api/chat', chatLimiter, chatRoutes);
 app.use('/api/songs', songsRoutes);
 
 // Health check endpoint
