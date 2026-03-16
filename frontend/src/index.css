@@ -392,3 +392,85 @@
     opacity: 0;
   }
 }
+
+/* Connection banner slide-down animation */
+@keyframes smoothSlideDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -12px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* ============================================
+   MOBILE VIEWPORT & KEYBOARD FIXES
+   ============================================ */
+
+/* Prevent the entire page from bouncing/rubber-banding on iOS */
+html, body {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Use dynamic viewport height for mobile to handle keyboard appearance */
+@supports (height: 100dvh) {
+  .h-dvh {
+    height: 100dvh;
+  }
+}
+
+/* Chat container mobile optimization */
+@media (max-width: 767px) {
+  /* Ensure chat input stays visible when keyboard opens */
+  .chat-input-area {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+    background: hsl(var(--card));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  /* Prevent chat messages container from rubber-banding */
+  .chat-messages-container {
+    overscroll-behavior-y: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* Prevent body scroll when chat is active */
+  .chat-active {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Adjust for mobile bottom safe areas (notch/home indicator) */
+  .mobile-safe-bottom {
+    padding-bottom: max(16px, env(safe-area-inset-bottom, 16px));
+  }
+
+  /* Bigger touch targets for mobile */
+  button, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Prevent text zoom on input focus in iOS */
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
+
+/* Visual viewport resize handler — keeps input visible when keyboard opens */
+@supports (height: 1svh) {
+  @media (max-width: 767px) {
+    .chat-card-mobile {
+      height: calc(100svh - 10rem);
+      max-height: calc(100svh - 10rem);
+    }
+  }
+}

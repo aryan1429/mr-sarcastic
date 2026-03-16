@@ -580,7 +580,7 @@ const Chat = () => {
                 </div>
 
                 {/* Messages */}
-                <div className="flex-1 p-3 sm:p-4 overflow-y-auto space-y-3 sm:space-y-4 overscroll-contain custom-scrollbar"
+                <div className="flex-1 p-3 sm:p-4 overflow-y-auto space-y-3 sm:space-y-4 overscroll-contain custom-scrollbar chat-messages-container"
                   style={{ scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}
                 >
                   {messages.map((message) => (
@@ -597,7 +597,7 @@ const Chat = () => {
                 </div>
 
                 {/* Input Area */}
-                <div className="p-4 border-t border-primary/20">
+                <div className="p-4 border-t border-primary/20 chat-input-area mobile-safe-bottom">
                   <div className="flex gap-2">
                     <Input
                       value={inputText}
