@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { TypingAnimation } from "@/components/TypingAnimation";
 import { ClearChatDialog } from "@/components/ClearChatDialog";
 import { ExportDropdown } from "@/components/ExportDropdown";
+import { ConnectionStatusBanner } from "@/components/ConnectionStatusBanner";
 import { MoodSelectorModal } from "@/components/MoodSelectorModal";
 import { LanguageSelectorModal } from "@/components/LanguageSelectorModal";
 import PageTransition from "@/components/PageTransition";
@@ -379,6 +380,7 @@ const Chat = () => {
             {/* Chat Area */}
             <div className="lg:col-span-2">
               <Card className="h-[calc(100dvh-12rem)] sm:h-[600px] flex flex-col border-primary/20 shadow-lg">
+                <ConnectionStatusBanner />
                 <div className="p-3 sm:p-4 border-b border-primary/20">
                   <div className="flex items-center justify-between">
                     <h2 className="text-lg sm:text-xl font-bold text-primary">{t("chatTitle")}</h2>
