@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback, memo } from "react";
+import { useConnectionStatus } from "@/hooks/useConnectionStatus";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -222,10 +223,13 @@ const Chat = () => {
   const [clearChatDialogOpen, setClearChatDialogOpen] = useState(false);
   const [moodSelectorOpen, setMoodSelectorOpen] = useState(false);
   const [languageSelectorOpen, setLanguageSelectorOpen] = useState(false);
+  const [pendingMessages, setPendingMessages] = useState<string[]>([]);
   const { toast } = useToast();
   const isInitialLoad = useRef(true);
   const prevMessageCount = useRef(messages.length);
   const abortControllerRef = useRef<AbortController | null>(null);
+  const { isOnline, isServerReachable } = useConnectionStatus();
+  const isConnected = isOnline && isServerReachable;
 
   // Cleanup abort controller on unmount
   useEffect(() => {
@@ -311,6 +315,74 @@ const Chat = () => {
     toast({ title: "Now Playing", description: `${song.title} by ${song.artist}` });
   }, [playMusicSong, toast]);
 
+  // Send a single message to the API
+  const sendMessageToAPI = useCallback(async (messageText: string) => {
+    // Abort any previous in-flight request
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+    const controller = new AbortController();
+    abortControllerRef.current = controller;
+
+    const response = await api.post('/chat/send', {
+      message: messageText,
+      conversationHistory: conversationHistory,
+      userMood: detectedMood.toLowerCase(),
+      language: language,
+    }, {
+      signal: controller.signal,
+    });
+
+    return response.data;
+  }, [conversationHistory, detectedMood, language]);
+
+  // Process pending messages queue when connection is restored
+  useEffect(() => {
+    if (!isConnected || pendingMessages.length === 0 || isLoading) return;
+
+    const processQueue = async () => {
+      const queue = [...pendingMessages];
+      setPendingMessages([]);
+
+      for (const msg of queue) {
+        setIsLoading(true);
+        try {
+          const data = await sendMessageToAPI(msg);
+          if (data.success) {
+            const botResponse: Message = {
+              id: (Date.now() + 1).toString(),
+              text: data.data.message,
+              isUser: false,
+              timestamp: new Date(),
+              mood: data.data.mood,
+              confidence: data.data.confidence,
+              songData: data.data.songData,
+              isTyping: true,
+            };
+            setMessages((prev) => [...prev, botResponse]);
+            setConversationHistory(prev => [...prev, {
+              message: msg,
+              response: data.data.message
+            }].slice(-10));
+          }
+        } catch (error) {
+          console.error('Failed to send queued message:', error);
+        } finally {
+          setIsLoading(false);
+        }
+      }
+
+      if (queue.length > 0) {
+        toast({
+          title: "Messages Sent!",
+          description: `${queue.length} queued message${queue.length > 1 ? 's' : ''} delivered successfully.`,
+        });
+      }
+    };
+
+    processQueue();
+  }, [isConnected, pendingMessages, isLoading, sendMessageToAPI, toast]);
+
   const handleSendMessage = async () => {
     if (!inputText.trim() || isLoading) return;
 
@@ -324,28 +396,26 @@ const Chat = () => {
     setMessages((prev) => [...prev, newMessage]);
     const currentInput = inputText;
     setInputText("");
+
+    // If offline, queue the message instead of sending
+    if (!isConnected) {
+      setPendingMessages(prev => [...prev, currentInput]);
+      const queuedResponse: Message = {
+        id: (Date.now() + 1).toString(),
+        text: "⏳ You're offline — I'll respond as soon as you're back online!",
+        isUser: false,
+        timestamp: new Date(),
+        mood: "neutral",
+        confidence: 0.5,
+      };
+      setMessages((prev) => [...prev, queuedResponse]);
+      return;
+    }
+
     setIsLoading(true);
 
     try {
-      // Abort any previous in-flight request
-      if (abortControllerRef.current) {
-        abortControllerRef.current.abort();
-      }
-      // Create new abort controller for this request
-      const controller = new AbortController();
-      abortControllerRef.current = controller;
-
-      // Call the backend chat API using the API service
-      const response = await api.post('/chat/send', {
-        message: currentInput,
-        conversationHistory: conversationHistory,
-        userMood: detectedMood.toLowerCase(), // Send user's selected mood to backend
-        language: language, // Send user's selected language (auto, en, tl, te, hi)
-      }, {
-        signal: controller.signal,
-      });
-
-      const data = response.data;
+      const data = await sendMessageToAPI(currentInput);
 
       if (data.success) {
         const botResponse: Message = {
@@ -356,34 +426,41 @@ const Chat = () => {
           mood: data.data.mood,
           confidence: data.data.confidence,
           songData: data.data.songData,
-          isTyping: true // Enable typing animation for new messages
+          isTyping: true,
         };
 
         setMessages((prev) => [...prev, botResponse]);
-        // Don't overwrite user's selected mood - it should persist until manually changed
-        // setDetectedMood(data.data.mood.charAt(0).toUpperCase() + data.data.mood.slice(1));
-
-        // Update conversation history
         setConversationHistory(prev => [...prev, {
           message: currentInput,
           response: data.data.message
-        }].slice(-10)); // Keep last 10 exchanges
-
+        }].slice(-10));
       } else {
         throw new Error(data.error || 'Unknown error');
       }
 
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error sending message:', error);
 
-      // Fallback response
+      // Determine error type for specific messaging
+      let errorText = "Oops! Something went wrong with my sarcasm circuits. Try again, I promise to be extra snarky next time!";
+
+      if (error.code === 'ECONNABORTED' || error.message?.includes('timeout')) {
+        errorText = "⏱️ That took too long! The server might be waking up. Tap 'Retry' to try again.";
+      } else if (error.response?.status === 429) {
+        errorText = "🐢 Slow down there, speedster! You're sending messages too fast. Wait a moment and try again.";
+      } else if (!navigator.onLine) {
+        errorText = "📡 Looks like you lost your connection. I'll be here when you're back online!";
+      } else if (error.response?.status >= 500) {
+        errorText = "🔧 Server hiccup! The team is on it. Tap 'Retry' to try again.";
+      }
+
       const errorResponse: Message = {
         id: (Date.now() + 1).toString(),
-        text: "Oops! Something went wrong with my sarcasm circuits. Try again, I promise to be extra snarky next time!",
+        text: errorText,
         isUser: false,
         timestamp: new Date(),
         mood: "neutral",
-        confidence: 0.5
+        confidence: 0.5,
       };
       setMessages((prev) => [...prev, errorResponse]);
     } finally {
