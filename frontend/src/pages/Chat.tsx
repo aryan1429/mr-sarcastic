@@ -490,7 +490,15 @@ const Chat = () => {
                                   detectedMood.toLowerCase() === 'toxic' ? "Bring it on, I can handle it... 😈" :
                                     t("typeMessage")
                       }
-                      onKeyPress={(e) => e.key === "Enter" && !isLoading && handleSendMessage()}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" && !e.shiftKey && !isLoading) {
+                          e.preventDefault();
+                          handleSendMessage();
+                        }
+                      }}
+                      enterKeyHint="send"
+                      autoComplete="off"
+                      autoCorrect="on"
                       className="flex-1"
                       disabled={isLoading}
                     />
