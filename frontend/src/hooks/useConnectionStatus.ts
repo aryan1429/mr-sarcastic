@@ -11,7 +11,8 @@ interface ConnectionStatus {
 }
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
-const PING_INTERVAL = 30000; // 30 seconds
+const PING_INTERVAL_IDLE = 45000; // 45 seconds (stable connection)
+const PING_INTERVAL_ACTIVE = 15000; // 15 seconds (poor/offline connection)
 const PING_TIMEOUT = 15000; // 15 seconds (tolerates Render cold starts)
 const SLOW_THRESHOLD = 3000; // 3 seconds = "slow"
 const FAILURE_THRESHOLD = 2; // Require 2 consecutive failures before marking unreachable
@@ -121,22 +122,30 @@ export function useConnectionStatus(): ConnectionStatus {
   useEffect(() => {
     isMounted.current = true;
 
-    // Initial check
-    pingServer();
+    // Initial check only if we don't have an interval yet
+    if (intervalRef.current === null) {
+        pingServer();
+    }
+
+    const interval = (!isOnline || !isServerReachable || connectionQuality !== 'good') 
+      ? PING_INTERVAL_ACTIVE 
+      : PING_INTERVAL_IDLE;
 
     // Set up interval
-    intervalRef.current = setInterval(pingServer, PING_INTERVAL);
+    intervalRef.current = setInterval(pingServer, interval);
 
     return () => {
       isMounted.current = false;
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
+        intervalRef.current = null;
       }
       if (retryTimeoutRef.current) {
         clearTimeout(retryTimeoutRef.current);
+        retryTimeoutRef.current = null;
       }
     };
-  }, [pingServer]);
+  }, [pingServer, isOnline, isServerReachable, connectionQuality]);
 
   return {
     isOnline,
