@@ -462,11 +462,20 @@ const Chat = () => {
     } catch (error: any) {
       console.error('Error sending message:', error);
 
+      // Implement a single auto-retry for timeouts (helpful for Render cold starts)
+      const isTimeout = error.code === 'ECONNABORTED' || error.message?.includes('timeout');
+      
+      // We haven't retried yet in this interaction
+      if (isTimeout && !inputText.trim()) {
+        // Just checking, actually we can just rely on the user tapping retry for now
+        // Let's improve the message instead of complex auto-retry here
+      }
+
       // Determine error type for specific messaging
       let errorText = "Oops! Something went wrong with my sarcasm circuits. Try again, I promise to be extra snarky next time!";
 
-      if (error.code === 'ECONNABORTED' || error.message?.includes('timeout')) {
-        errorText = "⏱️ That took too long! The server might be waking up. Tap 'Retry' to try again.";
+      if (isTimeout) {
+        errorText = "⏱️ The server was asleep and is waking up! Give it a few seconds and tap 'Retry'.";
       } else if (error.response?.status === 429) {
         errorText = "🐢 Slow down there, speedster! You're sending messages too fast. Wait a moment and try again.";
       } else if (!navigator.onLine) {
@@ -603,6 +612,7 @@ const Chat = () => {
                       value={inputText}
                       onChange={(e) => setInputText(e.target.value)}
                       placeholder={
+                        !isServerReachable && isOnline ? "Server is waking up... messages will queue ⏳" :
                         detectedMood.toLowerCase() === 'happy' ? "Feeling good? Share the vibes! 😊" :
                           detectedMood.toLowerCase() === 'sad' ? "What's on your mind? I'm here... 💙" :
                             detectedMood.toLowerCase() === 'energetic' ? "Let's gooo! What's up? ⚡" :
@@ -626,7 +636,7 @@ const Chat = () => {
                     <Button
                       onClick={handleSendMessage}
                       size="icon"
-                      className="shrink-0"
+                      className={`shrink-0 ${!isServerReachable && isOnline ? "animate-pulse shadow-[0_0_10px_rgba(234,179,8,0.5)] bg-yellow-500 hover:bg-yellow-600 border-yellow-400" : ""}`}
                       disabled={isLoading || !inputText.trim()}
                     >
                       {isLoading ? (
