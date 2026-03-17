@@ -99,6 +99,10 @@ app.use('/api/songs', songsRoutes);
 app.get('/api/ping', (req, res) => {
   res.set('Connection', 'keep-alive');
   res.set('Keep-Alive', 'timeout=30');
+  res.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.set('Pragma', 'no-cache');
+  res.set('Expires', '0');
+  res.set('X-Response-Time', Date.now().toString());
   res.status(200).json({ pong: true, timestamp: Date.now() });
 });
 
