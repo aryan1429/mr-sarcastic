@@ -14,6 +14,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001
 const PING_INTERVAL = 30000; // 30 seconds
 const PING_TIMEOUT = 10000; // 10 seconds
 const SLOW_THRESHOLD = 3000; // 3 seconds = "slow"
+const FAILURE_THRESHOLD = 2; // Require 2 consecutive failures before marking unreachable
 
 export function useConnectionStatus(): ConnectionStatus {
   const [isOnline, setIsOnline] = useState<boolean>(navigator.onLine);
@@ -22,10 +23,12 @@ export function useConnectionStatus(): ConnectionStatus {
   const [lastChecked, setLastChecked] = useState<Date | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const isMounted = useRef(true);
+  const failureCount = useRef(0);
 
   const pingServer = useCallback(async () => {
     if (!navigator.onLine) {
       if (isMounted.current) {
+        failureCount.current = FAILURE_THRESHOLD; // Immediately mark offline
         setIsOnline(false);
         setIsServerReachable(false);
         setConnectionQuality('offline');
@@ -49,6 +52,7 @@ export function useConnectionStatus(): ConnectionStatus {
       const elapsed = Date.now() - startTime;
 
       if (isMounted.current) {
+        failureCount.current = 0; // Reset on success
         setIsOnline(true);
         setIsServerReachable(response.ok);
         setConnectionQuality(elapsed > SLOW_THRESHOLD ? 'slow' : 'good');
@@ -57,8 +61,12 @@ export function useConnectionStatus(): ConnectionStatus {
     } catch {
       clearTimeout(timeoutId);
       if (isMounted.current) {
+        failureCount.current += 1;
         setIsOnline(navigator.onLine);
-        setIsServerReachable(false);
+        // Only mark unreachable after FAILURE_THRESHOLD consecutive failures
+        if (failureCount.current >= FAILURE_THRESHOLD) {
+          setIsServerReachable(false);
+        }
         setConnectionQuality(navigator.onLine ? 'slow' : 'offline');
         setLastChecked(new Date());
       }
