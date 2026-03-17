@@ -24,6 +24,7 @@ export function useConnectionStatus(): ConnectionStatus {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const isMounted = useRef(true);
   const failureCount = useRef(0);
+  const isInitializing = useRef(true); // Grace period: don't show banner during first ping cycle
 
   const pingServer = useCallback(async () => {
     if (!navigator.onLine) {
@@ -53,6 +54,7 @@ export function useConnectionStatus(): ConnectionStatus {
 
       if (isMounted.current) {
         failureCount.current = 0; // Reset on success
+        isInitializing.current = false; // First successful ping ends grace period
         setIsOnline(true);
         setIsServerReachable(response.ok);
         setConnectionQuality(elapsed > SLOW_THRESHOLD ? 'slow' : 'good');
@@ -63,9 +65,14 @@ export function useConnectionStatus(): ConnectionStatus {
       if (isMounted.current) {
         failureCount.current += 1;
         setIsOnline(navigator.onLine);
-        // Only mark unreachable after FAILURE_THRESHOLD consecutive failures
-        if (failureCount.current >= FAILURE_THRESHOLD) {
+        // During initial grace period, don't mark unreachable (server may be waking up)
+        // After grace period, require FAILURE_THRESHOLD consecutive failures
+        if (!isInitializing.current && failureCount.current >= FAILURE_THRESHOLD) {
           setIsServerReachable(false);
+        }
+        // End grace period after 2 attempts regardless
+        if (failureCount.current >= FAILURE_THRESHOLD) {
+          isInitializing.current = false;
         }
         setConnectionQuality(navigator.onLine ? 'slow' : 'offline');
         setLastChecked(new Date());
