@@ -12,9 +12,10 @@ interface ConnectionStatus {
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
 const PING_INTERVAL = 30000; // 30 seconds
-const PING_TIMEOUT = 10000; // 10 seconds
+const PING_TIMEOUT = 15000; // 15 seconds (tolerates Render cold starts)
 const SLOW_THRESHOLD = 3000; // 3 seconds = "slow"
 const FAILURE_THRESHOLD = 2; // Require 2 consecutive failures before marking unreachable
+const RETRY_DELAY = 5000; // 5 seconds — quick retry after a failure
 
 export function useConnectionStatus(): ConnectionStatus {
   const [isOnline, setIsOnline] = useState<boolean>(navigator.onLine);
@@ -22,6 +23,7 @@ export function useConnectionStatus(): ConnectionStatus {
   const [connectionQuality, setConnectionQuality] = useState<ConnectionQuality>('good');
   const [lastChecked, setLastChecked] = useState<Date | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const retryTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isMounted = useRef(true);
   const failureCount = useRef(0);
   const isInitializing = useRef(true); // Grace period: don't show banner during first ping cycle
@@ -76,6 +78,14 @@ export function useConnectionStatus(): ConnectionStatus {
         }
         setConnectionQuality(navigator.onLine ? 'slow' : 'offline');
         setLastChecked(new Date());
+
+        // Schedule a quick retry instead of waiting for the full interval
+        if (navigator.onLine && retryTimeoutRef.current === null) {
+          retryTimeoutRef.current = setTimeout(() => {
+            retryTimeoutRef.current = null;
+            if (isMounted.current) pingServer();
+          }, RETRY_DELAY);
+        }
       }
     }
   }, []);
@@ -121,6 +131,9 @@ export function useConnectionStatus(): ConnectionStatus {
       isMounted.current = false;
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
+      }
+      if (retryTimeoutRef.current) {
+        clearTimeout(retryTimeoutRef.current);
       }
     };
   }, [pingServer]);
