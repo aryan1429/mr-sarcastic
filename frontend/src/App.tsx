@@ -6,7 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { MusicPlayerProvider } from "./context/MusicPlayerContext";
 import { LanguageProvider } from "./context/LanguageContext";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Loader2 } from "lucide-react";
 
 // Eagerly loaded (critical path)
@@ -58,6 +58,13 @@ const queryClient = new QueryClient({
 });
 
 const App = () => {
+  useEffect(() => {
+    // Silent warm-up ping to wake up the server (e.g., Render free tier) early
+    const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
+    fetch(`${API_BASE_URL.replace('/api', '')}/api/ping`, { method: 'GET', cache: 'no-store' })
+      .catch(() => { /* fire and forget, ignore errors here */ });
+  }, []);
+
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
